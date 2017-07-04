@@ -2,9 +2,9 @@
 
 namespace Controller;
 
-use \W\Controller\Controller;
+// use \W\Controller\Controller; // Inutile puisque heritage de AppController dans le meme espace de nom
 
-class DefaultController extends Controller
+class DefaultController extends AppController
 {
 
 	/**
@@ -12,7 +12,7 @@ class DefaultController extends Controller
 	 */
 	public function home()
 	{
-		$this->show('default/home');
+		$this->show('default/home', ['toolTipHp' => $this->hp->testToolHP()]); // passage de $this->ToolHp pour test outil present dans parent
 	}
 
 }
