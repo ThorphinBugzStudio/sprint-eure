@@ -12,7 +12,7 @@ class DefaultController extends AppController
 	 */
 	public function home()
 	{
-		$this->show('default/home', ['toolTipHp' => $this->hp->testToolHP()]); // passage de $this->ToolHp pour test outil present dans parent
+		$this->show('default/home');
 	}
 
 }
