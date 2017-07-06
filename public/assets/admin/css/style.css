@@ -13,8 +13,8 @@ p {
 /* ------------- NAVBAR ------------- */
 
 .navbar-admin {
-  border-top: 2px solid transparent;
-  border-top-color: #3c8dbc;
+  border-bottom: 1px solid transparent;
+  border-bottom-color: #9f9f9f;
   background-color: #1e2123;
 }
 
@@ -73,4 +73,5 @@ p {
 
 #page-wrapper {
   min-height: 900px;
+  border-left: 1px solid #9f9f9f;
 }
