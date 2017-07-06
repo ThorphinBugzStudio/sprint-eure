@@ -24,17 +24,19 @@
 
 		//Routes How TO (Services de l'entreprises)
 		['GET', '/howTo', 'HowTo#howTo','how_to'],
+
+		//Routes catalogue articles
 		['GET', '/catalogue', 'Catalog#catalog', 'catalog'],
+
+		//Routes devis en ligne
 		['GET', '/devis' , 'Devis#devis', 'devis'],
 		['POST', '/devis' , 'Devis#devisAction', 'devis_action'],
-		
 
+		//routes Panier client
+		['GET', '/panier', 'Panier#panier', 'panier_client'],
+		['POST', '/panier', 'Panier#panier', 'panier_client_action'],
 
-
-
-
-
-
-
+		//routes Admin
+		['GET', '/admin/users', 'Admin#usersAdmin', 'admin_users'],
 
 	);

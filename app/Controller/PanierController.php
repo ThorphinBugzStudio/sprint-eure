@@ -7,6 +7,14 @@ namespace Controller;
 class PanierController extends AppController
 {
 
+public function panier()
+{
+  $this->show('page_panier/panier');
+}
 
+public function panierAction()
+{
+  //Interractions panier client
+}
 
 }

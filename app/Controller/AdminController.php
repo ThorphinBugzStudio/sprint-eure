@@ -7,6 +7,8 @@ namespace Controller;
 class AdminController extends AppController
 {
 
-
-
+  public function usersAdmin()
+  {
+    $this->show('admin/adminUsers');
+  }
 }
