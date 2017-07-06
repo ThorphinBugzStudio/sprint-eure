@@ -2,9 +2,7 @@
 
 	$w_routes = array(
 		//routes home
-
 		['GET', '/', 'Default#home', 'default_home'],
-
 
 		//routes Users
 		['GET', '/users/inscription','Users#inscription','inscription'],
@@ -41,20 +39,28 @@
 		['GET', '/admin/user/[:id]', 'Admin#singleUser', 'admin_single_user'],
 		['POST', '/admin/user/[:id]', 'Admin#singleUserAction', 'admin_single_user_action'],
 
+		// edit // update // delete
+
 		// routes admin comments
 		['GET', '/admin/comments' , 'Admin#adminComments', 'admin_comments'],
 		['GET', '/admin/commentApprove/[:id]' , 'Admin#adminCommentApprove', 'admin_approve_comment'],
 		['GET', '/admin/commentDelete/[:id]' , 'Admin#adminCommentDelete', 'admin_delete_comment'],
+
+			// edit // update // delete
 
 		//routes admin orders
 		['GET', '/admin/orders', 'Admin#adminOrders' , 'admin_orders'],
 		['GET', '/admin/order/[:id]', 'Admin#adminSingleOrder', 'admin_single_order'],
 		['POST','/admin/order/[:id]', 'Admin#adminSingleOrderAction', 'admin_single_order_action'],
 
+			// edit // update // delete
+
 		//routes admin items
 		['GET', '/admin/items', 'Admin#adminItems','admin_items'],
 		['GET', '/admin/item', 'Admin#adminSingleItem', 'admin_single_item'],
 		['POST', '/admin/item', 'Admin#adminSingleItemAction', 'admin_single_item_action'],
+
+			// edit // update // delete
 
 		//routes admin items families
 		['GET', '/admin/itemsFamilies' , 'Admin#adminItemsFamilies', 'admin_items_families'],
@@ -62,6 +68,7 @@
 		['POST', '/admin/itemFamily', 'Admin#adminSingleItemFamilyAction', 'admin_single_item_family_action'],
 
 
+			// edit // update // delete
 
 
 
