@@ -1,0 +1,76 @@
+body {
+  background-color: #222d32;
+}
+
+a {
+  background-color: none;
+}
+
+p {
+  margin: 0;
+}
+
+/* ------------- NAVBAR ------------- */
+
+.navbar-admin {
+  border-top: 2px solid transparent;
+  border-top-color: #3c8dbc;
+  background-color: #1e2123;
+}
+
+.navbar-admin .navbar-brand {
+  color: white;
+}
+
+.navbar-admin .navbar-toggle {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.navbar-admin .navbar-toggle span {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.navbar-default, .navbar-default:hover, .sidebar ul li a.active {
+  background-color: #222d32;
+}
+
+.nav-second-level {
+  background-color: #2c3b41;
+}
+
+.navbar-default .navbar-collapse {
+  border: none;
+}
+
+.nav > li > a:focus, .active {
+  background-color: none !important;
+}
+
+#side-menu li a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.sidebar ul li, .navbar-default {
+  border: none;
+}
+
+.nav > li > a:hover {
+  color: #fff;
+  background: #1e282c;
+  border-left: 3px solid transparent;
+  border-left-color: #3c8dbc;
+}
+
+.sidebar ul li.separator {
+  padding: 10px 25px 10px 15px;
+  font-size: 12px;
+  color: #4b646f;
+  background: #1a2226;
+}
+
+
+/* -------------- CONTENU PRINCIPAL -------------- */
+
+#page-wrapper {
+  min-height: 900px;
+}
