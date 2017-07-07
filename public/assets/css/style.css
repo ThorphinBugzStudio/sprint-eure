@@ -4,6 +4,11 @@ html, body {
 	color: #F8F8F2;*/
 }
 
+body {
+	background-image: url('../img/carousel-bg.png');
+
+}
+
 .row {
 	margin: 0;
 }
@@ -101,21 +106,29 @@ html, body {
 
 /* ----------------- SLIDERS ----------------- */
 
+
 #carouselExampleIndicators {
-  max-width: 640px;
+  max-width: 800px;
 	width: 100%;
 	border: 4px solid #f9f9f9;
 	border-radius: 8px;
 	box-shadow: 0 1px 10px -4px black;
 }
 
-.carousel-control-prev:hover {
-	background: linear-gradient(to left, rgba(0, 0, 0, 0.5));
+.carousel-item img {
+	width: 100%;
 }
 
-.bg-under-slider {
-	z-index: 1;
-	background: linear-gradient( 90deg, black, rgba(0, 0, 0, 0) );
+.carousel-control-prev:hover {
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0));
+}
+
+.carousel-control-next:hover {
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0));
+}
+
+.carousel-indicators {
+	bottom: -3px;
 }
 
 .carousel-indicators li {
@@ -124,8 +137,15 @@ html, body {
 	border-radius: 50px;
 }
 
+.carousel-caption {
+	bottom: 0;
+	left: 0%;
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+	width: 100%;
+}
+
 .carousel-caption h3 {
-	font-size: 1.5em;
+	font-size: 1.75em;
 	font-family: "Patua One", "Arial";
 }
 
@@ -134,13 +154,26 @@ html, body {
 	font-family: "Open Sans", "Arial";
 }
 
+.carousel-caption p,
+.carousel-caption h3 {
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
 .hrCarousel {
-	width: 100%;
+	width: 95%;
 	background-color: #1e7dce;
 	margin: 2px 0;
 }
 
 /* ----------------- CONTENU PRINCIPAL ----------------- */
+
+.bg-white {
+	background-color: white;
+	border-left: 1px solid #9b9b9b;
+	border-right: 1px solid #9b9b9b;
+	box-shadow: 0 0 30px -10px black;
+}
 
 .hrPage {
 	width: 100%;

@@ -75,70 +75,77 @@
 			<ul class="row justify-content-center">
 				<li class="hvr-underline-from-center"><a href="#">Accueil</a></li>
 				<li class="hvr-underline-from-center"><a href="#">Boutique</a></li>
+				<li class="hvr-underline-from-center"><a href="#">Comment ça marche ?</a></li>
 				<li class="hvr-underline-from-center"><a href="#">À propos</a></li>
 				<li class="hvr-underline-from-center"><a href="#">Contact</a></li>
 			</ul>
 		</nav>
 	</header>
 
-<div class="container-fluid row py-3 justify-content-center">
-	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-		<ol class="carousel-indicators">
-			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-		</ol>
+	<!-- ============================================ -->
+	<!-- 									Carousel 										-->
+	<!-- ============================================ -->
+<div class="container bg-white">
+	<div class="container-fluid row py-5 justify-content-center">
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			</ol>
 
-		<div class="carousel-inner" role="listbox">
-			<div class="carousel-item active">
-				<div class="bg-under-slider"></div>
-				<img class="img-fluid" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="...">
-				<div class="carousel-caption d-none d-md-block">
-					<h3>Titre</h3>
-					<hr class="hrCarousel">
-					<p>Description</p>
+			<div class="carousel-inner" role="listbox">
+				<div class="carousel-item active">
+					<img class="img-fluid" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="...">
+					<div class="carousel-caption d-none d-md-block">
+						<h3>Titre</h3>
+						<hr class="hrCarousel mx-auto my-2">
+						<p>Description</p>
+					</div>
+				</div>
+
+				<div class="carousel-item">
+					<img class="img-fluid" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="...">
+					<div class="row">
+						<div class="carousel-caption d-none d-md-block">
+							<h3>Titre</h3>
+							<hr class="hrCarousel mx-auto my-2">
+							<p>Description</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="carousel-item">
+					<img class="img-fluid" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="...">
+					<div class="carousel-caption d-none d-md-block">
+						<h3>Titre</h3>
+						<hr class="hrCarousel mx-auto my-2">
+						<p>Description</p>
+					</div>
 				</div>
 			</div>
 
-			<div class="carousel-item">
-				<img class="img-fluid" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="...">
-				<div class="carousel-caption d-none d-md-block">
-					<h3>Titre</h3>
-					<hr class="hrCarousel"
-					<p>Description</p>
-				</div>
-			</div>
+			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
 
-			<div class="carousel-item">
-				<img class="img-fluid" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="...">
-				<div class="carousel-caption d-none d-md-block">
-					<h3>Titre</h3>
-					<hr class="hrCarousel"
-					<p>Description</p>
-				</div>
-			</div>
+			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
 		</div>
-
-		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-
-		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
 	</div>
+
+		<section>
+			<div class="container-fluid row py-4 mainContent">
+				<h2><?= $this->e($title) ?></h2>
+				<hr class="hrPage">
+			</div>
+
+			<?= $this->section('main_content') ?>
+		</section>
 </div>
-
-	<section>
-		<div class="container-fluid row py-4 mainContent">
-			<h2><?= $this->e($title) ?></h2>
-			<hr class="hrPage">
-		</div>
-
-		<?= $this->section('main_content') ?>
-	</section>
 
 	<footer>
 		<div class="row">
