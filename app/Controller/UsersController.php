@@ -4,51 +4,102 @@ namespace Controller;
 
 // use \W\Controller\Controller; // Inutile puisque heritage de AppController dans le meme espace de nom
 
+/**
+ * Controller gestion des utilisateurs.
+ */
 class UsersController extends AppController
 {
+	/**
+	 * Formulaire inscription.
+	 *
+	 * @return void
+	 */
 	public function inscription()
 	{
-		//afficher la page inscription.php
 		$this->show('users/inscription');
 	}
 
+	/**
+	 * Traitement du formulaire d'inscription.
+	 * Redirection sur login.
+	 * 
+	 * @return void
+	 */
 	public function inscriptionAction()
 	{
-		//traitement du formulaire et redirection sur login
+		# code
 	}
 
+	/**
+	 * Formulaire connection.
+	 *
+	 * @return void
+	 */
 	public function login()
 	{
 		$this->show('users/login');
 	}
 
+	/**
+	 * Traitement du formulaire de connection.
+	 *
+	 * @return void
+	 */
 	public function loginAction()
 	{
-		//traitement du form login et redirection vers home
+		// redirection vers home
 	}
 
+	/**
+	 * Traitement de la deconnection.
+	 * Redirection vers home.
+	 *
+	 * @return void
+	 */
 	public function logout()
 	{
-		//comme sn nom l'indique redirection vers home
+		# code
 	}
 
+	/**
+	 * Formulaire mot de passe perdu.
+	 *
+	 * @return void
+	 */
 	public function passwordLost()
 	{
-		$this->show('users/passwordLost');
+		$this->show('users/password-lost');
 	}
 
+	/**
+	 * Traitement du formulaire de mot de passe perdu.
+	 * Redirection vers login.
+	 *
+	 * @return void
+	 */
 	public function passwordLostAction()
 	{
-		//traitement du form passwordLost et redirection vers login
+		# code
 	}
 
+	/**
+	 * Formulaire mot de passe perdu.
+	 *
+	 * @return void
+	 */
 	public function passwordModify()
 	{
-		$this->show('users/passwordModify');
+		$this->show('users/password-modify');
 	}
 
+	/**
+	 * Traitement du formulaire de mot de passe perdu.
+	 * Redirection vers login.
+	 *
+	 * @return void
+	 */
 	public function passwordModifyAction()
 	{
-		//traitement du form passwordModifyAction et redirection vers login
+		# code
 	}
 }
