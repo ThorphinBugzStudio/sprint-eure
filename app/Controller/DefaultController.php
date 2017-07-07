@@ -19,11 +19,12 @@ class DefaultController extends AppController
 	 */
 	public function home()
 	{
+		$user = $this->getUser();
 		$model = new CommentsModel();
 
 		$comments = $model->last5Comments();
 		//debug($comments);
-		$this->show('default/home',['comments' => $comments]);
+		$this->show('default/home',['comments' => $comments, 'user' => $user]);
 	}
 
 	/**

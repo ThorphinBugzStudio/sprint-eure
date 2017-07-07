@@ -33,7 +33,7 @@
                         <ul class="nav">
                            <!-- Edition -->
                            <li class="nav-item">
-                              <a class="nav-link" href="id=<?php echo $result['id']; ?>">
+                              <a class="nav-link" href="<?=$this->url('admin_single_user', ['id' => $result['id']] ) ?>">
                                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editer">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                  </button>
@@ -41,7 +41,7 @@
                            </li>
                            <!-- Delete -->
                            <li class="nav-item">
-                              <a class="nav-link" href="dashboard.php?did=<?php echo $result['id']; ?>">
+                              <a class="nav-link" href="<?=$this->url('admin_delete_user', ['id' => $result['id']] ) ?>">
                                  <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Supprimer">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                  </button>
