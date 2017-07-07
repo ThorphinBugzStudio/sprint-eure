@@ -1,26 +1,165 @@
 html, body {
 	font-family: Consolas, monaco, monospace;
-	background-color: #272822;
-	color: #F8F8F2;
+	/*background-color: #272822;
+	color: #F8F8F2;*/
 }
 
-.container {
-	margin: 50px;
+.row {
+	margin: 0;
 }
 
-a {
+@import url('https://fonts.googleapis.com/css?family=Patua+One');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+/* ----------------- HEADER ----------------- */
+
+.navbar-users {
+	background-color: #1d1d1d;
+	display: flex;
+	border-top: 2px solid #1e7dce;
+}
+
+.navbar-users li {
+	list-style: none;
+	justify-content: space-between;
+	padding: 10px 20px;
+}
+
+/*
+.navbar-users li:not(.basket-order) {
+	margin: 0 10px;
+}*/
+
+.navbar-users a {
 	text-decoration: none;
-	color: #A6E22E;
+	color: white;
+	font-family: "Open Sans",  "Arial";
+	font-size: 0.9em;
 }
 
-a:hover {
-	color: #F92672;
+.navbar-users a:hover {
+	color: #1e7dce;
 }
 
-h1 {
-	color: #F92672;
+.basket-order {
+	background-color: #1e7dce;
+	/*margin-left: 10px;*/
 }
 
-h2 {
-	color: #66D9EF;
+.basket-order:hover {
+	background-color: #1ba4e4;
+}
+
+.basket-order a:hover {
+	color: white;
+}
+
+.main-banner {
+	background-image: url('../img/banner1.png');
+	background-repeat: no-repeat;
+	height: 300px;
+	background-position-y: -45px;
+}
+
+.main-title a {
+	font-size: 1em;
+	font-family: "Patua One", "Arial";
+	color: white;
+	text-decoration: none;
+}
+
+.main-title a:hover {
+	color: white;
+}
+
+.navbar-menu {
+	background-color: #1d1d1d;
+}
+
+.navbar-menu ul {
+	padding: 0;
+}
+
+.navbar-menu ul li {
+	text-align: center;
+	list-style: none;
+	justify-content: space-between;
+	padding: 12px;
+	margin: 0 10px;
+}
+
+.navbar-menu ul li a {
+	text-decoration: none;
+	color: white;
+	font-family: "Open Sans",  "Arial";
+	font-size: 0.9em;
+}
+
+.navbar-menu ul li a:hover {
+	color: #1e7dce;
+}
+
+/* ----------------- SLIDERS ----------------- */
+
+#carouselExampleIndicators {
+  max-width: 640px;
+	width: 100%;
+	border: 4px solid #f9f9f9;
+	border-radius: 8px;
+	box-shadow: 0 1px 10px -4px black;
+}
+
+.carousel-control-prev:hover {
+	background: linear-gradient(to left, rgba(0, 0, 0, 0.5));
+}
+
+.bg-under-slider {
+	z-index: 1;
+	background: linear-gradient( 90deg, black, rgba(0, 0, 0, 0) );
+}
+
+.carousel-indicators li {
+	max-width: 12px;
+	height: 12px;
+	border-radius: 50px;
+}
+
+.carousel-caption h3 {
+	font-size: 1.5em;
+	font-family: "Patua One", "Arial";
+}
+
+.carousel-caption p {
+	font-size: .9em;
+	font-family: "Open Sans", "Arial";
+}
+
+.hrCarousel {
+	width: 100%;
+	background-color: #1e7dce;
+	margin: 2px 0;
+}
+
+/* ----------------- CONTENU PRINCIPAL ----------------- */
+
+.hrPage {
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0,6);
+	margin: 0;
+}
+
+.mainContent {
+	font-family: "Patua One", "Arial";
+	font-size: 2em;
+}
+
+/* ----------------- FOOTER ----------------- */
+
+
+
+/* ----------------- AUTRES ----------------- */
+
+
+.hvr-grow {
+	display: block;
 }
