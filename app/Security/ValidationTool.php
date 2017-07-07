@@ -102,7 +102,7 @@ class ValidationTool
 						$fileExtension = substr($file_name, $i_point ,strlen($file_name) - $i_point);
 
 						if (!in_array($fileExtension, $extensions)) {
-							$error = 'Veuillez télécharger une image de type jpg,jpeg ou png';
+							$error = 'Veuillez télécharger une image de type jpg,jpeg ou png ';
 						} else {
 
 							// alternative, sécurité +++++
@@ -111,13 +111,39 @@ class ValidationTool
 							finfo_close($finfo);
 
 							if (!in_array($mime, $extensionsmime)) {
-								$error = 'Veuillez télécharger une image de type jpg,jpeg ou png';
+								$error = 'Veuillez télécharger une image de type jpg,jpeg ou png ';
 							}
 						}
 					}
 				}
 		}
 		return $error;
+	}
+
+	public function numeric($nb, $nom) {
+		$error = '';
+		if(!empty($nb)) {
+			if (!is_numeric($nb) )
+				{
+					$error = 'Veuillez ne saisir que des chiffres';
+				}
+			} else {
+				$error = 'Veuillez renseigner le '.$nom ;
+			}
+			return $error;
+	}
+
+	public function entier($nb, $nom) {
+		$error = '';
+		if(!empty($nb)) {
+			if (!ctype_digit($nb) )
+				{
+					$error = 'Veuillez ne saisir que des chiffres';
+				}
+			} else {
+				$error = 'Veuillez renseigner la '.$nom ;
+			}
+			return $error;
 	}
 
 
