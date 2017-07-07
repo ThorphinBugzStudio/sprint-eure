@@ -9,7 +9,7 @@ use \Controller\AppController;
  */
 class ItemsController extends AppController
 {
-  
+
   /**
    * Listing des articles.
    *
@@ -19,7 +19,7 @@ class ItemsController extends AppController
   {
     $this->show('admin/items');
   }
-  
+
   /**
    * Détail d'un article.
    * CRUD.
@@ -37,9 +37,16 @@ class ItemsController extends AppController
    *
    * @return void
    */
+  //modification d un article
   public function singleItemAction()
   {
     # code
+  }
+
+  //ajout d'un article
+  public function AddItem()
+  {
+
   }
 
 
