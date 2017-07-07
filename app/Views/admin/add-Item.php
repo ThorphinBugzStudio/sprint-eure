@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Ajouter un article']) ?>
+<?php $this->layout('back_layout', ['title' => 'Ajouter un article']) ?>
 
 <?php $this->start('main_content') ?>
 

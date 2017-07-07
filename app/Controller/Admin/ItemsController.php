@@ -6,6 +6,7 @@ use \Controller\AppController;
 use \Security\CleanTool;
 use \Security\ValidationTool;
 use \Model\ItemsFamilyModel;
+use \Model\ItemsModel;
 /**
  * Controller Gestion des articles en back office.
  */
@@ -55,9 +56,10 @@ class ItemsController extends AppController
 
   public function AddItemAction()
   {
-    $clean = new CleanTool();
-    $validation = new ValidationTool();
+    $clean = new CleanTool;
+    $validation = new ValidationTool;
     $model = new ItemsFamilyModel;
+    $modelItem = new ItemsModel;
     $family = $model->findAll();
 
     $post = $clean->cleanPost($_POST);
@@ -69,6 +71,8 @@ class ItemsController extends AppController
       $quantité    = $post['quantite'];
       $prix        = $post['prix'];
       $image       = $_FILES['image'];
+      $dossier = 'img';
+      $status = "";
 
       if (isset($_POST['home'])) {
         $home = 1;
@@ -76,16 +80,33 @@ class ItemsController extends AppController
         $home = 0;
       }
 
+//verification des erreurs de chaque champs
       $error['designation'] = $validation->textValid($designation, 'designation');
       $error['description'] = $validation->textValid($description, 'designation', 3, 500);
       $error['quantite']    = $validation->entier($quantité, 'quantité');
       $error['prix']        = $validation->numeric($prix, 'prix');
-
       $error['image']  = $validation->uploadValid($image, 2000000, array('.jpg','.jpeg','.png'), array('image/jpeg','image/png','image/jpg'));
+
 
       if ($validation->IsValid($error)){
         $dest_fichier = date('Y_m_d_H_i').'.'.pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
-        move_uploaded_file($_FILES['tmp_name'], 'images/'. $dest_fichier);
+
+        $data = array(
+              'items_family_id' => $famille,
+              'designation' => $designation,
+              'description' => $description,
+              'packaging' => $quantité,
+              'puht' => $prix,
+              'home' => $home,
+              'status' => $status,
+              'img_name' => $dest_fichier,
+            );
+        if(move_uploaded_file($_FILES['image']['tmp_name'], $dossier . $dest_fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+         {
+              echo 'Upload effectué avec succès !';
+         }
+
+        $modelItem->insert($data, $stripTags = true);
 
         $this->show('admin/add-item', array('family' => $family));
       } else
