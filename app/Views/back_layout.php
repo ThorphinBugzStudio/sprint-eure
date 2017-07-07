@@ -128,6 +128,7 @@
   <script src="<?= $this->assetUrl('admin/vendor/bootstrap/js/bootstrap.min.js') ?>" charset="utf-8"></script>
   <script src="<?= $this->assetUrl('admin/vendor/metisMenu/metisMenu.min.js') ?>" charset="utf-8"></script>
   <script src="<?= $this->assetUrl('admin/vendor/raphael/raphael.min.js') ?>" charset="utf-8"></script>
+  <script src="<?= $this->assetUrl('admin/vendor/morrisjs/morris.js') ?>" charset="utf-8"></script>
   <script src="<?= $this->assetUrl('admin/data/morris-data.js') ?>" charset="utf-8"></script>
   <script src="<?= $this->assetUrl('admin/dist/js/sb-admin-2.js') ?>" charset="utf-8"></script>
 </body>
