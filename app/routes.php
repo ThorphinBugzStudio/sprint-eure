@@ -10,11 +10,11 @@
 		/**
 		 * UsersController
 		 */
-		
+
 		/** Inscription **/
 		['GET', '/user/inscription','Users#inscription','inscription'],
 		['POST', '/user/inscription','Users#inscriptionAction','inscription_action'],
-		
+
 		/** Login **/
 		['GET', '/user/login', 'Users#login', 'login'],
 		['POST', '/user/login', 'Users#loginAction', 'login_action'],
@@ -56,10 +56,10 @@
 
 		/**
 		 * Admin\UsersController
-		 * 
+		 *
 		 * AQ : edit // update // delete
 		 * HP : Voir comment traiter l'action sans route à partir du post recuperé
-		 * 
+		 *
 		 */
 		['GET', '/admin/users', 'Admin\Users#users', 'admin_users'],
 		['GET', '/admin/user/[:id]', 'Admin\Users#singleUser', 'admin_single_user'],
@@ -67,7 +67,7 @@
 
 		/**
 		 * Admin\CommentsController
-		 * 
+		 *
 		 * AQ : edit // update // delete
 		 * HP : Pas d'edit et de single prévu -> juste approve ou delete recupéré via route
 		 */
@@ -77,7 +77,7 @@
 
 		/**
 		 * Admin\OrdersController
-		 * 
+		 *
 		 * AQ : edit // update // delete
 		 * HP : Voir comment traiter l'action sans route à partir du post recuperé
 		 */
@@ -87,18 +87,22 @@
 
 		/**
 		 * Admin\ItemsController
-		 * 
+		 *
 		 * AQ : edit // update // delete
 		 * HP : Voir comment traiter l'action sans route à partir du post recuperé
 		 */
 		//routes admin items
 		['GET', '/admin/items', 'Admin\ItemsController#items','admin_items'],
 		['GET', '/admin/item/[:id]', 'Admin\ItemsController#singleItem', 'admin_single_item'],
+		//modification d un article
 		['POST', '/admin/item/[:id]', 'Admin\ItemsController#singleItemAction', 'admin_single_item_action'],
+		//ajout d un nouvel article
+		['POST', '/admin/additem', 'Admin\ItemsController#AddItem','admin_single_item_add' ],
+
 
 		/**
 		 * Admin\ItemsFamiliesController
-		 * 
+		 *
 		 * AQ : edit // update // delete
 		 * HP : Voir comment traiter l'action sans route à partir du post recuperé
 		 */
