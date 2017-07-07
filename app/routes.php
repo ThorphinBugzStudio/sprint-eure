@@ -5,6 +5,7 @@
 		 * DefaultController
 		 */
 		['GET', '/', 'Default#home', 'default_home'],	// Accueil
+		['POST', '/', 'Default#commentsAction', 'default_comments_action'],
 		['GET', '/howTo', 'Default#how-to','how_to'], 	// Page explicative (comment ça marche)
 
 		/**
@@ -57,13 +58,18 @@
 		/**
 		 * Admin\UsersController
 		 *
-		 * AQ : edit // update // delete
-		 * HP : Voir comment traiter l'action sans route à partir du post recuperé
 		 *
 		 */
+		// Listing utilisateurs - Bouton Update - Bouton Delete - Menu Ajouter
 		['GET', '/admin/users', 'Admin\Users#users', 'admin_users'],
+		// Ajouter
+				// GET ET POST -> voir routes du registry user en front
+		// Update
 		['GET', '/admin/user/[:id]', 'Admin\Users#singleUser', 'admin_single_user'],
 		['POST', '/admin/user/[:id]', 'Admin\Users#singleUserAction', 'admin_single_user_action'],
+		// Delete
+		['GET', '/admin/deleteuser/[:id]', 'Admin\Users#deleteUser', 'admin_delete_user'],
+
 
 		/**
 		 * Admin\CommentsController

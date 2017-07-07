@@ -4,6 +4,8 @@ namespace Controller\Admin;
 
 use \Controller\AppController;
 
+use \Model\UsersModel;
+
 /**
  * Controller Administration des utilisateurs en back office.
  */
@@ -16,7 +18,10 @@ class UsersController extends AppController
    */
   public function users()
   {
-    $this->show('admin/users');
+      $users = new UsersModel();
+      $results = $users->findAll('id', 'ASC', 10, 0);
+
+      $this->show('admin/users', ['results' => $results]);
   }
 
   /**

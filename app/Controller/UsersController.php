@@ -16,13 +16,14 @@ class UsersController extends AppController
 	 */
 	public function inscription()
 	{
+		
 		$this->show('users/inscription');
 	}
 
 	/**
 	 * Traitement du formulaire d'inscription.
 	 * Redirection sur login.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function inscriptionAction()
