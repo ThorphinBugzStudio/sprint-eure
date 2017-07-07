@@ -81,7 +81,7 @@
                 <a href="#"><i class="fa fa-shopping-basket fa-fw"></i> Boutique<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                   <li><a href="<?= $this->url('admin_items') ?>">Tous les produits</a></li>
-                  <li><a href="#">Ajouter un produit</a></li>
+                  <li><a href="<?= $this->url('admin_single_item_add') ?>">Ajouter un produit</a></li>
                 </ul>
               </li>
 

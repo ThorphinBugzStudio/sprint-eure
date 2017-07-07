@@ -97,7 +97,8 @@
 		//modification d un article
 		['POST', '/admin/item/[:id]', 'Admin\ItemsController#singleItemAction', 'admin_single_item_action'],
 		//ajout d un nouvel article
-		['POST', '/admin/additem', 'Admin\ItemsController#AddItem','admin_single_item_add' ],
+		['GET', '/admin/additem', 'Admin\ItemsController#AddItem','admin_single_item_add'],
+		['POST', '/admin/additem', 'Admin\ItemsController#AddItemAction','admin_single_item_add_action'],
 
 
 		/**
