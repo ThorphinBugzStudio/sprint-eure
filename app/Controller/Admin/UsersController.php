@@ -20,17 +20,22 @@ class UsersController extends AppController
   public function users($page = '')
   {
       $users = new UsersModel();
-      $pagin = new Pagination($users->countId(), 3);
-      // debug($pagin);
-      debug($page);
+      
+      // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
+      $pagin = new Pagination('Admin users pages navigation', $this->generateUrl('admin_users'), $users->countId(), 3);
 
+      // si l'url demande une page  : setting de pageStatus dans l'objet Pagination
       if (!empty($page)) { $pagin->setPageStatus($page); }
-      debug($pagin);
-      $pageStatus = $pagin->getpageStatus();
+
+      // get des informations de pagination necessaires à la requete bdd
+      $pageStatus = $pagin->getPageStatus();
+      // get du html de la barre de navigation pour la pagination
+      $navPaginBar = $pagin->getHtml();
+      // debug($navPaginBar);
       
       $results = $users->findAll('id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
 
-      $this->show('admin/users', ['results' => $results, 'pageStatus' => $pageStatus]);
+      $this->show('admin/users', ['results' => $results, 'navPaginBar' => $navPaginBar]);
       
   }
 

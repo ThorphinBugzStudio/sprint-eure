@@ -4,7 +4,16 @@
 
 <div class="row">
   <div class="col-sm-12">
+      
+    <!--Barre de pagination-->
+    <div class="row pagination">
+
+      <?= $navPaginBar ?>
+
+    </div>
+
     <div class="panel panel-default" style="overflow-x:auto;">
+
 
       <table class="table table-striped table-bordered table-hover">
          <!-- En-tête de tableau -->
