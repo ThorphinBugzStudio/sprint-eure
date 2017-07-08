@@ -10,6 +10,11 @@ p {
   margin: 0;
 }
 
+/* ----------------- FONTS ----------------- */
+
+@import url('https://fonts.googleapis.com/css?family=Patua+One');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 /* ------------- NAVBAR ------------- */
 
 .navbar-admin {
@@ -28,6 +33,10 @@ p {
 
 .navbar-admin .navbar-toggle span {
   background: rgba(0, 0, 0, 0.8);
+}
+
+.navbar-brand {
+  font-family: "Patua One", "Arial";
 }
 
 .navbar-default,
@@ -81,4 +90,38 @@ p {
 #page-wrapper {
   min-height: 900px;
   border-left: 1px solid #9f9f9f;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+/* -------------- TABLEAUX -------------- */
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th, td {
+  text-align: center;
+}
+
+td:not(.menu_actions) {
+  font-family: "Open Sans", "Arial";
+  font-size: 14px;
+}
+
+th {
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  font-family: "Patua One", "Arial";
+  font-size: 17px;
+  font-weight: lighter;
+  vertical-align: middle !important;
 }

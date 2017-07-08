@@ -7,8 +7,10 @@
   <meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="icon" type="image/png" href="">
+	<link rel="icon" type="image/png" href="<?= $this->assetUrl('admin/img/icon-admin.png') ?>">
 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
   <link rel="stylesheet" href="<?= $this->assetUrl('css/font-awesome.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('admin/vendor/bootstrap/css/bootstrap.css') ?>">
   <link rel="stylesheet" href="<?= $this->assetUrl('admin/vendor/metisMenu/metisMenu.min.css') ?>">
@@ -28,7 +30,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="index.html">Sprint'Eure</a>
+              <a class="navbar-brand" href="<?= $this->url('default_home') ?>">Sprint'Eure</a>
             </div>
 
       	<div class="navbar-default sidebar" role="navigation">
@@ -131,7 +133,7 @@
           </div>
         </div>
 
-          <div class="row">
+          <!--<div class="row">
             <div class="col-sm-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
@@ -141,9 +143,9 @@
                   <p>Test</p>
                 </div>
               </div>
-            </div>
+            </div>-->
 						<?= $this->section('main_content') ?>
-          </div>
+          <!--</div>-->
 				</div>
 		</section>
 
