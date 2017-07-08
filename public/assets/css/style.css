@@ -109,10 +109,7 @@ body {
 
 .carousel-item img {
 	width: 100%;
-	min-width: 790px;
-	min-height: 495px;
 	max-width: 790px;
-	max-height: 495px;
 }
 
 .carousel-control-prev:hover {

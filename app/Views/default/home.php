@@ -80,7 +80,7 @@
 				<label class="comment m-0">Votre commentaire :</label> <br>
 				<textarea name="comment" rows="8" cols="80"></textarea>
 
-				<input class="container-fluid row btn_ok mt-2 mx-auto px-auto" type="submit" name="submit" value="Laisser un commentaire">
+				<input class="container-fluid row btn_ok mt-3 mx-auto px-auto" type="submit" name="submit" value="Laisser un commentaire">
 			</div>
 		</form>
 
