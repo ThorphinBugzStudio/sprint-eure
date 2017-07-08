@@ -24,23 +24,23 @@
 		<!-- ============================================ -->
 		<div class="row navbar-users justify-content-end">
 			<li>
-				<a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</a>
+				<a href="<?= $this->url('inscription') ?>"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</a>
 			</li>
 
 			<li>
-				<a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a>
+				<a href="<?= $this->url('login') ?>"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a>
 			</li>
 
 			<li>
-				<a href="#"><i class="fa fa-user" aria-hidden="true"></i> Votre profil</a>
+				<a href="<?= $this->url('user_profile') ?>"><i class="fa fa-user" aria-hidden="true"></i> Votre profil</a>
 			</li>
 
 			<li>
-				<a href="#"><i class="fa fa-dashboard" aria-hidden="true"></i> Administration</a>
+				<a href="<?= $this->url('admin_users') ?>"><i class="fa fa-dashboard" aria-hidden="true"></i> Administration</a>
 			</li>
 
 			<li>
-				<a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
+				<a href="<?= $this->url('logout') ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
 			</li>
 
 			<li class="basket-order">
@@ -56,7 +56,7 @@
 			<div class="column m-auto justify-content-center">
 
 				<a href="<?= $this->url('default_home') ?>">
-					<img class="row img-fluid mx-auto justify-content-center hvr-grow" src="<?= $this->assetUrl('img/logo.png') ?>" alt="Logo">
+					<img class="row img-fluid mx-auto justify-content-center mb-2 hvr-grow" src="<?= $this->assetUrl('img/logo.png') ?>" alt="Logo">
 				</a>
 
 				<h1 class="row m-auto main-title">
@@ -73,7 +73,7 @@
 		<!-- ============================================ -->
 		<nav class="navbar-menu">
 			<ul class="row justify-content-center">
-				<li class="hvr-underline-from-center"><a href="#">Accueil</a></li>
+				<li class="hvr-underline-from-center"><a href="<?= $this->url('default_home') ?>">Accueil</a></li>
 				<li class="hvr-underline-from-center"><a href="#">Boutique</a></li>
 				<li class="hvr-underline-from-center"><a href="#">Comment ça marche ?</a></li>
 				<li class="hvr-underline-from-center"><a href="#">À propos</a></li>
@@ -82,80 +82,53 @@
 		</nav>
 	</header>
 
-	<!-- ============================================ -->
-	<!-- 									Carousel 										-->
-	<!-- ============================================ -->
+	<!-- Bouton : Haut de Page  -->
+	<a href="#" title="Haut de page" class="scrollup"><i class="fa fa-arrow-up"></i></a>
+
 <div class="container bg-white">
-	<div class="container-fluid row py-5 justify-content-center">
-		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-			</ol>
-
-			<div class="carousel-inner" role="listbox">
-				<div class="carousel-item active">
-					<img class="img-fluid" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="...">
-					<div class="carousel-caption d-none d-md-block">
-						<h3>Titre</h3>
-						<hr class="hrCarousel mx-auto my-2">
-						<p>Description</p>
-					</div>
-				</div>
-
-				<div class="carousel-item">
-					<img class="img-fluid" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="...">
-					<div class="row">
-						<div class="carousel-caption d-none d-md-block">
-							<h3>Titre</h3>
-							<hr class="hrCarousel mx-auto my-2">
-							<p>Description</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="carousel-item">
-					<img class="img-fluid" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="...">
-					<div class="carousel-caption d-none d-md-block">
-						<h3>Titre</h3>
-						<hr class="hrCarousel mx-auto my-2">
-						<p>Description</p>
-					</div>
-				</div>
-			</div>
-
-			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-
-			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
-		</div>
-	</div>
-
 		<section>
-			<div class="container-fluid row py-4 mainContent">
+			<div class="container-fluid row pt-4 mainContent">
 				<h2><?= $this->e($title) ?></h2>
 				<hr class="hrPage">
 			</div>
-
-			<?= $this->section('main_content') ?>
+			<div class="container-fluid pt-2 pb-3">
+				<?= $this->section('main_content') ?>
+			</div>
 		</section>
 </div>
 
-	<footer>
-		<div class="row">
-			<div class="">
-
-			</div>
+<footer>
+	<div class="container-fluid row footer-center">
+		<div class="footer_1">
+			<h2>» Widget</h2>
+			<hr class="hr_footer">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		</div>
-	</footer>
+
+		<div class="footer_2">
+			<h2>» Widget</h2>
+			<hr class="hr_footer">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+
+		<div class="footer_3">
+			<h2>» Widget</h2>
+			<hr class="hr_footer">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+
+		<div class="footer_4">
+			<h2>» Widget</h2>
+			<hr class="hr_footer">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+
+	</div>
+	<p class="copyright">Copyright © 2017 - Sprint'Eure - Tous droits reservé.</p>
+</footer>
+
 	<script src="<?= $this->assetUrl('js/jquery-3.2.1.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/bootstrap.js') ?>" charset="utf-8"></script>
-	<script src="<?= $this->assetUrl('js/sliders.js') ?>" charset="utf-8"></script>
+	<script src="<?= $this->assetUrl('js/haut_de_page.js') ?>" charset="utf-8"></script>
 </body>
 </html>

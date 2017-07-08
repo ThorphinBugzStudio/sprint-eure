@@ -1,17 +1,12 @@
-html, body {
-	font-family: Consolas, monaco, monospace;
-	/*background-color: #272822;
-	color: #F8F8F2;*/
-}
-
 body {
 	background-image: url('../img/carousel-bg.png');
-
 }
 
 .row {
 	margin: 0;
 }
+
+/* ----------------- FONTS ----------------- */
 
 @import url('https://fonts.googleapis.com/css?family=Patua+One');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
@@ -30,16 +25,12 @@ body {
 	padding: 10px 20px;
 }
 
-/*
-.navbar-users li:not(.basket-order) {
-	margin: 0 10px;
-}*/
-
 .navbar-users a {
 	text-decoration: none;
 	color: white;
 	font-family: "Open Sans",  "Arial";
 	font-size: 0.9em;
+	background:
 }
 
 .navbar-users a:hover {
@@ -48,7 +39,6 @@ body {
 
 .basket-order {
 	background-color: #1e7dce;
-	/*margin-left: 10px;*/
 }
 
 .basket-order:hover {
@@ -70,7 +60,9 @@ body {
 	font-size: 1em;
 	font-family: "Patua One", "Arial";
 	color: white;
+	padding: 10px 60px;
 	text-decoration: none;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
 }
 
 .main-title a:hover {
@@ -79,6 +71,7 @@ body {
 
 .navbar-menu {
 	background-color: #1d1d1d;
+	box-shadow: 0 0 8px 1px black;
 }
 
 .navbar-menu ul {
@@ -106,7 +99,6 @@ body {
 
 /* ----------------- SLIDERS ----------------- */
 
-
 #carouselExampleIndicators {
   max-width: 800px;
 	width: 100%;
@@ -117,6 +109,7 @@ body {
 
 .carousel-item img {
 	width: 100%;
+	max-width: 790px;
 }
 
 .carousel-control-prev:hover {
@@ -161,12 +154,33 @@ body {
 }
 
 .hrCarousel {
-	width: 95%;
+	width: 90%;
 	background-color: #1e7dce;
 	margin: 2px 0;
 }
 
 /* ----------------- CONTENU PRINCIPAL ----------------- */
+
+.scrollup {
+	width: 40px;
+	height: 40px;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	display: none;
+	color: white;
+	background-color: #3a3f51;
+	border: 1px solid #3a3f51;
+	font-size: 20px;
+	text-align: center;
+	line-height: 37px;
+	z-index: 9999;
+}
+
+.scrollup:hover,
+.scrollup:focus {
+	color: white;
+}
 
 .bg-white {
 	background-color: white;
@@ -177,7 +191,7 @@ body {
 
 .hrPage {
 	width: 100%;
-	background-color: rgba(0, 0, 0, 0,6);
+	background-color: rgba(0, 0, 0, 0.2);
 	margin: 0;
 }
 
@@ -186,12 +200,89 @@ body {
 	font-size: 2em;
 }
 
+/* ----------------- FORMULAIRES ----------------- */
+
+.form-subscribe label {
+	margin: 0;
+}
+
+.input-form {
+	border: 1px solid grey;
+	border-radius: 8px;
+	padding: 5px;
+	width: 100%;
+}
+
+textarea {
+	padding: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	border-radius: 8px;
+	resize: none;
+	width: 100%;
+}
+
+.btn_ok {
+	background-color: #1885c0;
+	border: 1px solid #194a81;
+	color: white;
+	padding: 10px;
+	border-radius: 8px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.btn_ok:hover {
+	background-color: #139eea;
+	border: 1px solid #0075cb;
+}
+
 /* ----------------- FOOTER ----------------- */
 
+footer {
+  background-color: #1d1d1d;
+  padding: 30px;
+  width: 100%;
+  position: relative;
+  border-top: 2px solid #1e7dce;
+}
 
+.footer-center {
+  justify-content: center;
+}
+
+.hr_footer {
+  background-color: #666;
+}
+
+.footer_1, .footer_2, .footer_3, .footer_4 {
+  color: white;
+  justify-content: center;
+  max-width: 300px;
+  width: 100%;
+  margin: 0 20px;
+}
+
+.footer_1 h2, .footer_2 h2, .footer_3 h2, .footer_4 h2 {
+  font-size: 25px;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  margin-top: 20px;
+}
 
 /* ----------------- AUTRES ----------------- */
 
+.col-6,
+.col-5,
+.col-lg-6,
+.col-lg-5,
+.col-lg-2 {
+	padding: 0;
+}
 
 .hvr-grow {
 	display: block;

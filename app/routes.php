@@ -62,13 +62,14 @@
 		 */
 		// Listing utilisateurs - Bouton Update - Bouton Delete - Menu Ajouter
 		['GET', '/admin/users', 'Admin\Users#users', 'admin_users'],
+		['GET', '/admin/users/[i:page]', 'Admin\Users#users', 'admin_page_users'], // pour gerer la pagination du listing.
 		// Ajouter
 				// GET ET POST -> voir routes du registry user en front
 		// Update
-		['GET', '/admin/user/[:id]', 'Admin\Users#singleUser', 'admin_single_user'],
-		['POST', '/admin/user/[:id]', 'Admin\Users#singleUserAction', 'admin_single_user_action'],
+		['GET', '/admin/user/[i:id]', 'Admin\Users#singleUser', 'admin_single_user'],
+		['POST', '/admin/user/[i:id]', 'Admin\Users#singleUserAction', 'admin_single_user_action'],
 		// Delete
-		['GET', '/admin/deleteuser/[:id]', 'Admin\Users#deleteUser', 'admin_delete_user'],
+		['GET', '/admin/deleteuser/[i:id]', 'Admin\Users#deleteUser', 'admin_delete_user'],
 
 
 		/**
