@@ -19,6 +19,8 @@ class UsersController extends AppController
   public function users()
   {
       $users = new UsersModel();
+      debug($users);
+
       $results = $users->findAll('id', 'ASC', 10, 0);
 
       $this->show('admin/users', ['results' => $results]);
