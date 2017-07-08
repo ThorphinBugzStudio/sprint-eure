@@ -14,7 +14,7 @@
      * @var int
      */
     protected $nbId;
-    
+
     /**
      * Initialisation.
      * Attention au constructeur du parent.
@@ -53,5 +53,17 @@
         return $result;
     }
 
+    /**
+     * Fonction qui permet de recup l'id user pdt l'inscription
+     */
+     public function getUserId()
+     {
+       $sql = "SELECT id FROM users WHERE username = '$pseudo'";
+       $sth = $this->dbh->prepare($sql);
+       $sth->execute();
+       $result = $sth->fetch();
+
+       return $result;
+     }
 
  }

@@ -146,5 +146,29 @@ class ValidationTool
 			return $error;
 	}
 
+	function passwordError($password,$password_confirm,$min,$max)
+	{
+	  $error='';
+	  if(!empty($password))
+	  {
+	    if(!empty($password_confirm)){
+	    } else {
+	      $error = 'Veuillez confirmer votre mot de passe';
+	    }
+	    if($password!==$password_confirm){
+	      $error = 'Le mot de passe ne correspond pas';
+	    }
+	    if(strlen($password)<$min){
+	      $error = 'Votre mot de passe est trop court (6 caractères min)';
+	    }
+	    if(strlen($password)>$max){
+	      $error = 'Votre mot de passe est trop long (255 caractères max)';
+	    }
+	  } else {
+	    $error = 'Veuillez entrer un mot de passe';
+	  }
+	  return $error;
+	}
+
 
 }
