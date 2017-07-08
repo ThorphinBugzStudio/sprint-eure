@@ -3,6 +3,7 @@
 namespace Controller\Admin;
 
 use \Controller\AppController;
+use \Services\Tools\Pagination;
 
 use \Model\UsersModel;
 
@@ -16,14 +17,21 @@ class UsersController extends AppController
    *
    * @return void
    */
-  public function users()
+  public function users($page = '')
   {
       $users = new UsersModel();
-      debug($users);
+      $pagin = new Pagination($users->countId(), 3);
+      // debug($pagin);
+      debug($page);
 
-      $results = $users->findAll('id', 'ASC', 10, 0);
+      if (!empty($page)) { $pagin->setPageStatus($page); }
+      debug($pagin);
+      $pageStatus = $pagin->getpageStatus();
+      
+      $results = $users->findAll('id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
 
-      $this->show('admin/users', ['results' => $results]);
+      $this->show('admin/users', ['results' => $results, 'pageStatus' => $pageStatus]);
+      
   }
 
   /**

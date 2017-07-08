@@ -48,13 +48,13 @@
         $sql = 'SELECT COUNT(' . $app->getConfig('security_id_property') . ') FROM ' . $this->table;
         $sth = $this->dbh->prepare($sql);
         $sth->execute();
-        $result = $sth->fetch();
+        $result = $sth->fetchColumn();
 
         return $result;
     }
 
     /**
-     * Fonction qui permet de recup l'id user pdt l'inscription
+     * Methode qui permet de recup l'id user pdt l'inscription
      */
      public function getUserId()
      {
