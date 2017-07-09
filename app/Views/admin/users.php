@@ -4,17 +4,13 @@
 
 <div class="row">
   <div class="col-sm-12">
-      
-    <!--Barre de pagination-->
-    <div class="row pagination">
 
+    <!-- Barre de pagination -->
+    <div class="row pagination w-100 py-2">
       <?= $navPaginBar ?>
-
     </div>
 
     <div class="panel panel-default" style="overflow-x:auto;">
-
-
       <table class="table table-striped table-bordered table-hover">
          <!-- En-tête de tableau -->
          <thead>
@@ -58,6 +54,12 @@
         </tbody>
       </table>
     </div>
+
+    <!-- Barre de pagination -->
+    <div class="row pagination w-100 my-3">
+      <?= $navPaginBar ?>
+    </div>
+
   </div>
 </div>
 
