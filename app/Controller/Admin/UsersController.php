@@ -38,7 +38,7 @@ class UsersController extends AppController
       
       $results = $users->findAll('id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
 
-      $this->show('admin/users', ['results' => $results, 'navPaginBar' => $navPaginBar]);
+      $this->show('admin/users', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual']]);
       
   }
   
@@ -47,16 +47,16 @@ class UsersController extends AppController
    *
    * @return void
    */
-  public function deleteUser()
+  public function deleteUser($id, $fromPage)
   {
     // ADMIN ONLY
     // $this->allowTo('admin'); 
     
     $users = new UsersModel();
 
+    $users->updateStatus($id, 'deleted');
 
-
-
+    $this->redirectToRoute('admin_page_users', ['page' => $fromPage]);
   }
 
   /**

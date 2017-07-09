@@ -40,12 +40,13 @@
                 <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editer">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button></a>
-              <!-- BOUTON : Delete -->
-              <a class="" href="<?=$this->url('admin_delete_user', ['id' => $result['id']] ) ?>">
+              <!-- BOUTON : Delete si status != deleted -->
+              <?php if ($result['status'] != 'deleted') { ?>
+              <a class="" href="<?=$this->url('admin_delete_user', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">
                 <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Supprimer">
                   <i class="fa fa-trash-o" aria-hidden="true"></i>
                 </button>
-              </a>
+              </a> <?php } ?>
             </td>
           </tr>
          <?php } ?>

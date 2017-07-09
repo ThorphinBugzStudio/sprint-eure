@@ -2,6 +2,7 @@
  namespace Model;
 
  use W\Model\UsersModel as WUsersModel;
+ use Services\Tools\ToolHP;
 
  /**
   * Gestion de la table users
@@ -64,9 +65,16 @@
     {
         if ($role == 'admin' || $role == 'client')
         {
+            // Si l'id existe -> update.
             if (!empty($this->find($id)))
             {
-                $update = $this->update(['role' => $role], $id, true);
+                // Si l'id existe -> update.
+                if (!empty($this->find($id)))
+                {
+                    $update = $this->update(['role'        => $status,
+                                             'modified_at' => ToolHP::nowSql()
+                                            ], $id, true);
+                }
             }
         }
     }
@@ -82,9 +90,13 @@
     {
         if ($status == 'active' || $status == 'inactive' || $status == 'deleted')
         {
+            // Si l'id existe -> update.
             if (!empty($this->find($id)))
             {
-                $update = $this->update(['status' => $status], $id, true);
+                $update = $this->update(['status'      => $status,
+                                         'modified_at' => ToolHP::nowSql(),
+                                         'deleted_at'  => ToolHP::nowSql()
+                                        ], $id, true);
             }
         }
     }
