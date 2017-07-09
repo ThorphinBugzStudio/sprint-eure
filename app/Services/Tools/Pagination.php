@@ -3,18 +3,65 @@
 namespace Services\Tools;
 
 /**
- * Pagination
- */
+ * Pagination pour listing Back.
+  */
 class Pagination
 {
+    /**
+     * But de la pagination.
+     * Ex. 'Admin users pages navigation'.
+     *
+     * @var string
+     */
     private $paginationFor;
+    /**
+     * Url du listing.
+     * Transmis avec $this->generateUrl('nom_route').
+     *
+     * @var string
+     */
     private $slug;
+    /**
+     * Nombre de lignes dans la bdd listée
+     *
+     * @var integer
+     */
     private $nbId;
+    /**
+     * Nombre de lignes par page.
+     *
+     * @var integer
+     */
     private $limit;
+    /**
+     * Nombre de pages en fonction de la limite.
+     *
+     * @var integer
+     */
     private $totalPage;
+    /**
+     * Array de données pour la gestion de la pagination.
+     * Recuperable dans le controller.
+     *
+     * @var array
+     */
     private $pageStatus;
+    /**
+     * Html generé pour la barre de navigation.
+     * Recuperable dans le controller et à transmettre à la vue.
+     *
+     * @var string
+     */
     private $html;
 
+    /**
+     * Initialisation.
+     *
+     * @param string $paginationFor
+     * @param string $slug
+     * @param integer $nbId
+     * @param integer $limit
+     */
     public function __construct($paginationFor, $slug, $nbId, $limit = 5)
     {
         $this->paginationFor = $paginationFor;
@@ -25,16 +72,32 @@ class Pagination
         $this->setPageStatus();
     }
 
+    /**
+     * Getter PageStatus.
+     *
+     * @return void
+     */
     public function getPageStatus()
     {
         return $this->pageStatus;
     }
 
+    /**
+     * Getter Html.
+     *
+     * @return void
+     */
     public function getHtml()
     {
         return $this->html;
     }
 
+    /**
+     * Setter PageStatus
+     *
+     * @param integer $numPage
+     * @return void
+     */
     public function setPageStatus($numPage = 1)
     {
         if ($numPage > 0 && $numPage <= $this->totalPage)
@@ -64,26 +127,55 @@ class Pagination
         }
     }
 
+    /**
+     * Existe t'il une page precedente.
+     *
+     * @param integer $actualPage
+     * @return bool
+     */
     private function prevExist($actualPage)
     {
         return ($actualPage - 1 >= 1);
     }
 
+    /**
+     * Existe t'il une page suivante.
+     *
+     * @param integer $actualPage
+     * @return bool
+     */
     private function nextExist($actualPage)
     {
         return ($actualPage + 1 <= $this->totalPage);
     }
 
+    /**
+     * Existe t'il un block precedent.
+     *
+     * @param integer $actualPage
+     * @return bool
+     */
     private function prevBlockExist($actualPage)
     {
         return ($actualPage - 3 >= 1);
     }
 
+    /**
+     * Existe t'il un block suivant.
+     *
+     * @param [type] $actualPage
+     * @return void
+     */
     private function nextBlockExist($actualPage)
     {
         return ($actualPage + 3 <= $this->totalPage);
     }
 
+    /**
+     * Generateur de html barre de navigation suivant la page actuelle demandée
+     *
+     * @return void
+     */
     private function createHtml()
     { 
         $this->html = '';
