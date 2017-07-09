@@ -31,6 +31,7 @@ class UsersController extends AppController
 	public function inscriptionAction()
 	{
 		$error = [];
+		$success = false;
 		$clean = new CleanTool();
 		$valid = new ValidationTool();
 		$model = new UsersModel();
@@ -65,13 +66,11 @@ class UsersController extends AppController
 			$error['password'] = $valid->passwordError($password,$password_confirm,6,40);
 			$error['avatar'] = $valid->uploadValid($avatar,2000000,['.jpg','.jpeg','.png'],['image/jpeg','image/png','image/jpg']);
 
-			// debug($avatar);
-			// die('here');
 			if($valid->IsValid($error))
       {
-
-        $hashPassword = $Auth->hashPassword($password);
-        $token = $StrU->randomString($length = 100);
+				$success = true;
+        $hashPassword = $auth->hashPassword($password);
+        $token = $strU->randomString($length = 100);
         $date = new \DateTime();
 
         $insert_users = $model->insert(['username' => $pseudo,
@@ -84,11 +83,13 @@ class UsersController extends AppController
 																			 'created_at' => $date->format('Y-m-d H:i:s'),
                                        'status' => 'active' ]);
 
-								$user_id = $model->getUserId();
+
+
+								$user_id = $model->getUserId($pseudo);
 
       	$model->setTable('user_adresses');
 
-				$insert_useradress = $model->insert(['users_id' => $user_id,
+				$insert_useradress = $model->insert(['users_id' => $user_id['id'],
 																						 'adress1' => $adress,
 																					 'postal_code' => $postal_code,
 																						   'town' => $city,
@@ -96,21 +97,44 @@ class UsersController extends AppController
 																							'adress_type' => 'facturation',
 																						 	'created_at' => $date->format('Y-m-d H:i:s')]);
 
-				$model->setTable('avatars');
 
+				$file_tmp = $avatar['tmp-name'];
+				$file_name = $avatar['name'];
+				$file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
 				$dest_fichier = date('y_m_d_H_i') . '_avatar.' . $file_extension;
 
-				if(move_uploaded_file($file_tmp, $this->assetUrl('img/avatars/') . $dest_fichier))
+				if(move_uploaded_file($file_tmp, ('./assets/img/avatars/') . $dest_fichier))
 				{
+					$model->setTable('avatars');
 
-					$insert_avatar = $model->insert(['img_name' => $avatar['name'],
+					$insert_avatar = $model->insert(['img_name' => $file_name,
+																						'user_id' => $user_id['id'],
 																					 'created_at' => $date->format('Y-m-d H:i:s')]);
+																					 die($insert_avatar);
 				}
-
 
       } else {
         $this->show('users/inscription',['error' => $error]);
 			}
+
+			$data = array(
+				'error' => $error,
+				'success' => $success,
+				'pseudo' => $pseudo,
+				'lastName' => $lastname,
+				'firstName' => $firstname,
+				'email'  => $email,
+				'password' => $password,
+				'adress' => $adress,
+				'postal' => $postal_code,
+				'country' => $country,
+				'avatar' => $avatar,
+				'password' => $password,
+				'passwordconfirm' => $passwordconfirm
+			);
+			$this->showJson($data);
+			die('here');
+
 	}
 
 	/**

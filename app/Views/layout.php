@@ -130,5 +130,6 @@
 	<script src="<?= $this->assetUrl('js/jquery-3.2.1.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/bootstrap.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/haut_de_page.js') ?>" charset="utf-8"></script>
+	<script src="<?= $this->assetUrl('js/inscription-ajax.js') ?>" charset="utf-8"></script>
 </body>
 </html>

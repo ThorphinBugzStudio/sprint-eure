@@ -56,13 +56,13 @@
     /**
      * Methode qui permet de recup l'id user pdt l'inscription
      */
-     public function getUserId()
+     public function getUserId($pseudo)
      {
        $sql = "SELECT id FROM users WHERE username = '$pseudo'";
        $sth = $this->dbh->prepare($sql);
        $sth->execute();
        $result = $sth->fetch();
-
+      //  debug($result);
        return $result;
      }
 
