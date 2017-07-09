@@ -32,26 +32,27 @@
           <?php $i = 0;
           foreach ($results as $result) { ?>
            <tr>
-            <td><?php echo $result['id']; ?></td>
-            <td><?php echo $result['username']; ?></td>
-            <td><?php echo $result['role']; ?></td>
-            <td><?php echo $result['status']; ?></td>
-            <td><?php echo $result['created_at']; ?></td>
-            <td><?php echo $result['modified_at']; ?></td>
-            <td class="menu_actions">
-              <!-- BOUTON : Edition -->
-              <a class="" href="<?=$this->url('admin_single_user', ['id' => $result['id']] ) ?>">
-                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editer">
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                </button></a>
-              <!-- BOUTON : Delete si status != deleted -->
-              <?php if ($result['status'] != 'deleted') { ?>
-              <a class="" href="<?=$this->url('admin_delete_user', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">
-                <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Supprimer">
-                  <i class="fa fa-trash-o" aria-hidden="true"></i>
-                </button>
-              </a> <?php } ?>
-            </td>
+            <!--// Affichage si statut != deleted-->
+            <?php if ($result['status'] != 'deleted') { ?>
+              <td><?php echo $result['id']; ?></td>
+              <td><?php echo $result['username']; ?></td>
+              <td><?php echo $result['role']; ?></td>
+              <td><?php echo $result['status']; ?></td>
+              <td><?php echo $result['created_at']; ?></td>
+              <td><?php echo $result['modified_at']; ?></td>
+              <td class="menu_actions">
+                <!-- BOUTON : Edition -->
+                <a class="" href="<?=$this->url('admin_single_user', ['id' => $result['id']] ) ?>">
+                  <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editer">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </button></a>
+                <!-- BOUTON : Delete si status != deleted -->
+                <a class="" href="<?=$this->url('admin_delete_user', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">
+                  <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Supprimer">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  </button>
+                </a>
+              </td>  <?php } ?>
           </tr>
          <?php } ?>
         </tbody>

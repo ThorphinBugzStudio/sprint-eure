@@ -22,10 +22,10 @@ class UsersController extends AppController
       // ADMIN ONLY
       // $this->allowTo('admin'); 
       
-      $users = new UsersModel();
-      
+      $users = new UsersModel($where = "status <> 'deleted'");
+
       // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-      $pagin = new Pagination('Admin users pages navigation', $this->generateUrl('admin_users'), $users->countId(), 3);
+      $pagin = new Pagination('Admin users pages navigation', $this->generateUrl('admin_users'), $users->getNbId(), 3);
 
       // si l'url demande une page  : setting de pageStatus dans l'objet Pagination
       if (!empty($page)) { $pagin->setPageStatus($page); }
@@ -39,7 +39,6 @@ class UsersController extends AppController
       $results = $users->findAll('id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
 
       $this->show('admin/users', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual']]);
-      
   }
   
   /**
