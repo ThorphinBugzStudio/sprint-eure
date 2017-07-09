@@ -54,6 +54,42 @@
     }
 
     /**
+     * Update le role de l'utilisateur en bdd.
+     * enum('client', 'admin') 
+     *
+     * @param string $role
+     * @return void
+     */
+    public function updateRole($id, $role = '')
+    {
+        if ($role == 'admin' || $role == 'client')
+        {
+            if (!empty($this->find($id)))
+            {
+                $update = $this->update(['role' => $role], $id, true);
+            }
+        }
+    }
+    
+    /**
+     * Update le status de l'utilisateur en bdd.
+     * enum('active', 'inactive', 'deleted')
+     *
+     * @param string $status
+     * @return void
+     */
+    public function updateStatus($id, $status = '')
+    {
+        if ($status == 'active' || $status == 'inactive' || $status == 'deleted')
+        {
+            if (!empty($this->find($id)))
+            {
+                $update = $this->update(['status' => $status], $id, true);
+            }
+        }
+    }
+
+    /**
      * Methode qui permet de recup l'id user pdt l'inscription
      */
      public function getUserId($pseudo)

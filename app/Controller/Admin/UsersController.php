@@ -19,6 +19,9 @@ class UsersController extends AppController
    */
   public function users($page = '')
   {
+      // ADMIN ONLY
+      // $this->allowTo('admin'); 
+      
       $users = new UsersModel();
       
       // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
@@ -38,6 +41,23 @@ class UsersController extends AppController
       $this->show('admin/users', ['results' => $results, 'navPaginBar' => $navPaginBar]);
       
   }
+  
+  /**
+   * Soft delete d'un utilisateur en bdd.
+   *
+   * @return void
+   */
+  public function deleteUser()
+  {
+    // ADMIN ONLY
+    // $this->allowTo('admin'); 
+    
+    $users = new UsersModel();
+
+
+
+
+  }
 
   /**
    * Détail / Formulaire d'un utilisateur.
@@ -47,6 +67,9 @@ class UsersController extends AppController
    */
   public function singleUser()
   {
+    // ADMIN ONLY
+    // $this->allowTo('admin'); 
+
     $this->show('admin/single-user');
   }
 
@@ -58,6 +81,9 @@ class UsersController extends AppController
    */
   public function singleUserAction()
   {
+    // ADMIN ONLY
+    // $this->allowTo('admin'); 
+        
     # code
   }
 
