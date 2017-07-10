@@ -245,10 +245,7 @@ class UsersController extends AppController
 	 */
 	public function passwordLost()
 	{
-
 		$this->show('users/password-lost');
-
-
 	}
 
 	/**
@@ -283,7 +280,7 @@ class UsersController extends AppController
 					$codedemail = urlencode($user['email']);
 					$codedtoken = urlencode($user['token']);
     ///???? créer une url contenant le token et l'email encodés
-					$link = '<a href="?email='.$codedemail.'&token='.$codedtoken.'" style="color:tomato;">Modifier votre mot de passe</a>';
+					$link = '<a href="'.$this->generateUrl($routeName, $params = array(), $absolute = false).'?email='.$codedemail.'&token='.$codedtoken.'" style="color:tomato;">Modifier votre mot de passe</a>';
 
 					$this->show('users/password-lost',['success' => $success, 'link' => $link]);
 
