@@ -13,5 +13,24 @@ public function __construct(){
   $this->dbh = ConnectionModel::getDbh();
 }
 
+public function notdelete()
+{
+  $sql = 'SELECT * FROM ' . $this->table . ' WHERE status != "deleted" ';
+  $sth = $this->dbh->prepare($sql);
+  $sth->execute();
+  return $sth->fetchAll();
+}
+
+public function doubloncheck($designation, $champ)
+	{
+
+		$sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $champ .'  = :designation ';
+		$sth = $this->dbh->prepare($sql);
+		$sth->bindValue(':designation', $designation);
+    $sth->execute();
+    $etat = $sth->rowCount();
+
+		return $etat;
+	}
 
 }
