@@ -120,6 +120,21 @@ p {
 	border: 1px solid #0075cb;
 }
 
+.btn_cancel {
+  background-color: #1d1d1d;
+  border: 1px solid black;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn_cancel:hover {
+  background-color: #474747;
+  border: 1px solid #323232;
+}
+
 /* -------------- TABLEAUX -------------- */
 .table > tbody > tr > td {
   vertical-align: middle;
@@ -176,6 +191,18 @@ label {
   text-align: left;
 }
 
+legend {
+  font-family: "Patua One", "Arial";
+}
+
+fieldset {
+  display: flex;
+}
+
+fieldset .form-check {
+  padding: 0 10px;
+}
+
 .checkbox {
   margin: 0;
 }
@@ -199,4 +226,8 @@ label {
 .mx-6 {
   margin-right: 4rem !important;
   margin-left: 4rem !important;
+}
+
+.text-align-center {
+	text-align: center;
 }
