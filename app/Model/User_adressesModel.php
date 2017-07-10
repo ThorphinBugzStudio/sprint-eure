@@ -16,7 +16,7 @@ class User_adressesModel extends Model
     */
    public function getAdressId($userId)
    {
-      $sql = "SELECT id FROM $this->table WHERE user_id = '$userId' AND adress_type = 'facturation'";
+      $sql = "SELECT id FROM $this->table WHERE users_id = '$userId' AND adress_type = 'facturation'";
       debug($this->table);
       $querry = $this->dbh->prepare($sql);
       $querry->execute();
