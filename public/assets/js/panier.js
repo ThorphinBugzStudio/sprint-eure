@@ -4,13 +4,18 @@ $( function() {
     resizable: false,
     draggable: false,
     closeOnEscape: true,
+    position: {
+      my: "right top",
+      at: "right bottom",
+      of: $("#basket")
+    },
     show: {
-      effect: "slide",
+      effect: "slideDown" ,
       duration: 500
     },
     hide: {
-      effect: "explode",
-      duration: 1000
+      effect: "slideUp",
+      duration: 500
     }
   });
 
