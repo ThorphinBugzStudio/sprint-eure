@@ -38,40 +38,13 @@
           <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
 
+							<!-- Section : Retour sur le front -->
+							<li>
+								<a href="<?= $this->url('default_home') ?>"><i class="fa fa-reply fa-fw"></i> Retour sur le site </a>
+							</li>
 							<!-- Section : Dashboard -->
               <li>
-                <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-              </li>
-
-							<!-- ===================================== -->
-              <!-- 					Onglet : Accueil 						 -->
-							<!-- ===================================== -->
-              <li class="separator">ACCUEIL</li>
-
-							<!-- Section : Catégories -->
-							<li>
-                <a href="#"><i class="fa fa-file-text-o fa-fw"></i> Catégories<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                  <li><a href="<?= $this->url('admin_items_families') ?>">Toutes les catégories</a></li>
-									<li><a href="<?= $this->url('admin_items_families_add') ?>">Ajouter</a></li>
-                </ul>
-              </li>
-
-							<!-- Section : Commentaires -->
-							<li>
-                <a href="#"><i class="fa fa-comment fa-fw"></i> Commentaires<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                  <li><a href="<?= $this->url('admin_comments') ?>">Tous les commentaires</a></li>
-                </ul>
-              </li>
-
-							<!-- Section : Sliders -->
-              <li>
-                <a href="#"><i class="fa fa-play fa-fw"></i> Sliders<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                  <li><a href="#">Tous les sliders</a></li>
-                  <li><a href="#">Ajouter</a></li>
-                </ul>
+                <a href="<?= $this->url('admin_users') ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
               </li>
 
 							<!-- ===================================== -->
@@ -88,6 +61,15 @@
                 </ul>
               </li>
 
+							<!-- Section : Catégories -->
+							<li>
+								<a href="#"><i class="fa fa-file-text-o fa-fw"></i> Catégories<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li><a href="<?= $this->url('admin_items_families') ?>">Toutes les catégories</a></li>
+									<li><a href="<?= $this->url('admin_items_families_add') ?>">Ajouter</a></li>
+								</ul>
+							</li>
+
 							<!-- Section : Commandes -->
               <li><a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Commandes<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
@@ -97,19 +79,40 @@
               </li>
 
 							<!-- ===================================== -->
+							<!-- 					Onglet : Utilisateurs 						 -->
+							<!-- ===================================== -->
+							<li class="separator">UTILISATEURS</li>
+
+							<!-- Section : Utilisateurs -->
+							<li>
+								<a href="#"><i class="fa fa-user fa-fw"></i> Utilisateurs<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li><a href="<?= $this->url('admin_users') ?>">Tous les utilisateurs</a></li>
+									<li><a href="#">Ajouter</a></li>
+								</ul>
+							</li>
+
+							<!-- Section : Commentaires -->
+							<li>
+								<a href="#"><i class="fa fa-comment fa-fw"></i> Commentaires<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li><a href="<?= $this->url('admin_comments') ?>">Tous les commentaires</a></li>
+								</ul>
+							</li>
+
+							<!-- ===================================== -->
               <!-- 					Onglet : Divers 						 -->
 							<!-- ===================================== -->
               <li class="separator">DIVERS</li>
 
-							<!-- Section : Utilisateurs -->
+							<!-- Section : Sliders -->
 							<li>
-                <a href="#"><i class="fa fa-user fa-fw"></i> Utilisateurs<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                  <li><a href="<?= $this->url('admin_users') ?>">Tous les utilisateurs</a></li>
-                  <li><a href="#">Ajouter</a></li>
-									<li><a href="#">Votre profil</a></li>
-                </ul>
-              </li>
+								<a href="#"><i class="fa fa-play fa-fw"></i> Sliders<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li><a href="#">Tous les sliders</a></li>
+									<li><a href="#">Ajouter</a></li>
+								</ul>
+							</li>
 
 							<!-- Section : Paramètres -->
               <li>
@@ -133,20 +136,7 @@
             <h1 class="page-header">» <?= $this->e($title) ?></h1>
           </div>
         </div>
-
-          <!--<div class="row">
-            <div class="col-sm-12">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <i class="fa fa-bar-chart-o fa-fw"></i> Titre de l'onglet
-                </div>
-                <div class="p-3">
-                  <p>Test</p>
-                </div>
-              </div>
-            </div>-->
 						<?= $this->section('main_content') ?>
-          <!--</div>-->
 				</div>
 		</section>
 

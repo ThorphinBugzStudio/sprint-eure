@@ -138,13 +138,16 @@
 		<div class="footer_2">
 			<h2>» Contact</h2>
 			<hr class="hr_footer">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<address><i class="fa fa-map-marker" aria-hidden="true"></i> 5 rue des Pantoufles</address>
+			<address style="padding-left: 19px;">27370, Louviers</address>
+			<address class="mt-2"><i class="fa fa-phone" aria-hidden="true"></i> 02.32.40.63.78</address>
+			<address class="mt-2"><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:contact@sprinteure.fr">contact@sprinteure.fr</a></address>
 		</div>
 
 		<div class="footer_3">
 			<h2>» Widget</h2>
 			<hr class="hr_footer">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 		</div>
 
 		<div class="footer_4">
