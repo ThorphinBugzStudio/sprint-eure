@@ -4,6 +4,7 @@ namespace Controller\Admin;
 
 use \Controller\AppController;
 use \Services\Tools\Pagination;
+use \Services\Tools\RadiosBox;
 
 use \Model\UsersModel;
 
@@ -25,7 +26,7 @@ class UsersController extends AppController
       $users = new UsersModel($where = "status <> 'deleted'");
 
       // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-      $pagin = new Pagination('Admin users pages navigation', $this->generateUrl('admin_users'), $users->getNbId(), 3);
+      $pagin = new Pagination('Admin users pages navigation', $this->generateUrl('admin_users'), $users->getNbId(), 5);
 
       // si l'url demande une page  : setting de pageStatus dans l'objet Pagination
       if (!empty($page)) { $pagin->setPageStatus($page); }
@@ -64,12 +65,26 @@ class UsersController extends AppController
    *
    * @return void
    */
-  public function singleUser()
+  public function singleUser($id)
   {
     // ADMIN ONLY
     // $this->allowTo('admin');
 
-    $this->show('admin/single-user');
+   $users = new UsersModel();
+   $userToUpdate = $users->find($id);
+   // debug($userToUpdate);
+
+   $rolesBox = new RadiosBox('Role', ['Client' => 'client',
+                                      'Administrateur' => 'admin'
+                                     ], $userToUpdate['role']);
+
+   $statusBox = new RadiosBox('Statut', ['Actif' => 'active',
+                                         'Inactif' => 'inactive'
+                                        ], $userToUpdate['status']);
+   $r = $rolesBox->getHtml();
+   $s = $statusBox->getHtml();
+
+   $this->show('admin/single-user', ['rolesBox' => $rolesBox->getHtml(), 'statusBox' => $statusBox->getHtml()]);
   }
 
   /**
