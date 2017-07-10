@@ -3,6 +3,10 @@ namespace Model;
 
 use W\Model\Model;
 use \W\Model\ConnectionModel;
+use \Controller\AppController;
+use \Services\Tools\Pagination;
+use \Services\Tools\RadiosBox;
+use Services\Tools\ToolHP;
 
 class ItemsFamilyModel extends Model
 {

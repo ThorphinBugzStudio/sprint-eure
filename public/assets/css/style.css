@@ -22,7 +22,9 @@ body {
 .navbar-users ul {
 	padding: 0;
 	margin: 0;
-	display: contents;
+	display: flex;
+	justify-content: end;
+	flex-wrap: inherit;
 }
 
 .navbar-users ul li {
@@ -36,7 +38,6 @@ body {
 	color: white;
 	font-family: "Open Sans",  "Arial";
 	font-size: 0.9em;
-	background:
 }
 
 .navbar-users a:hover {
@@ -136,13 +137,21 @@ body {
 }
 
 .ui-dialog .ui-dialog-titlebar-close {
-	background-color: #133bb0;
+	background: rgba(0, 0, 0, 0.5);
 	color: white;
 	border: none;
 	border-radius: 50px;
 	cursor: pointer;
 	padding: 12px;
 	top: 45%;
+}
+
+.ui-dialog .ui-dialog-content {
+	max-height: 200px !important;
+}
+
+.basket-spacer {
+	border-bottom: 1px dashed grey;
 }
 
 /* ----------------- SLIDERS ----------------- */
@@ -213,16 +222,17 @@ body {
 	width: 40px;
 	height: 40px;
 	position: fixed;
-	bottom: 0px;
-	right: 0px;
+	bottom: 10px;
+	right: 10px;
 	display: none;
 	color: white;
 	background-color: #3a3f51;
-	border: 1px solid #3a3f51;
 	font-size: 20px;
 	text-align: center;
 	line-height: 37px;
 	z-index: 9999;
+	border-radius: 50px;
+	box-shadow: 0 0 7px -2px black;
 }
 
 .scrollup:hover,
@@ -289,6 +299,10 @@ textarea {
 	font-weight: bold;
 }
 
+/* ----------------- E-COMMERCE ----------------- */
+
+
+
 /* ----------------- FOOTER ----------------- */
 
 footer {
@@ -305,6 +319,12 @@ footer {
 
 .hr_footer {
   background-color: #666;
+}
+
+.footer_1 img {
+	width: 50px;
+	border-radius: 8px;
+	margin: 3px;
 }
 
 .footer_1, .footer_2, .footer_3, .footer_4 {
@@ -355,4 +375,18 @@ footer {
 
 .bold {
 	font-weight: bold;
+}
+
+
+/* ----------------------- MEDIA QUERY ------------------------ */
+@media (max-width: 827px) {
+	.navbar-users ul li {
+		width: 100%;
+	}
+}
+
+@media (max-width: 1450px) {
+	.footer_1, .footer_2, .footer_3, .footer_4 {
+		margin-bottom: 40px;
+	}
 }

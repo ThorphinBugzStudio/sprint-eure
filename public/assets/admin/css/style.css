@@ -37,6 +37,7 @@ p {
 
 .navbar-brand {
   font-family: "Patua One", "Arial";
+  font-size: 20px;
 }
 
 .navbar-default,
@@ -92,6 +93,10 @@ p {
   border-left: 1px solid #9f9f9f;
 }
 
+.page-header {
+  font-family: "Patua One", "Arial";
+}
+
 .nav-link {
   text-decoration: none;
 }
@@ -108,6 +113,11 @@ p {
   border-radius: 8px;
   cursor: pointer;
   text-align: center;
+}
+
+.btn_ok:hover {
+	background-color: #139eea;
+	border: 1px solid #0075cb;
 }
 
 /* -------------- TABLEAUX -------------- */
@@ -144,7 +154,7 @@ th {
   margin-bottom: 0;
 }
 
-/* -------------- AJOUT DE PRODUIT -------------- */
+/* -------------- FORMULAIRES -------------- */
 
 .input-back {
   width: 100%;
@@ -157,12 +167,16 @@ th {
   border-radius: 8px 0 0 8px;
 }
 
+form {
+  margin: 0;
+}
+
 label {
   margin: 0;
   text-align: left;
 }
 
-form {
+.checkbox {
   margin: 0;
 }
 
@@ -174,4 +188,15 @@ form {
 .error {
   color: red;
   font-weight: bold;
+}
+
+.form-check-label input {
+  margin-right: 5px;
+}
+
+/* --------------- AUTRES ---------------- */
+
+.mx-6 {
+  margin-right: 4rem !important;
+  margin-left: 4rem !important;
 }

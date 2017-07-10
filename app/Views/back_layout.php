@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="<?= $this->assetUrl('admin/vendor/metisMenu/metisMenu.min.css') ?>">
   <link rel="stylesheet" href="<?= $this->assetUrl('admin/dist/css/sb-admin-2.css') ?>">
   <link rel="stylesheet" href="<?= $this->assetUrl('admin/vendor/font-awesome/css/font-awesome.min.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/jquery-ui.css') ?>">
   <link rel="stylesheet" href="<?= $this->assetUrl('admin/css/style.css') ?>">
 </head>
 <body>
@@ -154,6 +155,7 @@
 		</footer>
 
   <script src="<?= $this->assetUrl('admin/vendor/jquery/jquery.min.js') ?>" charset="utf-8"></script>
+	<script src="<?= $this->assetUrl('js/jquery-ui.js') ?>" charset="utf-8"></script>
   <script src="<?= $this->assetUrl('admin/vendor/bootstrap/js/bootstrap.min.js') ?>" charset="utf-8"></script>
   <script src="<?= $this->assetUrl('admin/vendor/metisMenu/metisMenu.min.js') ?>" charset="utf-8"></script>
   <script src="<?= $this->assetUrl('admin/vendor/raphael/raphael.min.js') ?>" charset="utf-8"></script>

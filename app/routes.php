@@ -116,10 +116,10 @@
 		 */
 		['GET', '/admin/itemsFamilies' , 'Admin\ItemsFamiliesController#itemsFamilies', 'admin_items_families'],
 		['GET', '/admin/itemsFamilies/[i:page]', 'Admin\ItemsFamiliesController#itemsFamilies', 'admin_page_items_families'],
-		['GET', '/admin/itemFamily/[:id]', 'Admin\ItemsFamiliesController#singleItemFamily', 'admin_single_item_family'],
-		['POST', '/admin/itemFamily/[:id]', 'Admin\ItemsFamiliesController#singleItemFamilyAction', 'admin_single_item_family_action'],
+		['GET', '/admin/itemFamily/[i:id]', 'Admin\ItemsFamiliesController#singleItemFamily', 'admin_single_item_family'],
+		['POST', '/admin/itemFamily/[i:id]', 'Admin\ItemsFamiliesController#singleItemFamilyAction', 'admin_single_item_family_action'],
 		//delete categorie
-		['GET', '/admin/itemFamily/[:id]', 'Admin\ItemsFamiliesController#singleItemFamilyDelete', 'admin_single_item_family_delete'],
+		['GET', '/admin/itemFamily/[i:id]/[i:fromPage]', 'Admin\ItemsFamiliesController#singleItemFamilyDelete', 'admin_single_item_family_delete'],
 		//ajout d'une nouvelle famille d'objets
 		['GET', '/admin/addfamily', 'Admin\ItemsFamiliesController#addItemFamily','admin_items_families_add'],
 		['POST', '/admin/addfamily', 'Admin\ItemsFamiliesController#addItemFamilyAction','admin_items_families_add_action'],
