@@ -59,11 +59,16 @@ class ItemsFamiliesController extends AppController
     if(!empty($_POST['submit'])) {
       $famille     = $post['family'];
       if (isset($_POST['status'])) {
-        $status = "dispo";
-      } else {
         $status = "deleted";
+      } else {
+        $status = "dispo";
       }
 
+      $familyexist = $model->doubloncheck($famille, 'family');
+
+      if ($familyexist > 0) {
+        $error['exist'] = 'cette categorie existe déjà';
+      }
 
       $error['family'] = $validation->textValid($famille, 'categorie');
 

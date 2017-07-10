@@ -10,13 +10,14 @@
 
     <div class="family">
       <label for="family">categorie: </label>
+      <span class="error"><?php if(!empty($error['exist'])) { echo $error['exist']; } ?></span>
       <span class="error"><?php if(!empty($error['family'])) { echo $error['family']; } ?></span><br>
       <input type="text" name="family" id="family" value="<?php if(!empty($_POST['family'])) { echo $_POST['family'];} ?>" />
     </div>
 
     <div class="checkbox">
          <span class="error"><?php if(!empty($error['status'])) { echo $error['status']; } ?></span><br>
-         <INPUT type= "checkbox" name="status" value=""> rendre disponible sur le site cette categorie d'articles ?
+         <INPUT type= "checkbox" name="status" value="deleted"> ne pas rendre disponible sur le site cette categorie d'articles ?
     </div>
 
 

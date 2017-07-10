@@ -50,7 +50,8 @@ class ItemsController extends AppController
   public function AddItem()
   {
     $model = new ItemsFamilyModel;
-    $family = $model->findAll();
+    $family = $model->notdelete();
+    print_r($family);
     $this->show('admin/add-item', array('family' => $family));
   }
 
@@ -78,6 +79,12 @@ class ItemsController extends AppController
         $home = 1;
       } else {
         $home = 0;
+      }
+
+      $itemexist = $modelItem->doubloncheck($designation, $famille, 'designation', 'items_family_id');
+
+      if ($itemexist > 0) {
+        $error['exist'] = 'cet article existe déjà dans cette categorie. ';
       }
 
 //verification des erreurs de chaque champs
