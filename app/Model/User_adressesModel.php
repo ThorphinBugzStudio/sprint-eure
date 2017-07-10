@@ -10,13 +10,13 @@ class User_adressesModel extends Model
 {
 
    /**
-    * Get adresse de facturaion d'un utilisateur
+    * Get adresse de facturation d'un utilisateur
     * @param  int $userId id de l'utilisateur
-    * @return string
+    * @return array
     */
-   public function getAdressId($userId)
+   public function getUserAdress($userId)
    {
-      $sql = "SELECT id FROM $this->table WHERE users_id = '$userId' AND adress_type = 'facturation'";
+      $sql = "SELECT * FROM $this->table WHERE users_id = '$userId' AND adress_type = 'facturation'";
       debug($this->table);
       $querry = $this->dbh->prepare($sql);
       $querry->execute();

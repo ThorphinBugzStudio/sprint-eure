@@ -3,7 +3,8 @@
 <?php $this->start('main_content') ?>
 
 <div class="global">
-  <!-- formulaire radiobutton pour changement de role -->
+
+  <!-- Formulaire radiobutton pour changement de role -->
   <form id="formChangeRole" class="form-subscribe row " action="<?php $this->url('admin_single_user_action', ['id' => $postId]); ?>" method="POST">
     <div class="col-sm-12 col-md-8 py-3">
       <div class="panel panel-default">
@@ -11,21 +12,22 @@
           <i class="fa fa-user fa-fw"></i> Modification de l'utilisateur
         </div>
         <div class="p-4">
-          <div class="form-group row">
-            <div class="col-lg-6 mr-auto">
-              <!-- Section : Prénom -->
-              <label for="firstname">Prénom</label> <span class="error">*</span>
-              <input class="input-back" type="text" name="firstName" value="<?php if(!empty($_POST['firstName'])){ echo $_POST['firstName']; } elseif (!empty($userToUpdate['firstName'])) { echo $userToUpdate['firstName']; } ?>">
-              <?php if(!empty($error['firstname'])){ echo '<p id="error-firstname" class="error">' . $error['firstname'] . '</p>'; } ?>
-            </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-lg-6 mr-auto">
+                <!-- Section : Prénom -->
+                <label for="firstname">Prénom</label> <span class="error">*</span>
+                <input class="input-back" type="text" name="firstName" value="<?php if(!empty($_POST['firstName'])){ echo $_POST['firstName']; } elseif (!empty($userToUpdate['firstName'])) { echo $userToUpdate['firstName']; } ?>">
+                <?php if(!empty($error['firstname'])){ echo '<p id="error-firstname" class="error">' . $error['firstname'] . '</p>'; } ?>
+              </div>
 
-            <div class="col-lg-6 ml-auto">
-              <!-- Section : Nom -->
-              <label for="lastname">Nom</label> <span class="error">*</span>
-              <input class="input-back" type="text" name="lastname" value="<?php if(!empty($_POST['lastname'])){ echo $_POST['lastname']; } elseif (!empty($userToUpdate['lastName'])) { echo $userToUpdate['lastName']; } ?>">
-              <?php if(!empty($error['lastname'])){ echo '<p id="error-lastname" class="error">' . $error['lastname'] . '</p>'; } ?>
+              <div class="col-lg-6 ml-auto">
+                <!-- Section : Nom -->
+                <label for="lastname">Nom</label> <span class="error">*</span>
+                <input class="input-back" type="text" name="lastname" value="<?php if(!empty($_POST['lastname'])){ echo $_POST['lastname']; } elseif (!empty($userToUpdate['lastName'])) { echo $userToUpdate['lastName']; } ?>">
+                <?php if(!empty($error['lastname'])){ echo '<p id="error-lastname" class="error">' . $error['lastname'] . '</p>'; } ?>
+              </div>
             </div>
-          </div>
 
           <div class="form-group">
             <!-- Section : Pseudo -->
@@ -74,12 +76,13 @@
           <div class="form-group">
             <!-- Section : Avatar -->
             <label for="avatar">Avatar</label> <span class="error">*</span>
-            <input class="input-form" type="file" name="avatar" value="<?php if(!empty($_POST['avatar'])){ echo $_POST['avatar']; } ?>" style="max-width: 100%; overflow: hidden;">
-              <?php if(!empty($error['avatar'])){ echo '<p id="error-avatar" class="error">' . $error['avatar'] . '</p>'; } ?>
+            <input class="input-back" type="file" name="avatar" value="<?php if(!empty($_POST['avatar'])){ echo $_POST['avatar']; } elseif (!empty($avatar['img_name'])) { echo $avatar['img_name']; } ?>" style="max-width: 100%; overflow: hidden;">
+            <?php if(!empty($error['avatar'])){ echo '<p id="error-avatar" class="error">' . $error['avatar'] . '</p>'; } ?>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
       <div class="col-sm-12 col-md-4 py-3">
         <div class="panel panel-default">

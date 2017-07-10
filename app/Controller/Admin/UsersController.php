@@ -77,8 +77,8 @@ class UsersController extends AppController
    $userAvatar = new AvatarsModel();
 
    $userToUpdate = $users->find($id);
-   $adress = $userFactAdress->getAdressId($id);
-   $avatar = $userAvatar->getAvatarId($id);
+   $adress = $userFactAdress->getUserAdress($id);
+   $avatar = $userAvatar->getUserAvatar($id);
    // debug($userToUpdate);
 
    $rolesBox = new RadiosBox('Role', ['Client' => 'client',
