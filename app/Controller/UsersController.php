@@ -6,6 +6,7 @@ use Security\CleanTool;
 use Security\ValidationTool;
 use Model\UsersModel;
 Use W\Security\AuthentificationModel;
+use Model\AvatarsModel;
 use W\Security\StringUtils;
 /**
  * Controller gestion des utilisateurs.
@@ -68,13 +69,26 @@ class UsersController extends AppController
 			$error['password'] = $valid->passwordError($password,$password_confirm,6,40);
 			$error['avatar'] = $valid->uploadValid($avatar,2000000,['.jpg','.jpeg','.png'],['image/jpeg','image/png','image/jpg']);
 
+			if($model->usernameExists($pseudo))
+			{
+				$error['pseudo'] = 'Votre pseudo est déjà utilisé';
+
+			}
+
+			if($model->emailExists($email))
+			{
+				$error['email'] = 'Cet email est déjà utilisé';
+			}
+
 			if($valid->IsValid($error))
 			{
 				$success = true;
 				$hashPassword = $auth->hashPassword($password);
 				$token = $strU->randomString($length = 100);
 				$date = new \DateTime();
+				$avatarMod = new AvatarsModel();
 
+	//insertion nouveau user
 				$insert_users = $model->insert(['username' => $pseudo,
 				'lastName' => $lastname,
 				'firstName' => $firstname,
@@ -85,13 +99,48 @@ class UsersController extends AppController
 				'created_at' => $date->format('Y-m-d H:i:s'),
 				'status' => 'active' ]);
 
-
-
+ //recup l'user id et stockage de la valeur ds $userId
 				$user_id = $model->getUserId($pseudo);
+				$userId = $user_id['id'];
+
+
+				//insertion de l'image
+								$dossier = './assets/img/avatars/';
+								$file_tmp = $avatar['tmp_name'];
+								$file_name = $avatar['name'];
+								$file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
+								$dest_fichier = date('y_m_d_H_i') . '_avatar.' . $file_extension;
+
+
+								if(move_uploaded_file($file_tmp, $dossier . $dest_fichier))
+								{
+									$model->setTable('avatars');
+
+									$insert_avatar = $model->insert(['img_name' => $file_name,
+									'user_id' => $userId,
+									'created_at' => $date->format('Y-m-d H:i:s')]);
+								}
+
+				//update de l'avatarId ds la table user
+								$model->setTable('users');
+
+							$avatarId = $avatarMod->getAvatarId($userId);
+
+							$model->update(['username' => $pseudo,
+							'lastName' => $lastname,
+							'firstName' => $firstname,
+							'email'  => $email,
+							'avatars_id' => $avatarId['id'],
+							'password' => $hashPassword,
+							'token' => $token,
+							'role' => 'client',
+							'created_at' => $date->format('Y-m-d H:i:s'),
+							'status' => 'active' ] , $userId);
+
 
 				$model->setTable('user_adresses');
 
-				$insert_useradress = $model->insert(['users_id' => $user_id['id'],
+				$insert_useradress = $model->insert(['users_id' => $userId,
 				'adress1' => $adress,
 				'postal_code' => $postal_code,
 				'town' => $city,
@@ -99,49 +148,14 @@ class UsersController extends AppController
 				'adress_type' => 'facturation',
 				'created_at' => $date->format('Y-m-d H:i:s')]);
 
-				$dossier = 'assets/img/avatars/';
-				$file_tmp = $avatar['tmp-name'];
-				$file_name = $avatar['name'];
-				$file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
-				$dest_fichier = date('y_m_d_H_i') . '_avatar.' . $file_extension;
 
-				if(move_uploaded_file($file_tmp, $dossier . $dest_fichier))
-				{
-					$model->setTable('avatars');
-
-					$insert_avatar = $model->insert(['img_name' => $file_name,
-					'user_id' => $user_id['id'],
-					'created_at' => $date->format('Y-m-d H:i:s')]);
-				}
+				$this->flash('Bienvenue ' . $pseudo . '. Veuillez vous connecter ', 'success');
 				$this->show('users/login');
-				
+
 			} else {
 				$this->show('users/inscription',['error' => $error]);
-
 			}
 		}
-
-
-
-
-			// $data = array(
-			// 	'error' => $error,
-			// 	'success' => $success,
-			// 	'pseudo' => $pseudo,
-			// 	'lastName' => $lastname,
-			// 	'firstName' => $firstname,
-			// 	'email'  => $email,
-			// 	'password' => $password,
-			// 	'adress' => $adress,
-			// 	'postal' => $postal_code,
-			// 	'country' => $country,
-			// 	'avatar' => $avatar,
-			// 	'password' => $password,
-			// 	'passwordconfirm' => $passwordconfirm
-			// );
-			// $this->showJson($data);
-			//die();
-
 }
 
 	/**
@@ -162,6 +176,18 @@ class UsersController extends AppController
 	 */
 	public function loginAction()
 	{
+		$error = [];
+		$model = new UsersModel();
+		$clean = new CleanTool();
+		$valid = new ValidationTool();
+
+		if(!empty($_POST['submit']))
+		{
+			$post = $clean->cleanPost($_POST);
+
+			$pseudo_mail = $post['pseudo-mail'];
+			$password = $post['password'];
+		}
 		// redirection vers home
 	}
 
