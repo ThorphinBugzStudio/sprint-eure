@@ -8,7 +8,8 @@
 
     <span class="span-flash"><?= $w_flash_message->message ?></span>
 <!-- echo $w_flash_message->level; interprete l'argument success ou warning.... pr bootstrap(couleurs)-->
-    <? } ?>
+    <?php } ?>
+	</div>
 
 <!-- ============================================ -->
 <!-- 									Carousel 										-->
