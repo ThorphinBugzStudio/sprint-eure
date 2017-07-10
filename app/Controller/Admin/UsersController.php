@@ -19,10 +19,13 @@ class UsersController extends AppController
    */
   public function users($page = '')
   {
-      $users = new UsersModel();
+      // ADMIN ONLY
+      // $this->allowTo('admin'); 
       
+      $users = new UsersModel($where = "status <> 'deleted'");
+
       // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-      $pagin = new Pagination('Admin users pages navigation', $this->generateUrl('admin_users'), $users->countId(), 3);
+      $pagin = new Pagination('Admin users pages navigation', $this->generateUrl('admin_users'), $users->getNbId(), 3);
 
       // si l'url demande une page  : setting de pageStatus dans l'objet Pagination
       if (!empty($page)) { $pagin->setPageStatus($page); }
@@ -35,8 +38,24 @@ class UsersController extends AppController
       
       $results = $users->findAll('id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
 
-      $this->show('admin/users', ['results' => $results, 'navPaginBar' => $navPaginBar]);
-      
+      $this->show('admin/users', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual']]);
+  }
+  
+  /**
+   * Soft delete d'un utilisateur en bdd.
+   *
+   * @return void
+   */
+  public function deleteUser($id, $fromPage)
+  {
+    // ADMIN ONLY
+    // $this->allowTo('admin'); 
+    
+    $users = new UsersModel();
+
+    $users->updateStatus($id, 'deleted');
+
+    $this->redirectToRoute('admin_page_users', ['page' => $fromPage]);
   }
 
   /**
@@ -47,6 +66,9 @@ class UsersController extends AppController
    */
   public function singleUser()
   {
+    // ADMIN ONLY
+    // $this->allowTo('admin'); 
+
     $this->show('admin/single-user');
   }
 
@@ -58,6 +80,9 @@ class UsersController extends AppController
    */
   public function singleUserAction()
   {
+    // ADMIN ONLY
+    // $this->allowTo('admin'); 
+        
     # code
   }
 

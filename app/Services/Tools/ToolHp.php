@@ -8,12 +8,14 @@ namespace Services\Tools;
 class ToolHP
 {
     /**
-     * Test quoi
+     * Now au format SQL pour insert bdd
      *
-     * @return void
+     * @return string
      */
-    public function testToolHP()
+    public static function nowSql()
     {
-        return 'ToolHP';
+        $now = new \DateTime();
+        
+        return $now->format('Y-m-d H:i:s');
     }
 }
