@@ -280,7 +280,8 @@ class UsersController extends AppController
 					$codedemail = urlencode($user['email']);
 					$codedtoken = urlencode($user['token']);
     ///???? créer une url contenant le token et l'email encodés
-					$link = '<a href="'.$this->generateUrl($routeName, $params = array(), $absolute = false).'?email='.$codedemail.'&token='.$codedtoken.'" style="color:tomato;">Modifier votre mot de passe</a>';
+    			$url = $this->generateUrl('password_modify', ['slug' => '/email=$codedemail/token=$codedtoken']);
+					$link = '<a href="'.$url.' ">Modifier votre mot de passe</a>';
 
 					$this->show('users/password-lost',['success' => $success, 'link' => $link]);
 
