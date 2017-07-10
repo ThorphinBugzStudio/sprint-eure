@@ -322,7 +322,7 @@ footer {
 }
 
 .footer_1 img {
-	width: 50px;
+	width: 40px;
 	border-radius: 8px;
 	margin: 3px;
 }
@@ -345,6 +345,44 @@ footer {
   padding: 0;
   text-align: center;
   margin-top: 20px;
+}
+
+address {
+	margin-bottom: 0;
+	color: rgba(255, 255, 255, 0.8);
+}
+
+address .fa-map-marker {
+	margin-right: 6px;
+}
+
+address .fa-phone {
+	margin-right: 3px;
+}
+
+/* ----------------- W ERROR ----------------- */
+
+.errorPage {
+	background-color: rgba(255, 0, 0, 0.3);
+	border: 1px solid red;
+	border-radius: 8px;
+	padding: 20px;
+	text-align: center;
+	margin: 75px 0;
+}
+
+.errorPage h2 {
+	font-family: "Patua One", "Arial";
+}
+
+.errorPage p {
+	margin-bottom: 0;
+	font-family: "Open Sans", "Arial";
+	font-size: 15px;
+}
+
+.hrError {
+	background: rgba(255, 0, 0, 0.25);
 }
 
 /* ----------------- AUTRES ----------------- */
@@ -376,7 +414,6 @@ footer {
 .bold {
 	font-weight: bold;
 }
-
 
 /* ----------------------- MEDIA QUERY ------------------------ */
 @media (max-width: 827px) {
