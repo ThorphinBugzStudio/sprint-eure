@@ -14,6 +14,7 @@
           <!-- Catégorie : Désignation -->
           <div class="designation">
             <label for="designation">Désignation : </label>
+            <span class="error"><?php if(!empty($error['exist'])) { echo $error['exist']; } ?></span>
             <span class="error"><?php if(!empty($error['designation'])) { echo $error['designation']; } ?></span><br>
             <input class="input-back" type="text" name="designation" id="designation" placeholder="Saisir un titre" value="<?php if(!empty($_POST['designation'])) { echo $_POST['designation'];} ?>" />
           </div>

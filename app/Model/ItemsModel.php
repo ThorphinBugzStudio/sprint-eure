@@ -12,4 +12,17 @@ class ItemsModel extends Model
     $this->dbh = ConnectionModel::getDbh();
   }
 
+  public function doubloncheck($designation, $famille, $champ, $champ2)
+  	{
+
+  		$sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $champ .'  = :designation AND '. $champ2 .'  = :famille ';
+  		$sth = $this->dbh->prepare($sql);
+  		$sth->bindValue(':designation', $designation);
+      $sth->bindValue(':famille', $famille);
+      $sth->execute();
+      $etat = $sth->rowCount();
+
+  		return $etat;
+  	}
+
 }

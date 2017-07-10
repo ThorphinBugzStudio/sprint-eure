@@ -4,6 +4,7 @@ namespace Controller\Admin;
 
 use \Controller\AppController;
 use \Security\CleanTool;
+use \Services\Tools\Pagination;
 use \Security\ValidationTool;
 use \Model\ItemsFamilyModel;
 
@@ -18,9 +19,25 @@ class ItemsFamiliesController extends AppController
    *
    * @return void
    */
-  public function itemsFamilies()
+  public function itemsFamilies($page = '')
   {
-    $this->show('admin/items-families');
+    $family = new ItemsFamilyModel();
+
+    // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
+    $pagin = new Pagination('Admin families pages navigation', $this->generateUrl('admin_items_families'), $family->getNbId(), 3);
+
+    // si l'url demande une page  : setting de pageStatus dans l'objet Pagination
+    if (!empty($page)) { $pagin->setPageStatus($page); }
+
+    // get des informations de pagination necessaires à la requete bdd
+    $pageStatus = $pagin->getPageStatus();
+    // get du html de la barre de navigation pour la pagination
+    $navPaginBar = $pagin->getHtml();
+    // debug($navPaginBar);
+
+    $results = $family->findAll('id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
+
+    $this->show('admin/items-families', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual']]);
   }
 
   /**
@@ -45,6 +62,16 @@ class ItemsFamiliesController extends AppController
     # code
   }
 
+  public function singleItemFamilyDelete($id, $fromPage)
+  {
+
+    $family = new ItemsFamilyModel();
+
+    $family->updateStatus($id, 'deleted');
+
+    $this->show('redirectToRoute', ['page' => $fromPage]);
+  }
+
   public function addItemFamily(){
     $this->show('admin/add_Items_Familly');
   }
@@ -59,11 +86,16 @@ class ItemsFamiliesController extends AppController
     if(!empty($_POST['submit'])) {
       $famille     = $post['family'];
       if (isset($_POST['status'])) {
-        $status = "dispo";
-      } else {
         $status = "deleted";
+      } else {
+        $status = "dispo";
       }
 
+      $familyexist = $model->doubloncheck($famille, 'family');
+
+      if ($familyexist > 0) {
+        $error['exist'] = 'cette categorie existe déjà';
+      }
 
       $error['family'] = $validation->textValid($famille, 'categorie');
 
