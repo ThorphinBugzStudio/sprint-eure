@@ -81,8 +81,6 @@ class UsersController extends AppController
    $statusBox = new RadiosBox('Statut', ['Actif' => 'active',
                                          'Inactif' => 'inactive'
                                         ], $userToUpdate['status']);
-   $r = $rolesBox->getHtml();
-   $s = $statusBox->getHtml();
 
    $this->show('admin/single-user', ['rolesBox' => $rolesBox->getHtml(), 'statusBox' => $statusBox->getHtml()]);
   }
