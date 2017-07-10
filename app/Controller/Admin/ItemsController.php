@@ -71,7 +71,7 @@ class ItemsController extends AppController
       $quantité    = $post['quantite'];
       $prix        = $post['prix'];
       $image       = $_FILES['image'];
-      $dossier = 'img';
+      $dossier = 'assets/img/uploaded_articles/';
       $status = "";
 
       if (isset($_POST['home'])) {
@@ -89,7 +89,7 @@ class ItemsController extends AppController
 
 
       if ($validation->IsValid($error)){
-        $dest_fichier = date('Y_m_d_H_i').'.'.pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
+        $img_name = date('Y_m_d_H_i').'_'.$designation.'.'.pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
 
         $data = array(
               'items_family_id' => $famille,
@@ -99,19 +99,18 @@ class ItemsController extends AppController
               'puht' => $prix,
               'home' => $home,
               'status' => $status,
-              'img_name' => $dest_fichier,
+              'img_name' => $img_name,
+              'created_at' => date('Y_m_d_H_i_s'),
             );
-        if(move_uploaded_file($_FILES['image']['tmp_name'], $dossier . $dest_fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+        if(move_uploaded_file($_FILES['image']['tmp_name'], $dossier . $img_name)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
          {
-              echo 'Upload effectué avec succès !';
+              $modelItem->insert($data, $stripTags = true);
+              $this->show('admin/add-item', array('family' => $family), $_POST="");
          }
 
-        $modelItem->insert($data, $stripTags = true);
-
-        $this->show('admin/add-item', array('family' => $family));
-      } else
+      }
+       else
         {
-          debug($_FILES['image']);
           $this->show('admin/add-item', array('family' => $family, 'error' => $error));
         }
 
