@@ -52,7 +52,7 @@
                 <a href="#"><i class="fa fa-file-text-o fa-fw"></i> Catégories<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                   <li><a href="<?= $this->url('admin_items_families') ?>">Toutes les catégories</a></li>
-									<li><a href="#">Ajouter</a></li>
+									<li><a href="<?= $this->url('admin_items_families_add') ?>">Ajouter</a></li>
                 </ul>
               </li>
 

@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/font-awesome.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/hover.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/jquery-ui.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 
 </head>
@@ -44,8 +45,12 @@
 			</li>
 
 			<li class="basket-order">
-				<a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+				<a href="#" id="opener"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+				<div id="dialog" title="Basic dialog">
+					<p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+				</div>
 			</li>
+
 		</div>
 
 
@@ -128,6 +133,8 @@
 </footer>
 
 	<script src="<?= $this->assetUrl('js/jquery-3.2.1.js') ?>" charset="utf-8"></script>
+	<script src="<?= $this->assetUrl('js/jquery-ui.js') ?>" charset="utf-8"></script>
+	<script src="<?= $this->assetUrl('js/panier.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/bootstrap.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/haut_de_page.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/inscription-ajax.js') ?>" charset="utf-8"></script>
