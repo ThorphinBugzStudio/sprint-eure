@@ -30,7 +30,7 @@
 		<!-- Navbar des utilisateurs : Inscription | Connexion | Profil | Déconnexion | Administration | Panier -->
 		<!-- ============================================ -->
 		<div class="row w-100 navbar-users justify-content-end">
-			<ul class="w-100">
+			<ul>
 				<li>
 					<a href="<?= $this->url('inscription') ?>"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</a>
 				</li>
@@ -53,12 +53,20 @@
 
 				<li class="basket-order" id="basket">
 					<a href="#" id="opener"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier (0) <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-					<div id="dialog" title="Votre panier">
+					<div id="dialog" title="Votre panier" class="hidden">
 						<p class="text-align-center mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Le panier est vide.</p>
 						<hr class="hrPage">
 						<div class="row mt-2">
+							<p class="col-6 bold mb-0">Taxes :</p>
+							<p class="col-6 text-align-right mb-0">0.00 €</p>
+						</div>
+						<div class="basket-spacer my-2"></div>
+						<div class="row">
 							<p class="col-6 bold mb-0">Total :</p>
 							<p class="col-6 text-align-right mb-0">0.00 €</p>
+						</div>
+						<div class="row justify-content-center my-2">
+							<button type="button" name="button" class="btn_ok"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Valider le panier</button>
 						</div>
 					</div>
 				</li>
@@ -94,7 +102,6 @@
 				<li class="hvr-underline-from-center"><a href="#">Boutique</a></li>
 				<li class="hvr-underline-from-center"><a href="<?= $this->url('how_to') ?>">Comment ça marche ?</a></li>
 				<li class="hvr-underline-from-center"><a href="#">À propos</a></li>
-				<li class="hvr-underline-from-center"><a href="#">Contact</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -117,13 +124,19 @@
 <footer>
 	<div class="container-fluid row footer-center">
 		<div class="footer_1">
-			<h2>» Widget</h2>
+			<h2>» Réseaux sociaux</h2>
 			<hr class="hr_footer">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<div class="row">
+				<a href="http://facebook.com"><img src="<?= $this->assetUrl('img/facebook.png') ?>" alt="Facebook" class="hvr-grow img-fluid"></a>
+				<a href="http://twitter.com"><img src="<?= $this->assetUrl('img/twitter.png') ?>" alt="Twitter" class="hvr-grow img-fluid"></a>
+				<a href="http://linkedin.com"><img src="<?= $this->assetUrl('img/linkedin.png') ?>" alt="Linkedin" class="hvr-grow img-fluid"></a>
+				<a href="#"><img src="<?= $this->assetUrl('img/google_plus.png') ?>" alt="Google +" class="hvr-grow img-fluid"></a>
+				<a href="#"><img src="<?= $this->assetUrl('img/rss.png') ?>" alt="Flux RSS" class="hvr-grow img-fluid"></a>
+			</div>
 		</div>
 
 		<div class="footer_2">
-			<h2>» Widget</h2>
+			<h2>» Contact</h2>
 			<hr class="hr_footer">
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		</div>
@@ -135,9 +148,12 @@
 		</div>
 
 		<div class="footer_4">
-			<h2>» Widget</h2>
+			<h2>» Newsletter</h2>
 			<hr class="hr_footer">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<div class="input-group">
+			  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+			  <input type="text" class="form-control" placeholder="Saisir votre e-mail" aria-describedby="basic-addon1" class="input-form">
+			</div>
 		</div>
 
 	</div>

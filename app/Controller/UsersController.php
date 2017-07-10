@@ -150,7 +150,7 @@ class UsersController extends AppController
 
 
 				$this->flash('Bienvenue ' . $pseudo . '. Veuillez vous connecter ', 'success');
-				$this->show('users/login');
+				$this->redirectToRoute('login');
 
 			} else {
 				$this->show('users/inscription',['error' => $error]);
@@ -205,9 +205,12 @@ class UsersController extends AppController
 					if($auth->isValidLoginInfo($userPseudo, $userPassword)== 0 || $auth->isValidLoginInfo($userEmail, $userPassword)== 0)
 					{
 						$auth->logUserIn($user);
-						$this->flash('Bienvenue ' . $pseudo . ' ,heureux de vous revoir ', 'success');
-						$this->show('default/home', ['user' => $user]);
+						$this->flash('Bienvenue ' . $userPseudo . ' ,heureux de vous revoir ', 'success');
+						$this->redirectToRoute('default_home');
 
+					} else {
+						$error['pseudo-mail'] = 'Vos identifiants sont inconnus';
+						$this->show('users/login', ['error' => $error]);
 					}
 				} else {
 					$error['pseudo-mail'] = 'Vos identifiants sont inconnus';
@@ -228,7 +231,11 @@ class UsersController extends AppController
 	 */
 	public function logout()
 	{
-		# code
+		$auth = new AuthentificationModel();
+
+		$auth->logUserOut();
+		$this->flash('Vous êtes déconnecté', 'success');
+		$this->show('default/home');
 	}
 
 	/**
@@ -238,7 +245,10 @@ class UsersController extends AppController
 	 */
 	public function passwordLost()
 	{
+
 		$this->show('users/password-lost');
+
+
 	}
 
 	/**
@@ -249,7 +259,42 @@ class UsersController extends AppController
 	 */
 	public function passwordLostAction()
 	{
-		# code
+		$error = [];
+		$valid = new ValidationTool();
+		$clean = new CleanTool();
+		$model = new UsersModel();
+
+
+		if(!empty($_POST['submit']))
+		{
+			$post = $clean->cleanPost($_POST);
+			$email = $post['emailconfirm'];
+
+			$error['emailconfirm'] = $valid->textValid($email,'email',6,70);
+			$error['invalid-email'] = $valid->emailValid($email);
+
+
+			if($valid->IsValid($error))
+			{
+				$user = $model->emailExists($email);
+				if(!empty($user))
+				{
+					$success = true;
+					$codedemail = urlencode($user['email']);
+					$codedtoken = urlencode($user['token']);
+    ///???? créer une url contenant le token et l'email encodés
+					$link = '<a href="?email='.$codedemail.'&token='.$codedtoken.'" style="color:tomato;">Modifier votre mot de passe</a>';
+
+					$this->show('users/password-lost',['success' => $success, 'link' => $link]);
+
+				} else {
+					$error['emailconfirm'] = 'Email inconnu dans la BDD';
+					$this->show('users/password-lost',['error' => $error]);
+				}
+			} else {
+				$this->show('users/password-lost',['error' => $error]);
+			}
+		}
 	}
 
 	/**
