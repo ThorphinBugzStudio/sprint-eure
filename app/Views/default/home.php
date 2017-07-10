@@ -9,7 +9,7 @@
     <span class="span-flash"><?= $w_flash_message->message ?></span>
 <!-- echo $w_flash_message->level; interprete l'argument success ou warning.... pr bootstrap(couleurs)-->
     <?php } ?>
-		
+
 	</div>
 
 
@@ -72,20 +72,22 @@
 <!-- 								Commentaires 									-->
 <!-- ============================================ -->
 <?php
-	foreach($comments as $comment) { ?>
 
+	foreach($comments as $comment)
+  { ?>
 		<div class="last-comments">
-			<p><?= $comment['username']; ?></p>
-			<p><?= $comment['comment']; ?></p>
-			<p><?= $comment['created_at']; ?></p>
+			<p><?php echo $comment['username']; ?></p>
+			<p><?php echo $comment['comment']; ?></p>
+			<p><?php echo $comment['created_at']; ?></p>
 		</div>
 
 		<?php } ?>
 
 <div class="comments-container">
 
-	<?php if(!empty($user)) { ?>
-		<form class="comments-form" action="" method="POST">
+	<?php if(!empty($user))
+  { ?>
+		<form class="comments-form" action="<?php $this->url('inscription_action'); ?>" method="POST">
 			<hr class="hrPage mb-3">
 			<div>
 				<label class="comment m-0">Votre commentaire :</label> <br>

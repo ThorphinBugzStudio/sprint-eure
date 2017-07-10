@@ -235,7 +235,7 @@ class UsersController extends AppController
 
 		$auth->logUserOut();
 		$this->flash('Vous êtes déconnecté', 'success');
-		$this->show('default/home');
+		$this->redirectToRoute('default_home');
 	}
 
 	/**
