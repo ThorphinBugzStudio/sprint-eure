@@ -11,14 +11,13 @@ class CommentsModel extends Model
       $sql = "SELECT c.comment, u.username, c.created_at
               FROM comments AS c
               JOIN users AS u
-              ON c.users_id = u.id
+              WHERE c.users_id = u.id
               ORDER BY c.created_at DESC LIMIT 5";
 
       $query = $this->dbh->prepare($sql);
       $query->execute();
       $comments = $query->fetchAll();
       return $comments;
-
   }
 
 }
