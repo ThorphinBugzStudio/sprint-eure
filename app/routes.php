@@ -66,8 +66,8 @@
 		// Ajouter
 				// GET ET POST -> voir routes du registry user en front
 		// Update
-		['GET', '/admin/user/[i:id]', 'Admin\Users#singleUser', 'admin_single_user'],
-		['POST', '/admin/user/[i:id]', 'Admin\Users#singleUserAction', 'admin_single_user_action'],
+		['GET', '/admin/user/[i:id]/[i:fromPage]', 'Admin\Users#singleUser', 'admin_single_user'],
+		['POST', '/admin/user/[i:id]/[i:fromPage]', 'Admin\Users#singleUserAction', 'admin_single_user_action'],
 		// Delete
 		['GET', '/admin/deleteuser/[i:id]/[i:fromPage]', 'Admin\Users#deleteUser', 'admin_delete_user'],
 
