@@ -3,8 +3,12 @@
 namespace Controller\Admin;
 
 use \Controller\AppController;
+
 use \Services\Tools\Pagination;
 use \Services\Tools\RadiosBox;
+
+use Security\CleanTool;
+use Security\ValidationTool;
 
 use \Model\UsersModel;
 use \Model\User_adressesModel;
@@ -64,6 +68,7 @@ class UsersController extends AppController
 
   /**
    * Détail / Formulaire d'un utilisateur.
+   * _R__
    *
    * @return void
    */
@@ -72,44 +77,78 @@ class UsersController extends AppController
     // ADMIN ONLY
     // $this->allowTo('admin');
 
-   $users = new UsersModel();
-   $userFactAdress = new User_adressesModel();
-   $userAvatar = new AvatarsModel();
+    $users = new UsersModel();
+    $userFactAdress = new User_adressesModel();
+    $userAvatar = new AvatarsModel();
 
-   $userToUpdate = $users->find($id);
-   $adress = $userFactAdress->getAdressId($id);
-   $avatar = $userAvatar->getAvatarId($id);
-   // debug($userToUpdate);
+    $userToUpdate = $users->find($id);
+    $adress = $userFactAdress->getUserAdress($id);
+    $avatar = $userAvatar->getUserAvatar($id);
+    // debug($userToUpdate);
 
-   $rolesBox = new RadiosBox('Role', ['Client' => 'client',
-                                      'Administrateur' => 'admin'
-                                     ], $userToUpdate['role']);
+    $rolesBox = new RadiosBox('Role', ['Client'         => 'client',
+                                       'Administrateur' => 'admin'
+                                      ], $userToUpdate['role']);
 
-   $statusBox = new RadiosBox('Statut', ['Actif' => 'active',
-                                         'Inactif' => 'inactive'
-                                        ], $userToUpdate['status']);
+    $statusBox = new RadiosBox('Statut', ['Actif'   => 'active',
+                                          'Inactif' => 'inactive'
+                                          ], $userToUpdate['status']);
 
-   $this->show('admin/single-user', ['userToUpdate' => $userToUpdate,
-                                     'adress' => $adress,
-                                     'avatar' => $avatar,
-                                     'rolesBox' => $rolesBox->getHtml(),
-                                     'statusBox' => $statusBox->getHtml(),
-                                     'page' => $fromPage
-                                    ]);
+    $this->show('admin/single-user', ['userToUpdate' => $userToUpdate,
+                                      'adress'       => $adress,
+                                      'avatar'       => $avatar,
+                                      'rolesBox'     => $rolesBox->getHtml(),
+                                      'statusBox'    => $statusBox->getHtml(),
+                                      'page'         => $fromPage
+                                      ]);
   }
 
   /**
    * Traitement Détail / Formulaire d'un utilisateur.
-   * Recuperation via POST du type d'action _RU_.
+   * Recuperation via POST du type d'action __U_.
    *
    * @return void
    */
-  public function singleUserAction()
+  public function singleUserAction($id, $fromPage)
   {
     // ADMIN ONLY
     // $this->allowTo('admin');
 
-    # code
+		$users = new UsersModel();
+    $userFactAdress = new User_adressesModel();
+    $userAvatar = new AvatarsModel();
+
+    $userToUpdate = $users->find($id);
+    $adress = $userFactAdress->getUserAdress($id);
+    $avatar = $userAvatar->getUserAvatar($id);
+
+		$clean = new CleanTool();
+		$valid = new ValidationTool();
+		// $auth = new AuthentificationModel();
+		// $strU = new StringUtils();
+    
+    $error = [];
+		$success = false;
+
+      debug($_POST); die();
+
+    if(!empty($_POST['submit']))
+		{
+    }
+    else 
+    {
+      // Comment $_POST pourrait il etre vide ?
+      $this->show('users/inscription');
+    }
+
+
+
+
+
+
+
+
+
   }
 
 }

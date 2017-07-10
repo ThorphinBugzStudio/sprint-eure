@@ -2488,22 +2488,23 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
+/*
 fieldset {
   min-width: 0;
   padding: 0;
   margin: 0;
   border: 0;
-}
+}*/
 legend {
   display: block;
-  width: 100%;
+  font-size: 18px;
+  /*width: 100%;
   padding: 0;
   margin-bottom: 20px;
-  font-size: 21px;
   line-height: inherit;
   color: #333;
   border: 0;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;*/
 }
 label {
   display: inline-block;

@@ -16,4 +16,19 @@ class AvatarsModel extends Model
     return $result;
   }
 
+  /**
+   * Get Avatar d'un utilisateur
+   * @param  int $userId id de l'utilisateur
+   * @return array
+   */
+  public function getUserAvatar($userId)
+  {
+    $sql = "SELECT * FROM $this->table WHERE user_id = '$userId'";
+    // debug($this->table);
+    $querry = $this->dbh->prepare($sql);
+    $querry->execute();
+    $result = $querry->fetch();
+    return $result;
+  }
+
 }

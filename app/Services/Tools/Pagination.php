@@ -66,6 +66,7 @@ class Pagination
     {
         $this->paginationFor = $paginationFor;
         $this->slug = $slug;
+        if (!$nbId > 0) {$nbId = 1;}
         $this->nbId = $nbId;
         $this->limit = $limit;
         $this->totalPage = ceil($nbId / $limit);
