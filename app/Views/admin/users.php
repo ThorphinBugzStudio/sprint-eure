@@ -36,7 +36,7 @@
             <td><?php echo $result['modified_at']; ?></td>
             <td class="menu_actions">
               <!-- BOUTON : Edition -->
-              <a class="" href="<?=$this->url('admin_single_user', ['id' => $result['id']] ) ?>">
+              <a class="" href="<?=$this->url('admin_single_user', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">
                 <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editer">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button>

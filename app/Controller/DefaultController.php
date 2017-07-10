@@ -20,11 +20,12 @@ class DefaultController extends AppController
 	public function home()
 	{
 		$user = $this->getUser();
+
 		$model = new CommentsModel();
 
 		$comments = $model->last5Comments();
-		//debug($comments);
-		$this->show('default/home',['comments' => $comments, 'user' => $user]);
+
+		$this->show('default/home',['user' => $user,'comments' => $comments]);
 	}
 
 	/**
@@ -50,7 +51,12 @@ class DefaultController extends AppController
 
 		if(!empty($_POST['submit']))
 		{
-			$username = $_SESSION['username'];
+			$user = $this->getUser();
+			$username = $user['username'];
+			$user_id = $user['id'];
+			$created_at = date('Y-m-d G:i:s');
+
+
 			$comment = trim(strip_tags($_POST['comment']));
 
 			$error['comment'] = $verifs->textValid($comment, 'commentaire',10,500);
@@ -58,8 +64,8 @@ class DefaultController extends AppController
 			if($verifs->IsValid($error))
 			{
 
-				$created_at = date('Y-m-d G:i:s');
-				$model->insert(['users_id' => $_SESSION['user_id'],
+
+				$model->insert(['users_id' => $user_id,
 												'comment' => $comment,
 												'created_at' => $created_at ]);
 

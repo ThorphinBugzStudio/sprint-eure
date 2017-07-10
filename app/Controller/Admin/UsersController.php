@@ -46,6 +46,7 @@ class UsersController extends AppController
 
   /**
    * Soft delete d'un utilisateur en bdd.
+   * ___D
    *
    * @return void
    */
@@ -63,11 +64,10 @@ class UsersController extends AppController
 
   /**
    * Détail / Formulaire d'un utilisateur.
-   * CRUD.
    *
    * @return void
    */
-  public function singleUser($id)
+  public function singleUser($id, $fromPage)
   {
     // ADMIN ONLY
     // $this->allowTo('admin');
@@ -93,13 +93,14 @@ class UsersController extends AppController
                                      'adress' => $adress,
                                      'avatar' => $avatar,
                                      'rolesBox' => $rolesBox->getHtml(),
-                                     'statusBox' => $statusBox->getHtml()
+                                     'statusBox' => $statusBox->getHtml(),
+                                     'page' => $fromPage
                                     ]);
   }
 
   /**
    * Traitement Détail / Formulaire d'un utilisateur.
-   * Recuperation via POST du type d'action CRUD.
+   * Recuperation via POST du type d'action _RU_.
    *
    * @return void
    */
