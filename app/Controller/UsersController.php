@@ -273,15 +273,22 @@ class UsersController extends AppController
 
 			if($valid->IsValid($error))
 			{
-				$user = $model->emailExists($email);
+				if($model->emailExists($email))
+				{
+					$user = $model->getUserByUsernameOrEmail($email);
+				}
+
 				if(!empty($user))
 				{
 					$success = true;
 					$codedemail = urlencode($user['email']);
 					$codedtoken = urlencode($user['token']);
+					// debug($codedemail);
+					// die('here');
     ///???? créer une url contenant le token et l'email encodés
-    			$url = $this->generateUrl('password_modify', ['slug' => '/email=$codedemail/token=$codedtoken']);
+    			$url = $this->redirectToRoute('password_modify', ['slug' => 'email='.$codedemail.'/token='.$codedtoken.'']);
 					$link = '<a href="'.$url.' ">Modifier votre mot de passe</a>';
+
 
 					$this->show('users/password-lost',['success' => $success, 'link' => $link]);
 
@@ -302,7 +309,11 @@ class UsersController extends AppController
 	 */
 	public function passwordModify()
 	{
-		$this->show('users/password-modify');
+		if($this->generateUrl('password_modify', ['slug' => 'email='.$codedemail.'/token='.$codedtoken,false]))
+		{
+			die('here');
+			$this->show('users/password-modify');
+		}
 	}
 
 	/**

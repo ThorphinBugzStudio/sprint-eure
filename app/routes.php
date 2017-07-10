@@ -28,7 +28,7 @@
 		['POST', '/user/passwordLost', 'Users#passwordLostAction', 'password_lost_action'],
 
 		/** Password Modify **/
-		['GET', '/user/passwordModify', 'Users#passwordModify', 'password_modify'],
+		['GET', '/user/passwordModify/[i:slug]', 'Users#passwordModify', 'password_modify'],
 		['POST', '/user/passwordModify', 'Users#passwordModifyAction', 'password_modify_action'],
 
 		/**
