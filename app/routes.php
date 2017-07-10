@@ -125,6 +125,4 @@
 		['POST', '/admin/addfamily', 'Admin\ItemsFamiliesController#addItemFamilyAction','admin_items_families_add_action'],
 
 
-
-
 	);
