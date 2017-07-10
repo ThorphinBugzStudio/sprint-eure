@@ -24,7 +24,7 @@ class AvatarsModel extends Model
   public function getUserAvatar($userId)
   {
     $sql = "SELECT * FROM $this->table WHERE user_id = '$userId'";
-    debug($this->table);
+    // debug($this->table);
     $querry = $this->dbh->prepare($sql);
     $querry->execute();
     $result = $querry->fetch();

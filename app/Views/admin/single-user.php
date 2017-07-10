@@ -5,7 +5,7 @@
 <div class="global">
 
   <!-- Formulaire radiobutton pour changement de role -->
-  <form id="formChangeRole" class="form-subscribe row " action="<?php $this->url('admin_single_user_action', ['id' => $postId]); ?>" method="POST">
+  <form id="formChangeRole" class="form-subscribe row " action="<?php $this->url('admin_single_user_action', ['id' => $userToUpdate['id'], 'fromPage' => $page]); ?>" method="POST">
     <div class="col-sm-12 col-md-8 py-3">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -17,7 +17,7 @@
               <div class="col-lg-6 mr-auto">
                 <!-- Section : Prénom -->
                 <label for="firstname">Prénom</label> <span class="error">*</span>
-                <input class="input-back" type="text" name="firstName" value="<?php if(!empty($_POST['firstName'])){ echo $_POST['firstName']; } elseif (!empty($userToUpdate['firstName'])) { echo $userToUpdate['firstName']; } ?>">
+                <input class="input-back" type="text" name="firstname" value="<?php if(!empty($_POST['firstname'])){ echo $_POST['firstname']; } elseif (!empty($userToUpdate['firstName'])) { echo $userToUpdate['firstName']; } ?>">
                 <?php if(!empty($error['firstname'])){ echo '<p id="error-firstname" class="error">' . $error['firstname'] . '</p>'; } ?>
               </div>
 
@@ -32,7 +32,7 @@
           <div class="form-group">
             <!-- Section : Pseudo -->
             <label for="pseudo">Pseudo</label> <span class="error">*</span>
-            <input class="input-back" type="text" name="pseudo" value="<?php if(!empty($_POST['pseudo'])){ echo $_POST['pseudo']; } ?>">
+            <input class="input-back" type="text" name="pseudo" value="<?php if(!empty($_POST['pseudo'])){ echo $_POST['pseudo']; } elseif (!empty($userToUpdate['username'])) { echo $userToUpdate['username']; } ?>">
             <?php if(!empty($error['pseudo'])){ echo '<p id="error-pseudo" class="error">' . $error['pseudo'] . '</p>'; } ?>
           </div>
 
@@ -46,7 +46,7 @@
           <div class="form-group">
               <!-- Section : Adresse -->
               <label for="adress">Adresse de facturation</label> <span class="error">*</span>
-              <input class="input-back" type="text" name="adress" value="<?php if(!empty($_POST['adress'])){ echo $_POST['adress']; }  elseif (!empty($userToUpdate['email'])) { echo $userToUpdate['email']; } ?>">
+              <input class="input-back" type="text" name="adress" value="<?php if(!empty($_POST['adress'])){ echo $_POST['adress']; } elseif (!empty($adress['adress1'])) { echo $adress['adress1']; } ?>">
               <?php if(!empty($error['adress'])){ echo '<p id="error-adress" class="error">' . $error['adress'] . '</p>'; } ?>
           </div>
 
@@ -54,14 +54,14 @@
             <div class="col-lg-6 mr-auto">
               <!-- Section : Code Postal -->
               <label for="postal-code">Code Postal</label> <span class="error">*</span>
-              <input class="input-back" type="text" name="postal-code" value="<?php if(!empty($_POST['postal-code'])){ echo $_POST['postal-code']; } ?>">
+              <input class="input-back" type="text" name="postal-code" value="<?php if(!empty($_POST['postal-code'])){ echo $_POST['postal-code']; } elseif (!empty($adress['postal_code'])) { echo $adress['postal_code']; } ?>">
               <?php if(!empty($error['postal-code'])){ echo '<p id="error-postal-code" class="error">' . $error['postal-code'] . '</p>'; } ?>
             </div>
 
             <div class="col-lg-6 ml-auto">
               <!-- Section : Ville -->
               <label for="city">Ville</label> <span class="error">*</span>
-              <input class="input-back" type="text" name="city" value="<?php if(!empty($_POST['city'])){ echo $_POST['city']; } ?>">
+              <input class="input-back" type="text" name="city" value="<?php if(!empty($_POST['city'])){ echo $_POST['city']; } elseif (!empty($adress['town'])) { echo $adress['town']; } ?>">
               <?php if(!empty($error['city'])){ echo '<p id="error-city" class="error">' . $error['city'] . '</p>'; } ?>
             </div>
           </div>
@@ -69,14 +69,14 @@
           <div class="form-group">
             <!-- Section : Pays -->
             <label for="country">Pays</label> <span class="error">*</span>
-            <input class="input-back" type="text" name="country" value="<?php if(!empty($_POST['country'])){ echo $_POST['country']; } ?>">
+            <input class="input-back" type="text" name="country" value="<?php if(!empty($_POST['country'])){ echo $_POST['country']; } elseif (!empty($adress['country'])) { echo $adress['country']; } ?>">
             <?php if(!empty($error['country'])){ echo '<p id="error-country" class="error">' . $error['country'] . '</p>'; } ?>
           </div>
 
           <div class="form-group">
             <!-- Section : Avatar -->
             <label for="avatar">Avatar</label> <span class="error">*</span>
-            <input class="input-back" type="file" name="avatar" value="<?php if(!empty($_POST['avatar'])){ echo $_POST['avatar']; } elseif (!empty($avatar['img_name'])) { echo $avatar['img_name']; } ?>" style="max-width: 100%; overflow: hidden;">
+            <input class="input-back" type="text" name="avatar" value="<?php if(!empty($_POST['avatar'])){ echo $_POST['avatar']; } elseif (!empty($avatar['img_name'])) { echo $avatar['img_name']; } ?>">
             <?php if(!empty($error['avatar'])){ echo '<p id="error-avatar" class="error">' . $error['avatar'] . '</p>'; } ?>
           </div>
         </div>

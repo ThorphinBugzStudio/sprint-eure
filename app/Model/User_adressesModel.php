@@ -17,7 +17,7 @@ class User_adressesModel extends Model
    public function getUserAdress($userId)
    {
       $sql = "SELECT * FROM $this->table WHERE users_id = '$userId' AND adress_type = 'facturation'";
-      debug($this->table);
+    //   debug($this->table);
       $querry = $this->dbh->prepare($sql);
       $querry->execute();
       $result = $querry->fetch();
