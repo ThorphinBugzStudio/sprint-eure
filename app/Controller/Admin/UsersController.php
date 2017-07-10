@@ -4,6 +4,7 @@ namespace Controller\Admin;
 
 use \Controller\AppController;
 use \Services\Tools\Pagination;
+use \Services\Tools\RadiosBox;
 
 use \Model\UsersModel;
 
@@ -20,12 +21,12 @@ class UsersController extends AppController
   public function users($page = '')
   {
       // ADMIN ONLY
-      // $this->allowTo('admin'); 
-      
+      // $this->allowTo('admin');
+
       $users = new UsersModel($where = "status <> 'deleted'");
 
       // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-      $pagin = new Pagination('Admin users pages navigation', $this->generateUrl('admin_users'), $users->getNbId(), 3);
+      $pagin = new Pagination('Admin users pages navigation', $this->generateUrl('admin_users'), $users->getNbId(), 5);
 
       // si l'url demande une page  : setting de pageStatus dans l'objet Pagination
       if (!empty($page)) { $pagin->setPageStatus($page); }
@@ -35,12 +36,12 @@ class UsersController extends AppController
       // get du html de la barre de navigation pour la pagination
       $navPaginBar = $pagin->getHtml();
       // debug($navPaginBar);
-      
+
       $results = $users->findAll('id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
 
       $this->show('admin/users', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual']]);
   }
-  
+
   /**
    * Soft delete d'un utilisateur en bdd.
    *
@@ -49,8 +50,8 @@ class UsersController extends AppController
   public function deleteUser($id, $fromPage)
   {
     // ADMIN ONLY
-    // $this->allowTo('admin'); 
-    
+    // $this->allowTo('admin');
+
     $users = new UsersModel();
 
     $users->updateStatus($id, 'deleted');
@@ -64,12 +65,26 @@ class UsersController extends AppController
    *
    * @return void
    */
-  public function singleUser()
+  public function singleUser($id)
   {
     // ADMIN ONLY
-    // $this->allowTo('admin'); 
+    // $this->allowTo('admin');
 
-    $this->show('admin/single-user');
+   $users = new UsersModel();
+   $userToUpdate = $users->find($id);
+   // debug($userToUpdate);
+
+   $rolesBox = new RadiosBox('Role', ['Client' => 'client',
+                                      'Administrateur' => 'admin'
+                                     ], $userToUpdate['role']);
+
+   $statusBox = new RadiosBox('Statut', ['Actif' => 'active',
+                                         'Inactif' => 'inactive'
+                                        ], $userToUpdate['status']);
+   $r = $rolesBox->getHtml();
+   $s = $statusBox->getHtml();
+
+   $this->show('admin/single-user', ['rolesBox' => $rolesBox->getHtml(), 'statusBox' => $statusBox->getHtml()]);
   }
 
   /**
@@ -81,8 +96,8 @@ class UsersController extends AppController
   public function singleUserAction()
   {
     // ADMIN ONLY
-    // $this->allowTo('admin'); 
-        
+    // $this->allowTo('admin');
+
     # code
   }
 

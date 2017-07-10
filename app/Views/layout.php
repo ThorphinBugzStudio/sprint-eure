@@ -20,40 +20,52 @@
 </head>
 <body>
 	<header>
+		<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+			<button class="navbar-toggler m-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
 		<!-- ============================================ -->
 		<!-- Navbar des utilisateurs : Inscription | Connexion | Profil | Déconnexion | Administration | Panier -->
 		<!-- ============================================ -->
-		<div class="row navbar-users justify-content-end">
-			<li>
-				<a href="<?= $this->url('inscription') ?>"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</a>
-			</li>
+		<div class="row w-100 navbar-users justify-content-end">
+			<ul class="w-100">
+				<li>
+					<a href="<?= $this->url('inscription') ?>"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</a>
+				</li>
 
-			<li>
-				<a href="<?= $this->url('login') ?>"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a>
-			</li>
+				<li>
+					<a href="<?= $this->url('login') ?>"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a>
+				</li>
 
-			<li>
-				<a href="<?= $this->url('user_profile') ?>"><i class="fa fa-user" aria-hidden="true"></i> Votre profil</a>
-			</li>
+				<li>
+					<a href="<?= $this->url('user_profile') ?>"><i class="fa fa-user" aria-hidden="true"></i> Votre profil</a>
+				</li>
 
-			<li>
-				<a href="<?= $this->url('admin_users') ?>"><i class="fa fa-dashboard" aria-hidden="true"></i> Administration</a>
-			</li>
+				<li>
+					<a href="<?= $this->url('admin_users') ?>"><i class="fa fa-dashboard" aria-hidden="true"></i> Administration</a>
+				</li>
 
-			<li>
-				<a href="<?= $this->url('logout') ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
-			</li>
+				<li>
+					<a href="<?= $this->url('logout') ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
+				</li>
 
-			<li class="basket-order">
-				<a href="#" id="opener"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-				<div id="dialog" title="Basic dialog">
-					<p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-				</div>
-			</li>
-
+				<li class="basket-order" id="basket">
+					<a href="#" id="opener"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier (0) <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+					<div id="dialog" title="Votre panier">
+						<p class="text-align-center mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Le panier est vide.</p>
+						<hr class="hrPage">
+						<div class="row mt-2">
+							<p class="col-6 bold mb-0">Total :</p>
+							<p class="col-6 text-align-right mb-0">0.00 €</p>
+						</div>
+					</div>
+				</li>
+			</ul>
 		</div>
-
-
+	</div>
+</nav>
 		<!-- ============================================ -->
 		<!-- 			Bannière du site + nom et logo 					-->
 		<!-- ============================================ -->
@@ -80,7 +92,7 @@
 			<ul class="row justify-content-center">
 				<li class="hvr-underline-from-center"><a href="<?= $this->url('default_home') ?>">Accueil</a></li>
 				<li class="hvr-underline-from-center"><a href="#">Boutique</a></li>
-				<li class="hvr-underline-from-center"><a href="#">Comment ça marche ?</a></li>
+				<li class="hvr-underline-from-center"><a href="<?= $this->url('how_to') ?>">Comment ça marche ?</a></li>
 				<li class="hvr-underline-from-center"><a href="#">À propos</a></li>
 				<li class="hvr-underline-from-center"><a href="#">Contact</a></li>
 			</ul>

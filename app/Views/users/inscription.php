@@ -2,55 +2,79 @@
 
 <?php $this->start('main_content') ?>
 
+<i>Les champs marqués d'une <span class="error">*</span> sont obligatoires.</i>
+
 <form id="sub-form" class="form-subscribe" action="<?php $this->url('inscription_action'); ?>" enctype="multipart/form-data" method="POST">
 
   <div class="row my-3" style="justify-content: space-between;">
     <div class="col-lg-5">
-      <label for="firstname">Prénom<span id="error-firstname"><?php if(!empty($error['firstname'])){ echo $error['firstname']; } ?></span></label> <br>
+      <!-- Section : Prénom -->
+      <label for="firstname">Prénom</label> <span class="error">*</span>
       <input class="input-form" type="text" name="firstname" value="<?php if(!empty($_POST['firstname'])){ echo $_POST['firstname']; } ?>">
+      <?php if(!empty($error['firstname'])){ echo '<p id="error-firstname" class="error">' . $error['firstname'] . '</p>'; } ?>
 
-      <label for="lastname">Nom<span id="error-lastname"><?php if(!empty($error['lastname'])){ echo $error['lastname']; } ?></span></label> <br>
+      <!-- Section : Nom -->
+      <label for="lastname">Nom</label> <span class="error">*</span>
       <input class="input-form" type="text" name="lastname" value="<?php if(!empty($_POST['lastname'])){ echo $_POST['lastname']; } ?>">
+      <?php if(!empty($error['lastname'])){ echo '<p id="error-lastname" class="error">' . $error['lastname'] . '</p>'; } ?>
 
-      <label for="email">E-mail<span id="error-email"><?php if(!empty($error['email'])){ echo $error['email']; } ?></span></label>
+      <!-- Section : E-mail -->
+      <label for="email">E-mail</label> <span class="error">*</span>
       <input class="input-form" type="text" name="email" value="<?php if(!empty($_POST['email'])){ echo $_POST['email']; } ?>">
+      <?php if(!empty($error['email'])){ echo '<p id="error-email" class="error">' . $error['email'] . '</p>'; } ?>
 
       <div class="billing-adress">
-        <label for="adress">Adresse de facturation<span id="error-adress"><?php if(!empty($error['adress'])){ echo $error['adress']; } ?></span></label>
+        <!-- Section : Adresse -->
+        <label for="adress">Adresse de facturation</label> <span class="error">*</span>
         <input class="input-form" type="text" name="adress" value="<?php if(!empty($_POST['adress'])){ echo $_POST['adress']; } ?>">
+        <?php if(!empty($error['adress'])){ echo '<p id="error-adress" class="error">' . $error['adress'] . '</p>'; } ?>
 
           <div class="row">
             <div class="col-lg-5 mr-auto">
-              <label for="postal-code">Code Postal<span id="error-postal-code"><?php if(!empty($error['postal-code'])){ echo $error['postal-code']; } ?></span></label>
+              <!-- Section : Code Postal -->
+              <label for="postal-code">Code Postal</label> <span class="error">*</span>
               <input class="input-form" type="text" name="postal-code" value="<?php if(!empty($_POST['postal-code'])){ echo $_POST['postal-code']; } ?>">
+              <?php if(!empty($error['postal-code'])){ echo '<p id="error-postal-code" class="error">' . $error['postal-code'] . '</p>'; } ?>
             </div>
 
             <div class="col-lg-5 ml-auto">
-              <label for="city">Ville<span id="error-city"><?php if(!empty($error['city'])){ echo $error['city']; } ?></span></label>
+              <!-- Section : Ville -->
+              <label for="city">Ville</label> <span class="error">*</span>
               <input class="input-form" type="text" name="city" value="<?php if(!empty($_POST['city'])){ echo $_POST['city']; } ?>">
+              <?php if(!empty($error['city'])){ echo '<p id="error-city" class="error">' . $error['city'] . '</p>'; } ?>
             </div>
           </div>
 
-        <label for="country">Pays<span id="error-country"><?php if(!empty($error['country'])){ echo $error['country']; } ?></span></label>
+        <!-- Section : Pays -->
+        <label for="country">Pays</label> <span class="error">*</span>
         <input class="input-form" type="text" name="country" value="<?php if(!empty($_POST['country'])){ echo $_POST['country']; } ?>">
-
+        <?php if(!empty($error['country'])){ echo '<p id="error-country" class="error">' . $error['country'] . '</p>'; } ?>
       </div>
     </div>
 
     <div class="col-lg-5">
-      <label for="pseudo">Pseudo<span id="error-pseudo"><?php if(!empty($error['pseudo'])){ echo $error['pseudo']; } ?></span></label>
+      <!-- Section : Pseudo -->
+      <label for="pseudo">Pseudo</label> <span class="error">*</span>
       <input class="input-form" type="text" name="pseudo" value="<?php if(!empty($_POST['pseudo'])){ echo $_POST['pseudo']; } ?>">
+      <?php if(!empty($error['pseudo'])){ echo '<p id="error-pseudo" class="error">' . $error['pseudo'] . '</p>'; } ?>
 
-      <label for="password">Mot de passe<span id="error-password"><?php if(!empty($error['password'])){ echo $error['password']; } ?></span></label>
-      <input class="input-form" type="text" name="password" value="<?php if(!empty($_POST['password'])){ echo $_POST['password']; } ?>">
+      <!-- Section : Mot de passe -->
+      <label for="password">Mot de passe</label> <span class="error">*</span>
+      <input class="input-form" type="password" name="password" value="<?php if(!empty($_POST['password'])){ echo $_POST['password']; } ?>">
+      <?php if(!empty($error['password'])){ echo '<p id="error-password" class="error">' . $error['password'] . '</p>'; } ?>
 
-      <label for="password-confirm">Confirmez votre mot de passe</label>
-      <input class="input-form" type="text" name="password-confirm" value="<?php if(!empty($_POST['password-confirm'])){ echo $_POST['password-confirm']; } ?>">
+      <!-- Section : Confirmation de mot de passe -->
+      <label for="password-confirm">Confirmez votre mot de passe</label> <span class="error">*</span>
+      <input class="input-form" type="password" name="password-confirm" value="<?php if(!empty($_POST['password-confirm'])){ echo $_POST['password-confirm']; } ?>">
 
-      <label for="avatar">Avatar<span id="error-avatar"><?php if(!empty($error['avatar'])){ echo $error['avatar']; } ?></span></label>
-      <input class="input-form" type="file" name="avatar" value="<?php if(!empty($_POST['avatar'])){ echo $_POST['avatar']; } ?>">
+      <!-- Section : Avatar -->
+      <label for="avatar">Avatar</label> <span class="error">*</span>
+      <input class="input-form" type="file" name="avatar" value="<?php if(!empty($_POST['avatar'])){ echo $_POST['avatar']; } ?>" style="max-width: 100%; overflow: hidden;">
+      <?php if(!empty($error['avatar'])){ echo '<p id="error-avatar" class="error">' . $error['avatar'] . '</p>'; } ?>
 
-      <input class= "bg-primary" type="submit" name="submit" value="S'inscrire">
+      <div class="row my-2 justify-content-center">
+        <input class= "bg-primary btn_ok" type="submit" name="submit" value="S'inscrire">
+      </div>
     </div>
   </div>
 </form>

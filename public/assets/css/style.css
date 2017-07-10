@@ -19,7 +19,13 @@ body {
 	border-top: 2px solid #1e7dce;
 }
 
-.navbar-users li {
+.navbar-users ul {
+	padding: 0;
+	margin: 0;
+	display: contents;
+}
+
+.navbar-users ul li {
 	list-style: none;
 	justify-content: space-between;
 	padding: 10px 20px;
@@ -95,6 +101,48 @@ body {
 
 .navbar-menu ul li a:hover {
 	color: #1e7dce;
+}
+
+.navbar-light .navbar-toggler {
+	border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler {
+	background: white;
+	cursor: pointer;
+}
+
+.bg-faded {
+	background-color: #1d1d1d;
+}
+
+/* ------------- JQUERY PANIER ------------- */
+
+.ui-dialog {
+	padding: 0;
+}
+
+.ui-widget-header {
+	background-color: #1e7dce;
+	border: none;
+	border-top: 1px solid #0030a4;
+	border-bottom: 1px solid #0030a4;
+	border-radius: 0;
+	color: #fff;
+}
+
+.ui-widget.ui-widget-content {
+	border: none;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+	background-color: #133bb0;
+	color: white;
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	padding: 12px;
+	top: 45%;
 }
 
 /* ----------------- SLIDERS ----------------- */
@@ -236,6 +284,11 @@ textarea {
 	border: 1px solid #0075cb;
 }
 
+.error {
+	color: red;
+	font-weight: bold;
+}
+
 /* ----------------- FOOTER ----------------- */
 
 footer {
@@ -286,4 +339,16 @@ footer {
 
 .hvr-grow {
 	display: block;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+.text-align-right {
+	text-align: right;
+}
+
+.bold {
+	font-weight: bold;
 }

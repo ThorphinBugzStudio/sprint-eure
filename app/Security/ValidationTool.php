@@ -52,9 +52,9 @@ class ValidationTool
 		if(!empty($text)) {
 			$strtext = strlen($text);
 			if($strtext > $max) {
-				$error = 'Your ' . $title . ' est trop long';
+				$error = 'Votre ' . $title . ' est trop long';
 			} elseif($strtext < $min) {
-				$error = 'Your ' . $title . ' is trop court';
+				$error = 'Votre ' . $title . ' est trop court';
 			}
 		} else {
 			if(!$empty) {
@@ -102,7 +102,7 @@ class ValidationTool
 						$fileExtension = substr($file_name, $i_point ,strlen($file_name) - $i_point);
 
 						if (!in_array($fileExtension, $extensions)) {
-							$error = 'Veuillez télécharger une image de type jpg,jpeg ou png ';
+							$error = 'Veuillez télécharger une image de type jpg, jpeg ou png ';
 						} else {
 
 							// alternative, sécurité +++++
@@ -111,7 +111,7 @@ class ValidationTool
 							finfo_close($finfo);
 
 							if (!in_array($mime, $extensionsmime)) {
-								$error = 'Veuillez télécharger une image de type jpg,jpeg ou png ';
+								$error = 'Veuillez télécharger une image de type jpg, jpeg ou png ';
 							}
 						}
 					}
@@ -159,10 +159,10 @@ class ValidationTool
 	      $error = 'Le mot de passe ne correspond pas';
 	    }
 	    if(strlen($password)<$min){
-	      $error = 'Votre mot de passe est trop court (6 caractères min)';
+	      $error = 'Votre mot de passe est trop court (6 caractères minimum)';
 	    }
 	    if(strlen($password)>$max){
-	      $error = 'Votre mot de passe est trop long (255 caractères max)';
+	      $error = 'Votre mot de passe est trop long (255 caractères maximum)';
 	    }
 	  } else {
 	    $error = 'Veuillez entrer un mot de passe';
