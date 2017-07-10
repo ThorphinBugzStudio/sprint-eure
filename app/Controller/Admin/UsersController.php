@@ -7,6 +7,8 @@ use \Services\Tools\Pagination;
 use \Services\Tools\RadiosBox;
 
 use \Model\UsersModel;
+use \Model\User_adressesModel;
+use \Model\AvatarsModel;
 
 /**
  * Controller Administration des utilisateurs en back office.
@@ -71,7 +73,12 @@ class UsersController extends AppController
     // $this->allowTo('admin');
 
    $users = new UsersModel();
+   $userFactAdress = new User_adressesModel();
+   $userAvatar = new AvatarsModel();
+
    $userToUpdate = $users->find($id);
+   $adress = $userFactAdress->getAdressId($id);
+   $avatar = $userAvatar->getAvatarId($id);
    // debug($userToUpdate);
 
    $rolesBox = new RadiosBox('Role', ['Client' => 'client',
@@ -82,7 +89,12 @@ class UsersController extends AppController
                                          'Inactif' => 'inactive'
                                         ], $userToUpdate['status']);
 
-   $this->show('admin/single-user', ['rolesBox' => $rolesBox->getHtml(), 'statusBox' => $statusBox->getHtml()]);
+   $this->show('admin/single-user', ['userToUpdate' => $userToUpdate,
+                                     'adress' => $adress,
+                                     'avatar' => $avatar,
+                                     'rolesBox' => $rolesBox->getHtml(),
+                                     'statusBox' => $statusBox->getHtml()
+                                    ]);
   }
 
   /**
