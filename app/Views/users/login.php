@@ -11,15 +11,15 @@
 
     <form class="" action="<?php $this->url('login_action') ?>" method="POST">
 
-      <label for="pseudo-mail">Entrez votre pseudo ou votre Email</label>
+      <label for="pseudo-mail">Entrez votre pseudo ou votre Email<span><?php if(!empty($error['pseudo-mail'])){ echo $error['pseudo-mail']; } ?></span></label>
       <input type="text" name="pseudo-mail" value="">
 
-      <label for="password">Entrez votre mot de passe</label>
+      <label for="password">Entrez votre mot de passe<span><?php if(!empty($error['password'])){ echo $error['password']; } ?></span></label>
       <input type="text" name="password" value="">
 
       <input type="submit" name="submit" value="Se connecter">
 
-      
+      <a href="<?php echo $this->url('password_lost'); ?>">Mot de passe oublié?</a>
 
     </form>
 

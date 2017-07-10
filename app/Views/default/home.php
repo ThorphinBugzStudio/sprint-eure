@@ -2,6 +2,14 @@
 
 <?php $this->start('main_content') ?>
 
+<div class="flash-message">
+
+  <?php if(!empty($w_flash_message->message)) { ?>
+
+    <span class="span-flash"><?= $w_flash_message->message ?></span>
+<!-- echo $w_flash_message->level; interprete l'argument success ou warning.... pr bootstrap(couleurs)-->
+    <? } ?>
+
 <!-- ============================================ -->
 <!-- 									Carousel 										-->
 <!-- ============================================ -->

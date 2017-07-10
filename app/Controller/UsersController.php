@@ -180,6 +180,7 @@ class UsersController extends AppController
 		$model = new UsersModel();
 		$clean = new CleanTool();
 		$valid = new ValidationTool();
+		$auth = new AuthentificationModel();
 
 		if(!empty($_POST['submit']))
 		{
@@ -187,6 +188,34 @@ class UsersController extends AppController
 
 			$pseudo_mail = $post['pseudo-mail'];
 			$password = $post['password'];
+
+			$error['pseudo-mail'] = $valid->textValid($pseudo_mail, 'pseudo ou un email',6,70);
+			$error['password'] = $valid->textValid($password, 'mot de passe', 6, 100);
+
+			if($valid->IsValid($error))
+			{
+				$user = $model->getUserByUsernameOrEmail($pseudo_mail);
+
+				$userPseudo = $user['username'];
+				$userEmail = $user['email'];
+				$userPassword = $user['password'];
+
+				if(!empty($user))
+				{
+					if($auth->isValidLoginInfo($userPseudo, $userPassword)== 0 || $auth->isValidLoginInfo($userEmail, $userPassword)== 0)
+					{
+						$auth->logUserIn($user);
+						$this->flash('Bienvenue ' . $pseudo . ' ,heureux de vous revoir ', 'success');
+						$this->show('default/home', ['user' => $user]);
+
+					}
+				} else {
+					$error['pseudo-mail'] = 'Vos identifiants sont inconnus';
+					$this->show('users/login', ['error' => $error]);
+				}
+			} else {
+				$this->show('users/login', ['error' => $error]);
+			}
 		}
 		// redirection vers home
 	}
