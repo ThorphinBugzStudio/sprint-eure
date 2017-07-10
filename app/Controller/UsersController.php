@@ -39,7 +39,9 @@ class UsersController extends AppController
 		$strU = new StringUtils();
 
 
-		$post = $clean->cleanPost($_POST);
+		if(!empty($_POST['submit']) && !empty($_FILES['avatar']))
+		{
+			$post = $clean->cleanPost($_POST);
 
 			$firstname = $post['firstname'];
 			$lastname = $post['lastname'];
@@ -67,75 +69,80 @@ class UsersController extends AppController
 			$error['avatar'] = $valid->uploadValid($avatar,2000000,['.jpg','.jpeg','.png'],['image/jpeg','image/png','image/jpg']);
 
 			if($valid->IsValid($error))
-      {
+			{
 				$success = true;
-        $hashPassword = $auth->hashPassword($password);
-        $token = $strU->randomString($length = 100);
-        $date = new \DateTime();
+				$hashPassword = $auth->hashPassword($password);
+				$token = $strU->randomString($length = 100);
+				$date = new \DateTime();
 
-        $insert_users = $model->insert(['username' => $pseudo,
-                                       'lastName' => $lastname,
-                                       'firstName' => $firstname,
-																			   'email'  => $email,
-                                       'password' => $hashPassword,
-																			 'token' => $token,
-																			 'role' => 'client',
-																			 'created_at' => $date->format('Y-m-d H:i:s'),
-                                       'status' => 'active' ]);
+				$insert_users = $model->insert(['username' => $pseudo,
+				'lastName' => $lastname,
+				'firstName' => $firstname,
+				'email'  => $email,
+				'password' => $hashPassword,
+				'token' => $token,
+				'role' => 'client',
+				'created_at' => $date->format('Y-m-d H:i:s'),
+				'status' => 'active' ]);
 
 
 
-								$user_id = $model->getUserId($pseudo);
+				$user_id = $model->getUserId($pseudo);
 
-      	$model->setTable('user_adresses');
+				$model->setTable('user_adresses');
 
 				$insert_useradress = $model->insert(['users_id' => $user_id['id'],
-																						 'adress1' => $adress,
-																					 'postal_code' => $postal_code,
-																						   'town' => $city,
-																						 	'country' => $country,
-																							'adress_type' => 'facturation',
-																						 	'created_at' => $date->format('Y-m-d H:i:s')]);
+				'adress1' => $adress,
+				'postal_code' => $postal_code,
+				'town' => $city,
+				'country' => $country,
+				'adress_type' => 'facturation',
+				'created_at' => $date->format('Y-m-d H:i:s')]);
 
-
+				$dossier = 'assets/img/avatars/';
 				$file_tmp = $avatar['tmp-name'];
 				$file_name = $avatar['name'];
 				$file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
 				$dest_fichier = date('y_m_d_H_i') . '_avatar.' . $file_extension;
 
-				if(move_uploaded_file($file_tmp, ('./assets/img/avatars/') . $dest_fichier))
+				if(move_uploaded_file($file_tmp, $dossier . $dest_fichier))
 				{
 					$model->setTable('avatars');
 
 					$insert_avatar = $model->insert(['img_name' => $file_name,
-																						'user_id' => $user_id['id'],
-																					 'created_at' => $date->format('Y-m-d H:i:s')]);
-																					 die($insert_avatar);
+					'user_id' => $user_id['id'],
+					'created_at' => $date->format('Y-m-d H:i:s')]);
 				}
+				$this->show('users/login');
+				
+			} else {
+				$this->show('users/inscription',['error' => $error]);
 
-      } else {
-        $this->show('users/inscription',['error' => $error]);
 			}
+		}
 
-			$data = array(
-				'error' => $error,
-				'success' => $success,
-				'pseudo' => $pseudo,
-				'lastName' => $lastname,
-				'firstName' => $firstname,
-				'email'  => $email,
-				'password' => $password,
-				'adress' => $adress,
-				'postal' => $postal_code,
-				'country' => $country,
-				'avatar' => $avatar,
-				'password' => $password,
-				'passwordconfirm' => $passwordconfirm
-			);
-			$this->showJson($data);
-			die('here');
 
-	}
+
+
+			// $data = array(
+			// 	'error' => $error,
+			// 	'success' => $success,
+			// 	'pseudo' => $pseudo,
+			// 	'lastName' => $lastname,
+			// 	'firstName' => $firstname,
+			// 	'email'  => $email,
+			// 	'password' => $password,
+			// 	'adress' => $adress,
+			// 	'postal' => $postal_code,
+			// 	'country' => $country,
+			// 	'avatar' => $avatar,
+			// 	'password' => $password,
+			// 	'passwordconfirm' => $passwordconfirm
+			// );
+			// $this->showJson($data);
+			//die();
+
+}
 
 	/**
 	 * Formulaire connection.
