@@ -69,7 +69,7 @@
 		['GET', '/admin/user/[i:id]', 'Admin\Users#singleUser', 'admin_single_user'],
 		['POST', '/admin/user/[i:id]', 'Admin\Users#singleUserAction', 'admin_single_user_action'],
 		// Delete
-		['GET', '/admin/deleteuser/[i:id]/[i:fromPage]', 'Admin\Users#deleteUser', 'admin_delete_user'],
+		['GET', '/admin/deleteuser/[i:id]', 'Admin\Users#deleteUser', 'admin_delete_user'],
 
 
 		/**
@@ -117,6 +117,10 @@
 		['GET', '/admin/itemsFamilies' , 'Admin\ItemsFamiliesController#itemsFamilies', 'admin_items_families'],
 		['GET', '/admin/itemFamily/[:id]', 'Admin\ItemsFamiliesController#singleItemFamily', 'admin_single_item_family'],
 		['POST', '/admin/itemFamily/[:id]', 'Admin\ItemsFamiliesController#singleItemFamilyAction', 'admin_single_item_family_action'],
+		//ajout d'une nouvelle famille d'objets
+		['GET', '/admin/addfamily', 'Admin\ItemsFamiliesController#addItemFamily','admin_items_families_add'],
+		['POST', '/admin/addfamily', 'Admin\ItemsFamiliesController#addItemFamilyAction','admin_items_families_add_action'],
+
 
 
 
