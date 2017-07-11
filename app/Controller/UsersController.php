@@ -383,7 +383,7 @@ class UsersController extends AppController
 															'modified_at' => $date->format('Y-m-d H:i:s')], $user_id);
 
 
-							$this->flash('Votre mot de passe a été modifié', 'success');
+							$this->flash('Votre mot de passe a été modifié, vous pouvez vous connecter', 'success');
 							$this->redirectToRoute('login');
 
 						} else {

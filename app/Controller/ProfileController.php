@@ -2,7 +2,8 @@
 
 namespace Controller;
 
-// use \W\Controller\Controller; // Inutile puisque heritage de AppController dans le meme espace de nom
+use W\Model\Model;
+
 
 /**
  * Controller Gestion du profile utilisateur par l'utilisateur.
@@ -16,7 +17,9 @@ class ProfileController extends AppController
    */
   public function profile()
   {
-    $this->show('users/user-profile');
+    $user = $this->getUser();
+
+    $this->show('users/user-profile', ['user' => $user]);
   }
 
   /**
@@ -26,6 +29,7 @@ class ProfileController extends AppController
    */
   public function profileModify()
   {
+    $user = $this->getUser();
     $this->show('users/profile-modify');
   }
 
@@ -37,7 +41,7 @@ class ProfileController extends AppController
    */
   public function profileModifyAction()
   {
-    # code    
+    # code
   }
 
 }
