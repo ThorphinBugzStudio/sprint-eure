@@ -21,6 +21,9 @@ use \Model\AvatarsModel;
  */
 class UsersController extends AppController
 {
+
+   private $nbreperpage = 5;
+   
   /**
    * Listing utilisateurs.
    *
@@ -34,7 +37,7 @@ class UsersController extends AppController
       $users = new UsersModel($where = "status <> 'deleted'");
 
       // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-      $pagin = new Pagination('Admin users pages navigation', $this->generateUrl('admin_users'), $users->getNbId(), 5);
+      $pagin = new Pagination('Admin users pages navigation', $this->generateUrl('admin_users'), $users->getNbId(), $this->nbreperpage);
 
       // si l'url demande une page  : setting de pageStatus dans l'objet Pagination
       if (!empty($page)) { $pagin->setPageStatus($page); }

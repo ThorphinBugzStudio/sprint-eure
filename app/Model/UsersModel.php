@@ -4,6 +4,8 @@
  use W\Model\UsersModel as WUsersModel;
  use Services\Tools\ToolHP;
 
+  use W\Model\ConnectionModel;
+
  /**
   * Gestion de la table users
   */
@@ -28,7 +30,8 @@
      */
     public function __construct($where = null)
     {
-        parent::__construct();
+        $this->setTable('spe_users');
+ 		  $this->dbh = ConnectionModel::getDbh();
         $this->where = $where;
         // Set le nombre d'enregistrements.
         $this->nbId = $this->countId();
@@ -43,7 +46,7 @@
     {
         return $this->where;
     }
-    
+
     /**
      * Setter de la condition WHERE du model.
      * ex. "status != 'deleted'"
@@ -71,7 +74,7 @@
 
 		$sql = 'SELECT * FROM ' . $this->table;
 		if (!empty($this->where)) { $sql .= ' WHERE '.$this->where; }
-        
+
         if (!empty($orderBy)){
 			//sécurisation des paramètres, pour éviter les injections SQL
 			if(!preg_match('#^[a-zA-Z0-9_$]+$#', $orderBy)){
@@ -135,7 +138,7 @@
 
     /**
      * Update le role de l'utilisateur en bdd.
-     * enum('client', 'admin') 
+     * enum('client', 'admin')
      *
      * @param string $role
      * @return void
@@ -157,7 +160,7 @@
             }
         }
     }
-    
+
     /**
      * Update le status de l'utilisateur en bdd.
      * enum('active', 'inactive', 'deleted')
@@ -185,7 +188,7 @@
      */
      public function getUserId($pseudo)
      {
-       $sql = "SELECT id FROM users WHERE username = '$pseudo'";
+       $sql = "SELECT id FROM $this->table WHERE username = '$pseudo'";
        $sth = $this->dbh->prepare($sql);
        $sth->execute();
        $result = $sth->fetch();
