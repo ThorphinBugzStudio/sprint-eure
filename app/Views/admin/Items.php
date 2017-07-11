@@ -15,17 +15,15 @@
       </div>
       <div class="text-align-center" style="justify-content: space-around;">
         <?php foreach ($results as $result ): ?>
-          <div class="single-article m-3">
+          <div class="single-article m-3" id="test">
+
             <a href="#">
               <img src="<?= $this->assetUrl('img/uploaded_articles/'.$result['img_name']) ?>" alt="Miniature" class="thumbnail">
             </a>
 
-            <div class="text-align-right ml-3">
-              <div class="single-article-price">
-                <?= number_format($result['puht'],2,',', ' ').' €'; ?>
-              </div>
+            <div class="single-article-price">
+              <?= number_format($result['puht'],2,',', ' ').' €'; ?>
             </div>
-
 
             <div class="row px-4 my-2" style="display: flex;">
               <div class="mr-auto my-auto">
@@ -34,7 +32,6 @@
                   <?= $result['designation']; ?>
                 </div>
               </div>
-
             </div>
 
             <hr class="hrSingleArticle m-0 mb-3">

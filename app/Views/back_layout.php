@@ -90,10 +90,7 @@
 
 							<!-- Section : Commentaires -->
 							<li>
-								<a href="#"><i class="fa fa-comment fa-fw"></i> Commentaires<span class="fa arrow"></span></a>
-								<ul class="nav nav-second-level">
-									<li><a href="<?= $this->url('admin_comments') ?>">Tous les commentaires</a></li>
-								</ul>
+								<a href="<?= $this->url('admin_comments') ?>"><i class="fa fa-comment fa-fw"></i> Commentaires</a>
 							</li>
 
 							<!-- ===================================== -->

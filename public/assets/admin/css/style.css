@@ -195,6 +195,10 @@ th {
   text-align: left;
 }
 
+#test {
+  position: relative !important;
+}
+
 .single-article-price {
   font-family: "Patua One", "Arial";
   font-size: 20px;
@@ -203,7 +207,8 @@ th {
   background: #337ab7;
   padding: 8px;
   position: absolute !important;
-  top: 56%;
+  top: 30px;
+  left: 25px;
 }
 
 .hrSingleArticle {
@@ -215,6 +220,7 @@ th {
 .search_per_category {
   display: grid;
 }
+
 /* -------------- FORMULAIRES -------------- */
 
 .input-back {
