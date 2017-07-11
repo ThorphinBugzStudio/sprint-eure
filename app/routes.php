@@ -81,6 +81,7 @@
 		['GET', '/admin/comments', 'Admin\Comments#comments', 'admin_comments'],
 		['GET', '/admin/comments/[i:page]', 'Admin\Comments#comments', 'admin_page_comments'],
 		['GET', '/admin/commentApprove/[:id]/[i:fromPage]', 'Admin\Comments#commentApprove', 'admin_approve_comment'],
+		['GET', '/admin/commentNotApproved/[:id]/[i:fromPage]', 'Admin\Comments#commentNotApproved', 'admin_notapproved_comment'],
 		['GET', '/admin/commentDelete/[:id]/[i:fromPage]', 'Admin\Comments#commentDelete', 'admin_delete_comment'],
 
 		/**
