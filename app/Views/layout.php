@@ -110,11 +110,16 @@
 
 <div class="col-lg-10 mx-auto bg-white">
 		<section>
+			<?php if($_ENV == 'Home') { ?>
+
+				<?php } else { ?>
 			<div class="container-fluid row pt-4 mainContent">
 				<h2><?= $this->e($title) ?></h2>
 				<hr class="hrPage">
 			</div>
-			<div class="container-fluid pt-2 pb-3">
+				<?php } ?>
+
+			<div class="container-fluid">
 				<?= $this->section('main_content') ?>
 			</div>
 		</section>
