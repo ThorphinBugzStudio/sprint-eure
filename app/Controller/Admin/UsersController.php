@@ -221,34 +221,32 @@ class UsersController extends AppController
       }
       else
       {
-        // Erreurs -> réaffichage formulaire avec erreurs
-        # code...
+         // Erreurs -> réaffichage formulaire avec erreurs
+        $rolesBox = new RadiosBox('Role', ['Client'         => 'client',
+                                           'Administrateur' => 'admin'
+                                          ], $role);
+
+        $statusBox = new RadiosBox('Statut', ['Actif'   => 'active',
+                                              'Inactif' => 'inactive'
+                                              ], $status);
+
+        $this->show('admin/single-user', ['userToUpdate' => $userToUpdate,
+                                          'adress'       => $adressToUpdate,
+                                          'avatar'       => $avatarToUpdate,
+                                          'rolesBox'     => $rolesBox->getHtml(),
+                                          'statusBox'    => $statusBox->getHtml(),
+                                          'page'         => $fromPage,
+                                          'error'        => $error
+                                          ]);        # code...
       }
-
-
-      debug($error); die();
-
-
-      $u = $users->getUserByUsernameOrEmail($pseudo);
-
-      debug($users->emailExists($email)); die();
-
-      $e = $users->getUserByUsernameOrEmail($email);
     }
     else
     {
       // Comment $_POST pourrait il etre vide ?
-      die('403 !');
-
+      $this->flash('Stop bidouiller !', 'danger');
+      $this->showForbidden();
+      die();
     }
-
-
-
-
-
-
-
-
 
   }
 
