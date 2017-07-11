@@ -35,8 +35,8 @@
 		 * ProfileController
 		 */
 		['GET', '/user/profile', 'Profile#profile', 'user_profile'],
-		['GET', '/user/profile/edit', 'Profile#profileModify','user_profile_modify'],
-		['POST','/user/profile/edit','Profile#profileModifyAction', 'user_profile_modify_action'],
+		['GET', '/user/profile/edit/[i:id]', 'Profile#profileModify','user_profile_modify'],
+		['POST','/user/profile/edit/[i:id]','Profile#profileModifyAction', 'user_profile_modify_action'],
 
 		/**
 		 * CatalogController
@@ -75,7 +75,7 @@
 		/**
 		 * Admin\CommentsController
 		 *
-		 * 
+		 *
 		 * HP : Pas d'edit et de single prévu -> juste approve ou delete recupéré via route
 		 */
 		['GET', '/admin/comments', 'Admin\Comments#comments', 'admin_comments'],

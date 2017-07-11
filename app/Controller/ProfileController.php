@@ -30,7 +30,7 @@ class ProfileController extends AppController
   public function profileModify()
   {
     $user = $this->getUser();
-    $this->show('users/profile-modify');
+    $this->show('users/profile-modify', ['user' => $user]);
   }
 
   /**

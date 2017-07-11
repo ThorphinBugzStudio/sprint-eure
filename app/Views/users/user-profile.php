@@ -2,9 +2,10 @@
 
 <?php $this->start('main_content');
 
-debug($user); ?>
+debug($user);
+$user_id = $user['id']; ?>
 
-<p>Pseudo<?= ' '.$user['username'].' ' ?><a href="<?php $this->url('user_profile_modify') ?>">Edit</a></p>
+<p>Pseudo<?= ' '.$user['username'].' ' ?><a href="<?php $this->url('user_profile_modify',['id' => $user_id]); ?>">Edit</a></p>
 
 
 
