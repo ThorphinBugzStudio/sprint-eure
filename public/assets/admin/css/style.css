@@ -169,6 +169,58 @@ th {
   margin-bottom: 0;
 }
 
+/* -------------- LISTE ARTICLES -------------- */
+
+.thumbnail {
+  margin-bottom: 0;
+  width: 250px;
+  height: 250px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  position: relative !important;
+}
+
+.single-article {
+  padding: 20px;
+  background-color: #f3f3f3;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  display: inline-block;
+  max-width: 292px;
+  width: 100%;
+}
+
+.single-article-title {
+  font-family: "Patua One", "Arial";
+  font-size: 20px;
+  text-align: left;
+}
+
+#test {
+  position: relative !important;
+}
+
+.single-article-price {
+  font-family: "Patua One", "Arial";
+  font-size: 20px;
+  color: white;
+  text-align: right;
+  background: #337ab7;
+  padding: 8px;
+  position: absolute !important;
+  top: 30px;
+  left: 25px;
+}
+
+.hrSingleArticle {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.search_per_category {
+  display: grid;
+}
+
 /* -------------- FORMULAIRES -------------- */
 
 .input-back {
@@ -230,4 +282,8 @@ fieldset .form-check {
 
 .text-align-center {
 	text-align: center;
+}
+
+.text-align-right {
+	text-align: right;
 }

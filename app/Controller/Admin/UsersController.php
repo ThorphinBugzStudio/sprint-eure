@@ -6,7 +6,7 @@ use \Controller\AppController;
 
 use \Services\Tools\Pagination;
 use \Services\Tools\RadiosBox;
-use Services\Tools\ToolHP;
+use \Services\Tools\ToolHP;
 
 use Security\CleanTool;
 use Security\ValidationTool;
@@ -21,15 +21,18 @@ use \Model\AvatarsModel;
  */
 class UsersController extends AppController
 {
-
+   /**
+    * Nbombre de lignes par page pour objet Pagination
+    * @var integer
+    */
    private $nbreperpage = 5;
-   
+
   /**
    * Listing utilisateurs.
    *
    * @return void
    */
-  public function users($page = '')
+  public function users($page = null)
   {
       // ADMIN ONLY
       // $this->allowTo('admin');

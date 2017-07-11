@@ -1,20 +1,20 @@
 <?php $this->layout('layout', ['title' => 'Accueil']) ?>
 
-<?php $this->start('main_content') ?>
+<?php $this->start('main_content');
+
+// Superglobal qui sert pour le Layout. Cela permet d'afficher le titre de la page sur lequel nous sommes ou non.
+$_ENV = 'Home'; ?>
 
 <div class="flash-message">
-
   <?php if(!empty($w_flash_message->message)) { ?>
-
     <span class="span-flash"><?= $w_flash_message->message ?></span>
 <!-- echo $w_flash_message->level; interprete l'argument success ou warning.... pr bootstrap(couleurs)-->
     <?php } ?>
-
 	</div>
 
 
 <!-- ============================================ -->
-<!-- 									Carousel 										-->
+<!-- 					    Carousel principal							-->
 <!-- ============================================ -->
 <div class="container-fluid row py-3 justify-content-center">
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -26,7 +26,7 @@
 
 		<div class="carousel-inner" role="listbox">
 			<div class="carousel-item active">
-				<img class="img-fluid" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="...">
+				<img class="img-fluid mainCarouselImg" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 					<h3>Titre</h3>
 					<hr class="hrCarousel mx-auto my-2">
@@ -35,7 +35,7 @@
 			</div>
 
 			<div class="carousel-item">
-				<img class="img-fluid" src="<?= $this->assetUrl('img/sliders/img2.jpg') ?>" alt="...">
+				<img class="img-fluid mainCarouselImg" src="<?= $this->assetUrl('img/sliders/img2.jpg') ?>" alt="...">
 				<div class="row">
 					<div class="carousel-caption d-none d-md-block">
 						<h3>Titre</h3>
@@ -46,7 +46,7 @@
 			</div>
 
 			<div class="carousel-item">
-				<img class="img-fluid" src="<?= $this->assetUrl('img/sliders/img3.jpg') ?>" alt="...">
+				<img class="img-fluid mainCarouselImg" src="<?= $this->assetUrl('img/sliders/img3.jpg') ?>" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 					<h3>Titre</h3>
 					<hr class="hrCarousel mx-auto my-2">
@@ -65,40 +65,60 @@
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
+
+  <!-- ============================================ -->
+  <!-- 						   		Publicités  								-->
+  <!-- ============================================ -->
+  <div class="ads-column">
+    <a href="#"><img src="<?= $this->assetUrl('img/pub/img1.jpg') ?>" alt="Publicité" class="img-fluid hvr-grow-rotate"></a>
+    <a href="<?= $this->url('how_to') ?>"><img src="<?= $this->assetUrl('img/pub/img2.jpg') ?>" alt="Publicité" class="img-fluid hvr-grow"></a>
+  </div>
+
+  <div class="ads-vertical">
+    <a href="#"><img src="<?= $this->assetUrl('img/pub/img3.jpg') ?>" alt="Publicité" class="img-fluid"></a>
+  </div>
 </div>
 
 
 <!-- ============================================ -->
 <!-- 								Commentaires 									-->
 <!-- ============================================ -->
-<?php
+<hr class="hrpage my-3">
+<div class="row">
+  <div class="col-sm-12 col-lg-8">
 
-	foreach($comments as $comment)
-  { ?>
-		<div class="last-comments">
-			<p><?php echo $comment['username']; ?></p>
-			<p><?php echo $comment['comment']; ?></p>
-			<p><?php echo $comment['created_at']; ?></p>
-		</div>
+  <?php	foreach($comments as $comment) { ?>
+  		<div class="last-comments">
+        <div class="row">
+          <div class="mr-auto">
+            <h6 class="bold user_comment"><?php echo $comment['username']; ?></h6>
+          </div>
+          <div class="ml-auto">
+            <div class="row">
+              <i>Posté le :
+                <span class="date_comment"><?php echo date("d/m/Y à H:i", strtotime($comment['created_at'])); ?></span>
+              </i>
+            </div>
+          </div>
+        </div>
+        <hr>
+  			<p class="comment-content"><?php echo $comment['comment']; ?></p>
+  		</div>
+  		<?php } ?>
+  </div>
 
-		<?php } ?>
+  <div class="col-sm-12 col-lg-4">
+    <div class="comments-container">
+      <?php if(!empty($user)) { ?>
+        <form class="comments-form" action="<?php $this->url('inscription_action'); ?>" method="POST">
+          <div>
+            <textarea name="comment" rows="8" cols="80" placeholder="Saisir votre commentaire..."></textarea>
 
-<div class="comments-container">
-
-	<?php if(!empty($user))
-  { ?>
-		<form class="comments-form" action="<?php $this->url('inscription_action'); ?>" method="POST">
-			<hr class="hrPage mb-3">
-			<div>
-				<label class="comment m-0">Votre commentaire :</label> <br>
-				<textarea name="comment" rows="8" cols="80"></textarea>
-
-				<input class="container-fluid row btn_ok mt-3 mx-auto px-auto" type="submit" name="submit" value="Laisser un commentaire">
-			</div>
-		</form>
-
-	<?php } ?>
-
+            <input class="container-fluid row btn_ok mt-3 mx-auto px-auto w-100" type="submit" name="submit" value="Laisser un commentaire">
+          </div>
+        </form>
+        <?php } ?>
+      </div>
+  </div>
 </div>
-
 <?php $this->stop('main_content') ?>
