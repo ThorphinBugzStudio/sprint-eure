@@ -1,4 +1,4 @@
-<?php $this->layout('back_layout', ['title' => 'admin Comments']) ?>
+<?php $this->layout('back_layout', ['title' => 'Commentaires']) ?>
 
 <?php $this->start('main_content') ?>
 
@@ -30,7 +30,7 @@
           <tr>
             <td><?php echo $result['id']; ?></td>
             <td><?php echo $result['username']; ?></td>
-            <td><?php echo $result['content']; ?></td>
+            <td><?php echo $result['comment']; ?></td>
             <td><?php echo $result['status']; ?></td>
             <td><?php echo $result['created_at']; ?></td>
             <td><?php echo $result['modified_at']; ?></td>

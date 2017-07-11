@@ -1,10 +1,10 @@
 <?php
  namespace Model;
 
+ use W\Model\ConnectionModel;
  use W\Model\UsersModel as WUsersModel;
- use Services\Tools\ToolHP;
 
-  use W\Model\ConnectionModel;
+ use Services\Tools\ToolHP;
 
  /**
   * Gestion de la table users
