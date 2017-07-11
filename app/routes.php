@@ -75,12 +75,12 @@
 		/**
 		 * Admin\CommentsController
 		 *
-		 * AQ : edit // update // delete
+		 * 
 		 * HP : Pas d'edit et de single prévu -> juste approve ou delete recupéré via route
 		 */
 		['GET', '/admin/comments', 'Admin\Comments#comments', 'admin_comments'],
-		['GET', '/admin/commentApprove/[:id]', 'Admin\Comments#commentApprove', 'admin_approve_comment'],
-		['GET', '/admin/commentDelete/[:id]', 'Admin\Comments#commentDelete', 'admin_delete_comment'],
+		['GET', '/admin/commentApprove/[:id]/[i:fromPage]', 'Admin\Comments#commentApprove', 'admin_approve_comment'],
+		['GET', '/admin/commentDelete/[:id]/[i:fromPage]', 'Admin\Comments#commentDelete', 'admin_delete_comment'],
 
 		/**
 		 * Admin\OrdersController
