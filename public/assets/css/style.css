@@ -296,6 +296,14 @@ textarea {
 	width: 100%;
 }
 
+form label {
+	margin-bottom: 0;
+}
+
+.connexion {
+	max-width: 400px;
+}
+
 .btn_ok {
 	background-color: #1885c0;
 	border: 1px solid #194a81;
@@ -309,6 +317,23 @@ textarea {
 .btn_ok:hover {
 	background-color: #139eea;
 	border: 1px solid #0075cb;
+}
+
+.btn_cancel {
+  background-color: #1d1d1d;
+  border: 1px solid black;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn_cancel:hover {
+  background-color: #474747;
+  border: 1px solid #323232;
+	text-decoration: none;
+	color: white;
 }
 
 .error {
