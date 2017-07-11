@@ -8,7 +8,7 @@ class ItemsModel extends ItemsFamilyModel
 {
 
   public function __construct(){
-    $this->setTable('items');
+    $this->setTable('spe_items');
     $this->dbh = ConnectionModel::getDbh();
   }
 
