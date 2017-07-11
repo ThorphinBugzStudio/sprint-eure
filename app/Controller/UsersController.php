@@ -114,7 +114,7 @@ class UsersController extends AppController
 
 								if(move_uploaded_file($file_tmp, $dossier . $dest_fichier))
 								{
-									$model->setTable('avatars');
+									$model->setTable('spe_avatars');
 
 									$insert_avatar = $model->insert(['img_name' => $file_name,
 									'user_id' => $userId,
@@ -122,7 +122,7 @@ class UsersController extends AppController
 								}
 
 				//update de l'avatarId ds la table user
-								$model->setTable('users');
+								$model->setTable('spe_users');
 
 							$avatarId = $avatarMod->getAvatarId($userId);
 
@@ -138,7 +138,7 @@ class UsersController extends AppController
 							'status' => 'active' ] , $userId);
 
 
-				$model->setTable('user_adresses');
+				$model->setTable('spe_user_adresses');
 
 				$insert_useradress = $model->insert(['users_id' => $userId,
 				'adress1' => $adress,
@@ -245,10 +245,7 @@ class UsersController extends AppController
 	 */
 	public function passwordLost()
 	{
-
 		$this->show('users/password-lost');
-
-
 	}
 
 	/**
@@ -276,14 +273,26 @@ class UsersController extends AppController
 
 			if($valid->IsValid($error))
 			{
-				$user = $model->emailExists($email);
+				if($model->emailExists($email))
+				{
+					$user = $model->getUserByUsernameOrEmail($email);
+				}
+
 				if(!empty($user))
 				{
 					$success = true;
 					$codedemail = urlencode($user['email']);
 					$codedtoken = urlencode($user['token']);
-    ///???? créer une url contenant le token et l'email encodés
-					$link = '<a href="?email='.$codedemail.'&token='.$codedtoken.'" style="color:tomato;">Modifier votre mot de passe</a>';
+					// debug($codedemail);
+					// die('here');
+
+    			$url = $this->generateUrl('password_modify');
+					$link = '<a href="'.$url.' ">Modifier votre mot de passe</a>';
+
+
+					$link = '<a href="'.$url.'?email='.$codedemail.'&token='.$codedtoken.'">clickez ici pour modifier votre mot de passe</a>';
+					echo $link;
+					die();
 
 					$this->show('users/password-lost',['success' => $success, 'link' => $link]);
 
@@ -304,7 +313,24 @@ class UsersController extends AppController
 	 */
 	public function passwordModify()
 	{
-		$this->show('users/password-modify');
+		$model = new UsersModel();
+		$clean = new CleanTool();
+
+		if(!empty($_GET['email']) && !empty($_GET['token'])) {
+
+			$get = $clean->cleanPost($_GET);
+			$email = $get['email'];
+			$token = $get['token'];
+
+			$user = $model->getUserByUsernameOrEmail($email);
+			if(!empty($user)) {
+				if($user['token'] == $token) {
+					$this->show('users/password-modify');
+				}
+			}
+		}
+		$this->showNotFound();
+
 	}
 
 	/**
@@ -315,6 +341,58 @@ class UsersController extends AppController
 	 */
 	public function passwordModifyAction()
 	{
-		# code
+		$error = [];
+		$auth = new AuthentificationModel();
+		$model = new UsersModel();
+		$clean = new CleanTool();
+		$valid = new ValidationTool();
+		$strU = new StringUtils();
+		$date = new \DateTime();
+
+
+		if(!empty($_GET['email']) && !empty($_GET['token'])) {
+
+			$get = $clean->cleanPost($_GET);
+			$email = $get['email'];
+			$token = $get['token'];
+
+			$user = $model->getUserByUsernameOrEmail($email);
+			if(!empty($user))
+			{
+				if($user['token'] == $token)
+				{
+					if(!empty($_POST['submit']))
+					{
+						$post = $clean->cleanPost($_POST);
+
+						$newpassword = $post['newpassword'];
+						$newpassword_confirm = $post['newpassword-confirm'];
+
+
+						$error['newpassword'] = $valid->passwordError($newpassword,$newpassword_confirm,6,40);
+						$error['newpassword-confirm'] = $valid->passwordError($newpassword,$newpassword_confirm,6,40);
+
+						if($valid->IsValid($error))
+						{
+							$user_id = $user['id'];
+							$newpasswordcoded = $auth->hashPassword($newpassword);
+							$newtoken = $strU->randomString(100);
+
+							$modify_sql = $model->update(['password' => $newpasswordcoded,
+						 									   'token' => $newtoken,
+															'modified_at' => $date->format('Y-m-d H:i:s')], $user_id);
+
+
+							$this->flash('Votre mot de passe a été modifié, vous pouvez vous connecter', 'success');
+							$this->redirectToRoute('login');
+
+						} else {
+							$this->show('users/password-modify',['error' => $error]);
+						}
+					}
+				}
+			}
+		}
+		$this->showNotFound();
 	}
 }

@@ -4,6 +4,7 @@ namespace Controller\Admin;
 
 use \Controller\AppController;
 use \Security\CleanTool;
+use \Services\Tools\Pagination;
 use \Security\ValidationTool;
 use \Model\ItemsFamilyModel;
 use \Model\ItemsModel;
@@ -18,9 +19,25 @@ class ItemsController extends AppController
    *
    * @return void
    */
-  public function items()
+
+  public function items($page = '')
   {
-    $this->show('admin/items');
+    $items = new ItemsModel();
+
+    // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
+    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('admin_items'), $items->getNbId(), 8);
+
+    if (!empty($page)) { $pagin->setPageStatus($page); }
+
+    // get des informations de pagination necessaires à la requete bdd
+    $pageStatus = $pagin->getPageStatus();
+    // get du html de la barre de navigation pour la pagination
+    $navPaginBar = $pagin->getHtml();
+    // debug($navPaginBar);
+
+    $results = $items->findAll('id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
+    $categorie = $items->nomcategorie();
+    $this->show('admin/items', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
 
   /**
@@ -51,7 +68,6 @@ class ItemsController extends AppController
   {
     $model = new ItemsFamilyModel;
     $family = $model->notdelete();
-    print_r($family);
     $this->show('admin/add-item', array('family' => $family));
   }
 

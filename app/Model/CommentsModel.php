@@ -5,12 +5,18 @@ use W\Model\Model;
 
 class CommentsModel extends Model
 {
+   public function __contruct()
+   {
+      $this->setTable('spe_comments');
+      $this->dbh = ConnectionModel::getDbh();
+   }
+
   public function last5Comments()
   {
 
       $sql = "SELECT c.comment, u.username, c.created_at
-              FROM comments AS c
-              JOIN users AS u
+              FROM $this->table AS c
+              JOIN spe_users AS u
               WHERE c.users_id = u.id
               ORDER BY c.created_at DESC LIMIT 5";
 

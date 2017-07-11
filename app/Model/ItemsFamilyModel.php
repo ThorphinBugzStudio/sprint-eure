@@ -11,6 +11,8 @@ use Services\Tools\ToolHP;
 class ItemsFamilyModel extends Model
 {
 
+
+
   /**
    * Nombre d'enregistrements dans la table.
    *
@@ -30,9 +32,8 @@ class ItemsFamilyModel extends Model
    */
   public function __construct($where = null)
   {
-    $this->setTable('items_family');
+    $this->setTable('spe_items_family');
     $this->dbh = ConnectionModel::getDbh();
-      parent::__construct();
       $this->where = $where;
       // Set le nombre d'enregistrements.
       $this->nbId = $this->countId();
@@ -189,7 +190,7 @@ public function findAll($orderBy = '', $orderDir = 'ASC', $limit = null, $offset
    */
    public function getUserId($pseudo)
    {
-     $sql = "SELECT id FROM users WHERE username = '$pseudo'";
+     $sql = "SELECT id FROM spe_users WHERE username = '$pseudo'";
      $sth = $this->dbh->prepare($sql);
      $sth->execute();
      $result = $sth->fetch();
