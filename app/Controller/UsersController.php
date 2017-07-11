@@ -191,7 +191,7 @@ class UsersController extends AppController
 			$pseudo_mail = $post['pseudo-mail'];
 			$password = $post['password'];
 
-			$error['pseudo-mail'] = $valid->textValid($pseudo_mail, 'pseudo ou un email',6,70);
+			$error['pseudo-mail'] = $valid->textValid($pseudo_mail, 'pseudo ou un email',3,70);
 			$error['password'] = $valid->textValid($password, 'mot de passe', 6, 100);
 
 			if($valid->IsValid($error))

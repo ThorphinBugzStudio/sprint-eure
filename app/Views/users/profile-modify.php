@@ -58,7 +58,7 @@ debug($user_avatar); ?>
 
 <!-- Section : Avatar -->
 <label for="avatar">Avatar</label> <span class="error">*</span>
-<input class="input-form" type="file" name="avatar" value="<?php echo $user_avatar['img_name'] ?>" style="max-width: 100%; overflow: hidden;">
+<input class="input-form" type="file" name="avatar" value="<?php if(!empty($_FILES['name'])){ echo $_FILES['name']; } else { echo $user_avatar['img_name']; } ?>" style="max-width: 100%; overflow: hidden;">
 <?php if(!empty($error['avatar'])){ echo '<p id="error-avatar" class="error">' . $error['avatar'] . '</p>'; } ?>
 
 <input type="submit" name="submit" value="Modifier le profil">

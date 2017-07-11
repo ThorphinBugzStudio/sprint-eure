@@ -44,6 +44,7 @@ class ProfileController extends AppController
   {
     $adress = new User_adressesModel();
     $avatar = new AvatarsModel();
+
     $user = $this->getUser();
 
     $user_avatar = $avatar->getUserAvatar($user['id']);
@@ -76,9 +77,14 @@ class ProfileController extends AppController
     $model = new UsersModel();
     $auth = new AuthentificationModel();
     $strU = new StringUtils();
-    $avatar = new AvatarsModel();
+    $avatarmodel = new AvatarsModel();
+    $adressmodel = new User_adressesModel();
+    $date = new \DateTime();
 
-    $user_avatar = $avatar->getUserAvatar($user['id']);
+    $user = $this->getUser();
+
+
+    $user_avatar = $avatarmodel->getUserAvatar($id);
 
 
     if(!empty($_POST['submit']))
@@ -95,7 +101,7 @@ class ProfileController extends AppController
       $pseudo = $post['pseudo'];
       $password = $post['password'];
       $password_confirm = $post['password-confirm'];
-      $avatar = $_FILES['avatar'];
+
 
       $error['firstname'] = $valid->textValid($firstname, 'nom',3,60);
       $error['lastname'] = $valid->textValid($lastname, 'prénom',3,60);
@@ -106,17 +112,97 @@ class ProfileController extends AppController
       $error['city'] = $valid->textValid($city, 'nom de ville', 3, 100);
       $error['country'] = $valid->textValid($country, 'nom de pays', 3, 100);
       $error['pseudo'] = $valid->textValid($pseudo, 'pseudo', 3, 45);
-      $error['avatar'] = $valid->uploadValid($avatar,2000000,['.jpg','.jpeg','.png'],['image/jpeg','image/png','image/jpg']);
+
+
+      if($pseudo != $user['username'])
+      {
+        if($model->usernameExists($pseudo))
+        {
+          $error['pseudo'] = 'Ce pseudo est déjà utilisé';
+        }
+      }
+
+      if($email != $user['email'])
+      {
+        if($model->emailExists($email))
+  			{
+  				$error['email'] = 'Cet email est déjà utilisé';
+  			}
+      }
 
       if($valid->IsValid($error))
       {
-        
+        $userId = $user['id'];
+
+        //update user
+        $model->setTable('spe_users');
+        $user_update_sql = $model->update([ 'username' => $pseudo,
+				                              'lastName' => $lastname,
+				                             'firstName' => $firstname,
+				                                'email'  => $email,
+				                           'modified_at' => $date->format('Y-m-d H:i:s')], $userId);
+                                  //  debug($user_update_sql);
+                                  //  die('here');
+        //update adresse
+        $adressToUp = $adressmodel->getUserAdress($userId);
+        $adressId = $adressToUp['id'];
+        $model->setTable('spe_user_adresses');
+        // $table= $model->getTable();
+        // die($table);
+        $user_adress_update_sql = $model->update([ 'adress1' => $adress,
+				                                             'postal_code' => $postal_code,
+                                                            'town' => $city,
+                                      				           'country' => $country,
+                                                     'modified_at' => $date->format('Y-m-d H:i:s')],$adressId);
+
+
+
+        //Si le nom de l'avatar n'est pas vide on l'update sinn on y touche pas!!!!!
+        //$avatar contient par défaut 4 errors...donc j'utilise ['name']
+        if(!empty($_FILES['avatar']['name']))
+        {
+          $model->setTable('spe_avatars');
+          // $table= $avatarmodel->getTable();
+          // die($table);
+          $avatar = $_FILES['avatar'];
+
+          $error['avatar'] = $valid->uploadValid($avatar,2000000,['.jpg','.jpeg','.png'],['image/jpeg','image/png','image/jpg']);
+
+          if($valid->IsValid($error))
+          {
+
+            //update de l'avatar
+            $dossier = './assets/img/avatars/';
+            $file_tmp = $avatar['tmp_name'];
+            $file_name = $avatar['name'];
+            $file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
+            $dest_fichier = date('y_m_d_H_i') . '_avatar.' . $file_extension;
+            $file_name = $dest_fichier;
+
+
+
+            if(move_uploaded_file($file_tmp, $dossier . $dest_fichier))
+            {
+              $avatarToUp = $avatarmodel->getAvatarId($userId);
+              $avatarId = $avatarToUp['id'];
+
+              $user_avatar_update_sql = $avatarmodel->update([ 'img_name' => $file_name,
+                                                            'modified_at' => $date->format('Y-m-d H:i:s')],$avatarId);
+
+            }
+          } else {
+            $this->show('users/profile-modify', ['error' => $error]);
+          }
+        }
+        //redirection vers le profil
+
         $this->redirectToRoute('user_profile');
+
       } else {
         $this->show('users/profile-modify', ['error' => $error ,'user_avatar' => $user_avatar]);
       }
     } else {
-      $this->showNotFound();
+      $this->show('users/profile-modify', ['error' => $error, 'user_avatar' => $user_avatar]);
     }
  }
 }
