@@ -1,10 +1,10 @@
 <?php
  namespace Model;
 
+ use W\Model\ConnectionModel;
  use W\Model\UsersModel as WUsersModel;
- use Services\Tools\ToolHP;
 
-  use W\Model\ConnectionModel;
+ use Services\Tools\ToolHP;
 
  /**
   * Gestion de la table users
@@ -176,9 +176,12 @@
             if (!empty($this->find($id)))
             {
                 $update = $this->update(['status'      => $status,
-                                         'modified_at' => ToolHP::nowSql(),
-                                         'deleted_at'  => ToolHP::nowSql()
+                                         'modified_at' => ToolHP::nowSql()
                                         ], $id, true);
+               if ($status == 'deleted')
+               {
+                  $update = $this->update(['deleted_at'  => ToolHP::nowSql()], $id, true);
+               }
             }
         }
     }
