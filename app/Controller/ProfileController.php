@@ -76,12 +76,13 @@ class ProfileController extends AppController
     $model = new UsersModel();
     $auth = new AuthentificationModel();
     $strU = new StringUtils();
+    $avatar = new AvatarsModel();
+
+    $user_avatar = $avatar->getUserAvatar($user['id']);
 
 
     if(!empty($_POST['submit']))
     {
-
-
       $post = $clean->cleanPost($_POST);
 
       $firstname = $post['firstname'];
@@ -105,16 +106,14 @@ class ProfileController extends AppController
       $error['city'] = $valid->textValid($city, 'nom de ville', 3, 100);
       $error['country'] = $valid->textValid($country, 'nom de pays', 3, 100);
       $error['pseudo'] = $valid->textValid($pseudo, 'pseudo', 3, 45);
-      $error['password'] = $valid->textValid($password, 'mot de passe', 6, 40);
-      $error['password'] = $valid->passwordError($password,$password_confirm,6,40);
       $error['avatar'] = $valid->uploadValid($avatar,2000000,['.jpg','.jpeg','.png'],['image/jpeg','image/png','image/jpg']);
-debug($error);
-die('here');
+
       if($valid->IsValid($error))
       {
+        
         $this->redirectToRoute('user_profile');
       } else {
-        $this->show('users/profile-modify', ['error' => $error]);
+        $this->show('users/profile-modify', ['error' => $error ,'user_avatar' => $user_avatar]);
       }
     } else {
       $this->showNotFound();

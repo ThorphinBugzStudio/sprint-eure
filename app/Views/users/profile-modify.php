@@ -3,9 +3,8 @@
 <?php $this->start('main_content');
 debug($w_user);
 debug($user_adress);
-debug($user_avatar);
-debug($_FILES); ?>
-<form class="" action="<?php $this->url('user_profile_modify_action') ?>" method="post">
+debug($user_avatar); ?>
+<form class="" action="<?php $this->url('user_profile_modify_action') ?>" enctype="multipart/form-data" method="post">
   <!-- Section : Prénom -->
   <label for="firstname">Prénom</label> <span class="error">*</span>
   <input class="input-form" type="text" name="firstname" value="<?php if(!empty($_POST['firstname'])){ echo $_POST['firstname']; } else { echo $w_user['firstName']; } ?>">
@@ -59,7 +58,7 @@ debug($_FILES); ?>
 
 <!-- Section : Avatar -->
 <label for="avatar">Avatar</label> <span class="error">*</span>
-<input class="input-form" type="file" name="avatar" value="" style="max-width: 100%; overflow: hidden;">
+<input class="input-form" type="file" name="avatar" value="<?php echo $user_avatar['img_name'] ?>" style="max-width: 100%; overflow: hidden;">
 <?php if(!empty($error['avatar'])){ echo '<p id="error-avatar" class="error">' . $error['avatar'] . '</p>'; } ?>
 
 <input type="submit" name="submit" value="Modifier le profil">
