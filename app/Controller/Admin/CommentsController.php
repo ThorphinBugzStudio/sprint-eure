@@ -63,18 +63,37 @@ class CommentsController extends AppController
 
   /**
    * Traitement approbation d'un commentaire.
-   * Appel de la methode via route.
+   * Appel de la methode via route. __U_
    *
    * @return void
    */
   public function commentApprove($id, $fromPage)
   {
-    # code
+    $comments = new CommentsModel();
+
+    $comments->updateStatus($id, 'active');
+
+    $this->redirectToRoute('admin_page_comments', ['page' => $fromPage]);
+  }
+  
+  /**
+   * Traitement Désapprobation d'un commentaire.
+   * Appel de la methode via route. __U_
+   *
+   * @return void
+   */
+  public function commentNotApproved($id, $fromPage)
+  {
+    $comments = new CommentsModel();
+
+    $comments->updateStatus($id, 'inactive');
+
+    $this->redirectToRoute('admin_page_comments', ['page' => $fromPage]);
   }
 
   /**
    * Traitement suppression d'un commentaire.
-   * Appel de la methode via route.
+   * Appel de la methode via route. ___D
    *
    * @return void
    */
