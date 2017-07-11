@@ -91,8 +91,9 @@
 		 * HP : Voir comment traiter l'action sans route à partir du post recuperé
 		 */
 		['GET', '/admin/orders', 'Admin\Orders#orders' , 'admin_orders'],
-		['GET', '/admin/order/[:id]', 'Admin\Orders#singleOrder', 'admin_single_order'],
-		['POST','/admin/order/[:id]', 'Admin\Orders#singleOrderAction', 'admin_single_order_action'],
+		['GET', '/admin/orders/[i:page]', 'Admin\Orders#orders' , 'admin_page_orders'],
+		['GET', '/admin/order/[:id]/[i:fromPage]', 'Admin\Orders#singleOrder', 'admin_single_order'],
+		['POST','/admin/order/[:id]/[i:fromPage]', 'Admin\Orders#singleOrderAction', 'admin_single_order_action'],
 
 		/**
 		 * Admin\ItemsController

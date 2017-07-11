@@ -2,19 +2,19 @@
 
 namespace Controller\Admin;
 
-use \Controller\AppController;
+use Controller\AppController;
 
-use \Services\Tools\Pagination;
-use \Services\Tools\RadiosBox;
-use \Services\Tools\ToolHP;
+use Services\Tools\Pagination;
+use Services\Tools\RadiosBox;
+use Services\Tools\ToolHP;
 
 use Security\CleanTool;
 use Security\ValidationTool;
 use W\Security\StringUtils;
 
-use \Model\UsersModel;
-use \Model\User_adressesModel;
-use \Model\AvatarsModel;
+use Model\UsersModel;
+use Model\User_adressesModel;
+use Model\AvatarsModel;
 
 /**
  * Controller Administration des utilisateurs en back office.

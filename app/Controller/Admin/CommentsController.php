@@ -50,7 +50,7 @@ class CommentsController extends AppController
       $navPaginBar = $pagin->getHtml();
       // debug($navPaginBar);
 
-      $resultsBruts = $comments->findAll('id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
+      $resultsBruts = $comments->findAll('created_at', 'DESC', $pageStatus['limit'], $pageStatus['offset']);
       $results = array();
       foreach ($resultsBruts as $resultBrut)
       {

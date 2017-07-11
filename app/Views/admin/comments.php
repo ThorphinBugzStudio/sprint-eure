@@ -1,4 +1,4 @@
-<?php $this->layout('back_layout', ['title' => 'Commentaires']) ?>
+<?php $this->layout('back_layout', ['title' => 'Approbation des commentaires']) ?>
 
 <?php $this->start('main_content') ?>
 
