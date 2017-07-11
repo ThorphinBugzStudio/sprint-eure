@@ -1,4 +1,4 @@
-<?php $this->layout('back_layout', ['title' => 'Ajouter un article']) ?>
+<?php $this->layout('back_layout', ['title' => 'Ajouter un produit']) ?>
 
 <?php $this->start('main_content') ?>
 
@@ -8,7 +8,7 @@
     <div class="col-sm-12 col-md-8 py-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <i class="fa fa-plus fa-fw"></i> Nouvel article
+          <i class="fa fa-plus fa-fw"></i> Nouveau produit
         </div>
         <div class="p-4">
           <!-- Catégorie : Désignation -->
