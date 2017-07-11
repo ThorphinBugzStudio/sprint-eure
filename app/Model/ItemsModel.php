@@ -3,6 +3,7 @@ namespace Model;
 
 use W\Model\Model;
 use \W\Model\ConnectionModel;
+use \Model\ItemsFamilyModel;
 
 class ItemsModel extends ItemsFamilyModel
 {
@@ -10,19 +11,16 @@ class ItemsModel extends ItemsFamilyModel
   public function __construct(){
     $this->setTable('items');
     $this->dbh = ConnectionModel::getDbh();
+    // Set le nombre d'enregistrements.
+    $this->nbId = $this->countId();
   }
 
-  public function doubloncheck($designation, $famille, $champ, $champ2)
-  	{
-
-  		$sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $champ .'  = :designation AND '. $champ2 .'  = :famille ';
-  		$sth = $this->dbh->prepare($sql);
-  		$sth->bindValue(':designation', $designation);
-      $sth->bindValue(':famille', $famille);
-      $sth->execute();
-      $etat = $sth->rowCount();
-
-  		return $etat;
-  	}
+  public function nomcategorie($id){
+    $sql = 'SELECT family FROM items_familly WHERE id = :id ';
+    $sth = $this->dbh->prepare($sql);
+    $sth->bindValue(':id', $id);
+    $sth->execute();
+    return $sth->fetchAll();
+  }
 
 }

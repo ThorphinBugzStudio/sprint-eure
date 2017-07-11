@@ -75,7 +75,7 @@
 		/**
 		 * Admin\CommentsController
 		 *
-		 * 
+		 *
 		 * HP : Pas d'edit et de single prévu -> juste approve ou delete recupéré via route
 		 */
 		['GET', '/admin/comments', 'Admin\Comments#comments', 'admin_comments'],
@@ -100,9 +100,12 @@
 		 */
 		//routes admin items
 		['GET', '/admin/items', 'Admin\ItemsController#items','admin_items'],
+		['GET', '/admin/items/[i:page]', 'Admin\ItemsController#items', 'admin_page_items'],
 		['GET', '/admin/item/[:id]', 'Admin\ItemsController#singleItem', 'admin_single_item'],
 		//modification d un article
 		['POST', '/admin/item/[:id]', 'Admin\ItemsController#singleItemAction', 'admin_single_item_action'],
+		//delete item
+		['GET', '/admin/item/[i:id]/[i:fromPage]', 'Admin\ItemsController#singleItemDelete', 'admin_single_item_delete'],
 		//ajout d un nouvel article
 		['GET', '/admin/additem', 'Admin\ItemsController#AddItem','admin_single_item_add'],
 		['POST', '/admin/additem', 'Admin\ItemsController#AddItemAction','admin_single_item_add_action'],

@@ -22,10 +22,11 @@
           </a>
         </div>
         <div class="description">
-          <?php echo $result['designation']; ?> <strong><?php echo $result['description']; ?></strong>
+          <?php echo $result['designation']; ?>
           <?php echo number_format($result['puht'],2,',', ' ').' €'; ?>
         </div>
-        <a class="" href="<?=$this->url('admin_single_item_family', ['id' => $result['id']] ) ?>">
+        
+        <a class="" href="<?=$this->url('admin_single_item', ['id' => $result['id']] ) ?>">
           <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editer">
             <i class="fa fa-pencil" aria-hidden="true"></i>
           </button>
