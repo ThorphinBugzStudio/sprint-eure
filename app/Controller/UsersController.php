@@ -110,6 +110,8 @@ class UsersController extends AppController
 								$file_name = $avatar['name'];
 								$file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
 								$dest_fichier = date('y_m_d_H_i') . '_avatar.' . $file_extension;
+								$file_name = $dest_fichier;
+
 
 
 								if(move_uploaded_file($file_tmp, $dossier . $dest_fichier))

@@ -4,8 +4,11 @@ namespace Model;
 use W\Model\ConnectionModel;
 use W\Model\Model;
 
- use Services\Tools\ToolHP;
+use Services\Tools\ToolHP;
 
+/**
+ * Gestion de la table comments
+ */
 class CommentsModel extends Model
 {
    /**
@@ -30,13 +33,18 @@ class CommentsModel extends Model
       $this->nbId = $this->countId();
    }
 
+  /**
+   * Retourne les cinq derniers commentaire pour page d'accueil
+   *
+   * @return array
+   */
   public function last5Comments()
   {
 
       $sql = "SELECT c.comment, u.username, c.created_at
               FROM $this->table AS c
               JOIN spe_users AS u
-              WHERE c.users_id = u.id
+              WHERE c.users_id = u.id AND c.status = 'active'
               ORDER BY c.created_at DESC LIMIT 5";
 
       $query = $this->dbh->prepare($sql);

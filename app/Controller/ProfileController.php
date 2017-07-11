@@ -3,7 +3,13 @@
 namespace Controller;
 
 use W\Model\Model;
-
+use Model\UsersModel;
+use Model\User_adressesModel;
+use Model\AvatarsModel;
+use Security\CleanTool;
+use Security\ValidationTool;
+use W\Security\AuthentificationModel;
+use W\Security\StringUtils;
 
 /**
  * Controller Gestion du profile utilisateur par l'utilisateur.
@@ -17,9 +23,16 @@ class ProfileController extends AppController
    */
   public function profile()
   {
-    $user = $this->getUser();
+    $adress = new User_adressesModel();
+    $avatar = new AvatarsModel();
 
-    $this->show('users/user-profile', ['user' => $user]);
+    $user = $this->getUser();
+    $user_avatar = $avatar->getUserAvatar($user['id']);
+
+    $user_adress = $adress->getUserAdress($user['id']);
+
+    $this->show('users/user-profile', ['user_adress' => $user_adress,
+                                        'user_avatar' => $user_avatar]);
   }
 
   /**
@@ -27,10 +40,25 @@ class ProfileController extends AppController
    *
    * @return void
    */
-  public function profileModify()
+  public function profileModify($id)
   {
+    $adress = new User_adressesModel();
+    $avatar = new AvatarsModel();
     $user = $this->getUser();
-    $this->show('users/profile-modify', ['user' => $user]);
+
+    $user_avatar = $avatar->getUserAvatar($user['id']);
+
+    $user_adress = $adress->getUserAdress($user['id']);
+
+    if($id == $user['id'])
+    {
+      $this->show('users/profile-modify', ['user_adress' => $user_adress,
+                                           'user_avatar' => $user_avatar]);
+    } else {
+      $this->showNotFound();
+    }
+
+
   }
 
   /**
@@ -41,7 +69,54 @@ class ProfileController extends AppController
    */
   public function profileModifyAction()
   {
-    # code
-  }
+    $error = [];
+    $success = false;
+    $clean = new CleanTool();
+    $valid = new ValidationTool();
+    $model = new UsersModel();
+    $auth = new AuthentificationModel();
+    $strU = new StringUtils();
+    $avatar = new AvatarsModel();
 
+    $user_avatar = $avatar->getUserAvatar($user['id']);
+
+
+    if(!empty($_POST['submit']))
+    {
+      $post = $clean->cleanPost($_POST);
+
+      $firstname = $post['firstname'];
+      $lastname = $post['lastname'];
+      $email = $post['email'];
+      $adress = $post['adress'];
+      $postal_code = $post['postal-code'];
+      $city = $post['city'];
+      $country = $post['country'];
+      $pseudo = $post['pseudo'];
+      $password = $post['password'];
+      $password_confirm = $post['password-confirm'];
+      $avatar = $_FILES['avatar'];
+
+      $error['firstname'] = $valid->textValid($firstname, 'nom',3,60);
+      $error['lastname'] = $valid->textValid($lastname, 'prénom',3,60);
+      $error['email'] = $valid->emailValid($email);
+      $error['adress'] = $valid->textValid($adress,'adresse',10,100);
+      $error['postal-code'] = $valid->numeric($postal_code, 'code postal');
+      $error['postal-code'] = $valid->textValid($postal_code, 'code postal',5,5);
+      $error['city'] = $valid->textValid($city, 'nom de ville', 3, 100);
+      $error['country'] = $valid->textValid($country, 'nom de pays', 3, 100);
+      $error['pseudo'] = $valid->textValid($pseudo, 'pseudo', 3, 45);
+      $error['avatar'] = $valid->uploadValid($avatar,2000000,['.jpg','.jpeg','.png'],['image/jpeg','image/png','image/jpg']);
+
+      if($valid->IsValid($error))
+      {
+        
+        $this->redirectToRoute('user_profile');
+      } else {
+        $this->show('users/profile-modify', ['error' => $error ,'user_avatar' => $user_avatar]);
+      }
+    } else {
+      $this->showNotFound();
+    }
+ }
 }

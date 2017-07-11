@@ -73,6 +73,9 @@ class CommentsController extends AppController
 
     $comments->updateStatus($id, 'active');
 
+    // Message flash
+    $this->flash('Commentaire approuvé avec succès', 'success');    
+
     $this->redirectToRoute('admin_page_comments', ['page' => $fromPage]);
   }
   
@@ -87,6 +90,9 @@ class CommentsController extends AppController
     $comments = new CommentsModel();
 
     $comments->updateStatus($id, 'inactive');
+
+    // Message flash
+    $this->flash('Commentaire inactivé avec succès', 'success');
 
     $this->redirectToRoute('admin_page_comments', ['page' => $fromPage]);
   }
@@ -105,6 +111,9 @@ class CommentsController extends AppController
     $comments = new CommentsModel();
 
     $comments->updateStatus($id, 'deleted');
+
+    // Message flash
+    $this->flash('Commentaire supprimé avec succès', 'success');
 
     $this->redirectToRoute('admin_page_comments', ['page' => $fromPage]);
   }

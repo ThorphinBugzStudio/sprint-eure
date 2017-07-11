@@ -2,6 +2,7 @@
 namespace Model;
 
 use W\Model\Model;
+use W\Model\ConnectionModel;
 
 /**
  * Gestion de la table user_adresses
