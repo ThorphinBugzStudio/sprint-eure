@@ -45,7 +45,7 @@ class CommentsController extends AppController
       if (!empty($page)) { $pagin->setPageStatus($page); }
 
       // get des informations de pagination necessaires à la requete bdd
-      $pageStatus = $pagin->getPageStatus();
+      $pageStatus = $pagin->getPageStatus(); debug($pageStatus);
       // get du html de la barre de navigation pour la pagination
       $navPaginBar = $pagin->getHtml();
       // debug($navPaginBar);
