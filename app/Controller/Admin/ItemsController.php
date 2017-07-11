@@ -51,13 +51,114 @@ class ItemsController extends AppController
   {
     $items = new ItemsModel();
     $itemsToUpdate = $items->find($id);
+    $model = new ItemsFamilyModel;
+    $family = $model->notdelete();
 
     $statusBox = new RadiosBox('Statut', ['Actif' => 'active',
                                           'delete' => 'deleted'
-                                         ], $itemsToUpdate['status']);
+                                        ], $itemsToUpdate['status']);
     $statusBox->getHtml();
-    $this->show('admin/single-item', ['statusBox' => $statusBox->getHtml(), 'designation' =>$itemsToUpdate['designation']]);
+    $this->show('admin/single-item', ['statusBox' => $statusBox->getHtml(), 'item' =>$itemsToUpdate, 'family'=>$family]);
     }
+
+    /**
+    * Traitement Formulaire d'un article.
+    * Recuperation via POST du type d'action CRUD.
+    *
+    * @return void
+    */
+    //modification d un article
+  public function singleItemAction($id)
+  {
+    $clean = new CleanTool;
+    $validation = new ValidationTool;
+    $items = new ItemsModel();
+    $model = new ItemsFamilyModel;
+    $famillyToUpdate = $model->find($id);
+    $post = $clean->cleanPost($_POST);
+    $family = $model->notdelete();
+
+    $statusBox = new RadiosBox('Statut', ['Actif' => 'active',
+                                          'delete' => 'deleted'
+                                         ], $famillyToUpdate['status']);
+    $statusBox->getHtml();
+
+    if(!empty($_POST['submit'])) {
+      $famille     = $_POST['famille'];
+      $designation = $post['designation'];
+      $description = $post['description'];
+      $quantité    = $post['quantite'];
+      $prix        = $post['prix'];
+      $image       = $_FILES['image'];
+      $dossier     = 'assets/img/uploaded_articles/';
+      $status      = $_POST['optionsRadiosStatut'];
+
+      if (isset($_POST['home'])) {
+        $home = 1;
+      } else {
+        $home = 0;
+      }
+
+//verification des erreurs de chaque champs
+      $error['designation'] = $validation->textValid($designation, 'designation');
+      $error['description'] = $validation->textValid($description, 'description', 3, 1000);
+      $error['quantite']    = $validation->entier($quantité, 'quantité');
+      $error['prix']        = $validation->numeric($prix, 'prix');
+
+      if(!empty($_FILES['image'])){
+      $error['image']  = $validation->uploadValid($image, 2000000, array('.jpg','.jpeg','.png'), array('image/jpeg','image/png','image/jpg'));
+
+
+      if ($validation->IsValid($error)) {
+        $img_name = date('Y_m_d_H_i').'_'.$designation.'.'.pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
+
+        $data = array(
+              'items_family_id' => $famille,
+              'designation' => $designation,
+              'description' => $description,
+              'packaging' => $quantité,
+              'puht' => $prix,
+              'home' => $home,
+              'status' => $status,
+              'img_name' => $img_name,
+              'created_at' => date('Y_m_d_H_i_s'),
+            );
+
+        if(move_uploaded_file($_FILES['image']['tmp_name'], $dossier . $img_name)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+         {
+            $items->update($data, $id, $stripTags = true);
+            $this->redirectToRoute('admin_page_items', ['page' => 1]);
+         }
+      }
+       else
+        {
+          $this->show('admin/single-item', ['statusBox' => $statusBox->getHtml(), 'item' =>$itemsToUpdate, 'family'=>$family, 'error' => $error, 'family'=>$family]);
+        }
+      } else {
+        if ($validation->IsValid($error)) {
+
+          $data = array(
+                'items_family_id' => $famille,
+                'designation' => $designation,
+                'description' => $description,
+                'packaging' => $quantité,
+                'puht' => $prix,
+                'home' => $home,
+                'status' => $status,
+                'created_at' => date('Y_m_d_H_i_s'),
+              );
+  
+              $items->update($data, $id, $stripTags = true);
+              $this->redirectToRoute('admin_page_items', ['page' => 1]);
+
+        }
+         else
+          {
+            $this->show('admin/single-item', ['statusBox' => $statusBox->getHtml(), 'item' =>$itemsToUpdate, 'family'=>$family, 'error' => $error, 'family'=>$family]);
+          }
+      }
+    }
+  }
 
   public function singleItemDelete($id, $fromPage)
   {
@@ -69,17 +170,6 @@ class ItemsController extends AppController
     $this->redirectToRoute('admin_page_items', ['page' => $fromPage]);
   }
 
-  /**
-   * Traitement Formulaire d'un article.
-   * Recuperation via POST du type d'action CRUD.
-   *
-   * @return void
-   */
-  //modification d un article
-  public function singleItemAction($id)
-  {
-
-  }
 
   //ajout d'un article
   public function AddItem()
@@ -107,7 +197,7 @@ class ItemsController extends AppController
       $prix        = $post['prix'];
       $image       = $_FILES['image'];
       $dossier = 'assets/img/uploaded_articles/';
-      $status = "";
+      $status = "active";
 
       if (isset($_POST['home'])) {
         $home = 1;
@@ -123,7 +213,7 @@ class ItemsController extends AppController
 
 //verification des erreurs de chaque champs
       $error['designation'] = $validation->textValid($designation, 'designation');
-      $error['description'] = $validation->textValid($description, 'designation', 3, 500);
+      $error['description'] = $validation->textValid($description, 'description', 3, 1000);
       $error['quantite']    = $validation->entier($quantité, 'quantité');
       $error['prix']        = $validation->numeric($prix, 'prix');
       $error['image']  = $validation->uploadValid($image, 2000000, array('.jpg','.jpeg','.png'), array('image/jpeg','image/png','image/jpg'));
