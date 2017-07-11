@@ -36,11 +36,12 @@
             <td><?php echo $result['modified_at']; ?></td>
             <td class="menu_actions">
               <!-- BOUTON : Approve -->
+              <?php if ($result['status'] != 'active') { ?>
               <a class="" href="<?=$this->url('admin_approve_comment', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">
-                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editer">
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Editer">
+                   <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                 </button>
-              </a>
+             </a> <?php } ?>
               <!-- BOUTON : Delete -->
               <a class="" href="<?=$this->url('admin_delete_comment', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">
                 <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Supprimer">

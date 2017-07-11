@@ -176,9 +176,12 @@
             if (!empty($this->find($id)))
             {
                 $update = $this->update(['status'      => $status,
-                                         'modified_at' => ToolHP::nowSql(),
-                                         'deleted_at'  => ToolHP::nowSql()
+                                         'modified_at' => ToolHP::nowSql()
                                         ], $id, true);
+               if ($status == 'deleted')
+               {
+                  $update = $this->update(['deleted_at'  => ToolHP::nowSql()], $id, true);
+               }
             }
         }
     }

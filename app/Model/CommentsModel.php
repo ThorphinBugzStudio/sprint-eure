@@ -4,6 +4,8 @@ namespace Model;
 use W\Model\ConnectionModel;
 use W\Model\Model;
 
+ use Services\Tools\ToolHP;
+
 class CommentsModel extends Model
 {
    /**
@@ -106,7 +108,7 @@ class CommentsModel extends Model
           }
       }
 
-      
+
     $sth = $this->dbh->prepare($sql);
     $sth->execute();
 
@@ -159,9 +161,13 @@ class CommentsModel extends Model
           if (!empty($this->find($id)))
           {
              $update = $this->update(['status'      => $status,
-                                       'modified_at' => ToolHP::nowSql(),
-                                       'deleted_at'  => ToolHP::nowSql()
+                                       'modified_at' => ToolHP::nowSql()
                                       ], $id, true);
+
+            if($status == 'deleted')
+            {
+               $update = $this->update(['deleted_at'  => ToolHP::nowSql()], $id, true);
+            }
           }
       }
  }

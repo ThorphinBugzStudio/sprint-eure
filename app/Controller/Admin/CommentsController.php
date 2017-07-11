@@ -24,7 +24,7 @@ class CommentsController extends AppController
   /**
    * Listing des commentaires.
    * approve ou delete via generation url et interception par route.
-   * _RUD
+   * _R__
    *
    * @return void
    */
@@ -45,7 +45,7 @@ class CommentsController extends AppController
       if (!empty($page)) { $pagin->setPageStatus($page); }
 
       // get des informations de pagination necessaires à la requete bdd
-      $pageStatus = $pagin->getPageStatus(); debug($pageStatus);
+      $pageStatus = $pagin->getPageStatus();
       // get du html de la barre de navigation pour la pagination
       $navPaginBar = $pagin->getHtml();
       // debug($navPaginBar);
@@ -67,7 +67,7 @@ class CommentsController extends AppController
    *
    * @return void
    */
-  public function commentApprove()
+  public function commentApprove($id, $fromPage)
   {
     # code
   }
@@ -78,9 +78,16 @@ class CommentsController extends AppController
    *
    * @return void
    */
-  public function commentDelete()
+  public function commentDelete($id, $fromPage)
   {
-    # code
+     // ADMIN ONLY
+    // $this->allowTo('admin');
+
+    $comments = new CommentsModel();
+
+    $comments->updateStatus($id, 'deleted');
+
+    $this->redirectToRoute('admin_page_comments', ['page' => $fromPage]);
   }
 
 }
