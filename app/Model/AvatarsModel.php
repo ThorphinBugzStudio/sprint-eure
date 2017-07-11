@@ -6,7 +6,7 @@ use W\Model\Model;
 class AvatarsModel extends Model
 {
 
-   public function __contruct()
+   public function __construct()
    {
       $this->setTable('spe_avatars');
       $this->dbh = ConnectionModel::getDbh();

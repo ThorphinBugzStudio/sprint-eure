@@ -108,7 +108,7 @@
 	<!-- Bouton : Haut de Page  -->
 	<a href="#" title="Haut de page" class="scrollup"><i class="fa fa-arrow-up"></i></a>
 
-<div class="col-lg-10 mx-auto bg-white">
+<div class="col-lg-9 mx-auto bg-white">
 		<section>
 			<?php if($_ENV == 'Home') { ?>
 

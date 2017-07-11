@@ -9,7 +9,7 @@ use W\Model\ConnectionModel;
  */
 class User_adressesModel extends Model
 {
-   public function __contruct()
+   public function __construct()
    {
       $this->setTable('spe_user_adresses');
       $this->dbh = ConnectionModel::getDbh();
