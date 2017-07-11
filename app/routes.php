@@ -35,8 +35,8 @@
 		 * ProfileController
 		 */
 		['GET', '/user/profile', 'Profile#profile', 'user_profile'],
-		['GET', '/user/profile/edit', 'Profile#profileModify','user_profile_modify'],
-		['POST','/user/profile/edit','Profile#profileModifyAction', 'user_profile_modify_action'],
+		['GET', '/user/profile/edit/[i:id]', 'Profile#profileModify','user_profile_modify'],
+		['POST','/user/profile/edit/[i:id]','Profile#profileModifyAction', 'user_profile_modify_action'],
 
 		/**
 		 * CatalogController
