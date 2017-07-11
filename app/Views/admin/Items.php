@@ -28,6 +28,9 @@
           <?php echo $result['designation']; ?>
           <?php echo number_format($result['puht'],2,',', ' ').' €'; ?>
         </div>
+        <div class="status">
+          <?= $result['status'];?>
+        </div>
 
         <a class="" href="<?=$this->url('admin_single_item', ['id' => $result['id']] ) ?>">
           <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editer">
@@ -35,7 +38,7 @@
           </button>
         </a>
         <!-- BOUTON : Delete -->
-        <a class="" href="<?=$this->url('admin_single_item_family_delete', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">
+        <a class="" href="<?=$this->url('admin_single_item_delete', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">
           <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Supprimer">
             <i class="fa fa-trash-o" aria-hidden="true"></i>
           </button>

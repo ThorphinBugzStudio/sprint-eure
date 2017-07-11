@@ -5,6 +5,7 @@ namespace Controller\Admin;
 use \Controller\AppController;
 use \Security\CleanTool;
 use \Services\Tools\Pagination;
+use \Services\Tools\RadiosBox;
 use \Security\ValidationTool;
 use \Model\ItemsFamilyModel;
 use \Model\ItemsModel;
@@ -46,9 +47,26 @@ class ItemsController extends AppController
    *
    * @return void
    */
-  public function singleItem()
+  public function singleItem($id)
   {
-    $this->show('admin/single-item');
+    $items = new ItemsModel();
+    $itemsToUpdate = $items->find($id);
+
+    $statusBox = new RadiosBox('Statut', ['Actif' => 'active',
+                                          'delete' => 'deleted'
+                                         ], $itemsToUpdate['status']);
+    $statusBox->getHtml();
+    $this->show('admin/single-item', ['statusBox' => $statusBox->getHtml(), 'designation' =>$itemsToUpdate['designation']]);
+    }
+
+  public function singleItemDelete($id, $fromPage)
+  {
+
+    $items = new ItemsModel();
+
+    $items->updateStatus($id, 'deleted');
+
+    $this->redirectToRoute('admin_page_items', ['page' => $fromPage]);
   }
 
   /**
@@ -58,9 +76,9 @@ class ItemsController extends AppController
    * @return void
    */
   //modification d un article
-  public function singleItemAction()
+  public function singleItemAction($id)
   {
-    # code
+
   }
 
   //ajout d'un article
