@@ -116,7 +116,7 @@ class Pagination
 
             $this->pageStatus['prevPageBlock'] = ($this->pageStatus['prevBlockExist']) ? $numPage - 3 : 1;
             $this->pageStatus['nextPageBlock'] = ($this->pageStatus['nextBlockExist']) ? $numPage + 3 : $this->totalPage;
-            
+
             $this->pageStatus['prevPage'] = ($this->pageStatus['prevExist']) ? $numPage - 1 : $numPage;
             $this->pageStatus['nextPage'] = ($this->pageStatus['nextExist']) ? $numPage + 1 : $numPage;
 
@@ -178,7 +178,7 @@ class Pagination
      * @return void
      */
     private function createHtml()
-    { 
+    {
         $this->html = '';
 
         $this->html .= '<nav aria-label="'.$this->pageStatus['paginationFor'].'">';
@@ -220,9 +220,6 @@ class Pagination
             $this->html .= '</ul>';
         $this->html .= '</nav>';
 
-    } 
+    }
 
 }
-
-
-
