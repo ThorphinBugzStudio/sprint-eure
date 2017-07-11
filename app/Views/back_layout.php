@@ -85,11 +85,7 @@
 
 							<!-- Section : Utilisateurs -->
 							<li>
-								<a href="#"><i class="fa fa-user fa-fw"></i> Utilisateurs<span class="fa arrow"></span></a>
-								<ul class="nav nav-second-level">
-									<li><a href="<?= $this->url('admin_users') ?>">Tous les utilisateurs</a></li>
-									<li><a href="#">Ajouter</a></li>
-								</ul>
+								<a href="<?= $this->url('admin_users') ?>"><i class="fa fa-user fa-fw"></i> Utilisateurs</a>
 							</li>
 
 							<!-- Section : Commentaires -->
@@ -135,6 +131,14 @@
           <div class="col-lg-12">
             <h1 class="page-header">» <?= $this->e($title) ?></h1>
           </div>
+
+			 <div class="flash-message">
+			   <?php if(!empty($w_flash_message->message)) { ?>
+			   	<span class="span-flash"><?= $w_flash_message->message ?></span>
+		      <?php } ?>
+
+		  	 </div>
+
         </div>
 						<?= $this->section('main_content') ?>
 				</div>

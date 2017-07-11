@@ -156,7 +156,7 @@ class ValidationTool
 	      $error = 'Veuillez confirmer votre mot de passe';
 	    }
 	    if($password!==$password_confirm){
-	      $error = 'Le mot de passe ne correspond pas';
+	      $error = 'Les mots de passe ne correspondent pas';
 	    }
 	    if(strlen($password)<$min){
 	      $error = 'Votre mot de passe est trop court (6 caractères minimum)';
