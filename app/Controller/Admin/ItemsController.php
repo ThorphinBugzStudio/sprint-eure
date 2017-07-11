@@ -19,6 +19,7 @@ class ItemsController extends AppController
    *
    * @return void
    */
+
   public function items($page = '')
   {
     $items = new ItemsModel();
@@ -35,8 +36,7 @@ class ItemsController extends AppController
     // debug($navPaginBar);
 
     $results = $items->findAll('id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
-    print_r($results);
-    $categorie = $items->nomcategorie($results['items_family_id']);
+    $categorie = $items->nomcategorie();
     $this->show('admin/items', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
 
@@ -68,7 +68,6 @@ class ItemsController extends AppController
   {
     $model = new ItemsFamilyModel;
     $family = $model->notdelete();
-    print_r($family);
     $this->show('admin/add-item', array('family' => $family));
   }
 

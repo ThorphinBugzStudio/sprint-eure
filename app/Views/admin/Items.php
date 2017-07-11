@@ -2,7 +2,10 @@
 
 <?php $this->start('main_content') ?>
 
-<h1>Listing de tous les articles</h1>
+<?php foreach ($categorie as $cat): ?>
+  <a href="#"><?= $cat['family'] ?></a>
+<?php endforeach; ?>
+
 <div class="row">
   <div class="col-sm-12">
 
@@ -25,7 +28,7 @@
           <?php echo $result['designation']; ?>
           <?php echo number_format($result['puht'],2,',', ' ').' €'; ?>
         </div>
-        
+
         <a class="" href="<?=$this->url('admin_single_item', ['id' => $result['id']] ) ?>">
           <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editer">
             <i class="fa fa-pencil" aria-hidden="true"></i>

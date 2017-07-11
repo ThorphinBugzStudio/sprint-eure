@@ -11,11 +11,7 @@ use Services\Tools\ToolHP;
 class ItemsFamilyModel extends Model
 {
 
-   public function __contruct()
-   {
-      $this->setTable('spe_items_family');
-      $this->dbh = ConnectionModel::getDbh();
-   }
+
 
   /**
    * Nombre d'enregistrements dans la table.
@@ -38,7 +34,6 @@ class ItemsFamilyModel extends Model
   {
     $this->setTable('spe_items_family');
     $this->dbh = ConnectionModel::getDbh();
-      parent::__construct();
       $this->where = $where;
       // Set le nombre d'enregistrements.
       $this->nbId = $this->countId();

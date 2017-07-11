@@ -15,10 +15,10 @@ class ItemsModel extends ItemsFamilyModel
     $this->nbId = $this->countId();
   }
 
-  public function nomcategorie($id){
-    $sql = 'SELECT family FROM items_familly WHERE id = :id ';
+  public function nomcategorie(){
+    $this->setTable('spe_items_family');
+    $sql = 'SELECT family FROM ' . $this->table;
     $sth = $this->dbh->prepare($sql);
-    $sth->bindValue(':id', $id);
     $sth->execute();
     return $sth->fetchAll();
   }
