@@ -131,6 +131,14 @@
           <div class="col-lg-12">
             <h1 class="page-header">» <?= $this->e($title) ?></h1>
           </div>
+
+			 <div class="flash-message">
+			   <?php if(!empty($w_flash_message->message)) { ?>
+			   	<span class="span-flash"><?= $w_flash_message->message ?></span>
+		      <?php } ?>
+
+		  	 </div>
+
         </div>
 						<?= $this->section('main_content') ?>
 				</div>

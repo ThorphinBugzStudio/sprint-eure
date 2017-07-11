@@ -128,7 +128,7 @@ class UsersController extends AppController
 		$valid = new ValidationTool();
 		$strU = new StringUtils();
 		// $auth = new AuthentificationModel();
-    
+
     $error = [];
 		// $success = false;
 
@@ -168,20 +168,20 @@ class UsersController extends AppController
 
       // test si lorsque le pseudo saisi existe déjà il est egal à celui renseigné pour l'utilisateur en bdd
       // si ce n'est pas le cas, le pseudo saisi est utilisé pour un autre user -> Error
-      if ($users->getUserByUsernameOrEmail($pseudo) && ($pseudo != $userToUpdate['username'] )) 
+      if ($users->getUserByUsernameOrEmail($pseudo) && ($pseudo != $userToUpdate['username'] ))
       {
-        $error['pseudo'] = 'Ce pseudo est déjà utilisé pour un autre utilisateur';        
+        $error['pseudo'] = 'Ce pseudo est déjà utilisé pour un autre utilisateur';
       }
-      
+
       // test si lorsque l'email saisi existe déjà il est egal à celui renseigné pour l'utilisateur en bdd
       // si ce n'est pas le cas, l'email saisi est utilisé pour un autre user -> Error
-      if ($users->getUserByUsernameOrEmail($email) && ($email != $userToUpdate['email'] )) 
+      if ($users->getUserByUsernameOrEmail($email) && ($email != $userToUpdate['email'] ))
       {
-        $error['email'] = 'Cet email est déjà utilisé pour un autre utilisateur';        
+        $error['email'] = 'Cet email est déjà utilisé pour un autre utilisateur';
       }
 
       // Actions suivant erreurs
-      if ($valid->IsValid($error)) 
+      if ($valid->IsValid($error))
       {
         // Pas d'erreurs -> update bdd et redirect sur listing users
         $token = $strU->randomString($length = 100);
@@ -213,12 +213,13 @@ class UsersController extends AppController
         // debug($updateAdress);
         // debug($updateAvatar); die();
 
-        // MESSAGE FLASH SUCCESS 
+        // Message flash
+        $this->flash($updateUser['username'].' mis à jour avec succès', 'success');
 
         $this->redirectToRoute('admin_page_users', ['page' => $fromPage]);
 
       }
-      else 
+      else
       {
         // Erreurs -> réaffichage formulaire avec erreurs
         # code...
@@ -226,19 +227,19 @@ class UsersController extends AppController
 
 
       debug($error); die();
-      
-      
+
+
       $u = $users->getUserByUsernameOrEmail($pseudo);
 
       debug($users->emailExists($email)); die();
 
       $e = $users->getUserByUsernameOrEmail($email);
     }
-    else 
+    else
     {
       // Comment $_POST pourrait il etre vide ?
       die('403 !');
-      
+
     }
 
 
