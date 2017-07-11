@@ -57,6 +57,18 @@
               </a>
             </td>
           </tr> <?php } ?>
+
+          <?php if(empty($result)) { ?>
+            <tr>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+            </tr>
+          <?php } ?>
+
         </tbody>
       </table>
     </div>
