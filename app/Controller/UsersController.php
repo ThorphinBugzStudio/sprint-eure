@@ -114,7 +114,7 @@ class UsersController extends AppController
 
 								if(move_uploaded_file($file_tmp, $dossier . $dest_fichier))
 								{
-									$model->setTable('avatars');
+									$model->setTable('spe_avatars');
 
 									$insert_avatar = $model->insert(['img_name' => $file_name,
 									'user_id' => $userId,
@@ -122,7 +122,7 @@ class UsersController extends AppController
 								}
 
 				//update de l'avatarId ds la table user
-								$model->setTable('users');
+								$model->setTable('spe_users');
 
 							$avatarId = $avatarMod->getAvatarId($userId);
 
@@ -138,7 +138,7 @@ class UsersController extends AppController
 							'status' => 'active' ] , $userId);
 
 
-				$model->setTable('user_adresses');
+				$model->setTable('spe_user_adresses');
 
 				$insert_useradress = $model->insert(['users_id' => $userId,
 				'adress1' => $adress,
@@ -383,7 +383,7 @@ class UsersController extends AppController
 															'modified_at' => $date->format('Y-m-d H:i:s')], $user_id);
 
 
-							$this->flash('Votre mot de passe a été modifié', 'success');
+							$this->flash('Votre mot de passe a été modifié, vous pouvez vous connecter', 'success');
 							$this->redirectToRoute('login');
 
 						} else {

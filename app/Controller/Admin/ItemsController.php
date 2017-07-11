@@ -5,6 +5,7 @@ namespace Controller\Admin;
 use \Controller\AppController;
 use \Security\CleanTool;
 use \Services\Tools\Pagination;
+use \Services\Tools\RadiosBox;
 use \Security\ValidationTool;
 use \Model\ItemsFamilyModel;
 use \Model\ItemsModel;
@@ -19,12 +20,13 @@ class ItemsController extends AppController
    *
    * @return void
    */
+
   public function items($page = '')
   {
     $items = new ItemsModel();
 
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('admin_items'), $items->getNbId(), 5);
+    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('admin_items'), $items->getNbId(), 8);
 
     if (!empty($page)) { $pagin->setPageStatus($page); }
 
@@ -35,7 +37,8 @@ class ItemsController extends AppController
     // debug($navPaginBar);
 
     $results = $items->findAll('id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
-    $this->show('admin/items', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual']]);
+    $categorie = $items->nomcategorie();
+    $this->show('admin/items', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
 
   /**
@@ -44,9 +47,26 @@ class ItemsController extends AppController
    *
    * @return void
    */
-  public function singleItem()
+  public function singleItem($id)
   {
-    $this->show('admin/single-item');
+    $items = new ItemsModel();
+    $itemsToUpdate = $items->find($id);
+
+    $statusBox = new RadiosBox('Statut', ['Actif' => 'active',
+                                          'delete' => 'deleted'
+                                         ], $itemsToUpdate['status']);
+    $statusBox->getHtml();
+    $this->show('admin/single-item', ['statusBox' => $statusBox->getHtml(), 'designation' =>$itemsToUpdate['designation']]);
+    }
+
+  public function singleItemDelete($id, $fromPage)
+  {
+
+    $items = new ItemsModel();
+
+    $items->updateStatus($id, 'deleted');
+
+    $this->redirectToRoute('admin_page_items', ['page' => $fromPage]);
   }
 
   /**
@@ -56,9 +76,9 @@ class ItemsController extends AppController
    * @return void
    */
   //modification d un article
-  public function singleItemAction()
+  public function singleItemAction($id)
   {
-    # code
+
   }
 
   //ajout d'un article
@@ -66,7 +86,6 @@ class ItemsController extends AppController
   {
     $model = new ItemsFamilyModel;
     $family = $model->notdelete();
-    print_r($family);
     $this->show('admin/add-item', array('family' => $family));
   }
 
