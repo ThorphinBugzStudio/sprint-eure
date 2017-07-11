@@ -9,8 +9,8 @@ class CommentsModel extends Model
   {
 
       $sql = "SELECT c.comment, u.username, c.created_at
-              FROM comments AS c
-              JOIN users AS u
+              FROM $this->table AS c
+              JOIN spe_users AS u
               WHERE c.users_id = u.id
               ORDER BY c.created_at DESC LIMIT 5";
 
