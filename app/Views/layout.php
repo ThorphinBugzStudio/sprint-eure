@@ -41,6 +41,7 @@
 
 				<li>
 					<a href="<?= $this->url('user_profile') ?>"><i class="fa fa-user" aria-hidden="true"></i> Votre profil</a>
+					<!--<a href="<?= $this->url('user_profile') ?>"> <img src="" alt="Avatar"> <p></p> </a>-->
 				</li>
 
 				<li>
@@ -74,6 +75,7 @@
 		</div>
 	</div>
 </nav>
+
 		<!-- ============================================ -->
 		<!-- 			Bannière du site + nom et logo 					-->
 		<!-- ============================================ -->
@@ -89,9 +91,7 @@
 				</h1>
 
 			</div>
-			<!--<video class="slider-video" type="video/mp4" src="<?= $this->assetUrl('img/sliders/3dprint_introduction.mp4') ?>" muted autoplay loop></video>-->
 		</div>
-
 
 		<!-- ============================================ -->
 		<!-- 					Menu de naviguation du site 				-->
@@ -99,7 +99,6 @@
 		<nav class="navbar-menu">
 			<ul class="row justify-content-center">
 				<li class="hvr-underline-from-center"><a href="<?= $this->url('default_home') ?>">Accueil</a></li>
-				<li class="hvr-underline-from-center"><a href="#">Boutique</a></li>
 				<li class="hvr-underline-from-center"><a href="<?= $this->url('how_to') ?>">Comment ça marche ?</a></li>
 				<li class="hvr-underline-from-center"><a href="#">À propos</a></li>
 			</ul>
@@ -109,7 +108,7 @@
 	<!-- Bouton : Haut de Page  -->
 	<a href="#" title="Haut de page" class="scrollup"><i class="fa fa-arrow-up"></i></a>
 
-<div class="container bg-white">
+<div class="col-lg-10 mx-auto bg-white">
 		<section>
 			<div class="container-fluid row pt-4 mainContent">
 				<h2><?= $this->e($title) ?></h2>
