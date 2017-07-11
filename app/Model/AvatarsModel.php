@@ -6,6 +6,12 @@ use W\Model\Model;
 class AvatarsModel extends Model
 {
 
+   public function __contruct()
+   {
+      $this->setTable('spe_avatars');
+      $this->dbh = ConnectionModel::getDbh();
+   }
+
   public function getAvatarId($userId)
   {
     $sql = "SELECT id FROM $this->table WHERE user_id = '$userId'";
