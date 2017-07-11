@@ -8,6 +8,11 @@ use W\Model\Model;
  */
 class User_adressesModel extends Model
 {
+   public function __contruct()
+   {
+      $this->setTable('spe_user_adresses');
+      $this->dbh = ConnectionModel::getDbh();
+   }
 
    /**
     * Get adresse de facturation d'un utilisateur

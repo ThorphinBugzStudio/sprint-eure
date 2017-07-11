@@ -22,7 +22,8 @@ use \Model\AvatarsModel;
 class UsersController extends AppController
 {
 
-   private $nbreperpage = 3;
+   private $nbreperpage = 5;
+   
   /**
    * Listing utilisateurs.
    *

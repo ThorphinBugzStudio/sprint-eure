@@ -5,6 +5,12 @@ use W\Model\Model;
 
 class CommentsModel extends Model
 {
+   public function __contruct()
+   {
+      $this->setTable('spe_comments');
+      $this->dbh = ConnectionModel::getDbh();
+   }
+
   public function last5Comments()
   {
 

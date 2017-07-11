@@ -30,9 +30,8 @@
      */
     public function __construct($where = null)
     {
-       // parent::__construct();
-       $this->setTable('spe_users');
- 		$this->dbh = ConnectionModel::getDbh();
+        $this->setTable('spe_users');
+ 		  $this->dbh = ConnectionModel::getDbh();
         $this->where = $where;
         // Set le nombre d'enregistrements.
         $this->nbId = $this->countId();
@@ -99,7 +98,7 @@
             if($offset){
                 $sql .= ' OFFSET '.$offset;
             }
-        } debug($sql);
+        }
 		$sth = $this->dbh->prepare($sql);
 		$sth->execute();
 

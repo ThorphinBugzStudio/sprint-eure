@@ -11,6 +11,12 @@ use Services\Tools\ToolHP;
 class ItemsFamilyModel extends Model
 {
 
+   public function __contruct()
+   {
+      $this->setTable('spe_items_family');
+      $this->dbh = ConnectionModel::getDbh();
+   }
+
   /**
    * Nombre d'enregistrements dans la table.
    *
