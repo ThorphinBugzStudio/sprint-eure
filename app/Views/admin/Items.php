@@ -72,7 +72,8 @@
       </div>
       <div class="search_per_category p-4">
         <?php foreach ($categorie as $cat): ?>
-          <a href="#"><?= $cat['family'] ?></a>
+
+          <a href="<?= $this->url('admin_categorie_item', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a>
         <?php endforeach; ?>
       </div>
     </div>

@@ -69,6 +69,11 @@
         </div>
       </div>
 
+
+            <input class="input-back" type="text" name="img_name" id="img_name" placeholder="Saisir un titre" value="<?php if(!empty($_POST['img_name'])) { echo $_POST['img_name'];} else { echo $item['img_name'] ;}?>" />
+            
+
+
       <div class="panel panel-default mt-4">
         <div class="panel-heading">
           <i class="fa fa-gear fa-fw"></i> Paramètres

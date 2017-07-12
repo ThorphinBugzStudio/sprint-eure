@@ -104,6 +104,8 @@
 		['GET', '/admin/items', 'Admin\ItemsController#items','admin_items'],
 		['GET', '/admin/items/[i:page]', 'Admin\ItemsController#items', 'admin_page_items'],
 		['GET', '/admin/item/[:id]', 'Admin\ItemsController#singleItem', 'admin_single_item'],
+		//articles par categories
+		['GET', '/admin/items/categorie/[:id]', 'Admin\ItemsController#categorieItem', 'admin_categorie_item'],
 		//modification d un article
 		['POST', '/admin/item/[:id]', 'Admin\ItemsController#singleItemAction', 'admin_single_item_action'],
 		//delete item
