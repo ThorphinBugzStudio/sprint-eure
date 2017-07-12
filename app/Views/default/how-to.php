@@ -54,7 +54,10 @@
         <a href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier (0)
         </a>
-        <div class="dropdown-menu p-1 py-2" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="title_basket">
+            Votre panier
+          </div>
           <div class="dropdown-item">
             <p class="text-align-center mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Le panier est vide.</p>
             <hr class="hrPage">
@@ -72,7 +75,7 @@
             </div>
           </div>
         </div>
-    </li>
+      </li>
 
     </ul>
   </div>
