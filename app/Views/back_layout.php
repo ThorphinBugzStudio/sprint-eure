@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="<?= $this->assetUrl('admin/dist/css/sb-admin-2.css') ?>">
   <link rel="stylesheet" href="<?= $this->assetUrl('admin/vendor/font-awesome/css/font-awesome.min.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/jquery-ui.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/hover.css') ?>">
   <link rel="stylesheet" href="<?= $this->assetUrl('admin/css/style.css') ?>">
 </head>
 <body>
