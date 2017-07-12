@@ -18,6 +18,10 @@ body {
 	display: flex;
 	border-top: 2px solid #1e7dce;
 }
+.navbar-avatar {
+	height: 50%;
+	width: 5%;
+}
 
 .navbar-users ul {
 	padding: 0;
