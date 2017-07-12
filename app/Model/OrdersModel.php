@@ -190,28 +190,4 @@ class OrdersModel extends Model
       }
    }
 
-   /**
-    * Recuperation des lignes d'une commande
-    * @param  int $id Id de la commande
-    * @return array
-    */
-   public function getRowsOrder($id = null)
-   {
-      if (!empty($id))
-      {
-         $sql = "";
-
-         debug($sql);
-         $sth = $this->dbh->prepare($sql);
-         $sth->execute();
-         $result = $sth->fetchAll();
-
-         return $results;
-      }
-      else
-      {
-         die('error : id commande');
-      }
-   }
-
 }
