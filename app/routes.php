@@ -87,8 +87,8 @@
 		/**
 		 * Admin\OrdersController
 		 *
-		 * AQ : edit // update // delete
-		 * HP : Voir comment traiter l'action sans route à partir du post recuperé
+		 *
+		 * 
 		 */
 		['GET', '/admin/orders', 'Admin\Orders#orders' , 'admin_orders'],
 		['GET', '/admin/orders/[i:page]', 'Admin\Orders#orders' , 'admin_page_orders'],

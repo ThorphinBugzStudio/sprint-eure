@@ -29,12 +29,12 @@ class OrdersController extends AppController
    *
    * @return void
    */
-  public function orders($page = '')
+  public function orders($page = null)
   {
     // ADMIN ONLY
     // $this->allowTo('admin');
 
-    $orders = new OrdersModel($where = "status = 'temp' OR status = 'validated' OR status = 'paid' OR status = 'deleted'");
+    $orders = new OrdersModel($where = "status = 'paid' OR status = 'checked' OR status = 'prepared'");
     $users = new UsersModel();
     $vatRates = new VatRateModel();
 
@@ -51,7 +51,7 @@ class OrdersController extends AppController
     // debug($navPaginBar);
 
     $resultsBruts = $orders->findAll('created_at', 'DESC', $pageStatus['limit'], $pageStatus['offset']);
-    $results = null;
+    $results = array();
     foreach ($resultsBruts as $resultBrut)
     {
       $resultBrut['username'] = $users->find($resultBrut['users_id'])['username'];
@@ -70,10 +70,33 @@ class OrdersController extends AppController
    *
    * @return void
    */
-  public function singleOrder()
+  public function singleOrder($id, $fromPage)
   {
     // ADMIN ONLY
     // $this->allowTo('admin');
+
+    $orders = new OrdersModel();
+    $orderRows = new OrderRowsModel();
+    $vatRates = new VatRateModel();
+    $users = new UsersModel();
+
+   $orderToUpdate = $orders->find($id);
+   $user = $users->find($orderToUpdate['users_id']);
+   $orderToUpdate['username'] = $user['username'];
+   $orderToUpdate['firstName'] = $user['firstName'];
+   $orderToUpdate['lastName'] = $user['lastName'];
+   $orderToUpdate['vat_percentage'] = $vatRates->find($orderToUpdate['vat_rate_id'])['vat_percentage'];
+   $rows = $orderRows->getRows($id);
+   debug($orderToUpdate);
+
+debug($rows);
+die();
+
+
+// getRows(idOrder)
+
+
+
 
     $this->show('admin/single-order');
   }
