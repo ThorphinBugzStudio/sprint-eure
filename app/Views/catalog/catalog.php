@@ -4,6 +4,12 @@
 
 <?php $_ENV = 'Home' ?>
 
+<a href="<?= $this->url('catalog_All')?>">Tous nos produits</a>
+<?php foreach ($categorie as $cat): ?>
+  <a href="<?= $this->url('admin_categorie_item', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a>
+<?php endforeach; ?>
+
+
 <div class="container-fluid row pt-4 px-0 mainContent">
   <h2>Catégories</h2>
   <hr class="hrPage">
@@ -22,6 +28,7 @@
   <h2>Nos meilleures ventes</h2>
   <hr class="hrPage">
 </div>
+
 
 <!-- Contenu des meilleures ventes -->
 <div class="top-product text-align-center single-article-container">
@@ -58,6 +65,7 @@
     </div>
   <?php endforeach; ?>
 </div>
+
 
 <!-- Titre : Derniers produits -->
 <div class="container-fluid row pt-4 px-0 mainContent">
