@@ -45,9 +45,13 @@ class DefaultController extends AppController
 
 	public function commentsAction()
 	{
+		$error = [];
 		$model = new CommentsModel();
 		$verifs = new ValidationTool();
-		$error = [];
+		
+		$comments = $model->last5Comments();
+
+		$user = $this->getUser();
 
 		if(!empty($_POST['submit']))
 		{
@@ -63,17 +67,14 @@ class DefaultController extends AppController
 
 			if($verifs->IsValid($error))
 			{
-
-
 				$model->insert(['users_id' => $user_id,
 												'comment' => $comment,
 												'created_at' => $created_at ]);
 
-												$model = new CommentsModel();
-												$comments = $model->last5Comments();
-
 												$this->flash('Commentaire en attente de moderation', 'success');
 												$this->show('default/home',['comments' => $comments]);
+			} else {
+				$this->show('default/home',['user' => $user , 'error' => $error , 'comments' => $comments]);
 			}
 		}
 	}

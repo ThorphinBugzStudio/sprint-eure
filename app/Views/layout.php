@@ -31,26 +31,44 @@
 		<!-- ============================================ -->
 		<div class="row w-100 navbar-users justify-content-end">
 			<ul>
-				<li>
-					<a href="<?= $this->url('inscription') ?>"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</a>
-				</li>
+				<?php if(empty($w_user))
+				{ ?>
+
+					<li>
+						<a href="<?= $this->url('inscription') ?>"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</a>
+					</li>
+
+
+					<li>
+						<a href="<?= $this->url('login') ?>"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a>
+					</li>
+
+	<?php	} ?>
+
+				<?php if(!empty($w_user))
+				{ ?>
+					<li>
+						<a href="<?= $this->url('user_profile') ?>"><i class="fa fa-user" aria-hidden="true"></i> Votre profil</a>
+						<!--<a href="<?= $this->url('user_profile') ?>"> <img src="" alt="Avatar"> <p></p> </a>-->
+					</li>
+
+			<?php	} ?>
+
+			<?php if($w_user['role'] == 'admin')
+			{ ?>
 
 				<li>
-					<a href="<?= $this->url('login') ?>"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a>
+				<a href="<?= $this->url('admin_users') ?>"><i class="fa fa-dashboard" aria-hidden="true"></i> Administration</a>
 				</li>
 
-				<li>
-					<a href="<?= $this->url('user_profile') ?>"><i class="fa fa-user" aria-hidden="true"></i> Votre profil</a>
-					<!--<a href="<?= $this->url('user_profile') ?>"> <img src="" alt="Avatar"> <p></p> </a>-->
-				</li>
+			<?php } ?>
 
-				<li>
-					<a href="<?= $this->url('admin_users') ?>"><i class="fa fa-dashboard" aria-hidden="true"></i> Administration</a>
-				</li>
-
+				<?php if(!empty($w_user))
+				{ ?>
 				<li>
 					<a href="<?= $this->url('logout') ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
 				</li>
+		<?php	} ?>
 
 				<li class="basket-order" id="basket">
 					<a href="#" id="opener"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier (0) <i class="fa fa-angle-down" aria-hidden="true"></i></a>
