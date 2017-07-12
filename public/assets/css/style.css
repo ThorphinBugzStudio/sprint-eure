@@ -1,5 +1,6 @@
 body {
 	background-image: url('../img/carousel-bg.png');
+	margin-top: 49px;
 }
 
 .row {
@@ -18,9 +19,11 @@ body {
 	display: flex;
 	border-top: 2px solid #1e7dce;
 }
+
 .navbar-avatar {
-	height: 50%;
-	width: 5%;
+	width: 25px;
+	background: white;
+	border: 1px solid grey;
 }
 
 .navbar-users ul {
@@ -83,6 +86,7 @@ body {
 .navbar-menu {
 	background-color: #1d1d1d;
 	box-shadow: 0 0 8px 1px black;
+	height: 5px;
 }
 
 .navbar-menu ul {
@@ -119,6 +123,43 @@ body {
 
 .bg-faded {
 	background-color: #1d1d1d;
+}
+
+.navbar-fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
+}
+
+/* ---------------- PANIER ---------------- */
+
+.dropdown-menu {
+	right: 0;
+	left: inherit;
+	z-index: 99;
+	padding: 0;
+	min-width: 230px;
+}
+
+.dropdown-item {
+	padding: 10px;
+}
+
+.dropdown-item:hover {
+	background: none;
+}
+
+.title_basket {
+	background-color: #1e7dce;
+	border: none;
+	border: 1px solid #0030a4;
+	border-radius: 0;
+	font-size: 18px;
+	font-family: "Patua One", "Arial";
+	color: #fff;
+	padding: 10px;
 }
 
 /* ------------- JQUERY PANIER ------------- */
@@ -442,8 +483,8 @@ address .fa-phone {
 /* ----------------- W ERROR ----------------- */
 
 .errorPage {
-	background-color: rgba(255, 0, 0, 0.3);
-	border: 1px solid red;
+	background-color: rgba(255, 0, 0, 0.1);
+	border: 1px solid #ffbaba;
 	border-radius: 8px;
 	padding: 20px;
 	text-align: center;
@@ -461,7 +502,7 @@ address .fa-phone {
 }
 
 .hrError {
-	background: rgba(255, 0, 0, 0.25);
+	background: rgba(255, 196, 196, 0.51);
 }
 
 /* ----------------- AUTRES ----------------- */
