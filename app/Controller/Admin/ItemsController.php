@@ -26,7 +26,7 @@ class ItemsController extends AppController
     $items = new ItemsModel();
 
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('admin_items'), $items->getNbId(), 6);
+    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('admin_items'), $items->getNbId(), 8);
 
     if (!empty($page)) { $pagin->setPageStatus($page); }
 
@@ -253,11 +253,11 @@ class ItemsController extends AppController
     }
   }
 
-  public function categorieItem($id){
+  public function categorieItem($id, $page = ''){
     $items = new ItemsModel();
 
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('admin_items'), $items->countIdcat($id), 6);
+    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('admin_categorie_item', ['id' =>  $id]), $items->countIdcat($id), 4);
 
     if (!empty($page)) { $pagin->setPageStatus($page); }
 
