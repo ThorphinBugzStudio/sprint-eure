@@ -23,4 +23,21 @@ class OrderRowsModel extends Model
       $this->dbh = ConnectionModel::getDbh();
    }
 
+   public function getRows($idOrder = null)
+   {
+      if (!empty($idOrder))
+      {
+         $sql = "SELECT * FROM $this->table WHERE orders_id='$idOrder'";
+         $sth = $this->dbh->prepare($sql);
+         debug($sql);
+         $sth->execute();
+
+         return $sth->fetchAll();
+      }
+      else
+      {
+         die('error : parametre $idOrder inexistant');
+      }
+   }
+
 }
