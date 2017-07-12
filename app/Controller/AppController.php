@@ -42,8 +42,11 @@ class AppController extends Controller
       $avatar_model = new AvatarsModel();
       //on recup l'avatar
       $avatar = $avatar_model->getUserAvatar($id);
-      // ON ALIMENTE $user avec l'avatar ['img_name']
-      $user['avatar']= $avatar['img_name'];
+// ON ALIMENTE $user avec l'avatar ['img_name'] uniquement s'il y a un user connecté
+      if(!empty($user))
+      {
+        $user['avatar'] = $avatar['img_name'];
+      }
 
   		return $user;
   	}
