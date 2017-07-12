@@ -26,4 +26,25 @@ class CatalogController extends AppController
     $categorie = $items->nomcategorie();
     $this->show('catalog/catalog',  ['categorie' => $categorie, 'topProduct' => $topProduct, 'lastProduct' => $lastProduct]);
   }
+
+  public function Allcatalog()
+  {
+    $items = new ItemsModel();
+
+    // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
+    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('catalog_All'), $items->getNbId(), 8);
+
+    if (!empty($page)) { $pagin->setPageStatus($page); }
+
+    // get des informations de pagination necessaires à la requete bdd
+    $pageStatus = $pagin->getPageStatus();
+    // get du html de la barre de navigation pour la pagination
+    $navPaginBar = $pagin->getHtml();
+    // debug($navPaginBar);
+
+    $results  = $items->findAllproduct('status','active','created_at', 'DESC', 8);
+
+    $this->show('catalog/catalog_All', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual']]);
+  }
+
 }

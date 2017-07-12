@@ -2,12 +2,14 @@
 
 <?php $this->start('main_content') ?>
 
+<a href="<?= $this->url('catalog_All')?>">tout nos produits</a>
 <?php foreach ($categorie as $cat): ?>
   <a href="<?= $this->url('admin_categorie_item', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a>
 <?php endforeach; ?>
 
 
 <div class="top-product">
+  <h1>Nos meilleurs produits</h1>
   <?php foreach ($topProduct as $result): ?>
     <div class="single-article m-3" id="test">
 
@@ -40,28 +42,13 @@
           <?php } ?>
         </div>
 
-        <!-- Boutons d'action sur l'article -->
-        <div class="text-align-right">
-          <!-- BOUTON : Edition -->
-          <a class="" href="<?=$this->url('admin_single_item', ['id' => $result['id']] ) ?>">
-            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editer">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-            </button>
-          </a>
-          <!-- BOUTON : Delete -->
-          <a class="" href="<?=$this->url('admin_single_item_delete', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">
-            <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Supprimer">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </button>
-          </a>
-        </div>
       </div>
     </div>
   <?php endforeach; ?>
 </div>
 
 <div class="lasproduct">
-
+<h1>Nos derniers produits</h1>
   <?php foreach ($lastProduct as $result): ?>
     <div class="single-article m-3" id="test">
 
@@ -94,21 +81,6 @@
           <?php } ?>
         </div>
 
-        <!-- Boutons d'action sur l'article -->
-        <div class="text-align-right">
-          <!-- BOUTON : Edition -->
-          <a class="" href="<?=$this->url('admin_single_item', ['id' => $result['id']] ) ?>">
-            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editer">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-            </button>
-          </a>
-          <!-- BOUTON : Delete -->
-          <a class="" href="<?=$this->url('admin_single_item_delete', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">
-            <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Supprimer">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </button>
-          </a>
-        </div>
       </div>
     </div>
   <?php endforeach; ?>

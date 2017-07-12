@@ -106,7 +106,6 @@ class ItemsModel extends ItemsFamilyModel
                 $sql .= ' OFFSET '.$offset;
             }
         }
-        debug($sql);
     $sth = $this->dbh->prepare($sql);
     $sth->execute();
 
