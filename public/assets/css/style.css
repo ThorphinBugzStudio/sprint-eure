@@ -20,11 +20,23 @@ body {
 	border-top: 2px solid #1e7dce;
 }
 
+.navbar-title {
+	background-color: #1d1d1d;
+	display: flex;
+	color: white;
+	font-size: 1em;
+	font-family: "Patua One", "Arial";
+	padding: 12px 0;
+	box-shadow: 0 0 9px -2px black;
+	min-height: 30px;
+}
+
 .navbar-avatar {
 	width: 25px;
 	height: 25px;
 	background: white;
 	border: 1px solid grey;
+	margin-right: 3px;
 }
 
 .navbar-users ul, .navbar-menu ul {
@@ -238,7 +250,6 @@ body {
 	z-index: 9999;
 	border-radius: 50px;
 	box-shadow: 0 0 7px -2px black;
-	padding: 8px;
 }
 
 .scrollup:hover,
@@ -386,6 +397,7 @@ form label {
   width: 200px;
   height: 200px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+	border-style: double;
   position: relative !important;
 	background-color: white;
 }
@@ -464,6 +476,86 @@ form label {
 	color: white;
 }
 
+.category-row {
+	display: grid;
+	position: relative;
+}
+
+.category-button {
+	background-color: #1d1d1d;
+	width: 200px;
+	color: white;
+	font-family: "Patua One", "Arial";
+}
+
+.category-button i {
+	border-left: 1px solid #7b7b7b;
+	margin-left: 10px;
+	cursor: pointer;
+	padding: 10px;
+	text-align: right;
+}
+
+.category-button p {
+	margin-bottom: 0;
+	margin-left: 10px;
+}
+
+.category-content {
+	background-color: #e9e9e9;
+	position: absolute;
+	right: 0;
+	top: 36px;
+	padding: 10px 10px 0 10px;
+	z-index: 99;
+	width: 200px;
+	max-height: 200px;
+	overflow-y: auto;
+	border: 1px solid #c2c2c2;
+}
+
+.category-content ul li {
+	list-style: none;
+}
+
+.category-content ul li a {
+	text-decoration: none;
+}
+
+/* ----------------- MODIFICATION DU PROFIL ----------------- */
+
+.edit-profil-row {
+	border-bottom: 1px solid #1d1d1d;
+	margin-bottom: 10px;
+}
+
+.edit-profil-row div {
+	width: 102px;
+	background-color: #1a1a1a;
+	padding: 10px;
+	color: white;
+}
+
+.edit-profil-row ul li {
+	list-style: none;
+}
+
+.edit-profil-row i, .edit-profil-row p {
+	margin-right: 8px;
+}
+
+.edit-profil-content {
+	margin-left: 8px;
+}
+
+.edit-profil-avatar {
+	max-height: 200px;
+	max-width: 200px;
+	justify-content: center;
+	border-style: double;
+	border: 4px double grey;
+}
+
 /* ----------------- FOOTER ----------------- */
 
 footer {
@@ -488,6 +580,14 @@ footer {
 	margin: 3px;
 }
 
+.footer_3 iframe {
+	border-style: double;
+	border: 4px double grey;
+	max-width: 400px;
+	max-height: 200px;
+	width: 100%;
+}
+
 .footer_1, .footer_2, .footer_3, .footer_4 {
   color: white;
   justify-content: center;
@@ -498,6 +598,7 @@ footer {
 
 .footer_1 h2, .footer_2 h2, .footer_3 h2, .footer_4 h2 {
   font-size: 25px;
+	font-family: "Patua One", "Arial";
 }
 
 .copyright {
@@ -582,6 +683,13 @@ address .fa-phone {
 	font-weight: bold;
 }
 
+.uppercase {
+	text-transform: uppercase;
+}
+
+* p, * label {
+	margin-bottom: 0;
+}
 
 /* ----------------------- MEDIA QUERY ------------------------ */
 @media (max-width: 827px) {

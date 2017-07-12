@@ -42,7 +42,7 @@
 		 * CatalogController
 		 */
 		['GET', '/catalog', 'Catalog#catalog', 'catalog'],
-		['GET', '/catalog/all', 'Catalog#Allcatalog', 'catalog_all'],
+		['GET', '/catalog/all', 'Catalog#Allcatalog', 'catalog_All'],
 		['GET', '/catalog/all/[i:page]', 'Catalog#Allcatalog', 'catalog_all_page'],
 		['GET', '/catalog/all/[:id]/[i:page]', 'Catalog#familycatalog', 'catalog_categorie_page'],
 

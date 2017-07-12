@@ -125,7 +125,11 @@
 		<!-- ============================================ -->
 		<!-- 					Menu de naviguation du site 				-->
 		<!-- ============================================ -->
-		<nav class="navbar-menu"></nav>
+		<div class="navbar-title">
+			<div class="row col-lg-9 mx-auto w-100">
+
+			</div>
+		</div>
 	</header>
 
 	<!-- Bouton : Haut de Page  -->
@@ -174,7 +178,7 @@
 		<div class="footer_3">
 			<h2>» Où sommes-nous ?</h2>
 			<hr class="hr_footer">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2625.191168697093!2d2.3552835605743416!3d48.85456490724742!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb2bbd365849898f2!2sWebforce3!5e0!3m2!1sfr!2sfr!4v1499899746835" width="600" height="450" frameborder="0" allowfullscreen></iframe>
 		</div>
 
 		<div class="footer_4">
@@ -194,6 +198,7 @@
 	<script src="<?= $this->assetUrl('js/fancybox.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/bootstrap.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/haut_de_page.js') ?>" charset="utf-8"></script>
+	<script src="<?= $this->assetUrl('js/category.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/inscription-ajax.js') ?>" charset="utf-8"></script>
 </body>
 </html>

@@ -5,23 +5,20 @@
 
 <?php $_ENV = 'Home' ?>
 
-<a href="<?= $this->url('catalog_All')?>">Tous nos produits</a>
-<?php foreach ($categorie as $cat): ?>
-  <a href="<?= $this->url('catalog_all_page', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a>
-<?php endforeach; ?>
-
-
-<div class="container-fluid row pt-4 px-0 mainContent">
-  <h2>Catégories</h2>
-  <hr class="hrPage">
-</div>
-
-<div class="category-bar mt-4">
-  <ul>
-    <?php foreach ($categorie as $cat): ?>
-      <li><a class="" href="<?= $this->url('admin_categorie_item', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a></li>
-    <?php endforeach; ?>
-  </ul>
+<div class="row w-100 ml-auto mt-2 justify-content-end category-row">
+  <div class="category-button row">
+    <p class="my-auto mr-auto">Catégorie</p>
+    <i class="fa fa-angle-down ml-auto" aria-hidden="true" id="category-article"></i>
+  </div>
+  <div class="hidden category-content" id="category_content">
+    <ul class="p-0">
+      <li><a href="<?= $this->url('catalog_All')?>">» Tous nos produits</a></li>
+      <hr class="my-1">
+      <?php foreach ($categorie as $cat): ?>
+        <li><a href="<?= $this->url('catalog_all_page', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a></li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
 </div>
 
 <!-- Titre : Meilleures ventes -->
