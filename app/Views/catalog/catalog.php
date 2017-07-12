@@ -2,9 +2,9 @@
 
 <?php $this->start('main_content') ?>
 
-<a href="<?= $this->url('catalog_All')?>">tout nos produits</a>
+<a href="<?= $this->url('catalog_all')?>">tous nos produits</a>
 <?php foreach ($categorie as $cat): ?>
-  <a href="<?= $this->url('admin_categorie_item', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a>
+  <a href="<?= $this->url('catalog_all_page', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a>
 <?php endforeach; ?>
 
 

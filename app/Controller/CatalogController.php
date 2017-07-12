@@ -3,7 +3,7 @@
 namespace Controller;
 
 use \Model\ItemsModel;
-
+use \Services\Tools\Pagination;
 // use \W\Controller\Controller; // Inutile puisque heritage de AppController dans le meme espace de nom
 
 /**
@@ -27,12 +27,31 @@ class CatalogController extends AppController
     $this->show('catalog/catalog',  ['categorie' => $categorie, 'topProduct' => $topProduct, 'lastProduct' => $lastProduct]);
   }
 
-  public function Allcatalog()
+  public function Allcatalog($page = '')
   {
     $items = new ItemsModel();
 
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('catalog_All'), $items->getNbId(), 8);
+    $pagin = new Pagination('items pages navigation', $this->generateUrl('catalog_all'), $items->getNbId(), 8);
+
+    if (!empty($page)) { $pagin->setPageStatus($page); }
+
+    // get des informations de pagination necessaires à la requete bdd
+    $pageStatus = $pagin->getPageStatus();
+    // get du html de la barre de navigation pour la pagination
+    $navPaginBar = $pagin->getHtml();
+    // debug($navPaginBar);
+    $results = $items->findAllproduct('status','active','created_at', 'DESC', $pageStatus['limit'], $pageStatus['offset']);
+    $categorie = $items->nomcategorie();
+
+    $this->show('catalog/catalog_All', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
+  }
+
+  public function familycatalog($id, $page = ''){
+    $items = new ItemsModel();
+
+    // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
+    $pagin = new Pagination('items categorie pages navigation', $this->generateUrl('catalog_all', ['id' =>  $id]), $items->countIdcat($id), 4);
 
     if (!empty($page)) { $pagin->setPageStatus($page); }
 
@@ -42,9 +61,9 @@ class CatalogController extends AppController
     $navPaginBar = $pagin->getHtml();
     // debug($navPaginBar);
 
-    $results  = $items->findAllproduct('status','active','created_at', 'DESC', 8);
-
-    $this->show('catalog/catalog_All', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual']]);
+    $results = $items->findAllWhere($id, 'id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
+    $categorie = $items->nomcategorie();
+    $this->show('catalog/catalog_All', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
 
 }
