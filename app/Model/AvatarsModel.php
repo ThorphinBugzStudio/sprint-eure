@@ -3,7 +3,6 @@ namespace Model;
 
 use W\Model\ConnectionModel;
 use W\Model\Model;
-use W\Model\ConnectionModel;
 
 class AvatarsModel extends Model
 {
