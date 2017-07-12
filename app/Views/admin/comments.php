@@ -26,6 +26,7 @@
         </thead>
         <tbody>
           <?php $i = 0;
+          if(!empty($results)) {
           foreach ($results as $result) { ?>
           <tr>
             <td><?php echo $result['id']; ?></td>
@@ -64,9 +65,9 @@
                 </button>
               </a>
             </td>
-          </tr> <?php } ?>
+          </tr>
 
-          <?php if(empty($result)) { ?>
+          <?php } } else { ?>
             <tr>
               <td> - </td>
               <td> - </td>
