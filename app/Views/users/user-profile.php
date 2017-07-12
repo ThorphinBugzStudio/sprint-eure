@@ -2,9 +2,6 @@
 
 <?php $this->start('main_content');
 
-debug($w_user);
-debug($user_adress);
-debug($user_avatar);
 $user_id = $w_user['id']; ?>
 
 <p>Pseudo   <?= $w_user['username'] ?></p>
