@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/font-awesome.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/hover.css') ?>">
-	<link rel="stylesheet" href="<?= $this->assetUrl('css/jquery-ui.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/fancybox.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 
 </head>
@@ -29,7 +29,7 @@
 				<!--							 Navbar principale 						  -->
 				<!-- ============================================ -->
 				<div class="row navbar-menu w-100 justify-content-start">
-					<ul class="mr-auto">
+					<ul class="row mr-auto justify-content-start w-100">
 						<li class="hvr-underline-from-center"><a href="<?= $this->url('default_home') ?>">Accueil</a></li>
 						<li class="hvr-underline-from-center"><a href="<?= $this->url('catalog') ?>">Nos produits</a></li>
 						<li class="hvr-underline-from-center"><a href="<?= $this->url('how_to') ?>">Comment ça marche ?</a></li>
@@ -42,7 +42,7 @@
 				<!-- ============================================ -->
 				<div class="row w-100 navbar-users justify-content-end">
 
-					<ul class="ml-auto">
+					<ul class="ml-auto w-100">
 						<?php if(empty($w_user)) { ?>
 							<li>
 								<a href="<?= $this->url('inscription') ?>"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</a>
@@ -172,7 +172,7 @@
 		</div>
 
 		<div class="footer_3">
-			<h2>» Widget</h2>
+			<h2>» Où sommes-nous ?</h2>
 			<hr class="hr_footer">
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 		</div>
@@ -191,8 +191,7 @@
 </footer>
 
 	<script src="<?= $this->assetUrl('js/jquery-3.2.1.js') ?>" charset="utf-8"></script>
-	<script src="<?= $this->assetUrl('js/jquery-ui.js') ?>" charset="utf-8"></script>
-	<script src="<?= $this->assetUrl('js/panier.js') ?>" charset="utf-8"></script>
+	<script src="<?= $this->assetUrl('js/fancybox.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/bootstrap.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/haut_de_page.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/inscription-ajax.js') ?>" charset="utf-8"></script>
