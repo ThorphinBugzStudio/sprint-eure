@@ -1,6 +1,8 @@
-<?php $this->layout('layout', ['title' => 'Perdu ?']) ?>
+<?php $this->layout('layout', ['title' => 'Page inexistante']) ?>
 
 <?php $this->start('main_content'); ?>
+
+<?php $_ENV = 'Home'; ?>
 
 <div class="errorPage">
   <h2>Page inexistante</h2>

@@ -1,6 +1,8 @@
-<?php $this->layout('layout', ['title' => 'Nothing to see here']) ?>
+<?php $this->layout('layout', ['title' => 'Accès refusé']) ?>
 
 <?php $this->start('main_content'); ?>
+
+<?php $_ENV = 'Home'; ?>
 
 <div class="errorPage">
   <h2>Accès refusé</h2>
