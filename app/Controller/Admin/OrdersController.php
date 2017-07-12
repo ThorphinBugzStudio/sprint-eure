@@ -51,6 +51,7 @@ class OrdersController extends AppController
     // debug($navPaginBar);
 
     $resultsBruts = $orders->findAll('created_at', 'DESC', $pageStatus['limit'], $pageStatus['offset']);
+    $results = null;
     foreach ($resultsBruts as $resultBrut)
     {
       $resultBrut['username'] = $users->find($resultBrut['users_id'])['username'];
