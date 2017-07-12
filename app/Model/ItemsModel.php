@@ -59,4 +59,20 @@ class ItemsModel extends ItemsFamilyModel
     return $sth->fetchAll();
   }
 
+  public function countIdcat($id)
+  {
+      $app = getApp();
+
+      $sql = 'SELECT COUNT(' . $app->getConfig('security_id_property') . ') FROM ' . $this->table ." WHERE items_family_id ='$id'";
+      if (!empty($this->where))
+      {
+          $sql .= ' WHERE '.$this->where;
+      }
+      $sth = $this->dbh->prepare($sql);
+      $sth->execute();
+      $result = $sth->fetchColumn();
+
+      return $result;
+  }
+
 }

@@ -257,7 +257,7 @@ class ItemsController extends AppController
     $items = new ItemsModel();
 
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('admin_items'), $items->getNbId(), 6);
+    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('admin_items'), $items->countIdcat($id), 6);
 
     if (!empty($page)) { $pagin->setPageStatus($page); }
 
@@ -268,7 +268,6 @@ class ItemsController extends AppController
     // debug($navPaginBar);
 
     $results = $items->findAllWhere($id, 'id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
-    debug($results);
     $categorie = $items->nomcategorie();
     $this->show('admin/items', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
