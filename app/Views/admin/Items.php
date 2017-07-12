@@ -11,14 +11,14 @@
   <div class="col-sm-12 col-md-9 py-3 " style="justify-content: space-around;">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <i class="fa fa-picture-o fa-fw"></i> Miniature de l'article
+        <i class="fa fa-picture-o fa-fw"></i> Liste de tous les articles
       </div>
-      <div class="text-align-center" style="justify-content: space-around;">
+      <div class="text-align-center single-article-container">
         <?php foreach ($results as $result ): ?>
           <div class="single-article m-3" id="test">
 
             <a href="#">
-              <img src="<?= $this->assetUrl('img/uploaded_articles/'.$result['img_name']) ?>" alt="Miniature" class="thumbnail">
+              <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
             </a>
 
             <div class="single-article-price">
@@ -39,7 +39,11 @@
             <div class="row px-4" style="display: flex;">
               <div class="mr-auto my-auto">
                 <!-- État de l'article-->
-                <?= $result['status']; ?>
+                <?php if($result['status'] == 'deleted') { ?>
+                  <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Supprimé" title="Article supprimé">
+                <?php } elseif($result['status'] == 'active') { ?>
+                  <img src="<?= $this->assetUrl('admin/img/icon-check.png') ?>" alt="Actif" title="Article actif">
+                <?php } ?>
               </div>
 
               <!-- Boutons d'action sur l'article -->
@@ -75,8 +79,9 @@
         <i class="fa fa-folder fa-fw"></i> Trier par catégorie
       </div>
       <div class="search_per_category p-4">
+        <a href="/sprint-eure/public/admin/items">tout les produits</a>
         <?php foreach ($categorie as $cat): ?>
-          <a href="#"><?= $cat['family'] ?></a>
+          <a href="<?= $this->url('admin_categorie_item', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a>
         <?php endforeach; ?>
 
         <?php if(empty($cat)) { ?>

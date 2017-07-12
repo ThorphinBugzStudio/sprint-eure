@@ -16,7 +16,7 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>créée par</th>
+            <th>>Créée par</th>
             <th>Taux TVA</th>
             <th>Status</th>
             <th>Créé le</th>
@@ -46,6 +46,7 @@
 
           <?php if(empty($result)) { ?>
             <tr>
+              <td> - </td>
               <td> - </td>
               <td> - </td>
               <td> - </td>

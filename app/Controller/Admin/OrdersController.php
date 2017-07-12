@@ -22,19 +22,19 @@ class OrdersController extends AppController
    * Nbombre de lignes par page pour objet Pagination
    * @var integer
    */
-  private $nbreperpage = 2;
+  private $nbreperpage = 4;
 
   /**
    * Listing des commandes
    *
    * @return void
    */
-  public function orders()
+  public function orders($page = '')
   {
     // ADMIN ONLY
     // $this->allowTo('admin');
 
-    $orders = new OrdersModel($where = "status <> 'temp' AND status <> 'validated' AND status <> 'paid' AND status <> 'deleted'");
+    $orders = new OrdersModel($where = "status = 'temp' OR status = 'validated' OR status = 'paid' OR status = 'deleted'");
     $users = new UsersModel();
     $vatRates = new VatRateModel();
 
@@ -89,7 +89,7 @@ class OrdersController extends AppController
     // $this->allowTo('admin');
 
     # code
-  }  
+  }
 
 
 }
