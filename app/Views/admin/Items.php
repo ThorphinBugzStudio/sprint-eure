@@ -18,7 +18,7 @@
           <div class="single-article m-3" id="test">
 
             <a href="#">
-              <img src="<?= $this->assetUrl('img/uploaded_articles/'.$result['img_name']) ?>" alt="Miniature" class="thumbnail">
+              <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
             </a>
 
             <div class="single-article-price">
@@ -39,7 +39,11 @@
             <div class="row px-4" style="display: flex;">
               <div class="mr-auto my-auto">
                 <!-- État de l'article-->
-                <?= $result['status']; ?>
+                <?php if($result['status'] == 'deleted') { ?>
+                  <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Supprimé" title="Article supprimé">
+                <?php } elseif($result['status'] == 'active') { ?>
+                  <img src="<?= $this->assetUrl('admin/img/icon-check.png') ?>" alt="Actif" title="Article actif">
+                <?php } ?>
               </div>
 
               <!-- Boutons d'action sur l'article -->

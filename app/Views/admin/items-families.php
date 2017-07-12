@@ -29,7 +29,13 @@
           <tr>
             <td><?php echo $result['id']; ?></td>
             <td><?php echo $result['family']; ?></td>
-            <td><?php echo $result['status']; ?></td>
+            <td>
+              <?php if($result['status'] == 'deleted') { ?>
+                <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Supprimé" title="Catégorie supprimée">
+              <?php } elseif($result['status'] == 'active') { ?>
+                <img src="<?= $this->assetUrl('admin/img/icon-check.png') ?>" alt="Actif" title="Catégorie active">
+              <?php } ?>
+            </td>
             <td><?php echo $result['created_at']; ?></td>
             <td><?php echo $result['modified_at']; ?></td>
             <td class="menu_actions">

@@ -129,7 +129,7 @@
             <h1 class="page-header">» <?= $this->e($title) ?></h1>
           </div>
 
-			 <div class="flash-message">
+			 <div class="flash-message px-4">
 			   <?php if(!empty($w_flash_message->message)) { ?>
 			   	<span class="span-flash"><?= $w_flash_message->message ?></span>
 		      <?php } ?>
