@@ -99,6 +99,7 @@
 		<nav class="navbar-menu">
 			<ul class="row justify-content-center">
 				<li class="hvr-underline-from-center"><a href="<?= $this->url('default_home') ?>">Accueil</a></li>
+				<li class="hvr-underline-from-center"><a href="<?= $this->url('catalog') ?>">Nos produits</a></li>
 				<li class="hvr-underline-from-center"><a href="<?= $this->url('how_to') ?>">Comment ça marche ?</a></li>
 				<li class="hvr-underline-from-center"><a href="#">À propos</a></li>
 			</ul>
