@@ -25,7 +25,6 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-
 		<!-- ============================================ -->
 		<!-- Navbar des utilisateurs : Inscription | Connexion | Profil | Déconnexion | Administration | Panier -->
 		<!-- ============================================ -->
@@ -48,8 +47,9 @@
 				<?php if(!empty($w_user))
 				{ ?>
 					<li>
+
 						<a href="<?= $this->url('user_profile') ?>"><i class="fa fa-user" aria-hidden="true"></i> Votre profil</a>
-						<!--<a href="<?= $this->url('user_profile') ?>"> <img src="" alt="Avatar"> <p></p> </a>-->
+						<a href="<?= $this->url('user_profile') ?>"><img class="navbar-avatar" src="<?php echo $this->assetUrl('img/avatars/'.$w_user['avatar']) ?>" alt=""></a>
 					</li>
 
 			<?php	} ?>
