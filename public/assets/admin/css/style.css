@@ -191,6 +191,8 @@ th {
   font-family: "Patua One", "Arial";
   font-size: 20px;
   text-align: left;
+  max-width: 200px;
+  word-break: break-all;
 }
 
 #test {
@@ -205,8 +207,10 @@ th {
   background: #337ab7;
   padding: 8px;
   position: absolute !important;
-  top: 47%;
+  top: 155px;
   right: 25px;
+  border: 1px solid #0e415d;
+  border-right: 0;
 }
 
 .hrSingleArticle {
@@ -284,4 +288,17 @@ fieldset .form-check {
 
 .text-align-right {
 	text-align: right;
+}
+
+.span-flash {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #5eb65e;
+  border-radius: 8px;
+  background-color: rgba(0, 255, 0, 0.2);
+  display: flex;
+}
+
+a, a:hover {
+  text-decoration: none;
 }
