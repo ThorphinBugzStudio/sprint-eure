@@ -33,10 +33,12 @@
             <td><?php echo $result['username']; ?></td>
             <td><?php echo $result['role']; ?></td>
             <td>
-              <?php if($result['status'] == 'deleted') { ?>
-                <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Supprimé" title="Utilisateur supprimé">
+              <?php if($result['status'] == 'inactive') { ?>
+                <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Banni" title="Utilisateur banni">
               <?php } elseif($result['status'] == 'active') { ?>
                 <img src="<?= $this->assetUrl('admin/img/icon-check.png') ?>" alt="Actif" title="Utilisateur actif">
+              <?php } elseif($result['status'] == 'deleted') { ?>
+                <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Supprimé" title="Utilisateur supprimé">
               <?php } ?>
             </td>
             <td><?php echo $result['created_at']; ?></td>
