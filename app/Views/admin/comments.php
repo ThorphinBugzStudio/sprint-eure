@@ -31,7 +31,13 @@
             <td><?php echo $result['id']; ?></td>
             <td><?php echo $result['username']; ?></td>
             <td><?php echo $result['comment']; ?></td>
-            <td><?php echo $result['status']; ?></td>
+            <td>
+              <?php if($result['status'] == 'inactive') { ?>
+                <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Supprimé" title="Commentaire supprimé">
+              <?php } elseif($result['status'] == 'active') { ?>
+                <img src="<?= $this->assetUrl('admin/img/icon-check.png') ?>" alt="Actif" title="Commentaire active">
+              <?php } ?>
+            </td>
             <td><?php echo $result['created_at']; ?></td>
             <td><?php echo $result['modified_at']; ?></td>
             <td class="menu_actions">
