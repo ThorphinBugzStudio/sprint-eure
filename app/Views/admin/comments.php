@@ -26,6 +26,7 @@
         </thead>
         <tbody>
           <?php $i = 0;
+          if(!empty($results)) {
           foreach ($results as $result) { ?>
           <tr>
             <td><?php echo $result['id']; ?></td>
@@ -33,9 +34,11 @@
             <td><?php echo $result['comment']; ?></td>
             <td>
               <?php if($result['status'] == 'inactive') { ?>
-                <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Supprimé" title="Commentaire supprimé">
+                <img src="<?= $this->assetUrl('admin/img/attente.png') ?>" alt="Inactif" title="Commentaire en attente">
               <?php } elseif($result['status'] == 'active') { ?>
-                <img src="<?= $this->assetUrl('admin/img/icon-check.png') ?>" alt="Actif" title="Commentaire active">
+                <img src="<?= $this->assetUrl('admin/img/icon-check.png') ?>" alt="Actif" title="Commentaire activé">
+              <?php } elseif($result['status'] == 'deleted') { ?>
+                <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Supprimé" title="Commentaire supprimé">
               <?php } ?>
             </td>
             <td><?php echo $result['created_at']; ?></td>
@@ -62,9 +65,9 @@
                 </button>
               </a>
             </td>
-          </tr> <?php } ?>
+          </tr>
 
-          <?php if(empty($result)) { ?>
+          <?php } } else { ?>
             <tr>
               <td> - </td>
               <td> - </td>

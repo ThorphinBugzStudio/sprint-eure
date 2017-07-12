@@ -200,7 +200,7 @@ th {
   font-size: 20px;
   text-align: left;
   max-width: 200px;
-  word-break: break-all;
+  word-break: keep-all;
 }
 
 #test {

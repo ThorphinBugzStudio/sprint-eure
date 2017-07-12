@@ -75,6 +75,7 @@ class ItemsModel extends ItemsFamilyModel
       return $result;
   }
 
+
   public function findAllproduct($where, $condition, $orderBy = '', $orderDir = 'ASC', $limit = null, $offset = null)
   {
 
@@ -111,5 +112,19 @@ class ItemsModel extends ItemsFamilyModel
 
     return $sth->fetchAll();
   }
+
+  public function doubloncheck($designation, $champ)
+  	{
+
+  		$sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $champ .'  = :designation ';
+  		$sth = $this->dbh->prepare($sql);
+  		$sth->bindValue(':designation', $designation);
+      $sth->execute();
+      $etat = $sth->rowCount();
+
+  		return $etat;
+  	}
+
+
 
 }
