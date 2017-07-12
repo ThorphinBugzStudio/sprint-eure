@@ -66,40 +66,39 @@ class OrdersController extends AppController
 
   /**
    * Détail d'une commande.
-   * RD + Gestion du statut de commande.
+   * _RU_ + Gestion du statut de commande.
    *
    * @return void
    */
-   public function singleOrder($id, $fromPage)
-   {
+  public function singleOrder($id, $fromPage)
+  {
     // ADMIN ONLY
     // $this->allowTo('admin');
 
-      $orders = new OrdersModel();
-      $orderRows = new OrderRowsModel();
+    $orders = new OrdersModel();
+    $orderRows = new OrderRowsModel();
 
-      $headOrder = $orders->getHeadOrder($id);
-      $rowsOrder = 
+    $headOrder = $orders->getHeadOrder($id);
+    $rowsOrder = $orderRows->getRowsOrder($id);
+    $footOrder = ToolHP::CalculFootOrder($rowsOrder, $headOrder['vat_percentage']);
+    debug($headOrder);
+    debug($rowsOrder);
+    debug($footOrder);
 
+    $statusBox = new RadiosBox('Statut', ['Payée'    => 'paid',
+                                          'Validée'  => 'checked',
+                                          'Préparée' => 'prepared',
+                                          'Expediée' => 'sent'
+                                         ], $headOrder['status']);
+    // debug($statusBox);
 
+    $this->show('admin/single-order', ['headOrder' => $headOrder,
+                                       'rowsOrder' => $rowsOrder,
+                                       'footOrder' => $footOrder,
+                                       'statusBox' => $statusBox->getHtml(),
+                                       'page'      => $fromPage
+    ]);
 
-      debug($orderToUpdate);
-
-      // Lignes de commande
-      // $rowsBrut = $orderRows->getRows($id);
-      // $rows = null;
-
-
-
-// debug($rows);
-die();
-
-
-
-
-
-
-    $this->show('admin/single-order');
   }
 
   /**

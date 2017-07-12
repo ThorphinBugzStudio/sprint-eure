@@ -23,21 +23,32 @@ class OrderRowsModel extends Model
       $this->dbh = ConnectionModel::getDbh();
    }
 
-   public function getRows($idOrder = null)
-   {
-      if (!empty($idOrder))
-      {
-         $sql = "SELECT * FROM $this->table WHERE orders_id='$idOrder'";
-         $sth = $this->dbh->prepare($sql);
-         debug($sql);
-         $sth->execute();
+    /**
+     * Recuperation des lignes d'une commande
+     * @param  int $id Id de la commande
+     * @return array
+     */
+    public function getRowsOrder($id = null)
+    {
+        if (!empty($id))
+            {
+            $sql = "SELECT r.id, i.id, f.family, i.designation, i.packaging, r.puht, r.amount, r.pht 
+                    FROM $this->table AS r
+                    JOIN spe_items AS i ON r.items_id = i.id
+                    JOIN spe_items_family AS f	ON i.items_family_id = f.id
+                    WHERE r.orders_id = $id";
 
-         return $sth->fetchAll();
-      }
-      else
-      {
-         die('error : parametre $idOrder inexistant');
-      }
+            // debug($sql);
+            $sth = $this->dbh->prepare($sql);
+            $sth->execute();
+            $results = $sth->fetchAll();
+
+            return $results;
+        }
+        else
+        {
+           die('error : id commande');
+        }
    }
 
 }
