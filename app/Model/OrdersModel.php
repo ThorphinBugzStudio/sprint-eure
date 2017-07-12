@@ -163,4 +163,55 @@ class OrdersModel extends Model
         }
     }
 
+   /**
+    * Recuperation de l'en tete d'une commande
+    * @param  int $id Id de la commande
+    * @return array
+    */
+   public function getHeadOrder($id = null)
+   {
+      if (!empty($id))
+      {
+         $sql = "SELECT o.id, u.username, u.firstName, u.lastName, o.created_at, o.status, v.vat_percentage
+                 FROM $this->table AS o
+                 JOIN spe_users AS u ON o.users_id = u.id
+                 JOIN spe_vat_rate AS v ON o.vat_rate_id = v.id
+                 WHERE o.id = $id";
+
+         $sth = $this->dbh->prepare($sql);
+         $sth->execute();
+         $result = $sth->fetch();
+
+         return $result;
+      }
+      else
+      {
+         die('error : id commande');
+      }
+   }
+
+   /**
+    * Recuperation des lignes d'une commande
+    * @param  int $id Id de la commande
+    * @return array
+    */
+   public function getRowsOrder($id = null)
+   {
+      if (!empty($id))
+      {
+         $sql = "";
+
+         debug($sql);
+         $sth = $this->dbh->prepare($sql);
+         $sth->execute();
+         $result = $sth->fetchAll();
+
+         return $results;
+      }
+      else
+      {
+         die('error : id commande');
+      }
+   }
+
 }
