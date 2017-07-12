@@ -42,6 +42,7 @@
 		 * CatalogController
 		 */
 		['GET', '/catalogue', 'Catalog#catalog', 'catalog'],
+		['GET', '/catalogue', 'Catalog#Allcatalog', 'catalog_All'],
 
 		/**
 		 * DevisController
@@ -88,7 +89,7 @@
 		 * Admin\OrdersController
 		 *
 		 *
-		 * 
+		 *
 		 */
 		['GET', '/admin/orders', 'Admin\Orders#orders' , 'admin_orders'],
 		['GET', '/admin/orders/[i:page]', 'Admin\Orders#orders' , 'admin_page_orders'],
