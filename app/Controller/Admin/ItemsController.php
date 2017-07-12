@@ -210,7 +210,7 @@ class ItemsController extends AppController
         $home = 0;
       }
 
-      $itemexist = $modelItem->doubloncheck($designation, $famille, 'designation', 'items_family_id');
+      $itemexist = $modelItem->doubloncheck($designation, 'designation', 'designation', 'items_family_id');
 
       if ($itemexist > 0) {
         $error['exist'] = 'cet article existe déjà dans cette categorie. ';

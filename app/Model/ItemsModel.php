@@ -75,4 +75,17 @@ class ItemsModel extends ItemsFamilyModel
       return $result;
   }
 
+  public function doubloncheck($designation, $champ)
+  	{
+
+  		$sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $champ .'  = :designation ';
+  		$sth = $this->dbh->prepare($sql);
+  		$sth->bindValue(':designation', $designation);
+      $sth->execute();
+      $etat = $sth->rowCount();
+
+  		return $etat;
+  	}
+
+
 }
