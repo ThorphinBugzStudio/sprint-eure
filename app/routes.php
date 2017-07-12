@@ -101,8 +101,8 @@
 		/**
 		 * Admin\ItemsController
 		 *
-		 * AQ : edit // update // delete
-		 * HP : Voir comment traiter l'action sans route à partir du post recuperé
+		 * 
+		 * 
 		 */
 		//routes admin items
 		['GET', '/admin/items', 'Admin\ItemsController#items','admin_items'],
@@ -123,8 +123,8 @@
 		/**
 		 * Admin\ItemsFamiliesController
 		 *
-		 * AQ : edit // update // delete
-		 * HP : Voir comment traiter l'action sans route à partir du post recuperé
+		 * 
+		 * 
 		 */
 		['GET', '/admin/itemsFamilies' , 'Admin\ItemsFamiliesController#itemsFamilies', 'admin_items_families'],
 		['GET', '/admin/itemsFamilies/[i:page]', 'Admin\ItemsFamiliesController#itemsFamilies', 'admin_page_items_families'],
