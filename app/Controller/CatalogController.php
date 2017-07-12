@@ -2,6 +2,8 @@
 
 namespace Controller;
 
+use \Model\ItemsModel;
+
 // use \W\Controller\Controller; // Inutile puisque heritage de AppController dans le meme espace de nom
 
 /**
@@ -17,6 +19,11 @@ class CatalogController extends AppController
    */
   public function catalog()
   {
-    $this->show('catalog/catalog');
+    $items = new ItemsModel();
+
+    $topProduct   = $items->findAllproduct('home','1','modified_at', 'ASC', 4);
+    $lastProduct  = $items->findAllproduct('status','active','created_at', 'DESC', 4);
+    $categorie = $items->nomcategorie();
+    $this->show('catalog/catalog',  ['categorie' => $categorie, 'topProduct' => $topProduct, 'lastProduct' => $lastProduct]);
   }
 }
