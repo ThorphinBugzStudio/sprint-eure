@@ -179,6 +179,14 @@ th {
   position: relative !important;
 }
 
+.single-article-container {
+  display: flex;
+  width: 100%;
+  border-collapse: separate;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .single-article {
   padding: 20px;
   background-color: #f3f3f3;
@@ -208,7 +216,7 @@ th {
   padding: 8px;
   position: absolute !important;
   top: 155px;
-  right: 25px;
+  right: 21px;
   border: 1px solid #0e415d;
   border-right: 0;
 }
@@ -293,10 +301,13 @@ fieldset .form-check {
 .span-flash {
   padding: 10px;
   margin-bottom: 20px;
-  border: 1px solid #5eb65e;
-  border-radius: 8px;
-  background-color: rgba(0, 255, 0, 0.2);
+  border-left: 4px solid #5eb65e;
+  background-color: rgba(0, 255, 0, 0.1);
   display: flex;
+}
+
+input[type="number"] {
+    width: 100%;
 }
 
 a, a:hover {

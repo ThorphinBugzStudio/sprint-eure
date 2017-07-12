@@ -11,9 +11,9 @@
   <div class="col-sm-12 col-md-9 py-3 " style="justify-content: space-around;">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <i class="fa fa-picture-o fa-fw"></i> Miniature de l'article
+        <i class="fa fa-picture-o fa-fw"></i> Liste de tous les articles
       </div>
-      <div class="text-align-center" style="justify-content: space-around;">
+      <div class="text-align-center single-article-container">
         <?php foreach ($results as $result ): ?>
           <div class="single-article m-3" id="test">
 
