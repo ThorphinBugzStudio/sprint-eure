@@ -1,6 +1,6 @@
 body {
 	background-image: url('../img/carousel-bg.png');
-	margin-top: 49px;
+	margin-top: 46px;
 }
 
 .row {
@@ -26,7 +26,7 @@ body {
 	border: 1px solid grey;
 }
 
-.navbar-users ul {
+.navbar-users ul, .navbar-menu ul {
 	padding: 0;
 	margin: 0;
 	display: flex;
@@ -34,7 +34,7 @@ body {
 	flex-wrap: inherit;
 }
 
-.navbar-users ul li {
+.navbar-users ul li, .navbar-menu ul li {
 	list-style: none;
 	justify-content: space-between;
 	padding: 10px 20px;
@@ -83,11 +83,12 @@ body {
 	color: white;
 }
 
+/*
 .navbar-menu {
 	background-color: #1d1d1d;
 	box-shadow: 0 0 8px 1px black;
-	height: 5px;
 }
+*/
 
 .navbar-menu ul {
 	padding: 0;
@@ -552,6 +553,12 @@ address .fa-phone {
 @media (max-width: 991px) {
 	.comments-container {
 		margin-top: 20px;
+	}
+	.navbar-fixed {
+		position: relative;
+	}
+	body {
+		margin-top: 0;
 	}
 }
 
