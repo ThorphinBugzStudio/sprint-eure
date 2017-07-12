@@ -6,7 +6,7 @@
 		 */
 		['GET', '/', 'Default#home', 'default_home'],	// Accueil
 		['POST', '/', 'Default#commentsAction', 'default_comments_action'],
-		['GET', '/howTo', 'Default#how-to','how_to'], 	// Page explicative (comment ça marche)
+		['GET', '/howTo', 'Default#howto','how_to'], 	// Page explicative (comment ça marche)
 
 		/**
 		 * UsersController
