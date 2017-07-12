@@ -70,30 +70,31 @@ class OrdersController extends AppController
    *
    * @return void
    */
-  public function singleOrder($id, $fromPage)
-  {
+   public function singleOrder($id, $fromPage)
+   {
     // ADMIN ONLY
     // $this->allowTo('admin');
 
-    $orders = new OrdersModel();
-    $orderRows = new OrderRowsModel();
-    $vatRates = new VatRateModel();
-    $users = new UsersModel();
+      $orders = new OrdersModel();
+      $orderRows = new OrderRowsModel();
 
-   $orderToUpdate = $orders->find($id);
-   $user = $users->find($orderToUpdate['users_id']);
-   $orderToUpdate['username'] = $user['username'];
-   $orderToUpdate['firstName'] = $user['firstName'];
-   $orderToUpdate['lastName'] = $user['lastName'];
-   $orderToUpdate['vat_percentage'] = $vatRates->find($orderToUpdate['vat_rate_id'])['vat_percentage'];
-   $rows = $orderRows->getRows($id);
-   debug($orderToUpdate);
+      $headOrder = $orders->getHeadOrder($id);
+      $rowsOrder = 
 
-debug($rows);
+
+
+      debug($orderToUpdate);
+
+      // Lignes de commande
+      // $rowsBrut = $orderRows->getRows($id);
+      // $rows = null;
+
+
+
+// debug($rows);
 die();
 
 
-// getRows(idOrder)
 
 
 
