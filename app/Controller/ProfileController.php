@@ -25,8 +25,10 @@ class ProfileController extends AppController
   {
     $adress = new User_adressesModel();
     $avatar = new AvatarsModel();
+    // $auth = new AuthentificationModel();
 
     $user = $this->getUser();
+    // $auth->refreshUser();
     $user_avatar = $avatar->getUserAvatar($user['id']);
 
     $user_adress = $adress->getUserAdress($user['id']);
@@ -188,15 +190,18 @@ class ProfileController extends AppController
 
               $user_avatar_update_sql = $avatarmodel->update([ 'img_name' => $file_name,
                                                             'modified_at' => $date->format('Y-m-d H:i:s')],$avatarId);
-
             }
           } else {
             $this->show('users/profile-modify', ['error' => $error]);
           }
         }
-        //redirection vers le profil
-        $this->flash('Votre profil a bien été mis à jour', 'success');
-        $this->redirectToRoute('user_profile');
+        //deconnexion de  l'utilisateur et message flash
+          $auth->logUserOut();
+          $this->flash('Votre profil a bien été mis à jour. Veuillez vous reconnecter', 'success');
+          //redirection vers login
+          $this->redirectToRoute('login');
+
+
 
       } else {
         $this->show('users/profile-modify', ['error' => $error ,'user_avatar' => $user_avatar]);
