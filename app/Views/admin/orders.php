@@ -16,7 +16,7 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>>Créée par</th>
+            <th>Créée par</th>
             <th>Taux TVA</th>
             <th>Status</th>
             <th>Créé le</th>
