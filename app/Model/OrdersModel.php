@@ -133,9 +133,9 @@ class OrdersModel extends Model
         $sth = $this->dbh->prepare($sql);
         $sth->execute();
         $result = $sth->fetchColumn();
-debug($result);
+
         return $result;
-    }    
+    }
 
     /**
      * Update le status de la commande en bdd.
@@ -161,6 +161,6 @@ debug($result);
                }
             }
         }
-    }    
+    }
 
 }
