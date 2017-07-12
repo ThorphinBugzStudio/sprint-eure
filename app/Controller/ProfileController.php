@@ -195,7 +195,7 @@ class ProfileController extends AppController
           }
         }
         //redirection vers le profil
-
+        $this->flash('Votre profil a bien été mis à jour', 'success');
         $this->redirectToRoute('user_profile');
 
       } else {

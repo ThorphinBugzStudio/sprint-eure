@@ -1,9 +1,6 @@
 <?php $this->layout('layout', ['title' => 'profile modify']) ?>
 
-<?php $this->start('main_content');
-debug($w_user);
-debug($user_adress);
-debug($user_avatar); ?>
+<?php $this->start('main_content'); ?>
 <form class="" action="<?php $this->url('user_profile_modify_action') ?>" enctype="multipart/form-data" method="post">
   <!-- Section : Prénom -->
   <label for="firstname">Prénom</label> <span class="error">*</span>
