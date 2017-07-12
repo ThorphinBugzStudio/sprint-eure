@@ -60,6 +60,10 @@
             </div>
           </div>
         <?php endforeach; ?>
+
+        <?php if(empty($result)) { ?>
+          <p class="p-4">Il n'y a aucun produit à afficher.</p>
+        <?php } ?>
       </div>
     </div>
   </div>
@@ -75,14 +79,18 @@
 
           <a href="<?= $this->url('admin_categorie_item', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a>
         <?php endforeach; ?>
+
+        <?php if(empty($cat)) { ?>
+          <p>Il n'y a aucune catégorie à afficher.</p>
+        <?php } ?>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Barre de pagination -->
-  <div class="row pagination w-100 my-3">
-    <?= $navPaginBar ?>
-  </div>
+<!-- Barre de pagination -->
+<div class="row pagination w-100 my-3">
+  <?= $navPaginBar ?>
 </div>
 
 <?php $this->stop('main_content') ?>

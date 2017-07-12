@@ -2,13 +2,14 @@
 namespace Model;
 
 use W\Model\Model;
+use W\Model\ConnectionModel;
 
 /**
  * Gestion de la table user_adresses
  */
 class User_adressesModel extends Model
 {
-   public function __contruct()
+   public function __construct()
    {
       $this->setTable('spe_user_adresses');
       $this->dbh = ConnectionModel::getDbh();

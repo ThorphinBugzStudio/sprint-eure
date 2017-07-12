@@ -1,4 +1,4 @@
-<?php $this->layout('back_layout', ['title' => 'admin Single Item']) ?>
+<?php $this->layout('back_layout', ['title' => 'Modifier le produit']) ?>
 
 <?php $this->start('main_content') ?>
 
@@ -8,7 +8,7 @@
     <div class="col-sm-12 col-md-8 py-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <i class="fa fa-plus fa-fw"></i> Modifier article
+          <i class="fa fa-edit fa-fw"></i> Modification de l'article
         </div>
         <div class="p-4">
           <!-- Catégorie : Désignation -->
@@ -83,13 +83,16 @@
           <INPUT type="checkbox" name="home" value="1"> Mettre l'article en avant sur la page d'accueil
           <?php if(!empty($error['home'])) { echo '<p class="error">' . $error['home'] . '</p>'; } ?>
         </div>
-        <?= $statusBox ?>
+
+        <!-- Catégorie : Status -->
+        <div class="px-4">
+          <?= $statusBox ?>
+        </div>
 
         <!-- Bouton d'envoie -->
         <div class="row w-100 mx-auto" style="text-align: center;">
           <input type="submit" name="submit" value="Modifier" class="btn_ok w-50 mb-3"/>
         </div>
-
 
       </div>
     </div>

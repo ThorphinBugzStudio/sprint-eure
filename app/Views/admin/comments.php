@@ -1,4 +1,4 @@
-<?php $this->layout('back_layout', ['title' => 'Commentaires']) ?>
+<?php $this->layout('back_layout', ['title' => 'Approbation des commentaires']) ?>
 
 <?php $this->start('main_content') ?>
 
@@ -38,8 +38,15 @@
               <!-- BOUTON : Approve -->
               <?php if ($result['status'] != 'active') { ?>
               <a class="" href="<?=$this->url('admin_approve_comment', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">
-                <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Editer">
+                <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Approuver">
                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                </button>
+             </a> <?php } ?>
+              <!-- or BOUTON : Not Approve -->
+              <?php if ($result['status'] == 'active') { ?>
+              <a class="" href="<?=$this->url('admin_notapproved_comment', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">
+                <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Approuver">
+                   <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
                 </button>
              </a> <?php } ?>
               <!-- BOUTON : Delete -->
@@ -50,6 +57,18 @@
               </a>
             </td>
           </tr> <?php } ?>
+
+          <?php if(empty($result)) { ?>
+            <tr>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+            </tr>
+          <?php } ?>
+
         </tbody>
       </table>
     </div>

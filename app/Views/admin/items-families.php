@@ -1,4 +1,4 @@
-<?php $this->layout('back_layout', ['title' => 'categories']) ?>
+<?php $this->layout('back_layout', ['title' => 'Catégories']) ?>
 
 <?php $this->start('main_content') ?>
 
@@ -16,7 +16,7 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>categorie</th>
+            <th>Catégorie</th>
             <th>Status</th>
             <th>Créé le</th>
             <th>Dernière modification le</th>
@@ -46,7 +46,20 @@
                 </button>
               </a>
             </td>
-          </tr> <?php } ?>
+          </tr>
+          <?php } ?>
+
+          <?php if(empty($result)) { ?>
+            <tr>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+            </tr>
+          <?php } ?>
+
         </tbody>
       </table>
     </div>

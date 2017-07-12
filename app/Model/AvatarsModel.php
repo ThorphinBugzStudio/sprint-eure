@@ -2,11 +2,12 @@
 namespace Model;
 
 use W\Model\Model;
+use W\Model\ConnectionModel;
 
 class AvatarsModel extends Model
 {
 
-   public function __contruct()
+   public function __construct()
    {
       $this->setTable('spe_avatars');
       $this->dbh = ConnectionModel::getDbh();

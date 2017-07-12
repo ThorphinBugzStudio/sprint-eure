@@ -1,4 +1,4 @@
-<?php $this->layout('back_layout', ['title' => 'Ajouter une catégorie d\'article']) ?>
+<?php $this->layout('back_layout', ['title' => 'Ajouter une catégorie']) ?>
 
 <?php $this->start('main_content') ?>
 
@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-4 py-3">
       <div class="panel panel-default">
         <div class="panel-heading">

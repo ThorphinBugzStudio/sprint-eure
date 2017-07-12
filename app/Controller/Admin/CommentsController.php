@@ -50,7 +50,7 @@ class CommentsController extends AppController
       $navPaginBar = $pagin->getHtml();
       // debug($navPaginBar);
 
-      $resultsBruts = $comments->findAll('id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
+      $resultsBruts = $comments->findAll('created_at', 'DESC', $pageStatus['limit'], $pageStatus['offset']);
       $results = array();
       foreach ($resultsBruts as $resultBrut)
       {
@@ -63,18 +63,43 @@ class CommentsController extends AppController
 
   /**
    * Traitement approbation d'un commentaire.
-   * Appel de la methode via route.
+   * Appel de la methode via route. __U_
    *
    * @return void
    */
   public function commentApprove($id, $fromPage)
   {
-    # code
+    $comments = new CommentsModel();
+
+    $comments->updateStatus($id, 'active');
+
+    // Message flash
+    $this->flash('Commentaire approuvé avec succès', 'success');    
+
+    $this->redirectToRoute('admin_page_comments', ['page' => $fromPage]);
+  }
+  
+  /**
+   * Traitement Désapprobation d'un commentaire.
+   * Appel de la methode via route. __U_
+   *
+   * @return void
+   */
+  public function commentNotApproved($id, $fromPage)
+  {
+    $comments = new CommentsModel();
+
+    $comments->updateStatus($id, 'inactive');
+
+    // Message flash
+    $this->flash('Commentaire inactivé avec succès', 'success');
+
+    $this->redirectToRoute('admin_page_comments', ['page' => $fromPage]);
   }
 
   /**
    * Traitement suppression d'un commentaire.
-   * Appel de la methode via route.
+   * Appel de la methode via route. ___D
    *
    * @return void
    */
@@ -86,6 +111,9 @@ class CommentsController extends AppController
     $comments = new CommentsModel();
 
     $comments->updateStatus($id, 'deleted');
+
+    // Message flash
+    $this->flash('Commentaire supprimé avec succès', 'success');
 
     $this->redirectToRoute('admin_page_comments', ['page' => $fromPage]);
   }
