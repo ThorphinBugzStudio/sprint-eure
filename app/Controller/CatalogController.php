@@ -63,7 +63,7 @@ class CatalogController extends AppController
 
     $results = $items->findAllWhere($id, 'id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
-    $this->show('catalog/catalog_All', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
+    $this->show('catalog/catalog_all', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
 
 }
