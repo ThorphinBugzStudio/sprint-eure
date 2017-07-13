@@ -34,7 +34,7 @@
     <div class="single-article m-3" id="img-article-1">
 
       <a href="#">
-        <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
+        <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail hvr-grow">
       </a>
 
       <div class="single-article-price">
@@ -77,7 +77,7 @@
     <div class="single-article m-3" id="img-article-2">
 
       <a href="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" data-fancybox="lastproduct">
-        <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
+        <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail hvr-glow">
       </a>
 
       <div class="single-article-price">
