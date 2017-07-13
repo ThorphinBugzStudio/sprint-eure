@@ -2,6 +2,8 @@
 
 namespace Controller;
 
+use Model\ItemsModel;
+
 // use \W\Controller\Controller; // Inutile puisque heritage de AppController dans le meme espace de nom
 
 /**
@@ -13,7 +15,7 @@ class PanierController extends AppController
 
   /**
    * Formulaire Panier.
-   * 
+   *
    *
    * @return void
    */
@@ -30,6 +32,20 @@ class PanierController extends AppController
   public function panierAction()
   {
     # code
+  }
+
+  public function addArticleToPanier($id)
+  {
+    $itemsM = new ItemsModel();
+
+    $article = $itemsM->find($id);
+
+    $data = ['id' => $article['id'],
+           'puht' => $article['puht'],
+    'designation' => $article['designation']];
+
+    $this->showJson($data);
+
   }
 
 }

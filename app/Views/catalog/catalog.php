@@ -38,15 +38,14 @@
       </a>
 
       <div class="single-article-price">
-        <?= number_format($result['puht'],2,',', ' ').' €'; ?>
+        <span class="article-price"><?= number_format($result['puht'],2,',', ' ').' €'; ?></span>
       </div>
 
       <div class="row my-2" style="display: flex;">
         <div class="mr-auto my-auto">
           <!-- Nom de l'article -->
           <div class="single-article-title">
-            <a href="#"><?= $result['designation']; ?></a>
-          </div>
+            <span class= "article-designation"><?= $result['designation']; ?></span></div>
         </div>
       </div>
 
@@ -55,9 +54,7 @@
       <!-- BOUTON : Ajouter au panier -->
       <div class="row" style="display: flex;">
         <div class="row mx-auto">
-          <a id="add_to_basket" class="btn_basket" href="#">
-              <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Ajouter au panier
-          </a>
+            <a class="btn_basket" href="<?= $this->url('ajouter_au_panier',array('id'=> $result['id'])); ?>">Ajouter<i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -81,14 +78,14 @@
       </a>
 
       <div class="single-article-price">
-        <?= number_format($result['puht'],2,',', ' ').' €'; ?>
+        <span class="article-price"><?= number_format($result['puht'],2,',', ' ').' €'; ?></span>
       </div>
 
       <div class="row my-2" style="display: flex;">
         <div class="mr-auto my-auto">
           <!-- Nom de l'article -->
           <div class="single-article-title">
-            <a href="#"><?= $result['designation']; ?></a>
+            <span class= "article-designation"><?= $result['designation']; ?></span></div>
           </div>
         </div>
       </div>
@@ -98,7 +95,7 @@
       <!-- BOUTON : Ajouter au panier -->
       <div class="row" style="display: flex;">
         <div class="row mx-auto">
-          <a class="btn_basket" href="#">
+          <a class="btn_basket">
               <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Ajouter au panier
           </a>
         </div>

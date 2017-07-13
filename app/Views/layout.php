@@ -82,16 +82,18 @@
 									<a href="<?= $this->url('panier_client') ?>">Votre panier</a>
 								</div>
 								<div class="dropdown-item">
-									<p class="text-align-center mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Le panier est vide.</p>
+									<p id = "basket_first_line" class="text-align-center mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Le panier est vide.</p>
 									<hr class="hrPage">
 									<div class="row mt-2">
+										<p class="col-6 bold mb-0">Total hors taxes</p>
+										<p id="total_ht"class="col-6 text-align-right mb-0">0.00 €</p>
 										<p class="col-6 bold mb-0">Taxes :</p>
-										<p class="col-6 text-align-right mb-0">0.00 €</p>
+										<p id="total_tva" class="col-6 text-align-right mb-0">0.00 €</p>
 									</div>
 									<div class="basket-spacer my-2"></div>
 									<div class="row">
 										<p class="col-6 bold mb-0">Total :</p>
-										<p class="col-6 text-align-right mb-0">0.00 €</p>
+										<p id="total_ttc" class="col-6 text-align-right mb-0">0.00 €</p>
 									</div>
 									<div class="row justify-content-center mt-2">
 										<button type="button" name="button" class="btn_ok"><i class="fa fa-shopping-cart" aria-hidden="true"></i><a href="<?= $this->url('panier_client') ?>"></a> </button>
@@ -200,5 +202,9 @@
 	<script src="<?= $this->assetUrl('js/haut_de_page.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/category.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/inscription-ajax.js') ?>" charset="utf-8"></script>
+	<script src="<?= $this->assetUrl('js/panier.js') ?>" charset="utf-8"></script>
+
+<?= $this->section('js') ?>
+
 </body>
 </html>
