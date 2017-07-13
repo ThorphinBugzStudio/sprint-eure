@@ -379,6 +379,55 @@ form label {
 	font-size: .9em;
 }
 
+/* --------------- COMMENT ÇA MARCHE ? ---------------- */
+
+.howTo img {
+	width: 300px;
+	border: 3px double grey;
+	cursor: zoom-in;
+}
+
+.howTo iframe {
+ border: 3px double grey;
+}
+
+.float-left {
+	float: left;
+	margin-right: 20px;
+}
+
+.float-right {
+	float: right;
+	margin-left: 20px;
+}
+
+.clear {
+	clear: both;
+}
+
+@media (max-width: 640px) {
+	.float-left {
+		float: none;
+		margin-right: 0;
+		display: block;
+	}
+
+	.float-right {
+		float: none;
+		margin-left: 0;
+	}
+
+	.howTo p {
+		display: inline-block;
+	}
+
+	.howTo img {
+		justify-content: center;
+		margin: 15px 0 0 0;
+		width: 100%;
+	}
+}
+
 /* ----------------- E-COMMERCE ----------------- */
 
 .category-bar {
@@ -711,6 +760,10 @@ address .fa-phone {
 
 .uppercase {
 	text-transform: uppercase;
+}
+
+.text-justify {
+	text-align: justify;
 }
 
 * p, * label {

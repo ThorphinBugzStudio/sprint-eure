@@ -87,6 +87,21 @@
       <div class="col-sm-12 col-md-4 py-3">
         <div class="panel panel-default">
           <div class="panel-heading">
+            <i class="fa fa-picture-o fa-fw"></i> Avatar
+          </div>
+          <div class="image p-4">
+            <?php
+            // CONDITION : Si il y a une miniature, alors on l'affiche. Sinon, une image par défaut sera installé, le temps d'avoir une miniature.
+            if(!empty($avatar['img_name'])) { ?>
+              <img src="<?= $this->assetUrl('img/avatars/' . $avatar['img_name'] . '') ?>" alt="Avatar" class="hvr-grow mt-3">
+            <?php } else { ?>
+              <img src="<?= $this->assetUrl('img/avatar-default.png') ?>" alt="Avatar par défaut" class="hvr-grow mt-3">
+            <?php } ?>
+          </div>
+        </div>
+
+        <div class="panel panel-default mt-4">
+          <div class="panel-heading">
             <i class="fa fa-star fa-fw"></i> État de l'utilisateur
           </div>
           <div class="p-4">

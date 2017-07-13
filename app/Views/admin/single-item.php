@@ -66,13 +66,19 @@
         <div class="image m-4">
           <input type="file" name="image" style="max-width: 100%;">
           <?php if(!empty($error['image'])) { echo '<p class="error">' . $error['image'] . '</p>'; } ?>
+
+          <?php
+          // CONDITION : Si il y a une miniature, alors on l'affiche. Sinon, une image par défaut sera installé, le temps d'avoir une miniature.
+          if(!empty($item['img_name'])) { ?>
+            <img src="<?= $this->assetUrl('img/uploaded_articles/' . $item['img_name'] . '') ?>" alt="Miniature" class="hvr-grow mt-3">
+          <?php } else { ?>
+            <img src="<?= $this->assetUrl('img/avatar-default.png') ?>" alt="Miniature par défaut" class="hvr-grow mt-3">
+          <?php } ?>
         </div>
       </div>
-
-
-            <input class="input-back" type="text" name="img_name" id="img_name" placeholder="Saisir un titre" value="<?php if(!empty($_POST['img_name'])) { echo $_POST['img_name'];} else { echo $item['img_name'] ;}?>" />
-            
-
+<!--
+      <input class="input-back" type="text" name="img_name" id="img_name" placeholder="Saisir un titre" value="<?php if(!empty($_POST['img_name'])) { echo $_POST['img_name'];} else { echo $item['img_name'] ;}?>" />
+-->
 
       <div class="panel panel-default mt-4">
         <div class="panel-heading">
