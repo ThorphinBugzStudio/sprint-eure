@@ -33,7 +33,7 @@
   <?php foreach ($topProduct as $result): ?>
     <div class="single-article m-3" id="img-article-1">
 
-      <a href="#">
+      <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>">
         <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
       </a>
 
@@ -45,7 +45,7 @@
         <div class="mr-auto my-auto">
           <!-- Nom de l'article -->
           <div class="single-article-title">
-            <a href="#"><?= $result['designation']; ?></a>
+            <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>"><?= $result['designation']; ?></a>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@
   <?php foreach ($lastProduct as $result): ?>
     <div class="single-article m-3" id="img-article-2">
 
-      <a href="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" data-fancybox="lastproduct">
+      <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>">
         <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
       </a>
 
@@ -88,7 +88,7 @@
         <div class="mr-auto my-auto">
           <!-- Nom de l'article -->
           <div class="single-article-title">
-            <a href="#"><?= $result['designation']; ?></a>
+            <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>"><?= $result['designation']; ?></a>
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@
         <?php foreach ($results as $result ): ?>
           <div class="single-article m-3" id="test">
 
-            <a href="#">
+            <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>">
               <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
             </a>
 

@@ -27,6 +27,14 @@ class CatalogController extends AppController
     $this->show('catalog/catalog',  ['categorie' => $categorie, 'topProduct' => $topProduct, 'lastProduct' => $lastProduct]);
   }
 
+  public function detail($id)
+  {
+    $items = new ItemsModel();
+
+    $result = $items->find($id);
+    $this->show('catalog/article',  ['result' => $result] );
+  }
+
   public function allcatalog($page = '')
   {
     $items = new ItemsModel();
