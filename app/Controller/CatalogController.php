@@ -27,7 +27,7 @@ class CatalogController extends AppController
     $this->show('catalog/catalog',  ['categorie' => $categorie, 'topProduct' => $topProduct, 'lastProduct' => $lastProduct]);
   }
 
-  public function Allcatalog($page = '')
+  public function allcatalog($page = '')
   {
     $items = new ItemsModel();
 
@@ -44,7 +44,7 @@ class CatalogController extends AppController
     $results = $items->findAllproduct('status','active','created_at', 'DESC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
 
-    $this->show('catalog/catalog_All', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
+    $this->show('catalog/catalog_all', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
 
   public function familycatalog($id, $page = ''){
@@ -63,7 +63,7 @@ class CatalogController extends AppController
 
     $results = $items->findAllWhere($id, 'id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
-    $this->show('catalog/catalog_All', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
+    $this->show('catalog/catalog_all', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
 
 }
