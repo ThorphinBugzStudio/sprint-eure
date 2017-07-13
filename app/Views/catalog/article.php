@@ -2,6 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
+
     <div class="image">
       <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" >
     </div>
@@ -21,5 +22,7 @@
     <a class="" href="#">
         <i class="fa fa-cart-arrow-down"></i> Ajouter au panier
     </a>
+
+
 
 <?php $this->stop('main_content') ?>

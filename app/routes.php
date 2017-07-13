@@ -49,6 +49,8 @@
 		['GET', '/catalog/categorie/[:id]/[i:page]', 'Catalog#familycatalog', 'catalog_categorie_page'],
 		//detail de l article
 		['GET', '/catalog/item/[:id]', 'Catalog#detail', 'catalog_detail'],
+		//404
+		['GET', '/catalog/404', 'Catalog#erreur404', 'catalog_404'],
 
 
 		/**

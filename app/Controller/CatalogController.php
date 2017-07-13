@@ -32,7 +32,11 @@ class CatalogController extends AppController
     $items = new ItemsModel();
 
     $result = $items->find($id);
-    $this->show('catalog/article',  ['result' => $result] );
+    if(empty($result)){
+      $this->redirectToRoute('catalog_404');
+    } else {
+      $this->show('catalog/article',  ['result' => $result] );
+    }
   }
 
   public function allcatalog($page = '')
@@ -70,7 +74,15 @@ class CatalogController extends AppController
 
     $results = $items->findAllWhere($id, 'id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
+    if(empty($results)){
+      $this->redirectToRoute('catalog_404');
+    } else {
     $this->show('catalog/catalog_all', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
+  }
+  }
+
+  public function erreur404() {
+     $this->show('w_errors/404');
   }
 
 }
