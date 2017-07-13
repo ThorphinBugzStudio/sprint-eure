@@ -35,7 +35,7 @@
 
       <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>">
         <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
-      </a>
+
 
       <div class="single-article-price">
         <?= number_format($result['puht'],2,',', ' ').' €'; ?>
@@ -76,9 +76,10 @@
   <?php foreach ($lastProduct as $result): ?>
     <div class="single-article m-3" id="img-article-2">
 
+
       <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>">
         <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
-      </a>
+
 
       <div class="single-article-price">
         <?= number_format($result['puht'],2,',', ' ').' €'; ?>
