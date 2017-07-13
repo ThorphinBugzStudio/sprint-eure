@@ -112,7 +112,7 @@ $_ENV = 'Home'; ?>
       <?php if(!empty($user)) { ?>
         <form class="comments-form" action="<?php $this->url('inscription_action'); ?>" method="POST">
           <div>
-            <textarea name="comment" rows="8" cols="80" placeholder="Saisir votre commentaire..."></textarea>
+            <textarea name="comment" rows="8" cols="80" placeholder="Saisir votre commentaire..."><?php if (!empty($actualComment)) { echo $actualComment; } ?></textarea>
             <span class=error><?php if(!empty($error['comment'])){ echo $error['comment'];} ?></span>
             <input class="container-fluid row btn_ok mt-3 mx-auto px-auto w-100" type="submit" name="submit" value="Laisser un commentaire">
           </div>
