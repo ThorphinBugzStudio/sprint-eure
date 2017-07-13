@@ -100,7 +100,7 @@
             <i class="fa fa-gear fa-fw"></i> Paramètres
           </div>
           <div class="p-4 text-align-center">
-            <!-- Bouton d'envoie -->
+            <!-- Bouton d'envoi -->
             <input class="btn_ok" type="submit" name="submit" value="Mettre à jour">
             <!-- Retour vers listing -->
             <a href="<?= $this->url('admin_page_users', ['page' => $page]) ?>"><button type="button" class="btn_cancel">Annuler</button></a>
