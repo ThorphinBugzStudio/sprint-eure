@@ -79,7 +79,7 @@
 							</a>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								<div class="title_basket">
-									Votre panier
+									<a href="<?= $this->url('panier_client') ?>">Votre panier</a>
 								</div>
 								<div class="dropdown-item">
 									<p class="text-align-center mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Le panier est vide.</p>
@@ -94,7 +94,7 @@
 										<p class="col-6 text-align-right mb-0">0.00 €</p>
 									</div>
 									<div class="row justify-content-center mt-2">
-										<button type="button" name="button" class="btn_ok"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Valider le panier</button>
+										<button type="button" name="button" class="btn_ok"><i class="fa fa-shopping-cart" aria-hidden="true"></i><a href="<?= $this->url('panier_client') ?>"></a> </button>
 									</div>
 								</div>
 							</div>

@@ -55,7 +55,7 @@
       <!-- BOUTON : Ajouter au panier -->
       <div class="row" style="display: flex;">
         <div class="row mx-auto">
-          <a class="btn_basket" href="#">
+          <a id="add_to_basket" class="btn_basket" href="#">
               <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Ajouter au panier
           </a>
         </div>

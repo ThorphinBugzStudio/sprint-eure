@@ -24,3 +24,5 @@ $( function() {
     $('#options').removeClass('hidden');
   });
 } );
+
+//----------------------------- Traitement Panier-----------------------------//
