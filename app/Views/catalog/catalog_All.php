@@ -6,30 +6,30 @@
 
 <div class="row w-100 ml-auto mt-2 justify-content-end category-row">
 
-  <div class="row category-button-return" style="margin-right: 5px;">
+  <div class="row category-button-return">
       <a class="my-auto mr-auto" href="<?= $this->url('catalog') ?>">
         <i class="fa fa-reply mr-auto my-auto" aria-hidden="true" style="margin-right: 5px;"></i>
         Retour
       </a>
   </div>
 
-  <div class="category-button row">
-    <p class="my-auto mr-auto">Catégorie</p>
-    <i class="fa fa-angle-down ml-auto" aria-hidden="true" id="category-article"></i>
-  </div>
+  <!-- BOUTON : Trier par catégorie -->
+  <div class="btn-group category-button">
+    <p type="button" class="my-auto mr-auto" >Catégorie</p>
+    <i class="fa fa-angle-down ml-auto" aria-hidden="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
 
-  <div class="hidden category-content" id="category_content">
-    <ul class="p-0">
-      <li><a href="<?= $this->url('catalog_all')?>">» Tous nos produits</a></li>
-      <hr class="my-1">
-      <?php foreach ($categorie as $cat): ?>
-        <li><a href="<?= $this->url('catalog_categorie_item', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a></li>
-      <?php endforeach; ?>
-    </ul>
+    <div class="dropdown-menu category-content">
+      <ul class="p-0">
+        <li><a class="dropdown-item p-2" href="<?= $this->url('catalog_all')?>">» Tous les produits</a></li>
+        <div class="dropdown-divider m-0"></div>
+        <?php foreach ($categorie as $cat): ?>
+          <li><a href="<?= $this->url('catalog_categorie_item', ['id' =>  $cat['id']])?>" class="dropdown-item p-1 px-2"><?= $cat['family'] ?></a></li>
+        <?php endforeach; ?>
+    </div>
   </div>
 </div>
 
-<!-- Titre : Meilleures ventes -->
+<!-- TITRE : Catégorie de produit -->
 <div class="container-fluid row pt-4 px-0 mainContent">
   <h2><?= $nomcat['family'] ?></h2>
   <hr class="hrPage">
@@ -40,10 +40,12 @@
   <?php foreach ($results as $result ): ?>
     <div class="single-article m-3" id="img-article-3">
 
+      <!-- Miniature de l'article -->
       <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>">
         <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail hvr-glow">
       </a>
 
+      <!-- Affichage du prix -->
       <div class="single-article-price">
         <?= number_format($result['puht'],2,',', ' ').' €'; ?>
       </div>
@@ -72,8 +74,9 @@
   <?php endforeach; ?>
 </div>
 
-<?php if(empty($result)) { ?>
-  <p>Il n'y a aucun produit à afficher.</p>
+<?php // CONDITION : Si il n'y a pas d'articles à afficher, alors ce message apparaît.
+  if(empty($result)) { ?>
+    <p>Il n'y a aucun produit à afficher.</p>
 <?php } ?>
 
 <!-- Barre de pagination -->

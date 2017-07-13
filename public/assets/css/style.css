@@ -490,6 +490,7 @@ form label {
 	width: 200px;
 	color: white;
 	font-family: "Patua One", "Arial";
+	margin-right: 5px;
 }
 
 .category-button-return a {
@@ -535,6 +536,8 @@ form label {
 	max-height: 200px;
 	overflow-y: auto;
 	border: 1px solid #c2c2c2;
+	font-family: "Open Sans", "Arial";
+	font-size: 14px;
 }
 
 .category-content ul li {
@@ -753,5 +756,12 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 @media (max-width: 1450px) {
 	.footer_1, .footer_2, .footer_3, .footer_4 {
 		margin-bottom: 40px;
+	}
+}
+
+@media (max-width: 456px) {
+	.category-button-return, .category-button {
+		margin: 5px 0px;
+		width: 100%;
 	}
 }
