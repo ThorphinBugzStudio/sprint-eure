@@ -423,7 +423,6 @@ form label {
 }
 
 .single-article a img {
-	cursor: zoom-in;
 	border: 4px double grey;
 }
 
@@ -482,19 +481,38 @@ form label {
 }
 
 .category-row {
-	display: grid;
 	position: relative;
+	justify-content: space-around;
 }
 
-.category-button {
+.category-button-return {
 	background-color: #1d1d1d;
 	width: 200px;
 	color: white;
 	font-family: "Patua One", "Arial";
 }
 
+.category-button-return a {
+	color: white;
+	text-decoration: none;
+}
+
+.category-button-return i {
+	margin-right: 10px;
+	cursor: pointer;
+	padding: 8px;
+	text-align: left;
+}
+
+.category-button {
+	background-color: #1e7dce;
+	width: 200px;
+	color: white;
+	font-family: "Patua One", "Arial";
+}
+
 .category-button i {
-	border-left: 1px solid #7b7b7b;
+	border-left: 1px solid #0167da;
 	margin-left: 10px;
 	cursor: pointer;
 	padding: 10px;

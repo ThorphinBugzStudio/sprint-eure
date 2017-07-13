@@ -3,6 +3,7 @@
 namespace Controller;
 
 use \Model\ItemsModel;
+use \Model\ItemsFamilyModel;
 use \Services\Tools\Pagination;
 // use \W\Controller\Controller; // Inutile puisque heritage de AppController dans le meme espace de nom
 
@@ -32,7 +33,11 @@ class CatalogController extends AppController
     $items = new ItemsModel();
 
     $result = $items->find($id);
-    $this->show('catalog/article',  ['result' => $result] );
+    if(empty($result)){
+      $this->redirectToRoute('catalog_404');
+    } else {
+      $this->show('catalog/article',  ['result' => $result] );
+    }
   }
 
   public function allcatalog($page = '')
@@ -56,7 +61,7 @@ class CatalogController extends AppController
 
   public function familycatalog($id, $page = ''){
     $items = new ItemsModel();
-
+    $family = new ItemsFamilyModel();
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
     $pagin = new Pagination('items categorie pages navigation', $this->generateUrl('catalog_categorie_item', ['id' =>  $id]), $items->countIdcat($id), 4);
 
@@ -70,7 +75,16 @@ class CatalogController extends AppController
 
     $results = $items->findAllWhere($id, 'id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
-    $this->show('catalog/catalog_all', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
+    $nomcat = $family->find($id);
+    if(empty($results)){
+      $this->redirectToRoute('catalog_404');
+    } else {
+    $this->show('catalog/catalog_all', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie, 'nomcat' => $nomcat]);
+  }
+  }
+
+  public function erreur404() {
+     $this->show('w_errors/404');
   }
 
 }

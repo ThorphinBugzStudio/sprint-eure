@@ -23,7 +23,7 @@
 
 <!-- Titre : Meilleures ventes -->
 <div class="container-fluid row pt-4 px-0 mainContent">
-  <h2>Nos meilleures ventes</h2>
+  <h2>Nos meilleurs produits</h2>
   <hr class="hrPage">
 </div>
 
@@ -34,8 +34,8 @@
     <div class="single-article m-3" id="img-article-1">
 
       <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>">
-        <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
-
+        <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail hvr-glow">
+      </a>
 
       <div class="single-article-price">
         <?= number_format($result['puht'],2,',', ' ').' €'; ?>
