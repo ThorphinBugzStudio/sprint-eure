@@ -5,6 +5,7 @@ namespace Controller;
 use \Model\ItemsModel;
 use \Model\ItemsFamilyModel;
 use \Services\Tools\Pagination;
+use \Security\CleanTool;
 // use \W\Controller\Controller; // Inutile puisque heritage de AppController dans le meme espace de nom
 
 /**
@@ -45,7 +46,7 @@ class CatalogController extends AppController
     $items = new ItemsModel();
 
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-    $pagin = new Pagination('items pages navigation', $this->generateUrl('catalog_all'), $items->getNbId(), 8);
+    $pagin = new Pagination('items pages navigation', $this->generateUrl('catalog_all'), $items->getNbId(), 10);
 
     if (!empty($page)) { $pagin->setPageStatus($page); }
 
@@ -85,6 +86,30 @@ class CatalogController extends AppController
 
   public function erreur404() {
      $this->show('w_errors/404');
+  }
+
+  public function search($id = '', $page= ''){
+    $items = new ItemsModel();
+    $family = new ItemsFamilyModel();
+    if(!empty($_POST['recherche'])){
+    $id = $_POST['recherche'];}
+    // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
+    $pagin = new Pagination('items categorie pages navigation', $this->generateUrl('catalog_search', ['id' =>  $id]), $items->countsearch($id), 4);
+
+    if (!empty($page)) { $pagin->setPageStatus($page); }
+
+    // get des informations de pagination necessaires à la requete bdd
+    $pageStatus = $pagin->getPageStatus();
+    // get du html de la barre de navigation pour la pagination
+    $navPaginBar = $pagin->getHtml();
+    // debug($navPaginBar);
+
+    $results = $items->recherche($id, $pageStatus['limit'], $pageStatus['offset']);
+    $categorie = $items->nomcategorie();
+    $nomcat = $family->find($id);
+
+    $this->show('catalog/catalog_all', ['id' => $id, 'results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie, 'nomcat' => $nomcat]);
+
   }
 
 }

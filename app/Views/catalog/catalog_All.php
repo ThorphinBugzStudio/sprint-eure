@@ -4,7 +4,14 @@
 
 <?php $_ENV = 'Home' ?>
 
+<form class="search" action="search/[:id]" method="post">
+  <input type="text" name="recherche" value="">
+  <input type="submit" name="submit" value="rechercher">
+</form>
+
 <div class="row w-100 ml-auto mt-2 justify-content-end category-row">
+
+
 
   <div class="row category-button-return" style="margin-right: 5px;">
       <a class="my-auto mr-auto" href="<?= $this->url('catalog') ?>">
@@ -30,10 +37,17 @@
 </div>
 
 <!-- Titre : Meilleures ventes -->
+<?php if(isset($nomcat)){ ?>
 <div class="container-fluid row pt-4 px-0 mainContent">
   <h2><?= $nomcat['family'] ?></h2>
   <hr class="hrPage">
 </div>
+<?php } else { ?>
+  <div class="container-fluid row pt-4 px-0 mainContent">
+    <h2>Tous nos produits</h2>
+    <hr class="hrPage">
+  </div>
+  <?php } ?>
 
 <!-- Contenu de tous les produits -->
 <div class="top-product text-align-center single-article-container">

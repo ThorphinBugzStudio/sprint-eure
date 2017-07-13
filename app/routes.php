@@ -51,7 +51,9 @@
 		['GET', '/catalog/item/[:id]', 'Catalog#detail', 'catalog_detail'],
 		//404
 		['GET', '/catalog/404', 'Catalog#erreur404', 'catalog_404'],
-
+		//recherche
+		['POST', '/catalog/search/[:id]', 'Catalog#search', 'catalog_search'],
+		['GET', '/catalog/search/[:id]/[i:page]', 'Catalog#search', 'catalog_search_page'],
 
 		/**
 		 * DevisController

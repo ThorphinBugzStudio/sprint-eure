@@ -5,6 +5,11 @@
 
 <?php $_ENV = 'Home' ?>
 
+<form class="search" action="catalog/search/[:id]" method="post">
+  <input type="text" name="recherche" value="">
+  <input type="submit" name="submit" value="rechercher">
+</form>
+
 <div class="row w-100 ml-auto mt-2 justify-content-end category-row">
   <div class="category-button row">
     <p class="my-auto mr-auto">Catégorie</p>
