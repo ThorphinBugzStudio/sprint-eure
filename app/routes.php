@@ -42,9 +42,10 @@
 		 * CatalogController
 		 */
 		['GET', '/catalog', 'Catalog#catalog', 'catalog'],
-		['GET', '/catalog/all', 'Catalog#Allcatalog', 'catalog_All'],
-		['GET', '/catalog/all/[i:page]', 'Catalog#Allcatalog', 'catalog_all_page'],
-		['GET', '/catalog/all/[:id]/[i:page]', 'Catalog#familycatalog', 'catalog_categorie_page'],
+		['GET', '/catalog/all', 'Catalog#allcatalog', 'catalog_all'],
+		['GET', '/catalog/all/[i:page]', 'Catalog#allcatalog', 'catalog_all_page'],
+		['GET', '/catalog/categorie/[:id]', 'Catalog#familycatalog', 'catalog_categorie_item'],
+		['GET', '/catalog/categorie/[:id]/[i:page]', 'Catalog#familycatalog', 'catalog_categorie_page'],
 
 		/**
 		 * DevisController
@@ -101,8 +102,8 @@
 		/**
 		 * Admin\ItemsController
 		 *
-		 * 
-		 * 
+		 *
+		 *
 		 */
 		//routes admin items
 		['GET', '/admin/items', 'Admin\ItemsController#items','admin_items'],
@@ -123,8 +124,8 @@
 		/**
 		 * Admin\ItemsFamiliesController
 		 *
-		 * 
-		 * 
+		 *
+		 *
 		 */
 		['GET', '/admin/itemsFamilies' , 'Admin\ItemsFamiliesController#itemsFamilies', 'admin_items_families'],
 		['GET', '/admin/itemsFamilies/[i:page]', 'Admin\ItemsFamiliesController#itemsFamilies', 'admin_page_items_families'],

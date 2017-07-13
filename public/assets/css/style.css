@@ -16,12 +16,16 @@ body {
 
 .navbar-users, .navbar-menu  {
 	background-color: #1d1d1d;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	border-top: 2px solid #1e7dce;
 }
 
 .navbar-title {
 	background-color: #1d1d1d;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	color: white;
 	font-size: 1em;
@@ -42,14 +46,21 @@ body {
 .navbar-users ul, .navbar-menu ul {
 	padding: 0;
 	margin: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: end;
-	flex-wrap: inherit;
+	-webkit-box-pack: end;
+	    -ms-flex-pack: end;
+	        justify-content: end;
+	-ms-flex-wrap: inherit;
+	    flex-wrap: inherit;
 }
 
 .navbar-users ul li, .navbar-menu ul li {
 	list-style: none;
-	justify-content: space-between;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
 	padding: 10px 20px;
 }
 
@@ -89,6 +100,7 @@ body {
 	color: white;
 	padding: 10px 60px;
 	text-decoration: none;
+	background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
 }
 
@@ -172,10 +184,12 @@ body {
 }
 
 .carousel-control-prev:hover {
+	background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0));
 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0));
 }
 
 .carousel-control-next:hover {
+	background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0));
 	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0));
 }
 
@@ -192,6 +206,7 @@ body {
 .carousel-caption {
 	bottom: 0;
 	left: 0%;
+	background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
 	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
 	width: 100%;
 }
@@ -219,6 +234,7 @@ body {
 }
 
 .ads-column {
+	display: -ms-inline-grid;
 	display: inline-grid;
 }
 
@@ -378,7 +394,9 @@ form label {
 /* ----------------- E-COMMERCE ----------------- */
 
 .category-bar {
-	justify-content: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 	width: 100%;
 }
 
@@ -403,11 +421,16 @@ form label {
 }
 
 .single-article-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
   border-collapse: separate;
-  flex-wrap: wrap;
-  justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .single-article {
@@ -477,6 +500,7 @@ form label {
 }
 
 .category-row {
+	display: -ms-grid;
 	display: grid;
 	position: relative;
 }
@@ -551,7 +575,9 @@ form label {
 .edit-profil-avatar {
 	max-height: 200px;
 	max-width: 200px;
-	justify-content: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 	border-style: double;
 	border: 4px double grey;
 }
@@ -567,7 +593,9 @@ footer {
 }
 
 .footer-center {
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .hr_footer {
@@ -590,7 +618,9 @@ footer {
 
 .footer_1, .footer_2, .footer_3, .footer_4 {
   color: white;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   max-width: 300px;
   width: 100%;
   margin: 0 20px;
@@ -695,7 +725,9 @@ address .fa-phone {
 @media (max-width: 827px) {
 	.navbar-users ul li, .navbar-menu ul li {
 		width: 100%;
-		justify-content: flex-start !important;
+		-webkit-box-pack: start !important;
+		    -ms-flex-pack: start !important;
+		        justify-content: flex-start !important;
 	}
 }
 

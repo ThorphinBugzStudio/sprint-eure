@@ -27,7 +27,7 @@ class CatalogController extends AppController
     $this->show('catalog/catalog',  ['categorie' => $categorie, 'topProduct' => $topProduct, 'lastProduct' => $lastProduct]);
   }
 
-  public function Allcatalog($page = '')
+  public function allcatalog($page = '')
   {
     $items = new ItemsModel();
 
@@ -43,15 +43,14 @@ class CatalogController extends AppController
     // debug($navPaginBar);
     $results = $items->findAllproduct('status','active','created_at', 'DESC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
-
-    $this->show('catalog/catalog_All', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
+    $this->show('catalog/catalog_all', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
 
   public function familycatalog($id, $page = ''){
     $items = new ItemsModel();
 
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-    $pagin = new Pagination('items categorie pages navigation', $this->generateUrl('catalog_all', ['id' =>  $id]), $items->countIdcat($id), 4);
+    $pagin = new Pagination('items categorie pages navigation', $this->generateUrl('catalog_categorie_item', ['id' =>  $id]), $items->countIdcat($id), 4);
 
     if (!empty($page)) { $pagin->setPageStatus($page); }
 
@@ -63,7 +62,7 @@ class CatalogController extends AppController
 
     $results = $items->findAllWhere($id, 'id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
-    $this->show('catalog/catalog_All', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
+    $this->show('catalog/catalog_all', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
 
 }
