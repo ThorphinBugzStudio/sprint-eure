@@ -5,25 +5,31 @@
 
 <?php $_ENV = 'Home' ?>
 
+<form class="search" action="catalog/search/[:id]" method="post">
+  <input type="text" name="recherche" value="">
+  <input type="submit" name="submit" value="rechercher">
+</form>
+
 <div class="row w-100 ml-auto mt-2 justify-content-end category-row">
-  <div class="category-button row">
-    <p class="my-auto mr-auto">Catégorie</p>
-    <i class="fa fa-angle-down ml-auto" aria-hidden="true" id="category-article"></i>
-  </div>
-  <div class="hidden category-content" id="category_content">
-    <ul class="p-0">
-      <li><a href="<?= $this->url('catalog_all')?>">» Tous nos produits</a></li>
-      <hr class="my-1">
-      <?php foreach ($categorie as $cat): ?>
-        <li><a href="<?= $this->url('catalog_categorie_item', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a></li>
-      <?php endforeach; ?>
-    </ul>
+  <!-- BOUTON : Trier par catégorie -->
+  <div class="btn-group category-button">
+    <p type="button" class="my-auto mr-auto" >Catégorie</p>
+    <i class="fa fa-angle-down ml-auto" aria-hidden="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+
+    <div class="dropdown-menu category-content">
+      <ul class="p-0">
+        <li><a class="dropdown-item p-2" href="<?= $this->url('catalog_all')?>">» Tous les produits</a></li>
+        <div class="dropdown-divider m-0"></div>
+        <?php foreach ($categorie as $cat): ?>
+          <li><a href="<?= $this->url('catalog_categorie_item', ['id' =>  $cat['id']])?>" class="dropdown-item p-1 px-2"><?= $cat['family'] ?></a></li>
+        <?php endforeach; ?>
+    </div>
   </div>
 </div>
 
 <!-- Titre : Meilleures ventes -->
 <div class="container-fluid row pt-4 px-0 mainContent">
-  <h2>Nos meilleures ventes</h2>
+  <h2>Nos meilleurs produits</h2>
   <hr class="hrPage">
 </div>
 
@@ -33,8 +39,8 @@
   <?php foreach ($topProduct as $result): ?>
     <div class="single-article m-3" id="img-article-1">
 
-      <a href="#">
-        <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
+      <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>">
+        <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail hvr-glow">
       </a>
 
       <div class="single-article-price">
@@ -45,7 +51,12 @@
         <div class="mr-auto my-auto">
           <!-- Nom de l'article -->
           <div class="single-article-title">
+<<<<<<< HEAD
             <span class= "article-designation"><?= $result['designation']; ?></span></div>
+=======
+            <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>"><?= $result['designation']; ?></a>
+          </div>
+>>>>>>> 42ec47f6a22e6541fe57b3e197d733384d8adec0
         </div>
       </div>
 
@@ -73,9 +84,10 @@
   <?php foreach ($lastProduct as $result): ?>
     <div class="single-article m-3" id="img-article-2">
 
-      <a href="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" data-fancybox="lastproduct">
+
+      <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>">
         <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
-      </a>
+
 
       <div class="single-article-price">
         <span class="article-price"><?= number_format($result['puht'],2,',', ' ').' €'; ?></span>
@@ -85,7 +97,7 @@
         <div class="mr-auto my-auto">
           <!-- Nom de l'article -->
           <div class="single-article-title">
-            <span class= "article-designation"><?= $result['designation']; ?></span></div>
+            <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>"><?= $result['designation']; ?></a>
           </div>
         </div>
       </div>

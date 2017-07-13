@@ -48,7 +48,7 @@ class DefaultController extends AppController
 		$error = [];
 		$model = new CommentsModel();
 		$verifs = new ValidationTool();
-		
+
 		$comments = $model->last5Comments();
 
 		$user = $this->getUser();
@@ -74,7 +74,7 @@ class DefaultController extends AppController
 												$this->flash('Commentaire en attente de moderation', 'success');
 												$this->show('default/home',['comments' => $comments]);
 			} else {
-				$this->show('default/home',['user' => $user , 'error' => $error , 'comments' => $comments]);
+				$this->show('default/home',['user' => $user , 'error' => $error , 'comments' => $comments, 'actualComment' => $comment]);
 			}
 		}
 	}

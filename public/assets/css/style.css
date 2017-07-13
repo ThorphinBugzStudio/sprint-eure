@@ -16,16 +16,12 @@ body {
 
 .navbar-users, .navbar-menu  {
 	background-color: #1d1d1d;
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
 	border-top: 2px solid #1e7dce;
 }
 
 .navbar-title {
 	background-color: #1d1d1d;
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
 	color: white;
 	font-size: 1em;
@@ -46,21 +42,18 @@ body {
 .navbar-users ul, .navbar-menu ul {
 	padding: 0;
 	margin: 0;
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-pack: end;
-	    -ms-flex-pack: end;
-	        justify-content: end;
-	-ms-flex-wrap: inherit;
-	    flex-wrap: inherit;
+	justify-content: end;
+	flex-wrap: inherit;
+}
+
+.navbar-users ul {
+	justify-content: flex-end;
 }
 
 .navbar-users ul li, .navbar-menu ul li {
 	list-style: none;
-	-webkit-box-pack: justify;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
+	justify-content: space-between;
 	padding: 10px 20px;
 }
 
@@ -100,7 +93,6 @@ body {
 	color: white;
 	padding: 10px 60px;
 	text-decoration: none;
-	background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
 }
 
@@ -184,12 +176,10 @@ body {
 }
 
 .carousel-control-prev:hover {
-	background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0));
 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0));
 }
 
 .carousel-control-next:hover {
-	background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0));
 	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0));
 }
 
@@ -206,7 +196,6 @@ body {
 .carousel-caption {
 	bottom: 0;
 	left: 0%;
-	background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
 	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
 	width: 100%;
 }
@@ -234,7 +223,6 @@ body {
 }
 
 .ads-column {
-	display: -ms-inline-grid;
 	display: inline-grid;
 }
 
@@ -391,12 +379,59 @@ form label {
 	font-size: .9em;
 }
 
+/* --------------- COMMENT ÇA MARCHE ? ---------------- */
+
+.howTo img {
+	width: 300px;
+	border: 3px double grey;
+	cursor: zoom-in;
+}
+
+.howTo iframe {
+ border: 3px double grey;
+}
+
+.float-left {
+	float: left;
+	margin-right: 20px;
+}
+
+.float-right {
+	float: right;
+	margin-left: 20px;
+}
+
+.clear {
+	clear: both;
+}
+
+@media (max-width: 640px) {
+	.float-left {
+		float: none;
+		margin-right: 0;
+		display: block;
+	}
+
+	.float-right {
+		float: none;
+		margin-left: 0;
+	}
+
+	.howTo p {
+		display: inline-block;
+	}
+
+	.howTo img {
+		justify-content: center;
+		margin: 15px 0 0 0;
+		width: 100%;
+	}
+}
+
 /* ----------------- E-COMMERCE ----------------- */
 
 .category-bar {
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
+	justify-content: center;
 	width: 100%;
 }
 
@@ -421,16 +456,11 @@ form label {
 }
 
 .single-article-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 100%;
   border-collapse: separate;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .single-article {
@@ -442,7 +472,7 @@ form label {
 }
 
 .single-article a img {
-	cursor: zoom-in;
+	border: 4px double grey;
 }
 
 .single-article-title {
@@ -458,7 +488,7 @@ form label {
 	text-decoration: none;
 }
 
-#img-article-1, #img-article-2 {
+#img-article-1, #img-article-2, #img-article-3 {
   position: relative !important;
 }
 
@@ -500,20 +530,39 @@ form label {
 }
 
 .category-row {
-	display: -ms-grid;
-	display: grid;
 	position: relative;
+	justify-content: space-around;
+}
+
+.category-button-return {
+	background-color: #1d1d1d;
+	width: 200px;
+	color: white;
+	font-family: "Patua One", "Arial";
+	margin-right: 5px;
+}
+
+.category-button-return a {
+	color: white;
+	text-decoration: none;
+}
+
+.category-button-return i {
+	margin-right: 10px;
+	cursor: pointer;
+	padding: 8px;
+	text-align: left;
 }
 
 .category-button {
-	background-color: #1d1d1d;
+	background-color: #1e7dce;
 	width: 200px;
 	color: white;
 	font-family: "Patua One", "Arial";
 }
 
 .category-button i {
-	border-left: 1px solid #7b7b7b;
+	border-left: 1px solid #0167da;
 	margin-left: 10px;
 	cursor: pointer;
 	padding: 10px;
@@ -526,7 +575,7 @@ form label {
 }
 
 .category-content {
-	background-color: #e9e9e9;
+	background-color: #fdfdfd;
 	position: absolute;
 	right: 0;
 	top: 36px;
@@ -536,6 +585,8 @@ form label {
 	max-height: 200px;
 	overflow-y: auto;
 	border: 1px solid #c2c2c2;
+	font-family: "Open Sans", "Arial";
+	font-size: 14px;
 }
 
 .category-content ul li {
@@ -575,9 +626,7 @@ form label {
 .edit-profil-avatar {
 	max-height: 200px;
 	max-width: 200px;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
+	justify-content: center;
 	border-style: double;
 	border: 4px double grey;
 }
@@ -593,9 +642,7 @@ footer {
 }
 
 .footer-center {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
 .hr_footer {
@@ -618,9 +665,7 @@ footer {
 
 .footer_1, .footer_2, .footer_3, .footer_4 {
   color: white;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   max-width: 300px;
   width: 100%;
   margin: 0 20px;
@@ -717,17 +762,23 @@ address .fa-phone {
 	text-transform: uppercase;
 }
 
+.text-justify {
+	text-align: justify;
+}
+
 * p, * label {
 	margin-bottom: 0;
+}
+
+button, html [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: none;
 }
 
 /* ----------------------- MEDIA QUERY ------------------------ */
 @media (max-width: 827px) {
 	.navbar-users ul li, .navbar-menu ul li {
 		width: 100%;
-		-webkit-box-pack: start !important;
-		    -ms-flex-pack: start !important;
-		        justify-content: flex-start !important;
+		justify-content: flex-start !important;
 	}
 }
 
@@ -758,5 +809,12 @@ address .fa-phone {
 @media (max-width: 1450px) {
 	.footer_1, .footer_2, .footer_3, .footer_4 {
 		margin-bottom: 40px;
+	}
+}
+
+@media (max-width: 456px) {
+	.category-button-return, .category-button {
+		margin: 5px 0px;
+		width: 100%;
 	}
 }

@@ -35,7 +35,7 @@ class UsersController extends AppController
   public function users($page = null)
   {
       // ADMIN ONLY
-      // $this->allowTo('admin');
+      $this->allowTo('admin');
 
       $users = new UsersModel($where = "status <> 'deleted'");
 
@@ -65,7 +65,7 @@ class UsersController extends AppController
   public function deleteUser($id, $fromPage)
   {
     // ADMIN ONLY
-    // $this->allowTo('admin');
+    $this->allowTo('admin');
 
     $users = new UsersModel();
 
@@ -83,7 +83,7 @@ class UsersController extends AppController
   public function singleUser($id, $fromPage)
   {
     // ADMIN ONLY
-    // $this->allowTo('admin');
+    $this->allowTo('admin');
 
     $users = new UsersModel();
     $userFactAdress = new User_adressesModel();
@@ -120,7 +120,7 @@ class UsersController extends AppController
   public function singleUserAction($id, $fromPage)
   {
     // ADMIN ONLY
-    // $this->allowTo('admin');
+    $this->allowTo('admin');
 
 		$users = new UsersModel();
     $userFactAdress = new User_adressesModel();
@@ -145,7 +145,7 @@ class UsersController extends AppController
       // Traitement du formulaire
       $post = $clean->cleanPost($_POST);
 
-      // debug($post);
+      debug($post);
 			$firstname = $post['firstname'];
 			$lastname = $post['lastname'];
 			$pseudo = $post['pseudo'];
@@ -167,7 +167,9 @@ class UsersController extends AppController
 			$error['postal-code'] = $valid->textValid($postal_code, 'code postal',5,5);
 			$error['city'] = $valid->textValid($city, 'nom de ville', 3, 100);
 			$error['country'] = $valid->textValid($country, 'nom de pays', 3, 100);
-			// voir si possible de file exist
+         // debug(file_exists('/assets/img/avatars/'.$avatar)); die();
+         // if (!file_exists('./assets/img/avatars/'.$avatar)) { $error['avatar'] = 'Ce fichier n\'existe pas'; }
+
       // si temps voir affichage image de l'avatar dans le formulaire en plus du nom du fichier
       // si temps voir upload de nouvelle image dans formulaire
       $error['avatar'] = $valid->textValid($avatar,'nom de l\'image', 3, 100);

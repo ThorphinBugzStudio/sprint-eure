@@ -44,8 +44,16 @@
 		['GET', '/catalog', 'Catalog#catalog', 'catalog'],
 		['GET', '/catalog/all', 'Catalog#allcatalog', 'catalog_all'],
 		['GET', '/catalog/all/[i:page]', 'Catalog#allcatalog', 'catalog_all_page'],
+		//articles par categorie
 		['GET', '/catalog/categorie/[:id]', 'Catalog#familycatalog', 'catalog_categorie_item'],
 		['GET', '/catalog/categorie/[:id]/[i:page]', 'Catalog#familycatalog', 'catalog_categorie_page'],
+		//detail de l article
+		['GET', '/catalog/item/[:id]', 'Catalog#detail', 'catalog_detail'],
+		//404
+		['GET', '/catalog/404', 'Catalog#erreur404', 'catalog_404'],
+		//recherche
+		['POST', '/catalog/search/[:id]', 'Catalog#search', 'catalog_search'],
+		['GET', '/catalog/search/[:id]/[i:page]', 'Catalog#search', 'catalog_search_page'],
 
 		/**
 		 * DevisController

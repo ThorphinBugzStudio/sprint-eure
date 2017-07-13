@@ -17,7 +17,7 @@
         <?php foreach ($results as $result ): ?>
           <div class="single-article m-3" id="test">
 
-            <a href="#">
+            <a href="<?=$this->url('admin_single_item', ['id' => $result['id']] ) ?>">
               <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
             </a>
 
@@ -49,7 +49,7 @@
               <!-- Boutons d'action sur l'article -->
               <div class="text-align-right">
                 <!-- BOUTON : Edition -->
-                <a class="" href="<?=$this->url('admin_single_item', ['id' => $result['id']] ) ?>">
+                <a href="<?=$this->url('admin_single_item', ['id' => $result['id']] ) ?>">
                   <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editer">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                   </button>
