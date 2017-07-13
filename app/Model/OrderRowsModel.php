@@ -32,7 +32,7 @@ class OrderRowsModel extends Model
     {
         if (!empty($id))
             {
-            $sql = "SELECT r.id, i.id, f.family, i.designation, i.packaging, r.puht, r.amount, r.pht 
+            $sql = "SELECT r.items_id, f.family, i.designation, i.packaging, r.puht, r.amount, r.pht 
                     FROM $this->table AS r
                     JOIN spe_items AS i ON r.items_id = i.id
                     JOIN spe_items_family AS f	ON i.items_family_id = f.id

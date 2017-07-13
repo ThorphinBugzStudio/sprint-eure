@@ -39,7 +39,8 @@
 <div class="top-product text-align-center single-article-container">
   <?php foreach ($results as $result ): ?>
     <div class="single-article m-3" id="img-article-3">
-      <a href="#">
+
+      <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>">
         <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail hvr-glow">
       </a>
 
