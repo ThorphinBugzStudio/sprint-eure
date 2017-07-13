@@ -44,7 +44,8 @@
 		['GET', '/catalog', 'Catalog#catalog', 'catalog'],
 		['GET', '/catalog/all', 'Catalog#allcatalog', 'catalog_all'],
 		['GET', '/catalog/all/[i:page]', 'Catalog#allcatalog', 'catalog_all_page'],
-		['GET', '/catalog/all/[:id]/[i:page]', 'Catalog#familycatalog', 'catalog_categorie_page'],
+		['GET', '/catalog/categorie/[:id]', 'Catalog#familycatalog', 'catalog_categorie_item'],
+		['GET', '/catalog/categorie/[:id]/[i:page]', 'Catalog#familycatalog', 'catalog_categorie_page'],
 
 		/**
 		 * DevisController

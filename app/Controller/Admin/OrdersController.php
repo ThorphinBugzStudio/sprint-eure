@@ -79,6 +79,7 @@ class OrdersController extends AppController
     $orderRows = new OrderRowsModel();
 
     $headOrder = $orders->getHeadOrder($id);
+    $headOrder['created_at'] = ToolHp::dateSqlToForm($headOrder['created_at'], 'd/m/Y');
     $rowsOrder = $orderRows->getRowsOrder($id);
     $footOrder = ToolHP::CalculFootOrder($rowsOrder, $headOrder['vat_percentage']);
     debug($headOrder);
@@ -90,7 +91,7 @@ class OrdersController extends AppController
                                           'Préparée' => 'prepared',
                                           'Expediée' => 'sent'
                                          ], $headOrder['status']);
-    // debug($statusBox);
+    debug($statusBox);
 
     $this->show('admin/single-order', ['headOrder' => $headOrder,
                                        'rowsOrder' => $rowsOrder,
