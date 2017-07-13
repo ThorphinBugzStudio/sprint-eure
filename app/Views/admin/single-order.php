@@ -69,9 +69,27 @@
    </table>
 </div>
 <!-- PIED DE COMMANDE -->
-RADIO BUTTONS changement de statut
-TOTAL HT
-TVA - taux de tva : montant de TVA
-TOTAL TTC
+<div class="footerOrder">
+   <!-- Radios buttons changement de statut -->
+   <form id="formChangeStatus" class="form-subscribe row " action="<?php $this->url('admin_single_order_action', ['id' => $headOrder['id'], 'fromPage' => $page]); ?>" method="POST">
+
+      <div class="form-group">
+         <?= $statusBox ?>
+      </div>
+
+      <!-- Bouton d'envoi -->
+      <input class="btn_ok" type="submit" name="submit" value="Mettre à jour">
+      <!-- Retour vers listing -->
+      <a href="<?= $this->url('admin_page_orders', ['page' => $page]) ?>"><button type="button" class="btn_cancel">Retour</button></a>
+
+   </form>
+   <!-- Totaux commande -->
+   <div class="">
+      <h5>TOTAL HT : <?= $footOrder['totalHt'] ?> €</h5>
+      <h5>TOTAL TVA <?= $headOrder['vat_percentage'] ?>% : <?= $footOrder['totalTva'] ?> €</h5>
+      <h5>TOTAL TTC : <?= $footOrder['totalTTC'] ?> €</h5>
+   </div>
+
+</div>
 
 <?php $this->stop('main_content') ?>
