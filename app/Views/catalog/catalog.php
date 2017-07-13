@@ -12,7 +12,7 @@
   </div>
   <div class="hidden category-content" id="category_content">
     <ul class="p-0">
-      <li><a href="<?= $this->url('catalog_All')?>">» Tous nos produits</a></li>
+      <li><a href="<?= $this->url('catalog_all')?>">» Tous nos produits</a></li>
       <hr class="my-1">
       <?php foreach ($categorie as $cat): ?>
         <li><a href="<?= $this->url('catalog_all_page', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a></li>
