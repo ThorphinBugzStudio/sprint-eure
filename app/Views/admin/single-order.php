@@ -21,14 +21,53 @@
    <p>Statut actuel : <?= $headOrder['status'] ?></p>
 </div>
 <!-- LIGNES DE LA COMMANDE -->
-num ligne
-réf article
-cat article
-désignation
-conditionnement
-PUHT
-Q
-PTUH
+<div class="rowsOrder">
+   <table class="table table-striped table-bordered table-hover">
+     <!-- En-tête de tableau -->
+     <thead>
+       <tr>
+         <th>#</th>
+         <th>Réf.</th>
+         <th>Cat.</th>
+         <th>Désignation</th>
+         <th>Par</th>
+         <th>PUHT</th>
+         <th>Q</th>
+         <th>PTHT</th>
+       </tr>
+     </thead>
+     <!-- Contenu du tableau -->
+     <tbody>
+       <?php $i = 0;
+       if(!empty($rowsOrder)) {
+       foreach ($rowsOrder as $rowOrder) {
+          $i++; ?>
+       <tr>
+         <td><?php echo $i; ?></td>
+         <td><?php echo $rowOrder['items_id']; ?></td>
+         <td><?php echo $rowOrder['family']; ?></td>
+         <td><?php echo $rowOrder['designation']; ?></td>
+         <td><?php echo $rowOrder['packaging']; ?></td>
+         <td><?php echo $rowOrder['puht']; ?></td>
+         <td><?php echo $rowOrder['amount']; ?></td>
+         <td><?php echo $rowOrder['pht']; ?></td>
+
+       <?php } } else { ?>
+         <tr>
+           <td> - </td>
+           <td> - </td>
+           <td> - </td>
+           <td> - </td>
+           <td> - </td>
+           <td> - </td>
+           <td> - </td>
+           <td> - </td>
+         </tr>
+       <?php } ?>
+
+     </tbody>
+   </table>
+</div>
 <!-- PIED DE COMMANDE -->
 RADIO BUTTONS changement de statut
 TOTAL HT
