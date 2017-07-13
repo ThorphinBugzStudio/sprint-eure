@@ -4,7 +4,7 @@
 
 <a href="<?= $this->url('catalog_all')?>">tous nos produits</a>
 <?php foreach ($categorie as $cat): ?>
-  <a href="<?= $this->url('catalog_all', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a>
+  <a href="<?= $this->url('catalog_categorie_item', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a>
 <?php endforeach; ?>
 
 <!-- Barre de pagination -->

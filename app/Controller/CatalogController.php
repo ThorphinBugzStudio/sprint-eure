@@ -43,7 +43,6 @@ class CatalogController extends AppController
     // debug($navPaginBar);
     $results = $items->findAllproduct('status','active','created_at', 'DESC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
-
     $this->show('catalog/catalog_all', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
 
@@ -51,7 +50,7 @@ class CatalogController extends AppController
     $items = new ItemsModel();
 
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-    $pagin = new Pagination('items categorie pages navigation', $this->generateUrl('catalog_all', ['id' =>  $id]), $items->countIdcat($id), 4);
+    $pagin = new Pagination('items categorie pages navigation', $this->generateUrl('catalog_categorie_item', ['id' =>  $id]), $items->countIdcat($id), 4);
 
     if (!empty($page)) { $pagin->setPageStatus($page); }
 
