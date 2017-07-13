@@ -34,7 +34,7 @@ class OrdersController extends AppController
   public function orders($page = null)
   {
     // ADMIN ONLY
-    // $this->allowTo('admin');
+    $this->allowTo('admin');
 
     $orders = new OrdersModel($where = "status = 'paid' OR status = 'checked' OR status = 'prepared'");
     $users = new UsersModel();
@@ -58,7 +58,7 @@ class OrdersController extends AppController
     {
       $resultBrut['username'] = $users->find($resultBrut['users_id'])['username'];
       $resultBrut['vatrate'] = $vatRates->find($resultBrut['vat_rate_id'])['vat_percentage'];
-      
+
       switch ($resultBrut['status'])
       {
          case 'paid':
@@ -91,7 +91,7 @@ class OrdersController extends AppController
   public function singleOrder($id, $fromPage)
   {
     // ADMIN ONLY
-    // $this->allowTo('admin');
+    $this->allowTo('admin');
 
     $orders = new OrdersModel();
     $orderRows = new OrderRowsModel();
@@ -130,7 +130,7 @@ class OrdersController extends AppController
    public function SingleOrderAction($id, $fromPage)
    {
    // ADMIN ONLY
-   // $this->allowTo('admin');
+   $this->allowTo('admin');
 
       $orders = new OrdersModel();
       $clean = new CleanTool();

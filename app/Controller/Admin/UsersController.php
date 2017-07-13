@@ -35,7 +35,7 @@ class UsersController extends AppController
   public function users($page = null)
   {
       // ADMIN ONLY
-      // $this->allowTo('admin');
+      $this->allowTo('admin');
 
       $users = new UsersModel($where = "status <> 'deleted'");
 
@@ -65,7 +65,7 @@ class UsersController extends AppController
   public function deleteUser($id, $fromPage)
   {
     // ADMIN ONLY
-    // $this->allowTo('admin');
+    $this->allowTo('admin');
 
     $users = new UsersModel();
 
@@ -83,7 +83,7 @@ class UsersController extends AppController
   public function singleUser($id, $fromPage)
   {
     // ADMIN ONLY
-    // $this->allowTo('admin');
+    $this->allowTo('admin');
 
     $users = new UsersModel();
     $userFactAdress = new User_adressesModel();
@@ -120,7 +120,7 @@ class UsersController extends AppController
   public function singleUserAction($id, $fromPage)
   {
     // ADMIN ONLY
-    // $this->allowTo('admin');
+    $this->allowTo('admin');
 
 		$users = new UsersModel();
     $userFactAdress = new User_adressesModel();

@@ -23,6 +23,9 @@ class ItemsController extends AppController
 
   public function items($page = '')
   {
+    // ADMIN ONLY
+    $this->allowTo('admin');
+
     $items = new ItemsModel();
 
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
@@ -49,6 +52,9 @@ class ItemsController extends AppController
    */
   public function singleItem($id)
   {
+    // ADMIN ONLY
+    $this->allowTo('admin');
+
     $items = new ItemsModel();
     $itemsToUpdate = $items->find($id);
     $model = new ItemsFamilyModel;
@@ -70,6 +76,9 @@ class ItemsController extends AppController
     //modification d un article
   public function singleItemAction($id)
   {
+    // ADMIN ONLY
+    $this->allowTo('admin');
+
     $clean = new CleanTool;
     $validation = new ValidationTool;
     $items = new ItemsModel();
@@ -167,6 +176,8 @@ class ItemsController extends AppController
 
   public function singleItemDelete($id, $fromPage)
   {
+    // ADMIN ONLY
+    $this->allowTo('admin');
 
     $items = new ItemsModel();
 
@@ -179,6 +190,9 @@ class ItemsController extends AppController
   //ajout d'un article
   public function AddItem()
   {
+    // ADMIN ONLY
+    $this->allowTo('admin');
+
     $model = new ItemsFamilyModel;
     $family = $model->notdelete();
     $this->show('admin/add-item', array('family' => $family));
@@ -186,6 +200,9 @@ class ItemsController extends AppController
 
   public function AddItemAction()
   {
+    // ADMIN ONLY
+    $this->allowTo('admin');
+
     $clean = new CleanTool;
     $validation = new ValidationTool;
     $model = new ItemsFamilyModel;
@@ -254,6 +271,9 @@ class ItemsController extends AppController
   }
 
   public function categorieItem($id, $page = ''){
+    // ADMIN ONLY
+    $this->allowTo('admin');
+
     $items = new ItemsModel();
 
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
