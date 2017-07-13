@@ -31,7 +31,7 @@ class CommentsController extends AppController
   public function comments($page = null)
   {
       // ADMIN ONLY
-      // $this->allowTo('admin');
+      $this->allowTo('admin');
 
       $comments = new CommentsModel($where = "status != 'deleted'");
       $users = new UsersModel();
@@ -69,16 +69,19 @@ class CommentsController extends AppController
    */
   public function commentApprove($id, $fromPage)
   {
+     // ADMIN ONLY
+   $this->allowTo('admin');
+
     $comments = new CommentsModel();
 
     $comments->updateStatus($id, 'active');
 
     // Message flash
-    $this->flash('Commentaire approuvé avec succès', 'success');    
+    $this->flash('Commentaire approuvé avec succès', 'success');
 
     $this->redirectToRoute('admin_page_comments', ['page' => $fromPage]);
   }
-  
+
   /**
    * Traitement Désapprobation d'un commentaire.
    * Appel de la methode via route. __U_
@@ -87,6 +90,9 @@ class CommentsController extends AppController
    */
   public function commentNotApproved($id, $fromPage)
   {
+     // ADMIN ONLY
+   $this->allowTo('admin');
+
     $comments = new CommentsModel();
 
     $comments->updateStatus($id, 'inactive');
@@ -106,7 +112,7 @@ class CommentsController extends AppController
   public function commentDelete($id, $fromPage)
   {
      // ADMIN ONLY
-    // $this->allowTo('admin');
+    $this->allowTo('admin');
 
     $comments = new CommentsModel();
 
