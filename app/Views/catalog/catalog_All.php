@@ -31,7 +31,7 @@
 
 <!-- Titre : Meilleures ventes -->
 <div class="container-fluid row pt-4 px-0 mainContent">
-  <h2><?= $cat['family'] ?></h2>
+  <h2><?= $nomcat['family'] ?></h2>
   <hr class="hrPage">
 </div>
 
