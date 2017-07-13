@@ -8,6 +8,8 @@ use Services\Tools\Pagination;
 use Services\Tools\RadiosBox;
 use Services\Tools\ToolHP;
 
+use Security\CleanTool;
+
 use Model\UsersModel;
 use Model\OrdersModel;
 use Model\OrderRowsModel;
@@ -32,7 +34,7 @@ class OrdersController extends AppController
   public function orders($page = null)
   {
     // ADMIN ONLY
-    // $this->allowTo('admin');
+    $this->allowTo('admin');
 
     $orders = new OrdersModel($where = "status = 'paid' OR status = 'checked' OR status = 'prepared'");
     $users = new UsersModel();
@@ -57,6 +59,22 @@ class OrdersController extends AppController
       $resultBrut['username'] = $users->find($resultBrut['users_id'])['username'];
       $resultBrut['vatrate'] = $vatRates->find($resultBrut['vat_rate_id'])['vat_percentage'];
 
+      switch ($resultBrut['status'])
+      {
+         case 'paid':
+            $resultBrut['status'] = 'Payée';
+            break;
+         case 'checked':
+            $resultBrut['status'] = 'Validée';
+            break;
+         case 'prepared':
+            $resultBrut['status'] = 'Preparée';
+            break;
+         case 'sent':
+            $resultBrut['status'] = 'Expediée';
+            break;
+      }
+
       $results[] = $resultBrut;
     }
 
@@ -73,7 +91,7 @@ class OrdersController extends AppController
   public function singleOrder($id, $fromPage)
   {
     // ADMIN ONLY
-    // $this->allowTo('admin');
+    $this->allowTo('admin');
 
     $orders = new OrdersModel();
     $orderRows = new OrderRowsModel();
@@ -102,19 +120,52 @@ class OrdersController extends AppController
 
   }
 
-  /**
-   * Traitement Détail d'une commande.
-   * Recuperation via POST du type d'action sur le statut.
-   *
-   * @return void
-   */
-  public function SingleOrderAction()
-  {
-    // ADMIN ONLY
-    // $this->allowTo('admin');
+   /**
+    * Traitement Détail d'une commande.
+    * Changement statut d'une commande.
+    * statuts possible = paid, checked, prepared, sent (Payée, Validée, Preparée, Expediée)
+    *
+    * @return void
+    */
+   public function SingleOrderAction($id, $fromPage)
+   {
+   // ADMIN ONLY
+   $this->allowTo('admin');
 
-    # code
-  }
+      $orders = new OrdersModel();
+      $clean = new CleanTool();
 
+      $orderToUpdate = $orders->find($id);
+
+      // Si post vide ou valeurs non conforme des radiosbuttons :
+      // -> Gros bidouillage ! -> 403 !
+      if (!empty($_POST['submit']) && !empty($orderToUpdate) && !(
+            $_POST['optionsRadiosStatut'] != 'paid' &&
+            $_POST['optionsRadiosStatut'] != 'checked' &&
+            $_POST['optionsRadiosStatut'] != 'prepared' &&
+            $_POST['optionsRadiosStatut'] != 'sent'))
+      {
+         // Traitement du formulaire
+         $post = $clean->cleanPost($_POST);
+
+         // Update
+         $updateOrder = $orders->update(['status' => $post['optionsRadiosStatut'],
+                                         'modified_at' => ToolHP::nowSql()
+                                        ], $orderToUpdate['id'], true);
+
+         // Message flash
+         $this->flash('Statut de la commande n° '.$id.' mis à jour avec succès', 'success');
+
+         $this->redirectToRoute('admin_page_orders', ['page' => $fromPage]);
+
+      }
+      else
+      {
+         // Comment $_POST pourrait il etre vide ?
+         $this->flash('Stop bidouiller !', 'danger');
+         $this->showForbidden();
+         die();
+      }
+   }
 
 }

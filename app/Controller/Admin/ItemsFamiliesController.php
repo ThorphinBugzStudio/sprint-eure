@@ -23,6 +23,9 @@ class ItemsFamiliesController extends AppController
 //affichage de toute les categorie avec mise en page
   public function itemsFamilies($page = '')
   {
+    // ADMIN ONLY
+    $this->allowTo('admin');
+
     $family = new ItemsFamilyModel();
 
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
@@ -51,6 +54,9 @@ class ItemsFamiliesController extends AppController
 // formulaire de modification d'une categorie
   public function singleItemFamily($id)
   {
+    // ADMIN ONLY
+    $this->allowTo('admin');
+
     $family = new ItemsFamilyModel();
     $famillyToUpdate = $family->find($id);
 
@@ -70,6 +76,9 @@ class ItemsFamiliesController extends AppController
 //application des modification de la categorie
   public function singleItemFamilyAction($id)
   {
+    // ADMIN ONLY
+    $this->allowTo('admin');
+
     $clean = new CleanTool;
     $validation = new ValidationTool;
     $model = new ItemsFamilyModel;
@@ -107,6 +116,8 @@ class ItemsFamiliesController extends AppController
 //suppression d'une famille/categorie
   public function singleItemFamilyDelete($id, $fromPage)
   {
+    // ADMIN ONLY
+    $this->allowTo('admin');
 
     $family = new ItemsFamilyModel();
 
@@ -117,11 +128,17 @@ class ItemsFamiliesController extends AppController
 
 //affichage du formulaire d'ajout de famille/categorie
   public function addItemFamily(){
+    // ADMIN ONLY
+    $this->allowTo('admin');
+
     $this->show('admin/add_Items_Familly');
   }
 
 //fonction d'ajout de famille/categorie
   public function addItemFamilyAction(){
+    // ADMIN ONLY
+    $this->allowTo('admin');
+
     $clean = new CleanTool;
     $validation = new ValidationTool;
     $model = new ItemsFamilyModel;

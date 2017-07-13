@@ -11,18 +11,19 @@
 </form>
 
 <div class="row w-100 ml-auto mt-2 justify-content-end category-row">
-  <div class="category-button row">
-    <p class="my-auto mr-auto">Catégorie</p>
-    <i class="fa fa-angle-down ml-auto" aria-hidden="true" id="category-article"></i>
-  </div>
-  <div class="hidden category-content" id="category_content">
-    <ul class="p-0">
-      <li><a href="<?= $this->url('catalog_all')?>">» Tous nos produits</a></li>
-      <hr class="my-1">
-      <?php foreach ($categorie as $cat): ?>
-        <li><a href="<?= $this->url('catalog_categorie_item', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a></li>
-      <?php endforeach; ?>
-    </ul>
+  <!-- BOUTON : Trier par catégorie -->
+  <div class="btn-group category-button">
+    <p type="button" class="my-auto mr-auto" >Catégorie</p>
+    <i class="fa fa-angle-down ml-auto" aria-hidden="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+
+    <div class="dropdown-menu category-content">
+      <ul class="p-0">
+        <li><a class="dropdown-item p-2" href="<?= $this->url('catalog_all')?>">» Tous les produits</a></li>
+        <div class="dropdown-divider m-0"></div>
+        <?php foreach ($categorie as $cat): ?>
+          <li><a href="<?= $this->url('catalog_categorie_item', ['id' =>  $cat['id']])?>" class="dropdown-item p-1 px-2"><?= $cat['family'] ?></a></li>
+        <?php endforeach; ?>
+    </div>
   </div>
 </div>
 
