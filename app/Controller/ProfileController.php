@@ -46,22 +46,22 @@ class ProfileController extends AppController
       switch ($temp['status'])
       {
          case 'temp':
-            $temp['status'] = 'Non confirmée';
+            $temp['status'] = 'En attente de validation par vos soins';
             break;
          case 'validated':
-            $temp['status'] = 'Validée par vos soins';
+            $temp['status'] = 'Validée par vos soins - En attente de paiement';
             break;
          case 'paid':
-            $temp['status'] = 'Payée';
+            $temp['status'] = 'Paiement effectué - Verification en cours';
             break;
          case 'checked':
-            $temp['status'] = 'Validée';
+            $temp['status'] = 'Commande verifiée - En cours de préparation';
             break;
          case 'prepared':
-            $$temp['status'] = 'Preparée';
+            $$temp['status'] = 'Commande préparée - En cours d\'expedition';
             break;
          case 'sent':
-            $$temp['status'] = 'Expediée';
+            $$temp['status'] = 'Commande expediée';
             break;
       }
       $userHeadsOrders[] = $temp;
