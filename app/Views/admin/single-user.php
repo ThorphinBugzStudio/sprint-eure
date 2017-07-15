@@ -97,6 +97,12 @@
             <?php } else { ?>
               <img src="<?= $this->assetUrl('img/avatar-default.png') ?>" alt="Avatar par défaut" class="hvr-grow mt-3">
             <?php } ?>
+            <div class="form-check">
+              <label for="resetavatar" class="form-check-label">
+                <input class="form-check-input" name="resetavatar" type="checkbox" value="rtd">
+                Reset to defaut
+              </label>
+            </div>
           </div>
         </div>
 

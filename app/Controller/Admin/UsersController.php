@@ -155,6 +155,7 @@ class UsersController extends AppController
 			$city = $post['city'];
 			$country = $post['country'];
 			$avatar = $post['avatar'];
+			if (!empty($post['resetavatar'])) { $resetAvatar = 'rtd'; }
       $role = $post['optionsRadiosRole'];
       $status = $post['optionsRadiosStatut'];
 
@@ -167,12 +168,27 @@ class UsersController extends AppController
 			$error['postal-code'] = $valid->textValid($postal_code, 'code postal',5,5);
 			$error['city'] = $valid->textValid($city, 'nom de ville', 3, 100);
 			$error['country'] = $valid->textValid($country, 'nom de pays', 3, 100);
-         // debug(file_exists('/assets/img/avatars/'.$avatar)); die();
-         // if (!file_exists('./assets/img/avatars/'.$avatar)) { $error['avatar'] = 'Ce fichier n\'existe pas'; }
-
-      // si temps voir affichage image de l'avatar dans le formulaire en plus du nom du fichier
-      // si temps voir upload de nouvelle image dans formulaire
-      $error['avatar'] = $valid->textValid($avatar,'nom de l\'image', 3, 100);
+      // Test si l'avatar existe
+      //  si non -> reset sur image par défaut
+      //  si oui -> test si l'option reset to defaut a été cochée
+      //    si oui -> reset sur image par défaut + delete avatar file
+      //    si non -> textValid le nom de l'image
+      if (file_exists('./assets/img/avatars/'.$avatar))
+      { 
+        if (empty($resetAvatar))
+        {
+          $error['avatar'] = $valid->textValid($avatar,'nom de l\'image', 3, 100);
+        }
+        else 
+        {
+          $deleteAvatarFile = true;
+        }
+      }
+      else 
+      {
+        $resetAvatar = 'rtd';
+        $deleteAvatarFile = false;
+      }
 
       // test si lorsque le pseudo saisi existe déjà il est egal à celui renseigné pour l'utilisateur en bdd
       // si ce n'est pas le cas, le pseudo saisi est utilisé pour un autre user -> Error
@@ -213,6 +229,18 @@ class UsersController extends AppController
                                                  'modified_at' => ToolHP::nowSql()
                                                 ], $adressToUpdate['id'], true);
         // Update Avatar
+        if(!empty($resetAvatar))
+        {
+          if ($deleteAvatarFile)
+          {
+            // Supression fichier image Avatar
+            // unlink ( './assets/img/avatars/'.$avatar);
+            echo ('delete file');
+          }
+          // update avatar to default
+          $avatar = date('y_m_d_H_i') . '_avatar.png';
+          copy ( './assets/img/avatar-default.png' , './assets/img/avatars/'.$avatar); // copie image par defaut
+        }
         $updateAvatar = $userAvatar->update(['img_name'    => $avatar,
                                              'modified_at' => ToolHP::nowSql()
                                             ], $avatarToUpdate['id'], true);
