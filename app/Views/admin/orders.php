@@ -18,8 +18,8 @@
             <th>ID</th>
             <th>Créée par</th>
             <th>Taux TVA</th>
-            <th>Status</th>
-            <th>Créé le</th>
+            <th>Statut</th>
+            <th>Créée le</th>
             <th>Dernière modification le</th>
             <th>Action</th>
           </tr>
