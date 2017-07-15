@@ -51,12 +51,9 @@
         <div class="mr-auto my-auto">
           <!-- Nom de l'article -->
           <div class="single-article-title">
-<<<<<<< HEAD
-            <span class= "article-designation"><?= $result['designation']; ?></span></div>
-=======
             <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>"><?= $result['designation']; ?></a>
           </div>
->>>>>>> 42ec47f6a22e6541fe57b3e197d733384d8adec0
+
         </div>
       </div>
 
@@ -107,9 +104,7 @@
       <!-- BOUTON : Ajouter au panier -->
       <div class="row" style="display: flex;">
         <div class="row mx-auto">
-          <a class="btn_basket">
-              <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Ajouter au panier
-          </a>
+            <a class="btn_basket" href="<?= $this->url('ajouter_au_panier',array('id'=> $result['id'])); ?>">Ajouter<i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
         </div>
       </div>
 

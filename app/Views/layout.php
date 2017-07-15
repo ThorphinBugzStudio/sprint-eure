@@ -76,7 +76,7 @@
 
 						<li class="dropdown basket-order">
 							<a href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier (0)
+								<i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier <span id="nbr_articles">(0)</span>
 							</a>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								<div class="title_basket">
@@ -87,14 +87,14 @@
 									<hr class="hrPage">
 									<div class="row mt-2">
 										<p class="col-6 bold mb-0">Total hors taxes</p>
-										<p id="total_ht"class="col-6 text-align-right mb-0">0.00 €</p>
+										<p class="col-6 text-align-right mb-0"><span id="total_ht">0.00</span> €</p>
 										<p class="col-6 bold mb-0">Taxes :</p>
-										<p id="total_tva" class="col-6 text-align-right mb-0">0.00 €</p>
+										<p class="col-6 text-align-right mb-0"><span id="total_tva">0.00</span>€</p>
 									</div>
 									<div class="basket-spacer my-2"></div>
 									<div class="row">
 										<p class="col-6 bold mb-0">Total :</p>
-										<p id="total_ttc" class="col-6 text-align-right mb-0">0.00 €</p>
+										<p class="col-6 text-align-right mb-0"><span id="total_ttc">0.00</span> €</p>
 									</div>
 									<div class="row justify-content-center mt-2">
 										<button type="button" name="button" class="btn_ok"><i class="fa fa-shopping-cart" aria-hidden="true"></i><a href="<?= $this->url('panier_client') ?>"></a> </button>
