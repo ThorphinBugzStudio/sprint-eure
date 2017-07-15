@@ -78,6 +78,42 @@ $user_id = $w_user['id']; ?>
     </div>
 
   </div>
+
+  <!-- Commandes -->
+  <div class="col-lg-12 col-sm-12">
+    <p>Vos commandes :</p>
+
+    <table class="table table-striped table-bordered table-hover">
+      <!-- En-tête de tableau -->
+      <thead>
+        <tr>
+          <th>n°</th>
+          <th>du</th>
+          <th>statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php $i = 0;
+        if(!empty($userHeadsOrders)) {
+          foreach ($userHeadsOrders as $userHeadOrder) { ?>
+          <tr>
+            <td><?php echo $userHeadOrder['id']; ?></td>
+            <td><?php echo $userHeadOrder['created_at']; ?></td>
+            <td><?php echo $userHeadOrder['status']; ?></td>
+          </tr>
+        <?php } } else { ?>
+          <tr>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+          </tr>
+        <?php } ?>
+
+      </tbody>
+    </table>
+
+  </div>
+
 </div>
 
 <?php $this->stop('main_content') ?>

@@ -4,6 +4,7 @@ namespace Controller;
 
 use W\Model\Model;
 use Model\UsersModel;
+use Model\OrdersModel;
 use Model\User_adressesModel;
 use Model\AvatarsModel;
 use Security\CleanTool;
@@ -25,6 +26,7 @@ class ProfileController extends AppController
   {
     $adress = new User_adressesModel();
     $avatar = new AvatarsModel();
+    $orders = new OrdersModel();
     // $auth = new AuthentificationModel();
 
     $user = $this->getUser();
@@ -33,8 +35,19 @@ class ProfileController extends AppController
 
     $user_adress = $adress->getUserAdress($user['id']);
 
+    // commandes
+    $orders->setWhere('users_id = \''.$user['id'].'\' AND status != \'deleted\'');
+    $user_orders = $orders->findAll('created_at', 'DESC');
+    $userHeadsOrders = null;
+    foreach ($user_orders as $user_order)
+    {
+      $userHeadsOrders[] = $orders->getHeadOrder($user_order['id']);
+    }
+    debug($userHeadsOrders);
+
     $this->show('users/user-profile', ['user_adress' => $user_adress,
-                                        'user_avatar' => $user_avatar]);
+                                       'user_avatar' => $user_avatar,
+                                       'userHeadsOrders' => $userHeadsOrders]);
   }
 
   /**
