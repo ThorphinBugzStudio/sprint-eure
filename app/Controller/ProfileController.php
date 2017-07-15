@@ -66,7 +66,7 @@ class ProfileController extends AppController
       }
       $userHeadsOrders[] = $temp;
     }
-    debug($userHeadsOrders);
+    // debug($userHeadsOrders);
 
     $this->show('users/user-profile', ['user_adress' => $user_adress,
                                        'user_avatar' => $user_avatar,
