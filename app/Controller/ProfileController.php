@@ -41,7 +41,30 @@ class ProfileController extends AppController
     $userHeadsOrders = null;
     foreach ($user_orders as $user_order)
     {
-      $userHeadsOrders[] = $orders->getHeadOrder($user_order['id']);
+      $temp = $orders->getHeadOrder($user_order['id']);
+      
+      switch ($temp['status'])
+      {
+         case 'temp':
+            $temp['status'] = 'Non confirmée';
+            break;
+         case 'validated':
+            $temp['status'] = 'Validée par vos soins';
+            break;
+         case 'paid':
+            $temp['status'] = 'Payée';
+            break;
+         case 'checked':
+            $temp['status'] = 'Validée';
+            break;
+         case 'prepared':
+            $$temp['status'] = 'Preparée';
+            break;
+         case 'sent':
+            $$temp['status'] = 'Expediée';
+            break;
+      }
+      $userHeadsOrders[] = $temp;
     }
     debug($userHeadsOrders);
 
