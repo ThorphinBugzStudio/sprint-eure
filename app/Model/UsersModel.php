@@ -150,13 +150,9 @@
             // Si l'id existe -> update.
             if (!empty($this->find($id)))
             {
-                // Si l'id existe -> update.
-                if (!empty($this->find($id)))
-                {
-                    $update = $this->update(['role'        => $status,
-                                             'modified_at' => ToolHP::nowSql()
-                                            ], $id, true);
-                }
+                $update = $this->update(['role'        => $status,
+                                         'modified_at' => ToolHP::nowSql()
+                                        ], $id, true);
             }
         }
     }
