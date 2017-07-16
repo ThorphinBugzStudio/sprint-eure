@@ -24,20 +24,39 @@
           </tr>
         </thead>
         <tbody>
-          <?php $i = 0;
+          <?php
+          // CONDITION : Si il y a du contenu dans la base de données, alors on affiche tout ce qui concerne la page.
+          $i = 0;
           foreach ($results as $result) { ?>
           <tr>
+            <!-- ID des catégories -->
             <td><?php echo $result['id']; ?></td>
+
+            <!-- Noms des catégories -->
             <td><?php echo $result['family']; ?></td>
+
+            <!-- État de la catégorie (Visible ou supprimée) -->
             <td>
               <?php if($result['status'] == 'deleted') { ?>
-                <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Supprimé" title="Catégorie supprimée">
+                <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Supprimée" title="Catégorie supprimée">
               <?php } elseif($result['status'] == 'active') { ?>
                 <img src="<?= $this->assetUrl('admin/img/icon-check.png') ?>" alt="Actif" title="Catégorie active">
               <?php } ?>
             </td>
-            <td><?php echo $result['created_at']; ?></td>
-            <td><?php echo $result['modified_at']; ?></td>
+
+            <!-- Date de création du commentaire -->
+            <td><?php echo date('d/m/Y à H:i:s', strtotime($result['created_at'])); ?></td>
+
+            <!-- Date de modification du commentaire -->
+            <td>
+              <?php if(date('d/m/Y à H:i:s', strtotime($result['modified_at'])) == '01/01/1970 à 01:00:00') {
+                echo '';
+              } else {
+                echo date('d/m/Y à H:i:s', strtotime($result['modified_at']));
+              } ?>
+            </td>
+
+
             <td class="menu_actions">
               <!-- BOUTON : Edition -->
               <a class="" href="<?=$this->url('admin_single_item_family', ['id' => $result['id']] ) ?>">

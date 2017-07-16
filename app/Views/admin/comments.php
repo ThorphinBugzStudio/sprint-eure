@@ -25,13 +25,23 @@
           </tr>
         </thead>
         <tbody>
-          <?php $i = 0;
+
+          <?php
+          // CONDITION : Si il y a du contenu dans la base de données, alors on affiche tout ce qui concerne la page.
+          $i = 0;
           if(!empty($results)) {
           foreach ($results as $result) { ?>
           <tr>
+            <!-- ID des commentaires -->
             <td><?php echo $result['id']; ?></td>
+
+            <!-- Pseudo des utilisateurs -->
             <td><?php echo $result['username']; ?></td>
+
+            <!-- Contenu du commentaire -->
             <td><?php echo $result['comment']; ?></td>
+
+            <!-- État du commentaire (Visible, en attente ou supprimé) -->
             <td>
               <?php if($result['status'] == 'inactive') { ?>
                 <img src="<?= $this->assetUrl('admin/img/attente.png') ?>" alt="Inactif" title="Commentaire en attente">
@@ -41,8 +51,19 @@
                 <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Supprimé" title="Commentaire supprimé">
               <?php } ?>
             </td>
-            <td><?php echo $result['created_at']; ?></td>
-            <td><?php echo $result['modified_at']; ?></td>
+
+            <!-- Date de création du commentaire -->
+            <td><?php echo date('d/m/Y à H:i:s', strtotime($result['created_at'])); ?></td>
+
+            <!-- Date de modification du commentaire -->
+            <td>
+              <?php if(date('d/m/Y à H:i:s', strtotime($result['modified_at'])) == '01/01/1970 à 01:00:00') {
+                echo '';
+              } else {
+                echo date('d/m/Y à H:i:s', strtotime($result['modified_at']));
+              } ?>
+            </td>
+            
             <td class="menu_actions">
               <!-- BOUTON : Approve -->
               <?php if ($result['status'] != 'active') { ?>

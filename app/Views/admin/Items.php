@@ -79,7 +79,7 @@
         <i class="fa fa-folder fa-fw"></i> Trier par catégorie
       </div>
       <div class="search_per_category p-4">
-        <a href="/sprint-eure/public/admin/items">» Tous les produits</a>
+        <a href="<?= $this->url('admin_items') ?>">» Tous les produits</a>
         <?php foreach ($categorie as $cat): ?>
           <a href="<?= $this->url('admin_categorie_item', ['id' =>  $cat['id']])?>"><?= $cat['family'] ?></a>
         <?php endforeach; ?>
