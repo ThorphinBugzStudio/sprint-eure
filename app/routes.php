@@ -68,8 +68,7 @@
 		['POST', '/panier', 'Panier#panier', 'panier_client_action'],
 		// route panier article ajouter au panier
 		['GET', '/panier/add/[i:id]','Panier#addArticleToPanier', 'ajouter_au_panier'],
-		// route panier pour supprimer un article
-		['POST', 'panier/delete/[i:id], Panier#deleteArticle', 'supprimer_du panier'],
+		
 
 		/**
 		 * Admin\UsersController
