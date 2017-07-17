@@ -547,8 +547,10 @@ form label {
 }
 
 .btn_basket-bottom {
-	max-height: 46px;
-	margin-top: auto;
+	position: absolute;
+	bottom: 0px;
+	margin: 18px;
+	display: flex;
 }
 
 .btn_basket:hover {
@@ -861,7 +863,14 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 		justify-content: flex-start !important;
 	}
 }
-
+/*
+@media (max-width: 600px) {
+	.btn_basket-bottom {
+		position: inherit;
+		margin: 0;
+	}
+}
+*/
 @media (max-width: 991px) {
 	.comments-container {
 		margin-top: 20px;
