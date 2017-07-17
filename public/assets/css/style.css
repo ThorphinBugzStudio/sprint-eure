@@ -451,6 +451,28 @@ form label {
 	}
 }
 
+#howTovideo {
+	width: 100%;
+	max-width: 624px;
+	max-height: 351px;
+}
+
+@media (max-width: 640px) {
+	#howTovideo {
+		max-height: 351px;
+		height: 100%;
+		margin-bottom: 10px;
+	}
+}
+
+@media (max-width: 900px) {
+	#howTovideo {
+		margin-bottom: 8px;
+		text-align: center;
+		max-width: inherit;
+	}
+}
+
 /* ----------------- E-COMMERCE ----------------- */
 
 .category-bar {
@@ -863,14 +885,7 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 		justify-content: flex-start !important;
 	}
 }
-/*
-@media (max-width: 600px) {
-	.btn_basket-bottom {
-		position: inherit;
-		margin: 0;
-	}
-}
-*/
+
 @media (max-width: 991px) {
 	.comments-container {
 		margin-top: 20px;
@@ -905,5 +920,11 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 	.category-button-return, .category-button {
 		margin: 5px 0px;
 		width: 100%;
+	}
+}
+
+@media (min-width: 457px) and (max-width: 1155px) {
+	.category-button-return, .category-button {
+		margin: 5px 1%;
 	}
 }

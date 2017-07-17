@@ -3186,7 +3186,7 @@ tbody.collapse.show {
   background-color: #eceeef;
 }
 
-.dropdown-item {
+.dropdown-item, .dropdown-item2 {
   display: block;
   width: 100%;
   padding: 3px 1.5rem;
@@ -3199,19 +3199,22 @@ tbody.collapse.show {
   border: 0;
 }
 
-.dropdown-item:focus, .dropdown-item:hover {
+.dropdown-item:focus, .dropdown-item:hover,
+.dropdown-item2:focus, .dropdown-item2:hover {
   color: #1d1e1f;
   text-decoration: none;
   background-color: #f7f7f9;
 }
 
-.dropdown-item.active, .dropdown-item:active {
+.dropdown-item.active, .dropdown-item:active,
+.dropdown-item2.active, .dropdown-item2:active {
   color: #fff;
   text-decoration: none;
   background-color: #0275d8;
 }
 
-.dropdown-item.disabled, .dropdown-item:disabled {
+.dropdown-item.disabled, .dropdown-item:disabled,
+.dropdown-item2.disabled, .dropdown-item2:disabled {
   color: #636c72;
   cursor: not-allowed;
   background-color: transparent;

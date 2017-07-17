@@ -74,7 +74,7 @@
 							</li>
 						<?php	} ?>
 
-						<li class="dropdown basket-order">
+						<li class="dropdown basket-order" id="basket-li">
 							<a href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier <span id="nbr_articles">(0)</span>
 							</a>
@@ -83,15 +83,15 @@
 									<a href="<?= $this->url('panier_client') ?>">Votre panier</a>
 								</div>
 								<div class="dropdown-item">
-									<p id = "basket_first_line" class="text-align-center mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Le panier est vide.</p>
+									<p id="basket_first_line" class="text-align-center mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Le panier est vide.</p>
 									<hr class="hrPage">
 									<div class="row mt-2">
-										<p class="col-6 bold mb-0">Total hors taxes</p>
+										<p class="col-6 bold mb-0">Total HT :</p>
 										<p class="col-6 text-align-right mb-0"><span id="total_ht">0.00</span> €</p>
 										<p class="col-6 bold mb-0">Taxes :</p>
-										<p class="col-6 text-align-right mb-0"><span id="total_tva">0.00</span>€</p>
+										<p class="col-6 text-align-right mb-0"><span id="total_tva">0.00</span> €</p>
 									</div>
-									<div class="basket-spacer my-2"></div>
+									<div class="basket-spacer my-2" style="border-top: 1px dotted grey;"></div>
 									<div class="row">
 										<p class="col-6 bold mb-0">Total :</p>
 										<p class="col-6 text-align-right mb-0"><span id="total_ttc">0.00</span> €</p>
@@ -203,6 +203,7 @@
 	<script src="<?= $this->assetUrl('js/haut_de_page.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/category.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/panier.js') ?>" charset="utf-8"></script>
+	<script src="<?= $this->assetUrl('js/app.js') ?>" charset="utf-8"></script>
 
 
 </body>
