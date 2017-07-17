@@ -9,12 +9,12 @@
 
       <!-- Section : Nom -->
       <label for="lastname">Nom</label> <span class="error">*</span>
-      <input disabled class="input-form" type="text" name="lastname" value="<?php if(!empty($_POST['lastname'])){ echo $_POST['lastname']; } else { echo $w_user['lastName']; }?>">
+      <input class="input-form" type="text" name="lastname" value="<?php if(!empty($_POST['lastname'])){ echo $_POST['lastname']; } else { echo $w_user['lastName']; }?>">
       <?php if(!empty($error['lastname'])){ echo '<p id="error-lastname" class="error">' . $error['lastname'] . '</p>'; } ?>
 
       <!-- Section : Prénom -->
       <label for="firstname">Prénom</label> <span class="error">*</span>
-      <input disabled class="input-form" type="text" name="firstname" value="<?php if(!empty($_POST['firstname'])){ echo $_POST['firstname']; } else { echo $w_user['firstName']; } ?>">
+      <input class="input-form" type="text" name="firstname" value="<?php if(!empty($_POST['firstname'])){ echo $_POST['firstname']; } else { echo $w_user['firstName']; } ?>">
       <?php if(!empty($error['firstname'])){ echo '<p id="error-firstname" class="error">' . $error['firstname'] . '</p>'; } ?>
 
       <!-- Section : E-mail -->
@@ -55,7 +55,7 @@
       <div class="col-lg-5 col-sm-12">
         <!-- Section : Pseudo -->
         <label for="pseudo">Pseudo</label> <span class="error">*</span>
-        <input disabled class="input-form" type="text" name="pseudo" value="<?php if(!empty($_POST['pseudo'])){ echo $_POST['pseudo']; } else { echo $w_user['username']; }?>">
+        <input class="input-form" type="text" name="pseudo" value="<?php if(!empty($_POST['pseudo'])){ echo $_POST['pseudo']; } else { echo $w_user['username']; }?>">
         <?php if(!empty($error['pseudo'])){ echo '<p id="error-pseudo" class="error">' . $error['pseudo'] . '</p>'; } ?>
 
         <!-- Section : Avatar -->
