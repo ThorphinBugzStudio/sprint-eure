@@ -4,24 +4,15 @@
 
 <?php $_ENV = 'Home' ?>
 
-
 <!-- <form class="search" action="search/[:id]" method="post">
   <input type="text" name="recherche" value="">
   <input type="submit" name="submit" value="rechercher">
 </form> -->
 
-<a class="" href="<?= $this->url('catalog_priceASC')?>">Prix ordre croissant</a>
-<a class="" href="<?= $this->url('catalog_priceDESC')?>">Prix ordre decroissant</a>
-
+<a  href="<?= $this->url('catalog_categorie_item_priceASC', ['id' =>  $id])?>">Prix ordre croissant</a>
+<a  href="<?= $this->url('catalog_categorie_item_priceDESC', ['id' =>  $id])?>">Prix ordre decroissant</a>
 
 <div class="row w-100 ml-auto mt-2 justify-content-end category-row">
-  <div class="mr-auto">
-    <form class="search mr-auto" action="search/[:id]" method="post">
-      <input type="text" name="recherche" placeholder="Rechercher un produit..." class="input-form" style="border-radius: 8px 0 0 8px; width: none;">
-      <input type="submit" name="submit" value="&#xf002" class="fa-input px-3">
-    </form>
-  </div>
-
 
   <div class="row category-button-return">
 

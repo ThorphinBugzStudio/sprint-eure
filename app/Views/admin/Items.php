@@ -22,7 +22,7 @@
             </a>
 
             <div class="single-article-price">
-              <?= number_format($result['puht'],2,',', ' ').' €'; ?>
+              <?= number_format($result['puht'],2,',', ' ').' € HT'; ?>
             </div>
 
             <div class="row px-4 my-2" style="display: flex;">

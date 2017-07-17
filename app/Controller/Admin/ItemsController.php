@@ -3,10 +3,14 @@
 namespace Controller\Admin;
 
 use \Controller\AppController;
-use \Security\CleanTool;
+
 use \Services\Tools\Pagination;
 use \Services\Tools\RadiosBox;
+
 use \Security\ValidationTool;
+use \Security\CleanTool;
+use W\Security\StringUtils;
+
 use \Model\ItemsFamilyModel;
 use \Model\ItemsModel;
 /**
@@ -83,6 +87,7 @@ class ItemsController extends AppController
     $validation = new ValidationTool;
     $items = new ItemsModel();
     $model = new ItemsFamilyModel;
+    $strU = new StringUtils();
     $itemsToUpdate = $items->find($id);
     $post = $clean->cleanPost($_POST);
     $family = $model->notdelete();
@@ -102,6 +107,7 @@ class ItemsController extends AppController
       $dossier     = 'assets/img/uploaded_articles/';
       $status      = $_POST['optionsRadiosStatut'];
       $nomIm       = $post['img_name'];
+      $rdm_name = $strU->randomString($length = 10);
 
       if (isset($_POST['home'])) {
         $home = 1;
@@ -111,7 +117,7 @@ class ItemsController extends AppController
 
 //verification des erreurs de chaque champs
       $error['designation'] = $validation->textValid($designation, 'designation');
-      $error['description'] = $validation->textValid($description, 'description', 3, 1000);
+      $error['description'] = $validation->textValid($description, 'description', 3, 3000);
       $error['quantite']    = $validation->entier($quantité, 'quantité');
       $error['prix']        = $validation->numeric($prix, 'prix');
 
@@ -146,7 +152,7 @@ class ItemsController extends AppController
 
 
       if ($validation->IsValid($error)) {
-        $img_name = date('Y_m_d_H_i').'_'.$designation.'.'.pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
+        $img_name = date('Y_m_d_H_i').'_'.$rdm_name.'.'.pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
 
         $data = array(
               'items_family_id' => $famille,
@@ -207,6 +213,7 @@ class ItemsController extends AppController
     $validation = new ValidationTool;
     $model = new ItemsFamilyModel;
     $modelItem = new ItemsModel;
+    $strU = new StringUtils();
     $family = $model->findAll();
 
     $post = $clean->cleanPost($_POST);
@@ -220,6 +227,7 @@ class ItemsController extends AppController
       $image       = $_FILES['image'];
       $dossier = 'assets/img/uploaded_articles/';
       $status = "active";
+      $rdm_name = $strU->randomString($length = 10);
 
       if (isset($_POST['home'])) {
         $home = 1;
@@ -235,14 +243,14 @@ class ItemsController extends AppController
 
 //verification des erreurs de chaque champs
       $error['designation'] = $validation->textValid($designation, 'designation');
-      $error['description'] = $validation->textValid($description, 'description', 3, 1000);
+      $error['description'] = $validation->textValid($description, 'description', 3, 3000);
       $error['quantite']    = $validation->entier($quantité, 'quantité');
       $error['prix']        = $validation->numeric($prix, 'prix');
       $error['image']  = $validation->uploadValid($image, 2000000, array('.jpg','.jpeg','.png'), array('image/jpeg','image/png','image/jpg'));
 
 
       if ($validation->IsValid($error)){
-        $img_name = date('Y_m_d_H_i').'_'.$designation.'.'.pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
+        $img_name = date('Y_m_d_H_i').'_'.$rdm_name.'.'.pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
 
         $data = array(
               'items_family_id' => $famille,
@@ -277,7 +285,7 @@ class ItemsController extends AppController
     $items = new ItemsModel();
 
     // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
-    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('admin_categorie_item', ['id' =>  $id]), $items->countIdcat($id), 4);
+    $pagin = new Pagination('Admin items pages navigation', $this->generateUrl('admin_categorie_item', ['id' =>  $id]), $items->countIdcat($id), 8);
 
     if (!empty($page)) { $pagin->setPageStatus($page); }
 

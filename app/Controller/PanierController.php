@@ -48,9 +48,5 @@ class PanierController extends AppController
 
   }
 
-  public function deleteArticleFromPanier($id)
-  {
-    
-  }
 
 }

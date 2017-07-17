@@ -47,6 +47,18 @@
 		//articles par categorie
 		['GET', '/catalog/categorie/[:id]', 'Catalog#familycatalog', 'catalog_categorie_item'],
 		['GET', '/catalog/categorie/[:id]/[i:page]', 'Catalog#familycatalog', 'catalog_categorie_page'],
+		//tous les articles par prix
+		['GET', '/catalog/priceASC', 'Catalog#priceASC', 'catalog_priceASC'],
+		['GET', '/catalog/priceASC/[i:page]', 'Catalog#priceASC', 'catalog_priceASC_page'],
+		['GET', '/catalog/priceDESC', 'Catalog#priceDESC', 'catalog_priceDESC'],
+		['GET', '/catalog/priceDESC/[i:page]', 'Catalog#priceDESC', 'catalog_priceDESC_page'],
+		//categorie article par prix
+		//ASC
+		['GET', '/catalog/familypriceASC/[:id]', 'Catalog#familypriceASC', 'catalog_categorie_item_priceASC'],
+		['GET', '/catalog/familypriceASC/[:id]/[i:page]', 'Catalog#familypriceASC', 'catalog_categorie__priceASC_page'],
+		//DESC
+		['GET', '/catalog/familypriceDESC/[:id]', 'Catalog#familypriceDESC', 'catalog_categorie_item_priceDESC'],
+		['GET', '/catalog/familypriceDESC/[:id]/[i:page]', 'Catalog#familypriceDESC', 'catalog_categorie__priceDESC_page'],
 		//detail de l article
 		['GET', '/catalog/item/[:id]', 'Catalog#detail', 'catalog_detail'],
 		//404
@@ -54,6 +66,13 @@
 		//recherche
 		['POST', '/catalog/search/[:id]', 'Catalog#search', 'catalog_search'],
 		['GET', '/catalog/search/[:id]/[i:page]', 'Catalog#search', 'catalog_search_page'],
+		//recherche article par prix
+		//ASC
+		['GET', '/catalog/searchASC/[:id]', 'Catalog#searchPriceASC', 'catalog_search_item_priceASC'],
+		['GET', '/catalog/searchASC/[:id]/[i:page]', 'Catalog#searchPriceASC', 'catalog_search_priceASC_page'],
+		//DESC['GET', '/catalog/searchASC/[:id]', 'Catalog#searchPriceASC', 'catalog_search_item_priceASC'],
+		['GET', '/catalog/searchDESC/[:id]', 'Catalog#searchPriceDESC', 'catalog_search_item_priceDESC'],
+		['GET', '/catalog/searchDESC/[:id]/[i:page]', 'Catalog#searchPriceDESC', 'catalog_search_priceDESC_page'],
 
 		/**
 		 * DevisController
@@ -68,8 +87,7 @@
 		['POST', '/panier', 'Panier#panier', 'panier_client_action'],
 		// route panier article ajouter au panier
 		['GET', '/panier/add/[i:id]','Panier#addArticleToPanier', 'ajouter_au_panier'],
-		// route panier pour supprimer un article
-		['POST', 'panier/delete/[i:id], Panier#deleteArticle', 'supprimer_du panier'],
+		
 
 		/**
 		 * Admin\UsersController

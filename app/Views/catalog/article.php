@@ -21,7 +21,7 @@
         <ul class="p-0 m-0 d-flex" style="list-style: none;">
           <!-- Prix de l'article -->
           <li>
-            <p class="article-single-price justify-content-start"><?= $result['puht']; ?>€</p>
+            <p class="article-single-price justify-content-start"><?= $result['puht']*1.20; ?>€</p>
           </li>
 
           <!-- BOUTON : Ajouter au panier -->
@@ -39,7 +39,9 @@
 
     </div>
 
+
   </div>
 </div>
+
 
 <?php $this->stop('main_content') ?>
