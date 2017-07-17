@@ -2,7 +2,7 @@
 
 //-----------------------  Ajout d'un article au Panier-----------------------//
 
-
+console.log('coucou')
 function addItem(array,element)
 {
   array.push(element);
@@ -12,7 +12,7 @@ function addItem(array,element)
 
 function panierHt(array,key)
 {
-  var somme = 0
+  var somme = 0;
   for ( i = 0; i < array.length; i++ )
   {
     somme += parseFloat(array[i][key])
@@ -69,7 +69,7 @@ $('.btn_basket').on("click",function (event)
           $('#total_ht').html($ht.toFixed(2)); //element.toFixed(nb)= 2chiffre après la "," ??? WTF ???
 
     //calcul du taux de tva par rapport au ht
-          var vatRate = 20.20/100;
+          var vatRate = 20/100;
           var tvaTot = $ht * vatRate;
 
     //Affichage du prix de la TVA
@@ -85,6 +85,10 @@ $('.btn_basket').on("click",function (event)
           var nbreArticles = Panier.length;
           $('#nbr_articles').html('('+nbreArticles+')');
 
+    },
+    error: function (response)
+    {
+      console.log('erreur');
     }
   })
 
@@ -125,7 +129,7 @@ $('.dropdown-item').on("click", '#delete_btn',function (event)
    }
 
 //calcul du taux de tva par rapport au ht
-        var vatRate = 20.20/100;
+        var vatRate = 20/100;
         var newTvaTot = newHt * vatRate;
 
 //On affiche le nouveaux prix tva

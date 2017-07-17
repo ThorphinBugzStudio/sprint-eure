@@ -45,7 +45,6 @@ class PanierController extends AppController
     'designation' => $article['designation']];
 
     $this->showJson($data);
-
   }
 
 
