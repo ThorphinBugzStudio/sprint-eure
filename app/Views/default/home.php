@@ -81,11 +81,25 @@ $_ENV = 'Home'; ?>
 
 
 <!-- ============================================ -->
+<!-- 					   	Contenu principal  				   		-->
+<!-- ============================================ -->
+
+<div class="container-fluid row pt-4 mainContent">
+  <h2>Nouveautés</h2>
+  <hr class="hrPage">
+</div>
+
+<div class="m-3">
+  <p>On posera le contenu ici !</p>
+</div>
+
+
+<!-- ============================================ -->
 <!-- 								Commentaires 									-->
 <!-- ============================================ -->
 <hr class="hrpage my-3">
 <div class="row">
-  <div class="col-sm-12 col-lg-8">
+  <div class="col-sm-12 col-lg-8 px-4">
 
   <?php	foreach($comments as $comment) { ?>
   		<div class="last-comments">

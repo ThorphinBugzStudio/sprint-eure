@@ -184,7 +184,7 @@ body {
 }
 
 .carousel-indicators {
-	bottom: -3px;
+	bottom: -10px;
 }
 
 .carousel-indicators li {
@@ -344,6 +344,28 @@ form label {
 .error {
 	color: red;
 	font-weight: bold;
+}
+
+.fa-input {
+	font-family: "FontAwesome";
+	padding: 5px;
+	background-color: #1d1d1d;
+	border: 1px solid grey;
+	border-left: 0;
+	color: white;
+	border-radius: 0 8px 8px 0;
+	cursor: pointer;
+}
+
+.fa-input:hover {
+	background-color: #353535;
+	border: 1px solid grey;
+	border-left: 0;
+}
+
+.search {
+	display: flex;
+	width: 100%;
 }
 
 /* ---------------- COMMENTAIRES ----------------- */
@@ -515,7 +537,7 @@ form label {
 .btn_basket {
 	background-color: #22ae22;
 	border: 1px solid #287b18;
-	color: white;
+	color: white !important;
 	padding: 10px;
 	border-radius: 8px;
 	cursor: pointer;
@@ -631,6 +653,43 @@ form label {
 	border: 4px double grey;
 }
 
+/* ------------------- CATALOGUE : ARTICLE SEULEMENT ------------------- */
+
+.image {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.image img {
+  height: 200px;
+  width: 200px;
+  border: 4px double grey;
+  background: white;
+}
+
+.article-single-price {
+	background-color: #1d1d1d;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: "Patua One", "Arial";
+	width: 163px;
+	padding: 8px;
+	text-align: start;
+	display: inline-block;
+	text-decoration: none;
+	border: 1px solid grey;
+	border-right: 0;
+}
+
+.packaging {
+	max-width: 200px;
+}
+
+.packaging p {
+	text-align: left;
+}
+
 /* ----------------- FOOTER ----------------- */
 
 footer {
@@ -726,8 +785,10 @@ address .fa-phone {
 
 .col-6,
 .col-5,
-.col-lg-6,
+.col-lg-4,
 .col-lg-5,
+.col-lg-6,
+.col-lg-8,
 .col-lg-2 {
 	padding: 0;
 }
@@ -772,6 +833,10 @@ address .fa-phone {
 
 button, html [type="button"], [type="reset"], [type="submit"] {
     -webkit-appearance: none;
+}
+
+#test {
+	display: none;
 }
 
 /* ----------------------- MEDIA QUERY ------------------------ */

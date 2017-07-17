@@ -4,6 +4,7 @@ namespace Controller;
 
 use W\Model\Model;
 use Model\UsersModel;
+use Model\OrdersModel;
 use Model\User_adressesModel;
 use Model\AvatarsModel;
 use Security\CleanTool;
@@ -25,6 +26,7 @@ class ProfileController extends AppController
   {
     $adress = new User_adressesModel();
     $avatar = new AvatarsModel();
+    $orders = new OrdersModel();
     // $auth = new AuthentificationModel();
 
     $user = $this->getUser();
@@ -33,8 +35,42 @@ class ProfileController extends AppController
 
     $user_adress = $adress->getUserAdress($user['id']);
 
+    // commandes
+    $orders->setWhere('users_id = \''.$user['id'].'\' AND status != \'deleted\'');
+    $user_orders = $orders->findAll('created_at', 'DESC');
+    $userHeadsOrders = null;
+    foreach ($user_orders as $user_order)
+    {
+      $temp = $orders->getHeadOrder($user_order['id']);
+      
+      switch ($temp['status'])
+      {
+         case 'temp':
+            $temp['status'] = 'En attente de validation par vos soins';
+            break;
+         case 'validated':
+            $temp['status'] = 'Validée par vos soins - En attente de paiement';
+            break;
+         case 'paid':
+            $temp['status'] = 'Paiement effectué - Verification en cours';
+            break;
+         case 'checked':
+            $temp['status'] = 'Commande verifiée - En cours de préparation';
+            break;
+         case 'prepared':
+            $$temp['status'] = 'Commande préparée - En cours d\'expedition';
+            break;
+         case 'sent':
+            $$temp['status'] = 'Commande expediée';
+            break;
+      }
+      $userHeadsOrders[] = $temp;
+    }
+    // debug($userHeadsOrders);
+
     $this->show('users/user-profile', ['user_adress' => $user_adress,
-                                        'user_avatar' => $user_avatar]);
+                                       'user_avatar' => $user_avatar,
+                                       'userHeadsOrders' => $userHeadsOrders]);
   }
 
   /**
