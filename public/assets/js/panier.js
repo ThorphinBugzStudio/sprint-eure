@@ -1,8 +1,7 @@
-//----------------------------- Traitement Panier-----------------------------//
+//----------------------------- Traitement Panier ----------------------------//
 
-//-----------------------  Ajout d'un article au Panier-----------------------//
+//-----------------------  Ajout d'un article au Panier ----------------------//
 
-console.log('coucou')
 function addItem(array,element)
 {
   array.push(element);
@@ -20,6 +19,7 @@ function panierHt(array,key)
   return  somme;
 }
 
+
 // fonction qui efface un élément d'un tableau
 function removeItem(array,element)
 {
@@ -33,7 +33,21 @@ function Rand(min, max) {
   return Math.random() * (max - min) + min;
 }
 
+function testPresence(array,article,key)
+{
+  var flag = 0;
+  for(var i = 0; i<array.length; i++)
+  {
+    if (array[i][key] == article[key])
+    {
+      flag = 1;
+    }
+  }
+  return flag;
+}
+
 var Panier = new Array();
+var TabHt = new Array();
 
 $('.btn_basket').on("click",function (event)
 {
@@ -50,21 +64,31 @@ $('.btn_basket').on("click",function (event)
       var randomNb = Math.round(Rand(0, 10000)* 3.14);
       var linkValue = response.designation+'_'+randomNb
 
-//Ajout visuel des articles et leurs designations
-      $('.dropdown-item').prepend('<p class="item_panier" value="'+linkValue+'">'+response.designation+' '+'<span>'+response.puht+'</span>'+' €'+'  '+'<i id="delete_btn" value="'+linkValue+'" class="fa fa-times-circle-o" aria-hidden="true"></i></p>');
 
 //On crée un array Article à chaque ajout
       var Article = new Array();
           Article['id'] = response.id;
           Article['designation'] = linkValue;
           Article['puht'] = response.puht;
+          Article['quantité'] = 1;
+          Article['prixTotalht'] = response.puht;
 
-    //On ajoute Article au tableau Panier
-          addItem(Panier,Article);
+          //On ajoute Article au tableau Panier
+          var articlePresence = testPresence(Panier,Article,'id');
+          //console.log(testPresence(Panier,Article,'id'));
+          //On teste si l'article est déjà présent dans le panier
+          if (articlePresence == 0)
+          {
+            //Si non, on l'ajoute
+            addItem(Panier,Article);
+
+            //On ajoute visuellement l' article et sa designation au panier
+            $('.dropdown-item').prepend('<p class="item_panier" value="'+linkValue+'">'+response.designation+' '+'<span>'+response.puht+'</span>'+' €'+'  '+'<input id="Qt" style="width:2.3em" class="'+linkValue+'" type="number" min=0 value="'+Article['quantité']+'"><i id="delete_btn" value="'+linkValue+'" class="fa fa-times-circle-o" aria-hidden="true"></i></p>');
+          }
 
     //On declare ht qui calcule le prix ht
-          var $ht = panierHt(Panier,'puht');
-
+          var $ht = panierHt(Panier,'prixTotalht');
+          console.log($ht)
     //On affiche le prix ht ds le panier
           $('#total_ht').html($ht.toFixed(2)); //element.toFixed(nb)= 2chiffre après la "," ??? WTF ???
 
@@ -84,6 +108,57 @@ $('.btn_basket').on("click",function (event)
     //Calcul du nbre d'article
           var nbreArticles = Panier.length;
           $('#nbr_articles').html('('+nbreArticles+')');
+
+//------------------ Event pour les chngmnt quantités ------------------------//
+
+          $('.dropdown-item').on("click",'#Qt',function (event)
+          {
+            //On recup la designation de l'article ciblé
+            var ArticleDesignation = $(this).attr('class');
+
+            //On le cherche dans le tableau Panier
+            function tabVal(Panier)
+            {
+              return Panier.designation === ArticleDesignation;
+            }
+
+            //On le stocke ds une variable
+            var ArticleToModify = Panier.find(tabVal);
+
+            //On change la quantité ds le tableau
+             ArticleToModify['quantité'] = $(this).val();
+
+             //On stocke la quantité dans une variable
+             var $quantité = ArticleToModify['quantité'];
+
+             //On modifie le prix total ht dans le tableau de l'article
+             ArticleToModify['prixTotalht'] = $quantité * ArticleToModify['puht'];
+
+             //On recalcule le ht
+             var $ht = panierHt(Panier,'prixTotalht');
+
+             //On affiche le ht
+               $('#total_ht').html($ht.toFixed(2));
+
+               //calcul du taux de tva par rapport au ht
+                     var vatRate = 20/100;
+                     var tvaTot = $ht * vatRate;
+
+               //Affichage du prix de la TVA
+                     $('#total_tva').html(tvaTot.toFixed(2));
+
+               //calcul du prix TTC
+                     var ttc = $ht + tvaTot;
+
+               //Affichage du prix TTC
+                     $('#total_ttc').html(ttc.toFixed(2));
+
+               //Calcul du nbre d'article
+                     var nbreArticles = Panier.length;
+                     $('#nbr_articles').html('('+nbreArticles+')');
+
+          })
+
 
     },
     error: function (response)
