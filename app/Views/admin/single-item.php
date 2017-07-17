@@ -57,6 +57,10 @@
       </div>
     </div>
 
+    <div class="" style="display: none;">
+      <input type="text" name="img_name" value="<?= $item['img_name']; ?>">
+    </div>
+
     <div class="col-sm-12 col-md-4 py-3">
       <div class="panel panel-default">
         <div class="panel-heading">

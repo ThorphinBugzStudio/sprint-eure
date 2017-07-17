@@ -5,12 +5,15 @@
 
 <?php $_ENV = 'Home' ?>
 
-<form class="search" action="catalog/search/[:id]" method="post">
-  <input type="text" name="recherche" value="">
-  <input type="submit" name="submit" value="rechercher">
-</form>
 
 <div class="row w-100 ml-auto mt-2 justify-content-end category-row">
+  <div class="mr-auto">
+    <form class="search mr-auto" action="catalog/search/[:id]" method="post">
+      <input type="text" name="recherche" placeholder="Rechercher un produit..." class="input-form" style="border-radius: 8px 0 0 8px; width: none;">
+      <input type="submit" name="submit" value="&#xf002" class="fa-input px-3">
+    </form>
+
+  </div>
   <!-- BOUTON : Trier par catégorie -->
   <div class="btn-group category-button">
     <p type="button" class="my-auto mr-auto" >Catégorie</p>
@@ -44,13 +47,14 @@
       </a>
 
       <div class="single-article-price">
-        <span class="article-price"><?= number_format($result['puht'],2,',', ' ').' €'; ?></span>
+        <span class="article-price"><?= number_format($result['puht']*1.20,2,',', ' ').' €'; ?></span>
       </div>
 
       <div class="row my-2" style="display: flex;">
         <div class="mr-auto my-auto">
           <!-- Nom de l'article -->
           <div class="single-article-title">
+
             <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>"><?= $result['designation']; ?></a>
           </div>
 
@@ -87,7 +91,7 @@
 
 
       <div class="single-article-price">
-        <span class="article-price"><?= number_format($result['puht'],2,',', ' ').' €'; ?></span>
+        <span class="article-price"><?= number_format($result['puht']*1.20,2,',', ' ').' €'; ?></span>
       </div>
 
       <div class="row my-2" style="display: flex;">

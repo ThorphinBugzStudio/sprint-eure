@@ -4,12 +4,23 @@
 
 <?php $_ENV = 'Home' ?>
 
-<form class="search" action="search/[:id]" method="post">
+
+<!-- <form class="search" action="search/[:id]" method="post">
   <input type="text" name="recherche" value="">
   <input type="submit" name="submit" value="rechercher">
-</form>
+</form> -->
+
+<a class="" href="<?= $this->url('catalog_priceASC')?>">Prix ordre croissant</a>
+<a class="" href="<?= $this->url('catalog_priceDESC')?>">Prix ordre decroissant</a>
+
 
 <div class="row w-100 ml-auto mt-2 justify-content-end category-row">
+  <div class="mr-auto">
+    <form class="search mr-auto" action="search/[:id]" method="post">
+      <input type="text" name="recherche" placeholder="Rechercher un produit..." class="input-form" style="border-radius: 8px 0 0 8px; width: none;">
+      <input type="submit" name="submit" value="&#xf002" class="fa-input px-3">
+    </form>
+  </div>
 
 
   <div class="row category-button-return">
@@ -22,7 +33,7 @@
 
   <!-- BOUTON : Trier par catégorie -->
   <div class="btn-group category-button">
-    <p type="button" class="my-auto mr-auto" >Catégorie</p>
+    <p type="button" class="my-auto mr-auto" >Categories</p>
     <i class="fa fa-angle-down ml-auto" aria-hidden="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
 
     <div class="dropdown-menu category-content">
@@ -65,7 +76,7 @@
 
       <!-- Affichage du prix -->
       <div class="single-article-price">
-        <?= number_format($result['puht'],2,',', ' ').' €'; ?>
+        <?= number_format($result['puht']*1.20,2,',', ' ').' €'; ?>
       </div>
 
       <div class="row my-2" style="display: flex;">
