@@ -143,7 +143,7 @@ body {
 }
 
 .dropdown-item {
-	padding: 10px;
+	padding: 0px;
 }
 
 .dropdown-item:hover {
@@ -156,16 +156,19 @@ body {
 	border: none;
 	border: 1px solid #0030a4;
 	border-radius: 0;
-	font-size: 18px;
-	font-family: "Patua One", "Arial";
 	color: #fff;
 	padding: 10px;
+}
+
+.title_basket a {
+	font-size: 18px;
+	font-family: "Patua One", "Arial";
 }
 
 .responsive-basket {
 	max-width: 280px;
 	width: 100%;
-	max-height: 200px;
+	max-height: 220px;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
@@ -173,6 +176,7 @@ body {
 .responsive-basket div p {
 	overflow-x: hidden;
 	max-width: 200px;
+	width: 200px;
 }
 
 .fa-close-basket {
@@ -181,8 +185,23 @@ body {
 	margin: 0 2px;
 }
 
+.item_panier {
+	background-color: #dae9ff;
+	white-space: normal;
+}
+
+.item_panier:nth-child(2n+2) {
+	background-color: #e6e6e6;
+}
+
 #Qt {
 	padding: 0;
+	width: 2.3em;
+}
+
+.total_ttc {
+	font-weight: bold;
+	color: #0f5ed5;
 }
 
 /* ----------------- SLIDERS ----------------- */
@@ -923,6 +942,18 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 	}
 	body {
 		margin-top: 0;
+	}
+	.item_panier {
+		white-space: pre-wrap;
+	}
+	.fa-close-basket {
+		width: 100%;
+		display: flex;
+		justify-content: end;
+		padding: 5px 0;
+	}
+	#Qt {
+		height: 100%;
 	}
 }
 

@@ -83,8 +83,8 @@ $('.btn_basket').on("click",function (event)
             addItem(Panier,Article);
 
             // On ajoute visuellement l' article et sa designation au panier
-          //  $('.dropdown-item').prepend('<p class="item_panier px-0" value="'+linkValue+'">'+response.designation+' '+' <br> <span>'+response.puht+'</span>'+' €'+'  '+'<input id="Qt" style="width:2.3em" class="col-3'+linkValue+'" type="number" min=1 value="'+Article['quantité']+'"><i id="delete_btn" value="'+linkValue+'" class="fa fa-times fa-close-basket" aria-hidden="true"></i></p>');
-            $('.dropdown-item').prepend('<div class="item_panier row px-0" value="'+linkValue+'"><p class="col-6">'+response.designation+' '+'</p> <input id="Qt" style="width:2.3em;" class="col-4 ' + linkValue+'" type="number" min=1 value="'+Article['quantité']+'"> <br>' + '<i id="delete_btn" value="'+linkValue+'" class="fa fa-times fa-close-basket my-auto ml-auto col-2" aria-hidden="true"></i> <p class="col-12 ml-auto">'+ response.puht+' €</p> </div>');
+            //$('.dropdown-item').prepend('<p class="item_panier px-0" value="'+linkValue+'">'+response.designation+' '+' <br> <span>'+response.puht+'</span>'+' €'+'  '+'<input id="Qt" style="width:2.3em" class="col-3'+linkValue+'" type="number" min=1 value="'+Article['quantité']+'"><i id="delete_btn" value="'+linkValue+'" class="fa fa-times fa-close-basket" aria-hidden="true"></i></p>');
+            $('.dropdown-item').prepend('<div class="item_panier row px-0 p-2" value="' + linkValue + '"> <i id="delete_btn" value="' + linkValue + '" class="fa fa-times fa-close-basket my-auto ml-auto" aria-hidden="true"></i> <p class="mr-auto">' + response.designation + '</p> <input id="Qt" class="' + linkValue + '" type="number" min=1 value="' + Article['quantité'] + '"> <br>' +  '<p class="col-6 px-0 ml-auto bold" style="text-align: end;">' + response.puht + ' €</p> </div>');
           }
 
     // On déclare ht qui calcule le prix ht
