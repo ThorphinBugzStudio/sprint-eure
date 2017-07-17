@@ -12,8 +12,8 @@
       <input type="text" name="recherche" placeholder="Rechercher un produit..." class="input-form" style="border-radius: 8px 0 0 8px; width: none;">
       <input type="submit" name="submit" value="&#xf002" class="fa-input px-3">
     </form>
-
   </div>
+  
   <!-- BOUTON : Trier par catégorie -->
   <div class="btn-group category-button">
     <p type="button" class="my-auto mr-auto" >Catégorie</p>
@@ -21,10 +21,10 @@
 
     <div class="dropdown-menu category-content">
       <ul class="p-0">
-        <li><a class="dropdown-item p-2" href="<?= $this->url('catalog_all')?>">» Tous les produits</a></li>
+        <li><a class="dropdown-item2 p-2" href="<?= $this->url('catalog_all')?>">» Tous les produits</a></li>
         <div class="dropdown-divider m-0"></div>
         <?php foreach ($categorie as $cat): ?>
-          <li><a href="<?= $this->url('catalog_categorie_item', ['id' =>  $cat['id']])?>" class="dropdown-item p-1 px-2"><?= $cat['family'] ?></a></li>
+          <li><a href="<?= $this->url('catalog_categorie_item', ['id' =>  $cat['id']])?>" class="dropdown-item2 p-1 px-2"><?= $cat['family'] ?></a></li>
         <?php endforeach; ?>
     </div>
   </div>
@@ -63,9 +63,11 @@
 
       <hr class="hrSingleArticle m-0 mb-3">
 
+      <div style="height:46px;"></div>
+
       <!-- BOUTON : Ajouter au panier -->
-      <div class="row" style="display: flex;">
-        <div class="row mx-auto">
+      <div class="row btn_basket-bottom">
+        <div class="row mx-auto p-relative">
             <a class="btn_basket" href="<?= $this->url('ajouter_au_panier',array('id'=> $result['id'])); ?>">
               <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
               Ajouter au panier
@@ -108,8 +110,10 @@
 
       <hr class="hrSingleArticle m-0 mb-3">
 
+      <div style="height:46px;"></div>
+
       <!-- BOUTON : Ajouter au panier -->
-      <div class="row" style="display: flex;">
+      <div class="row btn_basket-bottom">
         <div class="row mx-auto p-relative">
             <a class="btn_basket" href="<?= $this->url('ajouter_au_panier',array('id'=> $result['id'])); ?>">
               <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
