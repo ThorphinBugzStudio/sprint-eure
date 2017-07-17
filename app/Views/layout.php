@@ -204,7 +204,7 @@
 	<script src="<?= $this->assetUrl('js/category.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/panier.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/app.js') ?>" charset="utf-8"></script>
-
+	<?= $this->section('jsfooter_content') ?>
 
 </body>
 </html>
