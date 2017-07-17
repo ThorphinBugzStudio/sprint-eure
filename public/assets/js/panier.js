@@ -73,33 +73,34 @@ $('.btn_basket').on("click",function (event)
           Article['quantité'] = 1;
           Article['prixTotalht'] = response.puht;
 
-          //On ajoute Article au tableau Panier
+          // On ajoute Article au tableau Panier
           var articlePresence = testPresence(Panier,Article,'id');
-          //console.log(testPresence(Panier,Article,'id'));
-          //On teste si l'article est déjà présent dans le panier
+          // console.log(testPresence(Panier,Article,'id'));
+          // On teste si l'article est déjà présent dans le panier
           if (articlePresence == 0)
           {
-            //Si non, on l'ajoute
+            // Si non, on l'ajoute
             addItem(Panier,Article);
 
-            //On ajoute visuellement l' article et sa designation au panier
-            $('.dropdown-item').prepend('<p class="item_panier" value="'+linkValue+'">'+response.designation+' '+'<span>'+response.puht+'</span>'+' €'+'  '+'<input id="Qt" style="width:2.3em" class="'+linkValue+'" type="number" min=0 value="'+Article['quantité']+'"><i id="delete_btn" value="'+linkValue+'" class="fa fa-times-circle-o" aria-hidden="true"></i></p>');
+            // On ajoute visuellement l' article et sa designation au panier
+          //  $('.dropdown-item').prepend('<p class="item_panier px-0" value="'+linkValue+'">'+response.designation+' '+' <br> <span>'+response.puht+'</span>'+' €'+'  '+'<input id="Qt" style="width:2.3em" class="col-3'+linkValue+'" type="number" min=1 value="'+Article['quantité']+'"><i id="delete_btn" value="'+linkValue+'" class="fa fa-times fa-close-basket" aria-hidden="true"></i></p>');
+            $('.dropdown-item').prepend('<div class="item_panier row px-0" value="'+linkValue+'"><p class="col-6">'+response.designation+' '+'</p> <input id="Qt" style="width:2.3em;" class="col-4 ' + linkValue+'" type="number" min=1 value="'+Article['quantité']+'"> <br>' + '<i id="delete_btn" value="'+linkValue+'" class="fa fa-times fa-close-basket my-auto ml-auto col-2" aria-hidden="true"></i> <p class="col-12 ml-auto">'+ response.puht+' €</p> </div>');
           }
 
-    //On declare ht qui calcule le prix ht
+    // On déclare ht qui calcule le prix ht
           var $ht = panierHt(Panier,'prixTotalht');
           console.log($ht)
-    //On affiche le prix ht ds le panier
+    // On affiche le prix ht ds le panier
           $('#total_ht').html($ht.toFixed(2)); //element.toFixed(nb)= 2chiffre après la "," ??? WTF ???
 
-    //calcul du taux de tva par rapport au ht
+    // calcul du taux de tva par rapport au ht
           var vatRate = 20/100;
           var tvaTot = $ht * vatRate;
 
-    //Affichage du prix de la TVA
+    // Affichage du prix de la TVA
           $('#total_tva').html(tvaTot.toFixed(2));
 
-    //calcul du prix TTC
+    // calcul du prix TTC
           var ttc = $ht + tvaTot;
 
     //Affichage du prix TTC

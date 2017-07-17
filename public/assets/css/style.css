@@ -164,13 +164,25 @@ body {
 
 .responsive-basket {
 	max-width: 280px;
+	width: 100%;
 	max-height: 200px;
-	overflow-y: auto;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
-.responsive-basket p {
-	max-width: 280px;
-	word-wrap: break-word;
+.responsive-basket div p {
+	overflow-x: hidden;
+	max-width: 200px;
+}
+
+.fa-close-basket {
+	color: red;
+	cursor: pointer;
+	margin: 0 2px;
+}
+
+#Qt {
+	padding: 0;
 }
 
 /* ----------------- SLIDERS ----------------- */
@@ -577,6 +589,7 @@ form label {
 	border-radius: 8px;
 	cursor: pointer;
 	text-align: center;
+	text-decoration: none !important;
 }
 
 .btn_basket-bottom {
@@ -586,12 +599,16 @@ form label {
 	display: flex;
 }
 
-.btn_basket:hover {
+.btn_basket:hover{
 	text-decoration: none;
 	background-color: #29ce25;
 	border: 1px solid #278718;
 	color: white;
 }
+
+.btn_basket a:active, .btn_basket a:focus {
+	text-decoration: none;
+ }
 
 .category-row {
 	position: relative;

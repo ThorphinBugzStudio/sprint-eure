@@ -82,7 +82,7 @@
 								<div class="title_basket">
 									<a href="<?= $this->url('panier_client') ?>">Votre panier</a>
 								</div>
-								<div class="dropdown-item responsive-basket">
+								<div class="dropdown-item responsive-basket row">
 									<p id="basket_first_line" class="text-align-center mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Le panier est vide.</p>
 									<hr class="hrPage">
 									<div class="row mt-2">
@@ -96,7 +96,7 @@
 										<p class="col-6 bold mb-0">Total :</p>
 										<p class="col-6 text-align-right mb-0"><span id="total_ttc">0.00</span> €</p>
 									</div>
-									<div class="row justify-content-center mt-2">
+									<div class="row justify-content-center my-2">
 										<button type="button" name="button" class="btn_ok"><i class="fa fa-shopping-cart" aria-hidden="true"></i><a href="<?= $this->url('panier_client') ?>"></a> </button>
 									</div>
 								</div>
