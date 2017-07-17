@@ -82,7 +82,7 @@
 								<div class="title_basket">
 									<a href="<?= $this->url('panier_client') ?>">Votre panier</a>
 								</div>
-								<div class="dropdown-item">
+								<div class="dropdown-item responsive-basket">
 									<p id="basket_first_line" class="text-align-center mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Le panier est vide.</p>
 									<hr class="hrPage">
 									<div class="row mt-2">

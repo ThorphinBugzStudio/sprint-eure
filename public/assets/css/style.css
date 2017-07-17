@@ -162,6 +162,17 @@ body {
 	padding: 10px;
 }
 
+.responsive-basket {
+	max-width: 280px;
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+.responsive-basket p {
+	max-width: 280px;
+	word-wrap: break-word;
+}
+
 /* ----------------- SLIDERS ----------------- */
 
 #carouselExampleIndicators {
