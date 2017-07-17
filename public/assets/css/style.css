@@ -147,7 +147,8 @@ body {
 }
 
 .dropdown-item:hover {
-	background: none;
+	background-color: white;
+	color: black;
 }
 
 .title_basket {
@@ -508,6 +509,7 @@ form label {
 .single-article-title a {
 	color: black;
 	text-decoration: none;
+	word-wrap: break-word;
 }
 
 #img-article-1, #img-article-2, #img-article-3 {
@@ -542,6 +544,11 @@ form label {
 	border-radius: 8px;
 	cursor: pointer;
 	text-align: center;
+}
+
+.btn_basket-bottom {
+	max-height: 46px;
+	margin-top: auto;
 }
 
 .btn_basket:hover {
@@ -690,6 +697,10 @@ form label {
 	text-align: left;
 }
 
+.description {
+	text-align: justify;
+}
+
 /* ----------------- FOOTER ----------------- */
 
 footer {
@@ -825,6 +836,10 @@ address .fa-phone {
 
 .text-justify {
 	text-align: justify;
+}
+
+.p-relative {
+	position: relative;
 }
 
 * p, * label {

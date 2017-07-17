@@ -66,7 +66,10 @@
       <!-- BOUTON : Ajouter au panier -->
       <div class="row" style="display: flex;">
         <div class="row mx-auto">
-            <a class="btn_basket" href="<?= $this->url('ajouter_au_panier',array('id'=> $result['id'])); ?>">Ajouter<i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
+            <a class="btn_basket" href="<?= $this->url('ajouter_au_panier',array('id'=> $result['id'])); ?>">
+              <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+              Ajouter au panier
+            </a>
         </div>
       </div>
     </div>
@@ -87,7 +90,7 @@
 
 
       <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>">
-        <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail">
+        <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail hvr-glow">
 
 
       <div class="single-article-price">
@@ -107,8 +110,11 @@
 
       <!-- BOUTON : Ajouter au panier -->
       <div class="row" style="display: flex;">
-        <div class="row mx-auto">
-            <a class="btn_basket" href="<?= $this->url('ajouter_au_panier',array('id'=> $result['id'])); ?>">Ajouter<i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
+        <div class="row mx-auto p-relative">
+            <a class="btn_basket" href="<?= $this->url('ajouter_au_panier',array('id'=> $result['id'])); ?>">
+              <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+              Ajouter au panier
+            </a>
         </div>
       </div>
 
