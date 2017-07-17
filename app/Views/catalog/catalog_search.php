@@ -9,8 +9,8 @@
   <input type="submit" name="submit" value="rechercher">
 </form> -->
 
-<a class="" href="<?= $this->url('catalog_priceASC')?>">Prix ordre croissant</a>
-<a class="" href="<?= $this->url('catalog_priceDESC')?>">Prix ordre decroissant</a>
+<a  href="<?= $this->url('catalog_search_item_priceASC', ['id' =>  $id])?>">Prix ordre croissant</a>
+<a  href="<?= $this->url('catalog_search_item_priceDESC', ['id' =>  $id])?>">Prix ordre decroissant</a>
 
 <div class="row w-100 ml-auto mt-2 justify-content-end category-row">
 

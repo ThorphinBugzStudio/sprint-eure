@@ -44,19 +44,17 @@
       </a>
 
       <div class="single-article-price">
-        <span class="article-price"><?= number_format($result['puht'],2,',', ' ').' €'; ?></span>
+        <span class="article-price"><?= number_format($result['puht']*1.20,2,',', ' ').' €'; ?></span>
       </div>
 
       <div class="row my-2" style="display: flex;">
         <div class="mr-auto my-auto">
           <!-- Nom de l'article -->
           <div class="single-article-title">
-<<<<<<< HEAD
-            <span class= "article-designation"><?= $result['designation']; ?></span></div>
-=======
+
             <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>"><?= $result['designation']; ?></a>
           </div>
->>>>>>> 42ec47f6a22e6541fe57b3e197d733384d8adec0
+
         </div>
       </div>
 
@@ -90,7 +88,7 @@
 
 
       <div class="single-article-price">
-        <span class="article-price"><?= number_format($result['puht'],2,',', ' ').' €'; ?></span>
+        <span class="article-price"><?= number_format($result['puht']*1.20,2,',', ' ').' €'; ?></span>
       </div>
 
       <div class="row my-2" style="display: flex;">

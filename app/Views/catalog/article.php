@@ -16,7 +16,7 @@
     </div>
 
     <div class="prix">
-      <p>prix: <?= $result['puht']; ?></p>
+      <p>prix: <?= $result['puht']*1.20; ?></p>
     </div>
 
     <a class="" href="#">
