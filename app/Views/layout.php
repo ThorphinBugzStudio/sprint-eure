@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title><?= $this->e($title) ?> - Sprint'Eure</title>
 	<meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="keywords" content="3dprinter, printer, imprimante 3d, imprimante, composant imprimante, fichier 3d, 3d file, sprint'eure, imprimerie 3d">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="icon" type="image/png" href="">
@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/font-awesome.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/hover.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/animate.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/fancybox.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 
