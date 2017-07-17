@@ -202,8 +202,8 @@
 	<script src="<?= $this->assetUrl('js/bootstrap.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/haut_de_page.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/category.js') ?>" charset="utf-8"></script>
-	<script src="<?= $this->assetUrl('js/inscription-ajax.js') ?>" charset="utf-8"></script>
-<?= $this->section('js') ?>
+	<script src="<?= $this->assetUrl('js/panier.js') ?>" charset="utf-8"></script>
+
 
 </body>
 </html>
