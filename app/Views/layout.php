@@ -96,8 +96,13 @@
 										<p class="col-6 bold mb-0">Total :</p>
 										<p class="col-6 text-align-right mb-0"><span id="total_ttc">0.00</span> €</p>
 									</div>
-									<div class="row justify-content-center my-2">
-										<button type="button" name="button" class="btn_ok"><i class="fa fa-shopping-cart" aria-hidden="true"></i><a href="<?= $this->url('panier_client') ?>"></a> </button>
+
+									<div class="row justify-content-center mt-2">
+										<a href="<?php echo $this->url('panier_client') ?>">
+											<button type="button" name="button" class="btn_ok">
+												<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+											</button>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -204,7 +209,7 @@
 	<script src="<?= $this->assetUrl('js/category.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/panier.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/app.js') ?>" charset="utf-8"></script>
-
+	<?= $this->section('jsfooter_content') ?>
 
 </body>
 </html>
