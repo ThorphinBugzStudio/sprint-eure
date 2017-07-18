@@ -89,13 +89,8 @@ $('.btn_basket').on("click",function (event)
 
     // On déclare ht qui calcule le prix ht
           var $ht = panierHt(Panier,'prixTotalht');
-<<<<<<< HEAD
-          //console.log($ht)
-    //On affiche le prix ht ds le panier
-=======
-          console.log($ht)
+
     // On affiche le prix ht ds le panier
->>>>>>> 746b52f07282d2f57d6a68f29e4ccf99699a7274
           $('#total_ht').html($ht.toFixed(2)); //element.toFixed(nb)= 2chiffre après la "," ??? WTF ???
 
     // calcul du taux de tva par rapport au ht
