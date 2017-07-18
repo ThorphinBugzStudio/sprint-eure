@@ -87,7 +87,7 @@
 		['POST', '/panier', 'Panier#panier', 'panier_client_action'],
 		// route panier article ajouter au panier
 		['GET', '/panier/add/[i:id]','Panier#addArticleToPanier', 'ajouter_au_panier'],
-		
+
 
 		/**
 		 * Admin\UsersController
@@ -149,6 +149,9 @@
 		//ajout d un nouvel article
 		['GET', '/admin/additem', 'Admin\ItemsController#AddItem','admin_single_item_add'],
 		['POST', '/admin/additem', 'Admin\ItemsController#AddItemAction','admin_single_item_add_action'],
+		//recherche d article
+		['POST', '/admin/search/[:id]', 'Admin\ItemsController#search', 'admin_search'],
+		['GET', '/admin/search/[:id]/[i:page]', 'Admin\ItemsController#search', 'admin_search_page'],
 
 
 		/**
