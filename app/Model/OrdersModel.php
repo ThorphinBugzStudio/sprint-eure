@@ -190,4 +190,15 @@ class OrdersModel extends Model
       }
    }
 
+   public function nbneworders()
+     {
+
+       $sql = "SELECT * FROM $this->table WHERE status = 'temps' OR status = 'validated' OR status= 'paid'" ;
+       $sth = $this->dbh->prepare($sql);
+       $sth->execute();
+       $etat = $sth->rowCount();
+
+       return $etat;
+     }
+
 }

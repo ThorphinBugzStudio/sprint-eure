@@ -63,7 +63,7 @@ class ItemsModel extends ItemsFamilyModel
   {
 
     $sql = "SELECT * FROM $this->table WHERE items_family_id ='$id' AND status ='active'" ;
-    debug($sql);
+
     if (!empty($this->where)) { $sql .= ' WHERE '.$this->where; }
 
         if (!empty($orderBy)){

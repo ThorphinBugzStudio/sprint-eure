@@ -15,7 +15,7 @@
             <i class="fa fa-comments fa-5x"></i>
           </div>
           <div class="col-xs-9 text-right">
-            <div class="huge">0</div>
+            <div class="huge"><?= $newcomments ?></div>
             <div>Nouveau(x) commentaire(s)</div>
           </div>
         </div>
@@ -32,7 +32,7 @@
             <i class="fa fa-user fa-5x"></i>
           </div>
           <div class="col-xs-9 text-right">
-            <div class="huge">0</div>
+            <div class="huge"><?= $allusers; ?></div>
             <div>Nouveau(x) client(s)</div>
           </div>
         </div>
@@ -49,7 +49,7 @@
             <i class="fa fa-shopping-cart fa-5x"></i>
           </div>
           <div class="col-xs-9 text-right">
-            <div class="huge">0</div>
+            <div class="huge"><?= $nborders ?></div>
             <div>Nouvelle(s) commande(s)</div>
           </div>
         </div>
@@ -88,26 +88,18 @@
       </div>
       <div class="panel-body">
         <div class="list-group">
-          <a href="#" class="list-group-item">
-            <i class="fa fa-comment fa-fw"></i> Nouveau commentaire
-            <span class="pull-right text-muted small"><em>8 hours ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-comment fa-fw"></i> Nouveau commentaire
-            <span class="pull-right text-muted small"><em>55 minutes ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-comment fa-fw"></i> Nouveau commentaire
-            <span class="pull-right text-muted small"><em>14 minutes ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-comment fa-fw"></i> Nouveau commentaire
-            <span class="pull-right text-muted small"><em>12 minutes ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-comment fa-fw"></i> Nouveau commentaire
-            <span class="pull-right text-muted small"><em>7 minutes ago</em></span>
-          </a>
+          <?php foreach ($comments as $comment): ?>
+            <div class="list-group-item">
+              <i class="fa fa-comment fa-fw"></i> <?= $comment['comment'] ?>
+              <?php
+              $date = new DateTime();
+              $date1 = $date->format('Y-m-d H:i:s');
+              $date2 = $comment['created_at'];
+              $nbjours = round((strtotime($date1) - strtotime($date2))/(60*60*24)-1);
+               ?>
+              <span class="pull-right text-muted small"><em><?= $nbjours ?> days ago</em></span>
+            </div>
+          <?php endforeach; ?>
           </div>
           <a href="<?= $this->url('admin_comments') ?>" class="btn btn-default btn-block">Voir tous les commentaires</a>
       </div>
@@ -122,26 +114,18 @@
       </div>
       <div class="panel-body">
         <div class="list-group">
-          <a href="#" class="list-group-item">
-            <i class="fa fa-user fa-fw"></i> Nouvel utilisateur
-            <span class="pull-right text-muted small"><em>23 days ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-user fa-fw"></i> Nouvel utilisateur
-            <span class="pull-right text-muted small"><em>15 days ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-user fa-fw"></i> Nouvel utilisateur
-            <span class="pull-right text-muted small"><em>8 days ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-user fa-fw"></i> Nouvel utilisateur
-            <span class="pull-right text-muted small"><em>12 hours ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-user fa-fw"></i> Nouvel utilisateur
-            <span class="pull-right text-muted small"><em>5 minutes ago</em></span>
-          </a>
+          <?php foreach ($users as $user ): ?>
+            <div class="list-group-item">
+              <i class="fa fa-user fa-fw"></i> <?= $user['username']; ?>
+              <?php
+              $date = new DateTime();
+              $date1 = $date->format('Y-m-d H:i:s');
+              $date2 = $user['created_at'];
+              $nbjours = round((strtotime($date1) - strtotime($date2))/(60*60*24)-1);
+               ?>
+              <span class="pull-right text-muted small"><em><?= $nbjours ?> days ago</em></span>
+            </div>
+          <?php endforeach; ?>
           </div>
           <a href="<?= $this->url('admin_users') ?>" class="btn btn-default btn-block">Voir tous les utilisateurs</a>
       </div>
@@ -156,18 +140,17 @@
       </div>
       <div class="panel-body">
         <div class="list-group">
+        <?php foreach ($orders as $order): ?>
           <a href="#" class="list-group-item">
-            Commande 3
-            <span class="pull-right text-muted small"><em>10 hours ago</em></span>
+            <?= $order['status'] ?>
+            <?php
+            $date = new DateTime();
+            $date1 = $date->format('Y-m-d H:i:s');
+            $date2 = $order['created_at'];
+            $nbjours = round((strtotime($date1) - strtotime($date2))/(60*60*24)-1); ?>
+            <span class="pull-right text-muted small"><em><?= $nbjours ?> hours ago</em></span>
           </a>
-          <a href="#" class="list-group-item">
-            Commande 2
-            <span class="pull-right text-muted small"><em>10 hours ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            Commande 1
-            <span class="pull-right text-muted small"><em>9 hours ago</em></span>
-          </a>
+        <?php endforeach; ?>
         </div>
         <a href="<?= $this->url('admin_orders') ?>" class="btn btn-default btn-block">Voir toutes les commandes en cours</a>
       </div>
@@ -215,26 +198,17 @@
       </div>
       <div class="panel-body">
         <div class="list-group">
-          <a href="#" class="list-group-item">
-            Produit 5
-            <span class="pull-right text-muted small"><em>23 hours ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            Produit 4
-            <span class="pull-right text-muted small"><em>23 hours ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            Produit 3
-            <span class="pull-right text-muted small"><em>23 hours ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            Produit 2
-            <span class="pull-right text-muted small"><em>12 hours ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            Produit 1
-            <span class="pull-right text-muted small"><em>57 minutes ago</em></span>
-          </a>
+          <?php foreach ($items as $item ): ?>
+            <div class="list-group-item">
+              <?php
+              $date = new DateTime();
+              $date1 = $date->format('Y-m-d H:i:s');
+              $date2 = $item['created_at'];
+              $nbjours = round((strtotime($date1) - strtotime($date2))/(60*60*24)-1);
+              echo $item['designation']; ?>
+              <span class="pull-right text-muted small"><em><?= $nbjours ?> day ago</em></span>
+            </div>
+          <?php endforeach; ?>
           </div>
           <a href="<?= $this->url('admin_items') ?>" class="btn btn-default btn-block">Voir tous les produits</a>
       </div>

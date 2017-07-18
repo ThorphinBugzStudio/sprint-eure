@@ -29,8 +29,5 @@ public function devis()
  */
 public function devisAction()
 {
-  # code
-}
-
 
 }
