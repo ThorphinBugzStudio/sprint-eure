@@ -21,6 +21,9 @@ class PanierController extends AppController
    */
   public function panier()
   {
+    //tableau qui récupère les données stringified du js
+    $array = json_decode($_GET['jsondata']);
+    debug($_GET);
     $this->show('page_panier/panier');
   }
 
