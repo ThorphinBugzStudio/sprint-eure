@@ -89,11 +89,14 @@
 		['GET', '/panier/add/[i:id]','Panier#addArticleToPanier', 'ajouter_au_panier'],
 
 
-		/**
-		 * Admin\UsersController
-		 *
-		 *
-		 */
+		// ==============================================================================
+		//
+		// 														Admin\UsersController
+		//
+		// ==============================================================================
+
+		['GET', '/admin/dashboard', 'Admin\Dashboard#dashboard', 'admin_dashboard'],
+
 		// Listing utilisateurs - Bouton Update - Bouton Delete - Menu Ajouter
 		['GET', '/admin/users', 'Admin\Users#users', 'admin_users'],
 		['GET', '/admin/users/[i:page]', 'Admin\Users#users', 'admin_page_users'], // pour gerer la pagination du listing.
