@@ -80,16 +80,19 @@ $user_id = $w_user['id']; ?>
   </div>
 
   <!-- Commandes -->
-  <div class="col-lg-12 col-sm-12">
-    <p>Vos commandes :</p>
+  <div class="col-lg-12 col-sm-12 px-0">
+    <div class="container-fluid row px-0 pt-4 mb-3 mainContent">
+      <h2>Vos commandes</h2>
+      <hr class="hrPage">
+    </div>
 
     <table class="table table-striped table-bordered table-hover">
       <!-- En-tête de tableau -->
       <thead>
         <tr>
-          <th>n°</th>
-          <th>du</th>
-          <th>statut</th>
+          <th>N°</th>
+          <th>Du</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>

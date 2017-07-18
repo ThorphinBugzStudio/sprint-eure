@@ -9,9 +9,6 @@
   <input type="submit" name="submit" value="rechercher">
 </form> -->
 
-<a  href="<?= $this->url('catalog_search_item_priceASC', ['id' =>  $id])?>">Prix ordre croissant</a>
-<a  href="<?= $this->url('catalog_search_item_priceDESC', ['id' =>  $id])?>">Prix ordre decroissant</a>
-
 <div class="row w-100 ml-auto mt-2 justify-content-end category-row">
   <div class="mr-auto">
     <form class="search mr-auto" action="<?= $this->url('catalog_search') ?>" method="post">
@@ -21,11 +18,26 @@
 </div>
 
   <div class="row category-button-return">
-
       <a class="my-auto mr-auto" href="<?= $this->url('catalog') ?>">
         <i class="fa fa-reply mr-auto my-auto" aria-hidden="true" style="margin-right: 5px;"></i>
         Retour
       </a>
+  </div>
+
+  <!-- BOUTON : Prix par ordre croissant -->
+  <div class="row category-button-return" style="background-color: #5b984c;">
+    <a class="my-auto mr-auto" href="<?= $this->url('catalog_categorie_item_priceASC', ['id' =>  $id])?>">
+      <i class="fa fa-arrow-up mr-auto my-auto" aria-hidden="true" style="margin-right: 5px;"></i>
+      Prix croissant
+    </a>
+  </div>
+
+  <!-- BOUTON : Prix par ordre décroissant -->
+  <div class="row category-button-return" style="background-color: #ce741c;">
+    <a class="my-auto mr-auto" href="<?= $this->url('catalog_categorie_item_priceDESC', ['id' =>  $id])?>">
+      <i class="fa fa-arrow-down mr-auto my-auto" aria-hidden="true" style="margin-right: 5px;"></i>
+      Prix décroissant
+    </a>
   </div>
 
   <!-- BOUTON : Trier par catégorie -->
@@ -87,9 +99,11 @@
 
       <hr class="hrSingleArticle m-0 mb-3">
 
+      <div style="height:46px;"></div>
+
       <!-- BOUTON : Ajouter au panier -->
-      <div class="row" style="display: flex;">
-        <div class="row mx-auto">
+      <div class="row btn_basket-bottom">
+        <div class="row mx-auto p-relative">
           <a class="btn_basket" href="#">
               <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Ajouter au panier
           </a>

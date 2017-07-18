@@ -1413,6 +1413,7 @@ var Dropdown = function ($) {
 
   var Dropdown = function () {
     function Dropdown(element) {
+      
       _classCallCheck(this, Dropdown);
 
       this._element = element;
