@@ -49,6 +49,9 @@ function testPresence(array,article,key)
 var Panier = new Array();
 var TabHt = new Array();
 
+// Recuperation du panier au chargement de page
+getCookie('caddie');
+
 $('.btn_basket').on("click",function (event)
 {
   event.preventDefault();
@@ -110,6 +113,8 @@ $('.btn_basket').on("click",function (event)
           var nbreArticles = Panier.length;
           $('#nbr_articles').html('('+nbreArticles+')');
 
+         savePanier();
+
 //------------------ Event pour les chngmnt quantités ------------------------//
 
           $('.dropdown-item').on("click",'#Qt',function (event)
@@ -158,7 +163,9 @@ $('.btn_basket').on("click",function (event)
                      var nbreArticles = Panier.length;
                      $('#nbr_articles').html('('+nbreArticles+')');
 
+               savePanier();
           })
+
 
 
     },
@@ -235,4 +242,171 @@ $('.dropdown-item').on("click", '#delete_btn',function (event)
     $($(this)).parent().detach();
     $($(this)).detach();
 
+    savePanier();
 })
+
+function getCookie(cname)
+{
+  // var name = cname + "=";
+  console.log(document.cookie);
+  var ca = document.cookie.split('|;');
+//['caddie'].split('|')
+  console.log(ca);
+
+
+  for(var i = 0; i < ca.length; i++)
+  {
+    if (ca[i].substring(0, cname.length) == 'caddie')
+    {
+      if (ca[i].substr(7,1) != ';' )
+      {
+         var articles = ca[i].substring(7, ca[i].length).split('|');
+         console.log('articles');
+         console.log(ca[i].substr(7,1));
+
+
+         for (var j = 0; j < articles.length; j++)
+         {
+           articleObj = JSON.parse(articles[j]);
+           console.log('articleObj');
+           console.log(articleObj);
+
+           var randomNb = Math.round(Rand(0, 10000)* 3.14);
+           var linkValue = articleObj.designation+'_'+randomNb
+
+           var Article = new Array();
+           Article['id'] = articleObj.id;
+           Article['designation'] = linkValue;
+           Article['puht'] = articleObj.puht;
+           Article['quantité'] = articleObj.quantité;
+           Article['prixTotalht'] = articleObj.prixTotalht;
+
+         console.log('Article');
+         console.log(Article);
+
+         addItem(Panier,Article);
+         // $('.dropdown-item').prepend('<div class="item_panier row px-0" value="'+linkValue+'"><p class="col-6">'+articleObj.designation+' '+'</p> <input id="Qt" style="width:2.3em;" class="col-4 ' + linkValue+'" type="number" min=1 value="'+Article['quantité']+'"> <br>' + '<i id="delete_btn" value="'+linkValue+'" class="fa fa-times fa-close-basket my-auto ml-auto col-2" aria-hidden="true"></i> <p class="col-12 ml-auto">'+ articleObj.puht+' €</p> </div>');
+         $('.dropdown-item').prepend('<div class="item_panier row px-0 p-2" value="' + linkValue + '"> <i id="delete_btn" value="' + linkValue + '" class="fa fa-times fa-close-basket my-auto ml-auto" aria-hidden="true"></i> <p class="mr-auto">' + articleObj.designation + '</p> <input id="Qt" class="' + linkValue + '" type="number" min=1 value="' + articleObj.quantité + '"> <br>' +  '<p class="col-6 px-0 ml-auto bold" style="text-align: end;">' + articleObj.puht + ' €</p> </div>');
+
+       // On déclare ht qui calcule le prix ht
+             var $ht = panierHt(Panier,'prixTotalht');
+             console.log($ht)
+       // On affiche le prix ht ds le panier
+             $('#total_ht').html($ht.toFixed(2)); //element.toFixed(nb)= 2chiffre après la "," ??? WTF ???
+
+       // calcul du taux de tva par rapport au ht
+             var vatRate = 20/100;
+             var tvaTot = $ht * vatRate;
+
+       // Affichage du prix de la TVA
+             $('#total_tva').html(tvaTot.toFixed(2));
+
+       // calcul du prix TTC
+             var ttc = $ht + tvaTot;
+
+       //Affichage du prix TTC
+             $('#total_ttc').html(ttc.toFixed(2));
+
+       //Calcul du nbre d'article
+             var nbreArticles = Panier.length;
+             $('#nbr_articles').html('('+nbreArticles+')');
+
+             $('.dropdown-item').on("click",'#Qt',function (event)
+             {
+              //On recup la designation de l'article ciblé
+              var ArticleDesignation = $(this).attr('class');
+
+              //On le cherche dans le tableau Panier
+              function tabVal(Panier)
+              {
+                return Panier.designation === ArticleDesignation;
+              }
+
+              //On le stocke ds une variable
+              var ArticleToModify = Panier.find(tabVal);
+
+              //On change la quantité ds le tableau
+              ArticleToModify['quantité'] = $(this).val();
+
+              //On stocke la quantité dans une variable
+              var $quantité = ArticleToModify['quantité'];
+
+              //On modifie le prix total ht dans le tableau de l'article
+              ArticleToModify['prixTotalht'] = $quantité * ArticleToModify['puht'];
+
+              //On recalcule le ht
+              var $ht = panierHt(Panier,'prixTotalht');
+
+              //On affiche le ht
+                 $('#total_ht').html($ht.toFixed(2));
+
+                 //calcul du taux de tva par rapport au ht
+                       var vatRate = 20/100;
+                       var tvaTot = $ht * vatRate;
+
+                 //Affichage du prix de la TVA
+                       $('#total_tva').html(tvaTot.toFixed(2));
+
+                 //calcul du prix TTC
+                       var ttc = $ht + tvaTot;
+
+                 //Affichage du prix TTC
+                       $('#total_ttc').html(ttc.toFixed(2));
+
+                 //Calcul du nbre d'article
+                       var nbreArticles = Panier.length;
+                       $('#nbr_articles').html('('+nbreArticles+')');
+                  savePanier();
+            })
+      }
+   }
+
+
+
+      console.log('Panier');
+      console.log(Panier);
+    }
+
+  }
+
+
+}
+
+// event click bouton panier
+$('.btn_ok').on("click", function (event)
+{
+   savePanier();
+})
+
+// Sauvegarde des articles present dans le panier dans un cookie 'caddie'
+function savePanier()
+{
+   console.log(Panier);
+   var test = '';
+   for (var i = 0; i < Panier.length; ++i)
+   {
+     var articletest = Object.assign({}, Panier[i]);
+     console.log(articletest);
+     test += JSON.stringify(articletest) + '|';
+         console.log(test);
+   }
+
+   console.log(test);
+   console.log('click');
+
+   setCookie('caddie', test, 5);
+}
+
+// Sauvegarde du cookie
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+d.toUTCString();
+
+  // règle le pb des caractères interdits
+  // if ('btoa' in window) {
+  //   cvalue = btoa(cvalue);
+  // }
+
+  document.cookie = cname + "=" + cvalue + "; " + expires;
+}
