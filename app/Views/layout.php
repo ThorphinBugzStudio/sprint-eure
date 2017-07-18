@@ -108,21 +108,20 @@
 
 									<div class="basket-spacer my-2 mx-3" style="border-top: 1px dotted grey;"></div>
 
-									<div class="row px-2">
+									<div id="div_total" class="row px-2">
 										<p class="col-6 bold mb-0">Total TTC :</p>
 										<p class="col-6 text-align-right mb-0 total_ttc"><span id="total_ttc">0.00</span> €</p>
 									</div>
 
 									<!-- BOUTON : Valider le panier -->
-									<div class="row justify-content-center my-3">
+										<div class="row justify-content-center my-3">
 										<a class="send_to_panier" href="<?php echo $this->url('panier_client') ?>">
-											<button type="button" name="button" class="btn_ok">
-												<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-												Valider
-											</button>
+										<button id="panier_validation" type="button" name="button" class="btn_ok">
+										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+										Valider
+										</button>
 										</a>
-									</div>
-
+										</div>
 								</div>
 							</div>
 						</li>

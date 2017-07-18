@@ -9,6 +9,8 @@ use Services\Tools\ToolHP;
 
 use Model\CommentsModel;
 use Model\UsersModel;
+use Model\ItemsModel;
+use Model\OrdersModel;
 
 /**
  * Controller Administration du Dashboard en back office.
@@ -16,8 +18,25 @@ use Model\UsersModel;
 class DashboardController extends AppController {
 
   public function dashboard() {
-      // ADMIN ONLY
       $this->allowTo('admin');
-      $this->show('admin/dashboard');
+
+      $users = new UsersModel();
+      $articles = new ItemsModel();
+      $comments = new CommentsModel();
+      $order = new OrdersModel();
+      $lastUsers = $users->findAll('created_at', 'DESC', 5);
+      $lastproduct = $articles->findAll('created_at', 'DESC', 5);
+      $lastcomments = $comments->findAll('created_at', 'DESC', 5);
+      $lastcommande = $order->findAll('created_at', 'DESC', 5);
+      $allusers = $users->findAll('created_at', 'DESC');
+
+
+      $countseven = $users->getsevenDayNewUser();
+
+
+      $nbNewComment = $comments->nbcomment();
+      $nbneworders = $order->nbneworders();
+
+      $this->show('admin/dashboard', ['users' => $lastUsers, 'items' => $lastproduct, 'comments' => $lastcomments, 'orders' => $lastcommande, 'newcomments' => $nbNewComment, 'nborders' => $nbneworders, 'allusers' => $countseven]);
   }
 }

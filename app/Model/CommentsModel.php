@@ -180,6 +180,17 @@ class CommentsModel extends Model
       }
  }
 
+ public function nbcomment()
+   {
+
+     $sql = "SELECT * FROM $this->table WHERE status = 'inactive' " ;
+     $sth = $this->dbh->prepare($sql);
+     $sth->execute();
+     $etat = $sth->rowCount();
+
+     return $etat;
+   }
+
 
 
 }
