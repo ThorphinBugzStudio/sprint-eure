@@ -255,7 +255,7 @@ $('#panier_validation').on("click", function (event)
     event.preventDefault();
   } else {
 
-    savePanier();
+    // savePanier(); Pas utile
    }
 })
 
