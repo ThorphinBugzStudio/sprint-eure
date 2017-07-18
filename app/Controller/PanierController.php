@@ -76,4 +76,17 @@ class PanierController extends AppController
     die('ok');
   }
 
+  /**
+   * Get $_Session pour alimentation panier js
+   * Script pour Ajax dans panier.js
+   *
+   * @return JSON
+   */
+  public function panierFromSession()
+  {
+    $data = $_SESSION['caddie'];
+
+    $this->showJson($data);
+  }
+
 }
