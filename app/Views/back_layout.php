@@ -45,7 +45,7 @@
 							</li>
 							<!-- Section : Dashboard -->
               <li>
-                <a href="<?= $this->url('admin_users') ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="<?= $this->url('admin_dashboard') ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
               </li>
 
 							<!-- ===================================== -->

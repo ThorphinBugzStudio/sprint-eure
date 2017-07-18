@@ -70,7 +70,7 @@
 						// BOUTON : Administration
 						if($w_user['role'] == 'admin') { ?>
 							<li>
-								<a href="<?= $this->url('admin_users') ?>"><i class="fa fa-dashboard" aria-hidden="true"></i> Administration</a>
+								<a href="<?= $this->url('admin_dashboard') ?>"><i class="fa fa-dashboard" aria-hidden="true"></i> Administration</a>
 							</li>
 						<?php } ?>
 

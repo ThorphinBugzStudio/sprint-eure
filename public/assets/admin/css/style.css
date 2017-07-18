@@ -85,6 +85,11 @@ p {
   background: #1a2226;
 }
 
+/* -------------- DASHBOARD -------------- */
+
+.btn-block {
+  white-space: normal;
+}
 
 /* -------------- CONTENU PRINCIPAL -------------- */
 
@@ -229,6 +234,28 @@ th {
 
 .search_per_category {
   display: grid;
+}
+
+.search {
+	display: flex;
+	width: 100%;
+}
+
+.fa-input {
+	font-family: "FontAwesome";
+	padding: 5px;
+	background-color: #1d1d1d;
+	border: 1px solid grey;
+	border-left: 0;
+	color: white;
+	border-radius: 0 8px 8px 0;
+	cursor: pointer;
+}
+
+.fa-input:hover {
+	background-color: #353535;
+	border: 1px solid grey;
+	border-left: 0;
 }
 
 /* -------------- FORMULAIRES -------------- */
