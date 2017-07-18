@@ -84,7 +84,7 @@ $_ENV = 'Home'; ?>
   </div>
 
   <div class="ads-vertical">
-    <a href="#"><img src="<?= $this->assetUrl('img/pub/img3.jpg') ?>" alt="Publicité" class="img-fluid"></a>
+    <a href="../public/catalog/item/48"><img src="<?= $this->assetUrl('img/pub/img3.jpg') ?>" alt="Publicité" class="img-fluid"></a>
   </div>
 </div>
 
