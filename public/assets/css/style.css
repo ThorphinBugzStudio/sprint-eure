@@ -226,8 +226,12 @@ body {
 	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0));
 }
 
+.carousel-item a {
+	width: 100%;
+}
+
 .carousel-indicators {
-	bottom: -10px;
+	bottom: -6px;
 }
 
 .carousel-indicators li {
@@ -241,6 +245,7 @@ body {
 	left: 0%;
 	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
 	width: 100%;
+	padding: 0 0 30px 0;
 }
 
 .carousel-caption h3 {
@@ -628,7 +633,7 @@ form label {
 .btn_basket a:active, .btn_basket a:focus {
 	text-decoration: none;
  }
- 
+
 .category-row {
 	position: relative;
 	justify-content: space-around;
@@ -925,6 +930,15 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 	display: none;
 }
 
+.span-flash {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-left: 4px solid #5eb65e;
+  background-color: rgba(0, 255, 0, 0.1);
+  display: flex;
+	margin: 10px 0;
+}
+
 /* ----------------------- MEDIA QUERY ------------------------ */
 @media (max-width: 827px) {
 	.navbar-users ul li, .navbar-menu ul li {
@@ -957,13 +971,13 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 	}
 }
 
-@media (max-width: 1310px) {
+@media (max-width: 1442px) {
 	.ads-column {
 		display: none;
 	}
 }
 
-@media (max-width: 1538px) {
+@media (max-width: 1695px) {
 	.ads-vertical {
 		display: none;
 	}

@@ -29,6 +29,8 @@ class ProfileController extends AppController
     $orders = new OrdersModel();
     // $auth = new AuthentificationModel();
 
+    $this->allowTo(['client', 'admin']);
+
     $user = $this->getUser();
     // $auth->refreshUser();
     $user_avatar = $avatar->getUserAvatar($user['id']);
@@ -42,7 +44,7 @@ class ProfileController extends AppController
     foreach ($user_orders as $user_order)
     {
       $temp = $orders->getHeadOrder($user_order['id']);
-      
+
       switch ($temp['status'])
       {
          case 'temp':
@@ -52,10 +54,10 @@ class ProfileController extends AppController
             $temp['status'] = 'Validée par vos soins - En attente de paiement';
             break;
          case 'paid':
-            $temp['status'] = 'Paiement effectué - Verification en cours';
+            $temp['status'] = 'Paiement effectué - Vérification en cours';
             break;
          case 'checked':
-            $temp['status'] = 'Commande verifiée - En cours de préparation';
+            $temp['status'] = 'Commande vérifiée - En cours de préparation';
             break;
          case 'prepared':
             $$temp['status'] = 'Commande préparée - En cours d\'expedition';
@@ -82,6 +84,8 @@ class ProfileController extends AppController
   {
     $adress = new User_adressesModel();
     $avatar = new AvatarsModel();
+
+    $this->allowTo(['client', 'admin']);
 
     $user = $this->getUser();
 
@@ -118,6 +122,8 @@ class ProfileController extends AppController
     $avatarmodel = new AvatarsModel();
     $adressmodel = new User_adressesModel();
     $date = new \DateTime();
+
+    $this->allowTo(['client', 'admin']);
 
     $user = $this->getUser();
 
