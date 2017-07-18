@@ -26,7 +26,34 @@ class PanierController extends AppController
   public function panier()
   {
 
-    // Recuperation et formatage des articles du panier presents en $_SESSION
+    // Alimentation view
+    $rowsOrder = $this->getRowsCaddy();
+    
+    $footOrder = ToolHP::CalculFootOrder($rowsOrder, 20.00);
+    // debug($rowsOrder);
+    // debug($footOrder);
+
+    // Modes de paiements
+    $modesPayBox = new RadiosBox('Modes de paiement', ['CB'       => 'cb',
+                                                       'Chèque'   =>  'cheque',
+                                                       'virement' => 'virement',
+                                                       'Paypal'   => 'paypal'
+                                                      ], 'paypal');   
+    // debug($modesPayBox);                                                       
+
+    $this->show('page_panier/panier', ['rowsOrder'   => $rowsOrder,
+                                       'footOrder'   => $footOrder,
+                                       'modesPayBox' => $modesPayBox->getHtml()
+    ]);
+  }
+
+  /**
+   * Recuperation et formatage des articles du panier presents en $_SESSION
+   *
+   * @return array
+   */
+  private function getRowsCaddy()
+  {
     // debug($_SESSION);
     $caddie = explode('|', $_SESSION['caddie']);
     array_pop($caddie); // suppr dernier élément vide suite explode
@@ -56,23 +83,9 @@ class PanierController extends AppController
 
       $rowsOrder[] = $rowOrder;
     }
-    
-    $footOrder = ToolHP::CalculFootOrder($rowsOrder, 20.00);
-    // debug($rowsOrder);
-    // debug($footOrder);
 
-    // Modes de paiements
-    $modesPayBox = new RadiosBox('Modes de paiement', ['CB'       => 'cb',
-                                                       'Chèque'   =>  'cheque',
-                                                       'virement' => 'virement',
-                                                       'Paypal'   => 'paypal'
-                                                      ], 'paypal');   
-    // debug($modesPayBox);                                                       
+    return $rowsOrder;
 
-    $this->show('page_panier/panier', ['rowsOrder'   => $rowsOrder,
-                                       'footOrder'   => $footOrder,
-                                       'modesPayBox' => $modesPayBox->getHtml()
-    ]);
   }
 
   /**
@@ -82,7 +95,12 @@ class PanierController extends AppController
    */
   public function panierAction()
   {
-    # code
+    
+
+
+
+
+
   }
 
   /**
