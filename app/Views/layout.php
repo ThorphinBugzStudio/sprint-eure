@@ -115,7 +115,7 @@
 
 									<!-- BOUTON : Valider le panier -->
 									<div class="row justify-content-center my-3">
-										<a href="<?php echo $this->url('panier_client') ?>">
+										<a class="send_to_panier" href="<?php echo $this->url('panier_client') ?>">
 											<button type="button" name="button" class="btn_ok">
 												<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 												Valider

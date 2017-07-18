@@ -21,6 +21,12 @@ class PanierController extends AppController
    */
   public function panier()
   {
+
+     debug($_COOKIE);
+
+   // $panier = json_decode($_COOKIE['caddie']);
+   // debug($panier);
+
     $this->show('page_panier/panier');
   }
 
