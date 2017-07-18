@@ -45,7 +45,7 @@ public function devisAction()
     $message = $post['message'];
     $file = $_FILES['stlfile'];
 
-    $valid->uploadValid($file,10000000,['.stl'],$extensionsmime))
+    $valid->uploadValid($file,10000000,['.stl'],$extensionsmime);
 
     debug($post);
     debug($file);
