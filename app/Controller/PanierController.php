@@ -40,7 +40,7 @@ class PanierController extends AppController
       $articles[] = json_decode($key);
       }
     }
-    debug($articles);
+    // debug($articles);
 
     // Alimentation view
     // recuperation des infos en bd : puht etc...
@@ -67,7 +67,7 @@ class PanierController extends AppController
                                                        'virement' => 'virement',
                                                        'Paypal'   => 'paypal'
                                                       ], 'paypal');   
-     debug($modesPayBox);                                                       
+    // debug($modesPayBox);                                                       
 
     $this->show('page_panier/panier', ['rowsOrder'   => $rowsOrder,
                                        'footOrder'   => $footOrder,
