@@ -1,8 +1,6 @@
 <?php $this->layout('layout', ['title' => 'Demande de devis']) ?>
 
 <?php $this->start('main_content') ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
-<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/controls/TrackballControls.js"></script>
 
 <div class="row" style="justify-content: space-between">
 
@@ -17,7 +15,7 @@
 
          <!-- Section : Message / Specificités -->
          <label for="message">Votre demande (Specificités)</label> <span class="error">*</span>
-         <textarea rows="12" cols="50" class="input-form" name="message" value="<?php if(!empty($_POST['message'])){ echo $_POST['message']; } else { echo $w_user['message']; } ?>"></textarea>
+         <textarea rows="12" cols="50" class="input-form" name="message" value="<?php if(!empty($_POST['message'])){ echo $_POST['message']; } ?>"></textarea>
          <?php if(!empty($error['message'])){ echo '<p id="error-message" class="message">' . $error['message'] . '</p>'; } ?>
 
          <!-- Section : upload fichier -->
@@ -43,6 +41,13 @@
 </div>
 
 
-<script src="<?= $this->assetUrl('js/loader.js') ?>"></script>
-<script src="<?= $this->assetUrl('js/stl.js') ?>"></script>
 <?php $this->stop('main_content') ?>
+
+<?php $this->start('jsfooter_content') ?>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
+   <script src="https://rawgit.com/mrdoob/three.js/master/examples/js/controls/TrackballControls.js"></script>
+   <script src="<?= $this->assetUrl('js/loader.js') ?>"></script>
+   <script src="<?= $this->assetUrl('js/stl.js') ?>"></script>
+
+<?php $this->stop('jsfooter_content') ?>

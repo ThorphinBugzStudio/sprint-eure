@@ -13,7 +13,7 @@
       <input type="submit" name="submit" value="&#xf002" class="fa-input px-3">
     </form>
   </div>
-  
+
   <!-- BOUTON : Trier par catégorie -->
   <div class="btn-group category-button">
     <p type="button" class="my-auto mr-auto" >Catégorie</p>
@@ -54,7 +54,6 @@
         <div class="mr-auto my-auto">
           <!-- Nom de l'article -->
           <div class="single-article-title">
-
             <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>"><?= $result['designation']; ?></a>
           </div>
 

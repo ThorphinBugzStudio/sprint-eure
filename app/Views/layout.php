@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title><?= $this->e($title) ?> - Sprint'Eure</title>
 	<meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="keywords" content="3dprinter, printer, imprimante 3d, imprimante, composant imprimante, fichier 3d, 3d file, sprint'eure, imprimerie 3d">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="icon" type="image/png" href="">
@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/font-awesome.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/hover.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/animate.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/fancybox.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 
@@ -44,16 +45,19 @@
 				<div class="row w-100 navbar-users justify-content-end">
 
 					<ul class="ml-auto w-100">
+						<!-- BOUTON : Inscription -->
 						<?php if(empty($w_user)) { ?>
 							<li>
 								<a href="<?= $this->url('inscription') ?>"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</a>
 							</li>
 
+							<!-- BOUTON : Connexion -->
 							<li>
 								<a href="<?= $this->url('login') ?>"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a>
 							</li>
 						<?php	} ?>
 
+						<!-- BOUTON : Profil utilisateur -->
 						<?php if(!empty($w_user)) { ?>
 							<li>
 								<a href="<?= $this->url('user_profile') ?>"><img class="navbar-avatar" src="<?php echo $this->assetUrl('img/avatars/'.$w_user['avatar']) ?>" alt="">
@@ -62,47 +66,66 @@
 							</li>
 						<?php	} ?>
 
-						<?php if($w_user['role'] == 'admin') { ?>
+						<?php
+						// BOUTON : Administration
+						if($w_user['role'] == 'admin') { ?>
 							<li>
 								<a href="<?= $this->url('admin_users') ?>"><i class="fa fa-dashboard" aria-hidden="true"></i> Administration</a>
 							</li>
 						<?php } ?>
 
+						<!-- BOUTON : Déconnexion -->
 						<?php if(!empty($w_user))	{ ?>
 							<li>
 								<a href="<?= $this->url('logout') ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
 							</li>
 						<?php	} ?>
 
+						<!-- BOUTON : Panier -->
 						<li class="dropdown basket-order" id="basket-li">
 							<a href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier <span id="nbr_articles">(0)</span>
 							</a>
+
+							<!-- MODAL BOX : Titre de la fenêtre du panier -->
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								<div class="title_basket">
 									<a href="<?= $this->url('panier_client') ?>">Votre panier</a>
 								</div>
-								<div class="dropdown-item">
-									<p id="basket_first_line" class="text-align-center mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Le panier est vide.</p>
-									<hr class="hrPage">
-									<div class="row mt-2">
+								<div class="dropdown-item responsive-basket row p-0">
+									<!-- MODAL BOX : Contenu de la fenêtre du panier -->
+									<p id="basket_first_line" class="text-align-center p-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Le panier est vide.</p>
+
+									<hr class="hrPage mx-3" style="width: initial;">
+
+									<!-- MODAL BOX : Tous les prix finaux de la fenêtre du panier -->
+									<div class="row mt-2 px-2">
 										<p class="col-6 bold mb-0">Total HT :</p>
 										<p class="col-6 text-align-right mb-0"><span id="total_ht">0.00</span> €</p>
 										<p class="col-6 bold mb-0">Taxes :</p>
 										<p class="col-6 text-align-right mb-0"><span id="total_tva">0.00</span> €</p>
 									</div>
-									<div class="basket-spacer my-2" style="border-top: 1px dotted grey;"></div>
-									<div class="row">
-										<p class="col-6 bold mb-0">Total :</p>
-										<p class="col-6 text-align-right mb-0"><span id="total_ttc">0.00</span> €</p>
+
+									<div class="basket-spacer my-2 mx-3" style="border-top: 1px dotted grey;"></div>
+
+									<div class="row px-2">
+										<p class="col-6 bold mb-0">Total TTC :</p>
+										<p class="col-6 text-align-right mb-0 total_ttc"><span id="total_ttc">0.00</span> €</p>
 									</div>
-									<div class="row justify-content-center mt-2">
-										<a class="send_to_panier" href="<?php echo $this->url('panier_client') ?>"><button type="button" name="button" class="btn_ok"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button></a>
+
+									<!-- BOUTON : Valider le panier -->
+									<div class="row justify-content-center my-3">
+										<a class="send_to_panier" href="<?php echo $this->url('panier_client') ?>">
+											<button type="button" name="button" class="btn_ok">
+												<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+												Valider
+											</button>
+										</a>
 									</div>
+
 								</div>
 							</div>
 						</li>
-
 					</ul>
 				</div>
 	</div>
@@ -204,7 +227,7 @@
 	<script src="<?= $this->assetUrl('js/category.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/panier.js') ?>" charset="utf-8"></script>
 	<script src="<?= $this->assetUrl('js/app.js') ?>" charset="utf-8"></script>
-
+	<?= $this->section('jsfooter_content') ?>
 
 </body>
 </html>
