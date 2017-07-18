@@ -85,6 +85,7 @@
 		 */
 		['GET', '/panier', 'Panier#panier', 'panier_client'],
 		['POST', '/panier', 'Panier#panier', 'panier_client_action'],
+		['POST', '/panier/tosession', 'Panier#panierToSession', 'panier_to_session'],
 		// route panier article ajouter au panier
 		['GET', '/panier/add/[i:id]','Panier#addArticleToPanier', 'ajouter_au_panier'],
 
