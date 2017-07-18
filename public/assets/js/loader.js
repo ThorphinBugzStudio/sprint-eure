@@ -28,7 +28,8 @@ window.addEventListener("load", function () {
     scene.add(light2);
 
     var mat = new THREE.MeshPhongMaterial({
-        color: 0x339900, ambient: 0x339900, specular: 0x030303,
+        //color: 0x339900, ambient: 0x339900, specular: 0x030303,
+        color: 0x1885c0, ambient: 0x1885c0, specular: 0x030303,
     });
     var obj = new THREE.Mesh(new THREE.Geometry(), mat);
     scene.add(obj);

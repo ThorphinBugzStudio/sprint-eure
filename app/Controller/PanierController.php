@@ -2,7 +2,11 @@
 
 namespace Controller;
 
+use Services\Tools\RadiosBox;
+use Services\Tools\ToolHP;
+
 use Model\ItemsModel;
+use Model\OrderRowsModel;
 
 // use \W\Controller\Controller; // Inutile puisque heritage de AppController dans le meme espace de nom
 
@@ -22,13 +26,66 @@ class PanierController extends AppController
   public function panier()
   {
 
-      debug($_SESSION);
-      
+    // Alimentation view
+    $rowsOrder = $this->getRowsCaddy();
+    
+    $footOrder = ToolHP::CalculFootOrder($rowsOrder, 20.00);
+    // debug($rowsOrder);
+    // debug($footOrder);
 
-   // $panier = json_decode($_COOKIE['caddie']);
-   // debug($panier);
+    // Modes de paiements
+    $modesPayBox = new RadiosBox('Modes de paiement', ['CB'       => 'cb',
+                                                       'Chèque'   =>  'cheque',
+                                                       'virement' => 'virement',
+                                                       'Paypal'   => 'paypal'
+                                                      ], 'paypal');   
+    // debug($modesPayBox);                                                       
 
-    $this->show('page_panier/panier');
+    $this->show('page_panier/panier', ['rowsOrder'   => $rowsOrder,
+                                       'footOrder'   => $footOrder,
+                                       'modesPayBox' => $modesPayBox->getHtml()
+    ]);
+  }
+
+  /**
+   * Recuperation et formatage des articles du panier presents en $_SESSION
+   *
+   * @return array
+   */
+  private function getRowsCaddy()
+  {
+    // debug($_SESSION);
+    $caddie = explode('|', $_SESSION['caddie']);
+    array_pop($caddie); // suppr dernier élément vide suite explode
+    // debug($caddie);
+
+    foreach ($caddie as $key)
+    {
+      if (!empty($key))
+      {
+      // Articles du caddie -> array php
+      $articles[] = json_decode($key);
+      }
+    }
+    // debug($articles);
+
+    // Alimentation view
+    // recuperation des infos en bd : puht etc...
+    $rowsOrder = null;
+    $itemPanier = new ItemsModel();
+    foreach ($articles as $article)
+    {
+      $rowOrder = $itemPanier->getItemPanier($article->id);
+      $rowOrder['items_id'] = $article->id;
+      $rowOrder['amount'] = $article->quantité;
+      $rowOrder['pht'] = $rowOrder['puht'] * $article->quantité;
+      // debug($rowOrder);
+
+      $rowsOrder[] = $rowOrder;
+    }
+
+    return $rowsOrder;
+
   }
 
   /**
@@ -38,7 +95,12 @@ class PanierController extends AppController
    */
   public function panierAction()
   {
-    # code
+    
+
+
+
+
+
   }
 
   /**
@@ -74,6 +136,19 @@ class PanierController extends AppController
     $_SESSION['caddie'] = $_POST['caddie'];
 
     die('ok');
+  }
+
+  /**
+   * Get $_Session pour alimentation panier js
+   * Script pour Ajax dans panier.js
+   *
+   * @return JSON
+   */
+  public function panierFromSession()
+  {
+    $data = $_SESSION['caddie'];
+
+    $this->showJson($data);
   }
 
 }

@@ -286,6 +286,33 @@ class ItemsModel extends ItemsFamilyModel
     return $result;
   }
 
+  /**
+     * Recuperation infos d'un item pour panier
+     * @param  int $id Id de l'article
+     * @return array
+     */
+    public function getItemPanier($id = null)
+    {
+        if (!empty($id))
+            {
+            $sql = "SELECT f.family, i.designation, i.packaging, i.puht
+                    FROM $this->table AS i
+                    JOIN spe_items_family AS f	ON i.items_family_id = f.id
+                    WHERE i.id = $id";
+
+            // debug($sql);
+            $sth = $this->dbh->prepare($sql);
+            $sth->execute();
+            $result = $sth->fetch();
+
+            return $result;
+        }
+        else
+        {
+           die('error : id item');
+        }
+   }
+
 
 
 }

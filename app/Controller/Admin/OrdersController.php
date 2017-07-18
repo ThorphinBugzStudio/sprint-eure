@@ -101,7 +101,7 @@ class OrdersController extends AppController
     $rowsOrder = $orderRows->getRowsOrder($id);
     $footOrder = ToolHP::CalculFootOrder($rowsOrder, $headOrder['vat_percentage']);
    //  debug($headOrder);
-   //  debug($rowsOrder);
+    debug($rowsOrder);
    //  debug($footOrder);
 
     $statusBox = new RadiosBox('Statut', ['Payée'    => 'paid',

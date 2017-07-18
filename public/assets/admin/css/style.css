@@ -91,6 +91,15 @@ p {
   white-space: normal;
 }
 
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-group-item span {
+  text-align: end;
+}
+
 /* -------------- CONTENU PRINCIPAL -------------- */
 
 #page-wrapper {

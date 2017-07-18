@@ -50,7 +50,7 @@ var Panier = new Array();
 var TabHt = new Array();
 
 // Recuperation du panier au chargement de page
-// getCookie('caddie');
+getSession();
 
 $('.btn_basket').on("click",function (event)
 {
@@ -245,134 +245,6 @@ $('.dropdown-item').on("click", '#delete_btn',function (event)
     savePanier();
 })
 
-function getCookie(cname)
-{
-  // var name = cname + "=";
-  console.log(document.cookie);
-  var ca = document.cookie.split('|;');
-//['caddie'].split('|')
-  console.log(ca);
-
-
-  for(var i = 0; i < ca.length; i++)
-  {
-    if (ca[i].substring(0, cname.length) == 'caddie')
-    {
-      if (ca[i].substr(7,1) != ';' )
-      {
-         $('#basket_first_line').html('');
-
-         var articles = ca[i].substring(7, ca[i].length).split('|');
-         console.log('articles');
-         console.log(ca[i].substr(7,1));
-
-
-         for (var j = 0; j < articles.length; j++)
-         {
-           articleObj = JSON.parse(articles[j]);
-           console.log('articleObj');
-           console.log(articleObj);
-
-           var randomNb = Math.round(Rand(0, 10000)* 3.14);
-           var linkValue = articleObj.designation+'_'+randomNb
-
-           var Article = new Array();
-           Article['id'] = articleObj.id;
-           Article['designation'] = linkValue;
-           Article['puht'] = articleObj.puht;
-           Article['quantité'] = articleObj.quantité;
-           Article['prixTotalht'] = articleObj.prixTotalht;
-
-         console.log('Article');
-         console.log(Article);
-
-         addItem(Panier,Article);
-         // $('.dropdown-item').prepend('<div class="item_panier row px-0" value="'+linkValue+'"><p class="col-6">'+articleObj.designation+' '+'</p> <input id="Qt" style="width:2.3em;" class="col-4 ' + linkValue+'" type="number" min=1 value="'+Article['quantité']+'"> <br>' + '<i id="delete_btn" value="'+linkValue+'" class="fa fa-times fa-close-basket my-auto ml-auto col-2" aria-hidden="true"></i> <p class="col-12 ml-auto">'+ articleObj.puht+' €</p> </div>');
-         $('.dropdown-item').prepend('<div class="item_panier row px-0 p-2" value="' + linkValue + '"> <i id="delete_btn" value="' + linkValue + '" class="fa fa-times fa-close-basket my-auto ml-auto" aria-hidden="true"></i> <p class="mr-auto">' + articleObj.designation + '</p> <input id="Qt" class="' + linkValue + '" type="number" min=1 value="' + articleObj.quantité + '"> <br>' +  '<p class="col-6 px-0 ml-auto bold" style="text-align: end;">' + articleObj.puht + ' €</p> </div>');
-
-       // On déclare ht qui calcule le prix ht
-             var $ht = panierHt(Panier,'prixTotalht');
-             console.log($ht)
-       // On affiche le prix ht ds le panier
-             $('#total_ht').html($ht.toFixed(2)); //element.toFixed(nb)= 2chiffre après la "," ??? WTF ???
-
-       // calcul du taux de tva par rapport au ht
-             var vatRate = 20/100;
-             var tvaTot = $ht * vatRate;
-
-       // Affichage du prix de la TVA
-             $('#total_tva').html(tvaTot.toFixed(2));
-
-       // calcul du prix TTC
-             var ttc = $ht + tvaTot;
-
-       //Affichage du prix TTC
-             $('#total_ttc').html(ttc.toFixed(2));
-
-       //Calcul du nbre d'article
-             var nbreArticles = Panier.length;
-             $('#nbr_articles').html('('+nbreArticles+')');
-
-             $('.dropdown-item').on("click",'#Qt',function (event)
-             {
-              //On recup la designation de l'article ciblé
-              var ArticleDesignation = $(this).attr('class');
-
-              //On le cherche dans le tableau Panier
-              function tabVal(Panier)
-              {
-                return Panier.designation === ArticleDesignation;
-              }
-
-              //On le stocke ds une variable
-              var ArticleToModify = Panier.find(tabVal);
-
-              //On change la quantité ds le tableau
-              ArticleToModify['quantité'] = $(this).val();
-
-              //On stocke la quantité dans une variable
-              var $quantité = ArticleToModify['quantité'];
-
-              //On modifie le prix total ht dans le tableau de l'article
-              ArticleToModify['prixTotalht'] = $quantité * ArticleToModify['puht'];
-
-              //On recalcule le ht
-              var $ht = panierHt(Panier,'prixTotalht');
-
-              //On affiche le ht
-                 $('#total_ht').html($ht.toFixed(2));
-
-                 //calcul du taux de tva par rapport au ht
-                       var vatRate = 20/100;
-                       var tvaTot = $ht * vatRate;
-
-                 //Affichage du prix de la TVA
-                       $('#total_tva').html(tvaTot.toFixed(2));
-
-                 //calcul du prix TTC
-                       var ttc = $ht + tvaTot;
-
-                 //Affichage du prix TTC
-                       $('#total_ttc').html(ttc.toFixed(2));
-
-                 //Calcul du nbre d'article
-                       var nbreArticles = Panier.length;
-                       $('#nbr_articles').html('('+nbreArticles+')');
-                  savePanier();
-            })
-      }
-   }
-
-
-
-      console.log('Panier');
-      console.log(Panier);
-    }
-
-  }
-
-
-}
 
 // event click bouton panier
 $('#panier_validation').on("click", function (event)
@@ -383,33 +255,32 @@ $('#panier_validation').on("click", function (event)
     event.preventDefault();
   } else {
 
-    savePanier();
+    // savePanier(); Pas utile
    }
 })
 
 
-
-// Sauvegarde des articles present dans le panier dans un cookie 'caddie'
+// Sauvegarde des articles present dans le panier dans un $_SESSION['caddie'] 
 function savePanier()
 {
    console.log(Panier);
-   var test = '';
+   var articlesPanier = '';
    for (var i = 0; i < Panier.length; ++i)
    {
-     var articletest = Object.assign({}, Panier[i]);
-     console.log(articletest);
-     test += JSON.stringify(articletest) + '|';
-         console.log(test);
+     var articlesObject = Object.assign({}, Panier[i]);
+     console.log(articlesObject);
+     articlesPanier += JSON.stringify(articlesObject) + '|';
+         console.log(articlesPanier);
    }
 
-   console.log(test);
+   console.log(articlesPanier);
    console.log('click');
 
- setSession('caddie', test);
+ setSession(articlesPanier);
 }
 
 // Transfert du panier dans $_SESSION
-function setSession(cname, cvalue)
+function setSession(cvalue)
 {
   
   console.log('tossession');
@@ -420,7 +291,6 @@ function setSession(cname, cvalue)
   console.log(url);
   console.log(pos);
   console.log(newurl);
-
 
   $.ajax({
 
@@ -435,6 +305,142 @@ function setSession(cname, cvalue)
     error: function(response)
     {
       console.log("Panier to $_SESSION Error !");
+    }
+   });
+
+  
+}
+
+// Recuperation du panier dans $_SESSION
+function getSession()
+{
+  
+  console.log('getsession');
+  var url = window.location.href;
+  var pos = url.indexOf('public');
+  var newurl = url.substr(0, pos) + 'public/panier/fromsession';
+
+  console.log(url);
+  console.log(pos);
+  console.log(newurl);
+
+  $.ajax({
+
+    type: "GET",
+    url: newurl,
+    dataType: "json",
+    success: function(response)
+    {
+      console.log("Panier from $_SESSION success !");
+      console.log(response);
+
+      var ca = response.split('|');
+      ca.pop(); // supprime dernier element du tableau : vide suite au split
+      // console.log(ca);
+
+      // création articles dans panier
+      for (var i = 0; i < ca.length; i++) 
+      {
+        $('#basket_first_line').html('');
+        articleObj = JSON.parse(ca[i]);
+        
+        console.log('articleObj');
+        console.log(articleObj);
+
+        var randomNb = Math.round(Rand(0, 10000)* 3.14);
+        var linkValue = articleObj.designation+'_'+randomNb
+
+        var Article = new Array();
+        Article['id'] = articleObj.id;
+        Article['designation'] = linkValue;
+        Article['puht'] = articleObj.puht;
+        Article['quantité'] = articleObj.quantité;
+        Article['prixTotalht'] = articleObj.prixTotalht;
+
+        console.log('Article');
+        console.log(Article);
+
+        addItem(Panier,Article);
+        $('.dropdown-item').prepend('<div class="item_panier row px-0 p-2" value="' + linkValue + '"> <i id="delete_btn" value="' + linkValue + '" class="fa fa-times fa-close-basket my-auto ml-auto" aria-hidden="true"></i> <p class="mr-auto">' + articleObj.designation + '</p> <input id="Qt" class="' + linkValue + '" type="number" min=1 value="' + articleObj.quantité + '"> <br>' +  '<p class="col-6 px-0 ml-auto bold" style="text-align: end;">' + articleObj.puht + ' €</p> </div>');
+
+        // On déclare ht qui calcule le prix ht
+        var $ht = panierHt(Panier,'prixTotalht');
+        console.log($ht)
+        
+        // On affiche le prix ht ds le panier
+        $('#total_ht').html($ht.toFixed(2)); //element.toFixed(nb)= 2chiffre après la "," ??? WTF ???
+
+        // calcul du taux de tva par rapport au ht
+        var vatRate = 20/100;
+        var tvaTot = $ht * vatRate;
+
+        // Affichage du prix de la TVA
+        $('#total_tva').html(tvaTot.toFixed(2));
+
+        // calcul du prix TTC
+        var ttc = $ht + tvaTot;
+
+        //Affichage du prix TTC
+        $('#total_ttc').html(ttc.toFixed(2));
+
+        //Calcul du nbre d'article
+        var nbreArticles = Panier.length;
+        $('#nbr_articles').html('('+nbreArticles+')');
+
+        $('.dropdown-item').on("click",'#Qt',function (event)
+        {
+          //On recup la designation de l'article ciblé
+          var ArticleDesignation = $(this).attr('class');
+
+          //On le cherche dans le tableau Panier
+          function tabVal(Panier)
+          {
+            return Panier.designation === ArticleDesignation;
+          }
+
+          //On le stocke ds une variable
+          var ArticleToModify = Panier.find(tabVal);
+
+          //On change la quantité ds le tableau
+          ArticleToModify['quantité'] = $(this).val();
+
+          //On stocke la quantité dans une variable
+          var $quantité = ArticleToModify['quantité'];
+
+          //On modifie le prix total ht dans le tableau de l'article
+          ArticleToModify['prixTotalht'] = $quantité * ArticleToModify['puht'];
+
+          //On recalcule le ht
+          var $ht = panierHt(Panier,'prixTotalht');
+
+          //On affiche le ht
+          $('#total_ht').html($ht.toFixed(2));
+
+          //calcul du taux de tva par rapport au ht
+          var vatRate = 20/100;
+          var tvaTot = $ht * vatRate;
+
+          //Affichage du prix de la TVA
+          $('#total_tva').html(tvaTot.toFixed(2));
+
+          //calcul du prix TTC
+          var ttc = $ht + tvaTot;
+
+          //Affichage du prix TTC
+          $('#total_ttc').html(ttc.toFixed(2));
+
+          //Calcul du nbre d'article
+          var nbreArticles = Panier.length;
+          $('#nbr_articles').html('('+nbreArticles+')');
+        
+          savePanier();
+        })
+      }
+
+    },
+    error: function(response)
+    {
+      console.log("Panier from $_SESSION Error !");
     }
    });
 
