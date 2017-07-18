@@ -15,13 +15,13 @@
 
          <!-- Section : Message / Specificités -->
          <label for="message">Votre demande (Specificités)</label> <span class="error">*</span>
-         <textarea rows="12" cols="50" class="input-form" name="message" value="<?php if(!empty($_POST['message'])){ echo $_POST['message']; } ?>"></textarea>
-         <?php if(!empty($error['message'])){ echo '<p id="error-message" class="message">' . $error['message'] . '</p>'; } ?>
+         <textarea rows="12" cols="50" class="input-form" name="message" value=""><?php if(!empty($_POST['message'])){ echo $_POST['message']; } ?></textarea>
+         <?php if(!empty($error['message'])){ echo '<p id="error-message" class="error">' . $error['message'] . '</p>'; } ?>
 
          <!-- Section : upload fichier -->
          <label for="stlfile">Fichier 3D au format stl</label>
          <input id="file" class="input-form" type="file" accept=".stl" name="stlfile" value="<?php if(!empty($_FILES['stlfile'])){ echo $_FILES['stlfile']; } ?>" style="max-width: 100%; overflow: hidden;">
-         <?php if(!empty($error['stlfile'])){ echo '<p id="error-stlfile" class="error">' . $error['avatar'] . '</p>'; } ?>
+         <?php if(!empty($error['stlfile'])){ echo '<p id="error-stlfile" class="error">' . $error['stlfile'] . '</p>'; } ?>
 
          <div class="row mt-2">
            <input class="btn_ok mx-auto" type="submit" name="submit" value="Envoyer">
