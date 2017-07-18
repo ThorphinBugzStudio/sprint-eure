@@ -122,9 +122,11 @@ class ItemsController extends AppController
       $error['prix']        = $validation->numeric($prix, 'prix');
 
 
+
       if(empty($_FILES['image']['name'])){
         if ($validation->IsValid($error)) {
 
+          if($famille != 'selection'){
           $data = array(
                 'items_family_id' => $famille,
                 'designation' => $designation,
@@ -136,6 +138,18 @@ class ItemsController extends AppController
                 'img_name' => $nomIm,
                 'modified_at' => date('Y_m_d_H_i_s'),
               );
+            } else {
+              $data = array(
+                    'designation' => $designation,
+                    'description' => $description,
+                    'packaging' => $quantité,
+                    'puht' => $prix,
+                    'home' => $home,
+                    'status' => $status,
+                    'img_name' => $nomIm,
+                    'modified_at' => date('Y_m_d_H_i_s'),
+                    );
+            }
 
 
               $items->update($data, $id, $stripTags = true);
@@ -295,7 +309,7 @@ class ItemsController extends AppController
     $navPaginBar = $pagin->getHtml();
     // debug($navPaginBar);
 
-    $results = $items->findAllWhere($id, 'id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
+    $results = $items->findAllWhereback($id, 'id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
     $this->show('admin/items', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
@@ -316,7 +330,7 @@ class ItemsController extends AppController
     $navPaginBar = $pagin->getHtml();
     // debug($navPaginBar);
 
-    $results = $items->recherche($id, 'designation', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
+    $results = $items->rechercheback($id, 'designation', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
     $nomcat = $family->find($id);
 

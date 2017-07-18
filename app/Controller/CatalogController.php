@@ -23,11 +23,12 @@ class CatalogController extends AppController
   {
     $items = new ItemsModel();
 
-    $topProduct   = $items->findAllproduct('home','1','modified_at', 'ASC', 5);
-    $lastProduct  = $items->findAllproduct('status','active','created_at', 'DESC', 5);
+    $topProduct   = $items->findAllproductactive('home','1','modified_at', 'ASC', 5);
+    $lastProduct  = $items->findAllproductactive('status','active','created_at', 'DESC', 5);
     $categorie = $items->nomcategorie();
+    //debug($_COOKIE);
     $this->show('catalog/catalog',  ['categorie' => $categorie, 'topProduct' => $topProduct, 'lastProduct' => $lastProduct]);
-    
+
   }
 
   public function detail($id)
@@ -58,6 +59,7 @@ class CatalogController extends AppController
     // debug($navPaginBar);
     $results = $items->findAllproduct('status','active','created_at', 'DESC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
+    //debug($_COOKIE);
     $this->show('catalog/catalog_all', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
 
@@ -78,6 +80,7 @@ class CatalogController extends AppController
     $results = $items->findAllWhere($id, 'id', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
     $nomcat = $family->find($id);
+    //debug($_COOKIE);
     if(empty($results)){
       $this->redirectToRoute('catalog_404');
     } else {
@@ -137,7 +140,7 @@ class CatalogController extends AppController
     // get du html de la barre de navigation pour la pagination
     $navPaginBar = $pagin->getHtml();
     // debug($navPaginBar);
-    $results = $items->findAllproduct('items_family_id', $id, 'puht', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
+    $results = $items->findAllproductactive('items_family_id', $id, 'puht', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
     $nomcat = $family->find($id);
     if(empty($results)){
@@ -161,7 +164,7 @@ class CatalogController extends AppController
     $navPaginBar = $pagin->getHtml();
     // debug($navPaginBar);
 
-    $results = $items->findAllproduct('items_family_id', $id, 'puht', 'DESC', $pageStatus['limit'], $pageStatus['offset']);
+    $results = $items->findAllproductactive('items_family_id', $id, 'puht', 'DESC', $pageStatus['limit'], $pageStatus['offset']);
     $categorie = $items->nomcategorie();
     $nomcat = $family->find($id);
     if(empty($results)){
