@@ -375,16 +375,16 @@ function getCookie(cname)
 }
 
 // event click bouton panier
-$('.btn_ok').on("click", function (event)
+$('#panier_validation').on("click", function (event)
 {
-  // Gestion de l'action du lien valider panier
+  //Gestion de l'action du lien valider panier
   if(Panier.length == 0)
   {
     event.preventDefault();
   } else {
 
     savePanier();
-  }
+   }
 })
 
 

@@ -6,7 +6,7 @@
 
    <div class="col-lg-6 col-sm-12">
 
-      <form class="" action="<?php $this->url('devis_action') ?>" enctype="multipart/form-data" method="post">
+      <form class="" action="<?php $this->url('devis_action') ?>" enctype="multipart/form-data" method="POST">
 
          <!-- Section : E-mail -->
          <label for="email">E-mail</label> <span class="error">*</span>

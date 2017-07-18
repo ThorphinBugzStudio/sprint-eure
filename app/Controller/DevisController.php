@@ -33,7 +33,23 @@ public function devis()
  */
 public function devisAction()
 {
+  $clean = new CleanTool();
+  $valid = new ValidationTool();
 
+  if(!empty($_POST['submit']))
+  {
+
+    $post = $clean->cleanPost($_POST);
+
+    $email = $post['email'];
+    $message = $post['message'];
+    $file = $_FILES['stlfile'];
+
+    $valid->uploadValid($file,10000000,['.stl'],$extensionsmime))
+
+    debug($post);
+    debug($file);
+  }
 }
 
 
