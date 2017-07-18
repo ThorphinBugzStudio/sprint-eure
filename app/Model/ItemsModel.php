@@ -125,7 +125,9 @@ class ItemsModel extends ItemsFamilyModel
   	}
 
   public function recherche($search, $order, $orderDir, $limit = null, $offset = null){
-    $sql = 'SELECT * FROM ' . $this->table . ' WHERE designation LIKE "%'.$search.'%" ORDER BY '.$order.' '.$orderDir.'' ;
+
+      $sql = 'SELECT * FROM ' . $this->table . ' WHERE designation LIKE "%'.$search.'%" AND status = "active" ORDER BY '.$order.' '.$orderDir.'' ;
+
     if (!empty($this->where)) { $sql .= ' WHERE '.$this->where; }
 
         if (!empty($orderBy)){

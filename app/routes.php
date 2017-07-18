@@ -87,13 +87,16 @@
 		['POST', '/panier', 'Panier#panier', 'panier_client_action'],
 		// route panier article ajouter au panier
 		['GET', '/panier/add/[i:id]','Panier#addArticleToPanier', 'ajouter_au_panier'],
-		
 
-		/**
-		 * Admin\UsersController
-		 *
-		 *
-		 */
+
+		// ==============================================================================
+		//
+		// 														Admin\UsersController
+		//
+		// ==============================================================================
+
+		['GET', '/admin/dashboard', 'Admin\Dashboard#dashboard', 'admin_dashboard'],
+
 		// Listing utilisateurs - Bouton Update - Bouton Delete - Menu Ajouter
 		['GET', '/admin/users', 'Admin\Users#users', 'admin_users'],
 		['GET', '/admin/users/[i:page]', 'Admin\Users#users', 'admin_page_users'], // pour gerer la pagination du listing.
@@ -149,6 +152,9 @@
 		//ajout d un nouvel article
 		['GET', '/admin/additem', 'Admin\ItemsController#AddItem','admin_single_item_add'],
 		['POST', '/admin/additem', 'Admin\ItemsController#AddItemAction','admin_single_item_add_action'],
+		//recherche d article
+		['POST', '/admin/search/[:id]', 'Admin\ItemsController#search', 'admin_search'],
+		['GET', '/admin/search/[:id]/[i:page]', 'Admin\ItemsController#search', 'admin_search_page'],
 
 
 		/**

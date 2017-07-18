@@ -26,13 +26,22 @@
         </thead>
         <!-- Contenu du tableau -->
         <tbody>
-          <?php $i = 0;
+          <?php
+          // CONDITION : Si il y a du contenu dans la base de données, alors on affiche tout ce qui concerne la page.
+          $i = 0;
           if(!empty($results)) {
           foreach ($results as $result) { ?>
           <tr>
+            <!-- ID -->
             <td><?php echo $result['id']; ?></td>
+
+            <!-- Pseudo -->
             <td><?php echo $result['username']; ?></td>
+
+            <!-- Rôle (Administrateur ou Membre) -->
             <td><?php echo $result['role']; ?></td>
+
+            <!-- État de l'utilisateur (Actif, banni ou supprimé) -->
             <td>
               <?php if($result['status'] == 'inactive') { ?>
                 <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Banni" title="Utilisateur banni">
@@ -42,8 +51,20 @@
                 <img src="<?= $this->assetUrl('admin/img/delete.png') ?>" alt="Supprimé" title="Utilisateur supprimé">
               <?php } ?>
             </td>
-            <td><?php echo $result['created_at']; ?></td>
-            <td><?php echo $result['modified_at']; ?></td>
+
+            <!-- Date d'inscription de l'utilisateur -->
+            <td><?php echo date('d/m/Y à H:i:s', strtotime($result['created_at'])); ?></td>
+
+            <!-- Date de dernière modification de l'utilisateur -->
+            <td>
+              <?php if(date('d/m/Y à H:i:s', strtotime($result['modified_at'])) == '01/01/1970 à 01:00:00') {
+                echo '';
+              } else {
+                echo date('d/m/Y à H:i:s', strtotime($result['modified_at']));
+              } ?>
+            </td>
+
+            <!-- Actions -->
             <td class="menu_actions">
               <!-- BOUTON : Edition -->
               <a class="" href="<?=$this->url('admin_single_user', ['id' => $result['id'], 'fromPage' => $actualPageId] ) ?>">

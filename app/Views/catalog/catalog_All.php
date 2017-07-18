@@ -12,7 +12,7 @@
 
 <div class="row w-100 ml-auto mt-2 justify-content-end category-row">
   <div class="mr-auto">
-    <form class="search mr-auto" action="search/[:id]" method="post">
+    <form class="search mr-auto" action="<?= $this->url('catalog_search') ?>" method="post">
       <input type="text" name="recherche" placeholder="Rechercher un produit..." class="input-form" style="border-radius: 8px 0 0 8px; width: none;">
       <input type="submit" name="submit" value="&#xf002" class="fa-input px-3">
     </form>
@@ -28,7 +28,7 @@
 
   <!-- BOUTON : Prix par ordre croissant -->
   <div class="row category-button-return" style="background-color: #5b984c;">
-    <a class="my-auto mr-auto" href="<?= $this->url('catalog_categorie_item_priceASC', ['id' =>  $id])?>">
+    <a class="my-auto mr-auto" href="<?= $this->url('catalog_priceASC')?>">
       <i class="fa fa-arrow-up mr-auto my-auto" aria-hidden="true" style="margin-right: 5px;"></i>
       Prix croissant
     </a>
@@ -36,7 +36,7 @@
 
   <!-- BOUTON : Prix par ordre décroissant -->
   <div class="row category-button-return" style="background-color: #ce741c;">
-    <a class="my-auto mr-auto" href="<?= $this->url('catalog_categorie_item_priceDESC', ['id' =>  $id])?>">
+    <a class="my-auto mr-auto" href="<?= $this->url('catalog_priceDESC')?>">
       <i class="fa fa-arrow-down mr-auto my-auto" aria-hidden="true" style="margin-right: 5px;"></i>
       Prix décroissant
     </a>
@@ -106,7 +106,7 @@
       <!-- BOUTON : Ajouter au panier -->
       <div class="row btn_basket-bottom">
         <div class="row mx-auto p-relative">
-          <a class="btn_basket" href="#">
+          <a class="btn_basket" href="<?= $this->url('ajouter_au_panier',array('id'=> $result['id'])); ?>">
             <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
             Ajouter au panier
           </a>

@@ -300,4 +300,28 @@ class ItemsController extends AppController
     $this->show('admin/items', ['results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie]);
   }
 
+  public function search($id = '', $page= ''){
+    $items = new ItemsModel();
+    $family = new ItemsFamilyModel();
+    if(!empty($_POST['recherche'])){
+    $id = $_POST['recherche'];}
+    // Objet pour gerer la pagination -> Voir la classe dans Services\Tools
+    $pagin = new Pagination('items search pages navigation', $this->generateUrl('admin_search', ['id' =>  $id]), $items->countsearch($id), 8);
+
+    if (!empty($page)) { $pagin->setPageStatus($page); }
+
+    // get des informations de pagination necessaires à la requete bdd
+    $pageStatus = $pagin->getPageStatus();
+    // get du html de la barre de navigation pour la pagination
+    $navPaginBar = $pagin->getHtml();
+    // debug($navPaginBar);
+
+    $results = $items->recherche($id, 'designation', 'ASC', $pageStatus['limit'], $pageStatus['offset']);
+    $categorie = $items->nomcategorie();
+    $nomcat = $family->find($id);
+
+    $this->show('admin/items', ['id' => $id, 'results' => $results, 'navPaginBar' => $navPaginBar, 'actualPageId' => $pageStatus['actual'], 'categorie' => $categorie, 'nomcat' => $nomcat]);
+
+  }
+
 }

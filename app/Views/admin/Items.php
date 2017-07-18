@@ -7,6 +7,8 @@
   <?= $navPaginBar ?>
 </div>
 
+
+
 <div class="row">
   <div class="col-sm-12 col-md-9 py-3 " style="justify-content: space-around;">
     <div class="panel panel-default">
@@ -72,9 +74,22 @@
     </div>
   </div>
 
-  <!-- Section : Trier par catégorie -->
   <div class="col-sm-12 col-md-3 py-3">
+    <!-- Section : Rechercher -->
     <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-search fa-fw"></i> Rechercher
+      </div>
+      <div class="p-4">
+        <form class="search mr-auto" action="<?= $this->url('admin_search') ?>" method="post">
+          <input type="text" name="recherche" placeholder="Rechercher un produit..." class="input-back" style="border-radius: 8px 0 0 8px; width: none;">
+          <input type="submit" name="submit" value="&#xf002" class="fa-input px-3">
+        </form>
+      </div>
+    </div>
+
+    <!-- Section : Trier par catégorie -->
+    <div class="panel panel-default mt-4">
       <div class="panel-heading">
         <i class="fa fa-folder fa-fw"></i> Trier par catégorie
       </div>

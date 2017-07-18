@@ -26,7 +26,7 @@
 
           <!-- BOUTON : Ajouter au panier -->
           <li class="d-flex">
-            <a class="btn_basket justify-content-end" href="#" style="border-radius: 0;">
+            <a class="btn_basket justify-content-end" href="<?= $this->url('ajouter_au_panier',array('id'=> $result['id'])); ?>" style="border-radius: 0;">
               <i class="fa fa-cart-arrow-down"></i>
             </a>
           </li>
