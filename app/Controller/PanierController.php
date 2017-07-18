@@ -5,7 +5,10 @@ namespace Controller;
 use Services\Tools\RadiosBox;
 use Services\Tools\ToolHP;
 
+use Security\CleanTool;
+
 use Model\ItemsModel;
+use Model\OrdersModel;
 use Model\OrderRowsModel;
 
 // use \W\Controller\Controller; // Inutile puisque heritage de AppController dans le meme espace de nom
@@ -25,6 +28,8 @@ class PanierController extends AppController
    */
   public function panier()
   {
+    // ADMIN OU CLIENT LOGé
+    $this->allowTo(['admin','client']);
 
     // Alimentation view
     $rowsOrder = $this->getRowsCaddy();
@@ -95,11 +100,74 @@ class PanierController extends AppController
    */
   public function panierAction()
   {
+    // ADMIN OU CLIENT LOGE
+    $this->allowTo(['admin','client']);
+    // debug($_POST);
+
+    $orders = new OrdersModel();
+    $orderRows = new OrderRowsModel();
+
+    $rowsOrder = $this->getRowsCaddy();
+    $user = $this->getUser();
+    // debug($rowsOrder);
+    // debug($user);
     
+    // Si post vide ou valeurs non conforme des radiosbuttons :
+    // -> Gros bidouillage ! -> 403 !
+    if (!empty($_POST['submit']) && !(
+          $_POST['optionsRadiosModes_de_paiement'] != 'cb' &&
+          $_POST['optionsRadiosModes_de_paiement'] != 'cheque' &&
+          $_POST['optionsRadiosModes_de_paiement'] != 'virement' &&
+          $_POST['optionsRadiosModes_de_paiement'] != 'paypal'))
+    {
+      // Traitement du formulaire
+      /**
+       * NORMALEMENT INSERER LA COMMANDE AVEC STATUT validated
+       * PUIS ENVOYER SUR MODULE DE TRAITEMENT DES PAIEMENTS // ADRESSE DE LIVRAISON ET AUTRES OPTIONS
+       * 
+       * UNE FOIS LE PAIEMENT VALIDé PAR LE MODULE PASSER LA COMMANDE EN STATUT paid
+       * PLUS VALIDATION EN BACK PAR ADMIN SUR MODE DE PAIEMENT NON AUTOMATIQUES CHQ / VIRT ETC...
+       * 
+       * CI DESSOUS INSERTION DIRECTE AVEC STATUT paid
+       */
 
+      
+      // Insert Order
+      $insertOrder = $orders->insert(['users_id'     => $user['id'],
+                                      'vat_rate_id' => 1,
+                                      'created_at'   => ToolHP::nowSql(),
+                                      'status'       => 'paid'
+                                     ], true);
+      // debug($insertOrder);
+      // Insert Order Rows
+      foreach ($rowsOrder as $rowOrder) 
+      {
+        $insertRow = $orderRows->insert(['orders_id'  => $insertOrder['id'],
+                                         'items_id'  => $rowOrder['items_id'],
+                                         'amount'     => $rowOrder['amount'],
+                                         'puht'       => $rowOrder['puht'],
+                                         'pht'        => $rowOrder['pht'],
+                                         'created_at' => ToolHP::nowSql()
+                                        ], true);
+        // debug($insertRow);
+      }
 
+      // Message flash
+      $this->flash('Votre paiement est bien reçu et votre commande sera traitée dans les plus brefs délais', 'success');
 
+      // suppression caddy en session
+      unset($_SESSION['caddie']);
 
+      $this->redirectToRoute('default_home');
+
+    }
+    else
+    {
+      // Comment $_POST pourrait il etre vide ?
+      $this->flash('Stop bidouiller !', 'danger');
+      $this->showForbidden();
+      die();
+    }    
 
   }
 
