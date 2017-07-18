@@ -260,7 +260,7 @@ $('#panier_validation').on("click", function (event)
 })
 
 
-// Sauvegarde des articles present dans le panier dans un cookie 'caddie'
+// Sauvegarde des articles present dans le panier dans un $_SESSION['caddie'] 
 function savePanier()
 {
    console.log(Panier);
