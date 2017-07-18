@@ -260,6 +260,8 @@ function getCookie(cname)
     {
       if (ca[i].substr(7,1) != ';' )
       {
+         $('#basket_first_line').html('');
+         
          var articles = ca[i].substring(7, ca[i].length).split('|');
          console.log('articles');
          console.log(ca[i].substr(7,1));
