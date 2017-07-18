@@ -63,11 +63,11 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-xs-3">
-            <i class="fa fa-file-text-o fa-5x"></i>
+            <i class="fa fa-shopping-basket fa-5x"></i>
           </div>
           <div class="col-xs-9 text-right">
             <div class="huge">0</div>
-            <div>Devis en cours</div>
+            <div>Nouveau(x) produit(s)</div>
           </div>
         </div>
       </div>
@@ -90,14 +90,14 @@
         <div class="list-group">
           <?php foreach ($comments as $comment): ?>
             <div class="list-group-item">
-              <i class="fa fa-comment fa-fw"></i> <?= $comment['comment'] ?>
+              <?= $comment['comment'] ?>
               <?php
               $date = new DateTime();
               $date1 = $date->format('Y-m-d H:i:s');
               $date2 = $comment['created_at'];
               $nbjours = round((strtotime($date1) - strtotime($date2))/(60*60*24)-1);
                ?>
-              <span class="pull-right text-muted small"><em><?= $nbjours ?> days ago</em></span>
+              <span class="pull-right text-muted small"><em>Il y a <?= $nbjours ?> jour(s)</em></span>
             </div>
           <?php endforeach; ?>
           </div>
@@ -116,14 +116,14 @@
         <div class="list-group">
           <?php foreach ($users as $user ): ?>
             <div class="list-group-item">
-              <i class="fa fa-user fa-fw"></i> <?= $user['username']; ?>
+              <?= $user['username']; ?>
               <?php
               $date = new DateTime();
               $date1 = $date->format('Y-m-d H:i:s');
               $date2 = $user['created_at'];
               $nbjours = round((strtotime($date1) - strtotime($date2))/(60*60*24)-1);
                ?>
-              <span class="pull-right text-muted small"><em><?= $nbjours ?> days ago</em></span>
+              <span class="pull-right text-muted small"><em>Il y a <?= $nbjours ?> jour(s)</em></span>
             </div>
           <?php endforeach; ?>
           </div>
@@ -157,64 +157,33 @@
     </div>
   </div>
 
-  <!-- Derniers devis -->
-  <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
-    <div class="panel panel-red">
-      <div class="panel-heading">
-        <i class="fa fa-file-text-o fa-fw"></i> Derniers devis
-      </div>
-      <div class="panel-body">
-        <div class="list-group">
-          <a href="#" class="list-group-item">
-            Devis 3
-            <span class="pull-right text-muted small"><em>15 days ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            Devis 2
-            <span class="pull-right text-muted small"><em>12 days ago</em></span>
-          </a>
-          <a href="#" class="list-group-item">
-            Devis 1
-            <span class="pull-right text-muted small"><em>1 day ago</em></span>
-          </a>
+  <!-- Derniers produits -->
+  <div class="row px-4 mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
+      <div class="panel panel-red">
+        <div class="panel-heading">
+          <i class="fa fa-shopping-basket fa-fw"></i> Derniers produits
         </div>
-        <a href="#" class="btn btn-default btn-block">Voir tous les devis en cours</a>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ==================================================== -->
-<!--                WIDGET : Derniers produits            -->
-<!-- ==================================================== -->
-
-<!-- Derniers produits -->
-<div class="row px-4 mt-4">
-  <div class="col-sm-12 mb-4">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <i class="fa fa-shopping-basket fa-fw"></i> Derniers produits
-      </div>
-      <div class="panel-body">
-        <div class="list-group">
-          <?php foreach ($items as $item ): ?>
-            <div class="list-group-item">
-              <?php
-              $date = new DateTime();
-              $date1 = $date->format('Y-m-d H:i:s');
-              $date2 = $item['created_at'];
-              $nbjours = round((strtotime($date1) - strtotime($date2))/(60*60*24)-1);
-              echo $item['designation']; ?>
-              <span class="pull-right text-muted small"><em><?= $nbjours ?> day ago</em></span>
+        <div class="panel-body">
+          <div class="list-group">
+            <?php foreach ($items as $item ): ?>
+              <div class="list-group-item">
+                <?php
+                $date = new DateTime();
+                $date1 = $date->format('Y-m-d H:i:s');
+                $date2 = $item['created_at'];
+                $nbjours = round((strtotime($date1) - strtotime($date2))/(60*60*24)-1);
+                echo $item['designation']; ?>
+                <span class="pull-right text-muted small"><em><?= $nbjours ?> day ago</em></span>
+              </div>
+            <?php endforeach; ?>
             </div>
-          <?php endforeach; ?>
-          </div>
-          <a href="<?= $this->url('admin_items') ?>" class="btn btn-default btn-block">Voir tous les produits</a>
+            <a href="<?= $this->url('admin_items') ?>" class="btn btn-default btn-block">Voir tous les produits</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
+</div>
 
 <?php $this->stop('main_content'); ?>
