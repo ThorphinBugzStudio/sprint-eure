@@ -52,6 +52,4 @@ class PanierController extends AppController
 
     $this->showJson($data);
   }
-
-
 }

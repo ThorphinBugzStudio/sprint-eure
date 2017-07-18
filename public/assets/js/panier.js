@@ -261,7 +261,7 @@ function getCookie(cname)
       if (ca[i].substr(7,1) != ';' )
       {
          $('#basket_first_line').html('');
-         
+
          var articles = ca[i].substring(7, ca[i].length).split('|');
          console.log('articles');
          console.log(ca[i].substr(7,1));
@@ -377,8 +377,17 @@ function getCookie(cname)
 // event click bouton panier
 $('.btn_ok').on("click", function (event)
 {
-   savePanier();
+  // Gestion de l'action du lien valider panier
+  if(Panier.length == 0)
+  {
+    event.preventDefault();
+  } else {
+
+    savePanier();
+  }
 })
+
+
 
 // Sauvegarde des articles present dans le panier dans un cookie 'caddie'
 function savePanier()

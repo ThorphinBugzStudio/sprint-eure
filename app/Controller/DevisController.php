@@ -1,6 +1,10 @@
 <?php
 
 namespace Controller;
+use Model\UsersModel;
+use Security\CleanTool;
+use Security\ValidationTool;
+use W\Security\AuthentificationModel;
 
 // use \W\Controller\Controller; // Inutile puisque heritage de AppController dans le meme espace de nom
 
@@ -29,7 +33,7 @@ public function devis()
  */
 public function devisAction()
 {
-  # code
+
 }
 
 
