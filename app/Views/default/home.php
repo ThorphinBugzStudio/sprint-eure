@@ -24,33 +24,42 @@ $_ENV = 'Home'; ?>
 			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 		</ol>
 
+    <!-- 1ère image du carousel -->
 		<div class="carousel-inner" role="listbox">
 			<div class="carousel-item active">
-				<img class="img-fluid mainCarouselImg" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="...">
-				<div class="carousel-caption d-none d-md-block">
-					<h3>Titre</h3>
-					<hr class="hrCarousel mx-auto my-2">
-					<p>Description</p>
+        <a href="<?= $this->url('how_to') ?>">
+				  <img class="img-fluid mainCarouselImg" src="<?= $this->assetUrl('img/sliders/img1.jpg') ?>" alt="Miniature 1">
+        </a>
+        <div class="carousel-caption d-none d-md-block">
+					<h3>L'impression 3D</h3>
+					<hr class="hrCarousel mx-auto my-1">
+					<p>Une nouvelle technologie qui va révolutionner le monde !</p>
 				</div>
 			</div>
 
+      <!-- 2ème image du carousel -->
 			<div class="carousel-item">
-				<img class="img-fluid mainCarouselImg" src="<?= $this->assetUrl('img/sliders/img2.jpg') ?>" alt="...">
-				<div class="row">
+        <a href="<?= $this->url('catalog') ?>">
+				  <img class="img-fluid mainCarouselImg" src="<?= $this->assetUrl('img/sliders/img2.jpg') ?>" alt="Miniature 2">
+        </a>
+        <div class="row">
 					<div class="carousel-caption d-none d-md-block">
-						<h3>Titre</h3>
-						<hr class="hrCarousel mx-auto my-2">
-						<p>Description</p>
+						<h3>Trinus 3D Printer Laser Engraver</h3>
+						<hr class="hrCarousel mx-auto my-1">
+						<p>Découvrez tous les avantages de ce nouveau modèle</p>
 					</div>
 				</div>
 			</div>
 
+      <!-- 3ème image du carousel -->
 			<div class="carousel-item">
-				<img class="img-fluid mainCarouselImg" src="<?= $this->assetUrl('img/sliders/img3.jpg') ?>" alt="...">
-				<div class="carousel-caption d-none d-md-block">
-					<h3>Titre</h3>
-					<hr class="hrCarousel mx-auto my-2">
-					<p>Description</p>
+        <a href="<?= $this->url('devis') ?>">
+				  <img class="img-fluid mainCarouselImg" src="<?= $this->assetUrl('img/sliders/img3.jpg') ?>" alt="Miniature 3">
+        </a>
+        <div class="carousel-caption d-none d-md-block">
+					<h3>Fabrication de A à Z</h3>
+					<hr class="hrCarousel mx-auto my-1">
+					<p>De votre modélisation 3D jusqu'à l'impression de votre produit !</p>
 				</div>
 			</div>
 		</div>
@@ -70,7 +79,7 @@ $_ENV = 'Home'; ?>
   <!-- 						   		Publicités  								-->
   <!-- ============================================ -->
   <div class="ads-column">
-    <a href="#"><img src="<?= $this->assetUrl('img/pub/img1.jpg') ?>" alt="Publicité" class="img-fluid hvr-grow-rotate"></a>
+    <a href="<?= $this->url('catalog') ?>"><img src="<?= $this->assetUrl('img/pub/img1.jpg') ?>" alt="Publicité" class="img-fluid hvr-grow-rotate"></a>
     <a href="<?= $this->url('how_to') ?>"><img src="<?= $this->assetUrl('img/pub/img2.jpg') ?>" alt="Publicité" class="img-fluid hvr-grow"></a>
   </div>
 

@@ -48,10 +48,10 @@
 
     <div class="dropdown-menu category-content">
       <ul class="p-0">
-        <li><a class="dropdown-item p-2" href="<?= $this->url('catalog_all')?>">» Tous les produits</a></li>
+        <li><a class="dropdown-item2 p-2" href="<?= $this->url('catalog_all')?>">» Tous les produits</a></li>
         <div class="dropdown-divider m-0"></div>
         <?php foreach ($categorie as $cat): ?>
-          <li><a href="<?= $this->url('catalog_categorie_item', ['id' =>  $cat['id']])?>" class="dropdown-item p-1 px-2"><?= $cat['family'] ?></a></li>
+          <li><a href="<?= $this->url('catalog_categorie_item', ['id' =>  $cat['id']])?>" class="dropdown-item2 p-1 px-2"><?= $cat['family'] ?></a></li>
         <?php endforeach; ?>
     </div>
   </div>

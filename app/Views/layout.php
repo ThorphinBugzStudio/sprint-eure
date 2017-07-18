@@ -88,7 +88,7 @@
 							</a>
 
 							<!-- MODAL BOX : Titre de la fenêtre du panier -->
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<div class="dropdown-menu mt-0" aria-labelledby="dropdownMenuButton">
 								<div class="title_basket">
 									<a href="<?= $this->url('panier_client') ?>">Votre panier</a>
 								</div>
@@ -195,7 +195,7 @@
 		<div class="footer_2">
 			<h2>» Contact</h2>
 			<hr class="hr_footer">
-			<address><i class="fa fa-map-marker" aria-hidden="true"></i> 5 rue des Pantoufles</address>
+			<address><i class="fa fa-map-marker" aria-hidden="true"></i> 3 rue Saint-Jean </address>
 			<address style="padding-left: 19px;">27370, Louviers</address>
 			<address class="mt-2"><i class="fa fa-phone" aria-hidden="true"></i> 02.32.40.63.78</address>
 			<address class="mt-2"><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:contact@sprinteure.fr">contact@sprinteure.fr</a></address>
@@ -204,7 +204,7 @@
 		<div class="footer_3">
 			<h2>» Où sommes-nous ?</h2>
 			<hr class="hr_footer">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2625.191168697093!2d2.3552835605743416!3d48.85456490724742!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb2bbd365849898f2!2sWebforce3!5e0!3m2!1sfr!2sfr!4v1499899746835" width="600" height="450" frameborder="0" allowfullscreen></iframe>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d651.6263975301833!2d1.1750378833032893!3d49.209936951555974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e124dbb30a9d43%3A0xd4e0921c30a0d51!2s3+Rue+Saint-Jean%2C+27400+Louviers!5e0!3m2!1sfr!2sfr!4v1500365651824" width="600" height="450" frameborder="0" allowfullscreen></iframe>
 		</div>
 
 		<div class="footer_4">
