@@ -60,10 +60,10 @@ class ProfileController extends AppController
             $temp['status'] = 'Commande vérifiée - En cours de préparation';
             break;
          case 'prepared':
-            $$temp['status'] = 'Commande préparée - En cours d\'expedition';
+            $temp['status'] = 'Commande préparée - En cours d\'expedition';
             break;
          case 'sent':
-            $$temp['status'] = 'Commande expediée';
+            $temp['status'] = 'Commande expediée';
             break;
       }
       $userHeadsOrders[] = $temp;
