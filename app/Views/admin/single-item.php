@@ -32,6 +32,7 @@
           <div class="famille mt-3">
             <label for="famille">Catégorie de produit : </label>
             <select width="100" name="famille" class="input-back b-radius-left">
+              <option value="selection">selectionnez une categorie</option>
               <?php foreach ($family as $famille) { ?>
                 <option value="<?php echo $famille['id']; ?>"><?php echo $famille['family']; ?></option>
                 <?php } ?>
@@ -90,8 +91,13 @@
         </div>
         <!-- Catégorie : Article en avant ou non -->
         <div class="checkbox mx-5 p-2 my-3">
-          <INPUT type="checkbox" name="home" value="1"> Mettre l'article en avant sur la page d'accueil
+          <?php if($item['home'] == 1) { ?>
+          <INPUT type="checkbox" name="home" value="1" checked="checked"> Mettre l'article en avant sur la page d'accueil
           <?php if(!empty($error['home'])) { echo '<p class="error">' . $error['home'] . '</p>'; } ?>
+          <?php } else { ?>
+            <INPUT type="checkbox" name="home" value="1" > Mettre l'article en avant sur la page d'accueil
+            <?php if(!empty($error['home'])) { echo '<p class="error">' . $error['home'] . '</p>'; } ?>
+            <?php } ?>
         </div>
 
         <!-- Catégorie : Status -->
