@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
-<div class="row" style="justify-content: space-between">
+<div class="row mt-4" style="justify-content: space-between">
 
    <div class="col-lg-6 col-sm-12">
 
@@ -35,7 +35,7 @@
       <!-- Visualisation fichier 3D -->
       <!-- id view utilisée dans js pour dimensionner image à la largeur de la div x 500px de haut -->
       <!-- ficher loader.js ligne 7 -->
-      <div id="view"></div>
+      <div id="view" class="preview-3d mt-3 mb-3"></div>
    </div>
 
 </div>

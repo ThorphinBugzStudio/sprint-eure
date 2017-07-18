@@ -186,14 +186,14 @@ body {
 }
 
 .item_panier {
-	background-color: #dae9ff;
+	background-color: white;
 	white-space: normal;
 }
 
 .item_panier:nth-child(2n+2) {
-	background-color: #e6e6e6;
-	border-top: 1px solid grey;
-	border-bottom: 1px solid grey;
+	background-color: #ecf4ff;
+	border-top: 1px solid #c9c9c9;
+	border-bottom: 1px solid #c9c9c9;
 }
 
 #Qt {
@@ -520,6 +520,17 @@ form label {
 		text-align: center;
 		max-width: inherit;
 	}
+}
+
+/* ----------------- DEVIS ----------------- */
+
+.preview-3d canvas {
+	width: 100% !important;
+	height: 100% !important;
+	max-height: 500px !important;
+	border: 4px solid white;
+	box-shadow: 0 0 11px -3px;
+	border-radius: 8px;
 }
 
 /* ----------------- E-COMMERCE ----------------- */

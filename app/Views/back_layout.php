@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/jquery-ui.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/hover.css') ?>">
   <link rel="stylesheet" href="<?= $this->assetUrl('admin/css/style.css') ?>">
+
 </head>
 <body>
 		<header>
@@ -152,5 +153,6 @@
   <script src="<?= $this->assetUrl('admin/vendor/metisMenu/metisMenu.min.js') ?>" charset="utf-8"></script>
   <script src="<?= $this->assetUrl('admin/vendor/raphael/raphael.min.js') ?>" charset="utf-8"></script>
   <script src="<?= $this->assetUrl('admin/dist/js/sb-admin-2.js') ?>" charset="utf-8"></script>
+
 </body>
 </html>

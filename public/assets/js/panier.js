@@ -50,7 +50,7 @@ var Panier = new Array();
 var TabHt = new Array();
 
 // Recuperation du panier au chargement de page
-getCookie('caddie');
+// getCookie('caddie');
 
 $('.btn_basket').on("click",function (event)
 {
@@ -405,19 +405,38 @@ function savePanier()
    console.log(test);
    console.log('click');
 
-   setCookie('caddie', test, 5);
+ setSession('caddie', test);
 }
 
-// Sauvegarde du cookie
-function setCookie(cname, cvalue, exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  var expires = "expires="+d.toUTCString();
+// Transfert du panier dans $_SESSION
+function setSession(cname, cvalue)
+{
+  
+  console.log('tossession');
+  var url = window.location.href;
+  var pos = url.indexOf('public');
+  var newurl = url.substr(0, pos) + 'public/panier/tosession';
 
-  // règle le pb des caractères interdits
-  // if ('btoa' in window) {
-  //   cvalue = btoa(cvalue);
-  // }
+  console.log(url);
+  console.log(pos);
+  console.log(newurl);
 
-  document.cookie = cname + "=" + cvalue + "; " + expires;
+
+  $.ajax({
+
+    type: "POST",
+    url: newurl,
+    data: {'caddie': cvalue},
+    dataType: "text",
+    success: function(response)
+    {
+      console.log("Panier to $_SESSION success !");
+    },
+    error: function(response)
+    {
+      console.log("Panier to $_SESSION Error !");
+    }
+   });
+
+  
 }
