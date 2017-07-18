@@ -84,7 +84,7 @@
 		 * PanierController
 		 */
 		['GET', '/panier', 'Panier#panier', 'panier_client'],
-		['POST', '/panier', 'Panier#panier', 'panier_client_action'],
+		['POST', '/panier', 'Panier#panierAction', 'panier_client_action'],
 		// Route pour scripts Ajax liés au panier en js
 		['GET', '/panier/fromsession', 'Panier#panierFromSession', 'panier_from_session'],
 		['POST', '/panier/tosession', 'Panier#panierToSession', 'panier_to_session'],
