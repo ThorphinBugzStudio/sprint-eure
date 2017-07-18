@@ -89,7 +89,7 @@ $('.btn_basket').on("click",function (event)
 
     // On déclare ht qui calcule le prix ht
           var $ht = panierHt(Panier,'prixTotalht');
-          console.log($ht)
+
     // On affiche le prix ht ds le panier
           $('#total_ht').html($ht.toFixed(2)); //element.toFixed(nb)= 2chiffre après la "," ??? WTF ???
 
