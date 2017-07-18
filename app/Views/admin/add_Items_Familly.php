@@ -31,7 +31,7 @@
 
         <div class="checkbox mx-6">
           <span class="error"><?php if(!empty($error['status'])) { echo $error['status']; } ?></span><br>
-          <INPUT type= "checkbox" name="status" value="deleted"> Ne pas rendre disponible sur le site, cette catégorie d'articles.
+          <INPUT type= "checkbox" name="status" value="deleted"> Ne pas rendre disponible sur le site cette catégorie d'articles.
         </div>
 
         <br>
