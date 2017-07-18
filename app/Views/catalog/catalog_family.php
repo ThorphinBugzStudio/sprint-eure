@@ -103,7 +103,7 @@
       <!-- BOUTON : Ajouter au panier -->
       <div class="row btn_basket-bottom">
         <div class="row mx-auto p-relative">
-          <a class="btn_basket" href="#">
+          <a class="btn_basket" href="<?= $this->url('ajouter_au_panier',array('id'=> $result['id'])); ?>">
             <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
             Ajouter au panier
           </a>
