@@ -88,7 +88,7 @@
 							</a>
 
 							<!-- MODAL BOX : Titre de la fenêtre du panier -->
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<div class="dropdown-menu mt-0" aria-labelledby="dropdownMenuButton">
 								<div class="title_basket">
 									<a href="<?= $this->url('panier_client') ?>">Votre panier</a>
 								</div>

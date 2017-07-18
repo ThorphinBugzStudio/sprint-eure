@@ -27,6 +27,7 @@ class CatalogController extends AppController
     $lastProduct  = $items->findAllproduct('status','active','created_at', 'DESC', 5);
     $categorie = $items->nomcategorie();
     $this->show('catalog/catalog',  ['categorie' => $categorie, 'topProduct' => $topProduct, 'lastProduct' => $lastProduct]);
+    
   }
 
   public function detail($id)
