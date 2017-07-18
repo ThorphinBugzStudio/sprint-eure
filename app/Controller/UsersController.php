@@ -151,7 +151,7 @@ class UsersController extends AppController
 				'created_at' => $date->format('Y-m-d H:i:s')]);
 
 
-				$this->flash('Bienvenue ' . $pseudo . '. Veuillez vous connecter ', 'success');
+				$this->flash('Bienvenue ' . $pseudo . '. Veuillez vous connecter. ', 'success');
 				$this->redirectToRoute('login');
 
 			} else {
@@ -207,7 +207,7 @@ class UsersController extends AppController
 					if($auth->isValidLoginInfo($userPseudo, $userPassword)== 0 || $auth->isValidLoginInfo($userEmail, $userPassword)== 0)
 					{
 						$auth->logUserIn($user);
-						$this->flash('Bienvenue ' . $userPseudo . ' ,heureux de vous revoir ', 'success');
+						$this->flash('Bienvenue ' . $userPseudo . ' , heureux de vous revoir. ', 'success');
 						$this->redirectToRoute('default_home');
 
 					} else {
