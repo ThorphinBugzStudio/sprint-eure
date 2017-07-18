@@ -33,8 +33,12 @@ public function devis()
  */
 public function devisAction()
 {
+  $error = [];
   $clean = new CleanTool();
   $valid = new ValidationTool();
+  $model = new UsersModel();
+
+  $user = $this->getUser();
 
   if(!empty($_POST['submit']))
   {
@@ -43,12 +47,28 @@ public function devisAction()
 
     $email = $post['email'];
     $message = $post['message'];
-    $file = $_FILES['stlfile'];
+    $fichier = $_FILES['stlfile'];
 
-    $valid->uploadValid($file,10000000,['.stl'],$extensionsmime);
+    $error['email'] = $valid->emailValid($email);
+    $error['message'] = $valid->textValid($message,'contenu',3,500);
+    $error['stlfile'] = $valid->uploadValidStl($fichier,10000000,['.stl'],['application/octet-stream','application/sla','application/vnd.ms-pki.stl','application/x-navistyle']);
 
-    debug($post);
-    debug($file);
+    if(empty($this->getUser()))
+    {
+      $error['email'] = 'Vous devez être inscrit pour faire votre demande de devis';
+    }
+
+    if($valid->IsValid($error))
+    {
+
+      $this->flash('Votre demande a bien été prise en compte '.$user['username'].', nous nous engageons à vous répondre dans un délai de 10 jours','success');
+      $this->redirectToRoute('default_home');
+
+    } else {
+
+      $this->show('devis/devis-form', ['error' => $error]);
+    }
+
   }
 }
 

@@ -72,7 +72,6 @@ class UsersController extends AppController
 			if($model->usernameExists($pseudo))
 			{
 				$error['pseudo'] = 'Votre pseudo est déjà utilisé';
-
 			}
 
 			if($model->emailExists($email))
