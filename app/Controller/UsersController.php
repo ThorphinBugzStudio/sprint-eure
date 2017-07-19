@@ -204,7 +204,7 @@ class UsersController extends AppController
 					if($auth->isValidLoginInfo($pseudo_mail, $password))
 					{
 						$auth->logUserIn($user);
-						$this->flash('Bienvenue ' . $userPseudo . ', heureux de vous revoir. ', 'success');
+						$this->flash('Bienvenue ' . $pseudo_mail . ', heureux de vous revoir. ', 'success');
 						$this->redirectToRoute('default_home');
 
 					} else {

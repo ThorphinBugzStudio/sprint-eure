@@ -1115,15 +1115,21 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 	}
 }
 
-@media (max-width: 456px) {
+@media (max-width: 708px) {
 	.category-button-return, .category-button {
 		margin: 5px 0px;
 		width: 100%;
 	}
+	.search {
+		margin-bottom: 5px;
+	}
 }
 
-@media (min-width: 457px) and (max-width: 1155px) {
+@media (min-width: 708px) and (max-width: 1495px) {
 	.category-button-return, .category-button {
 		margin: 5px 1%;
+	}
+	.search {
+		margin-bottom: 5px;
 	}
 }

@@ -38,7 +38,7 @@
         </div>
         <div class="p-4">
           <div class="row w-100 mx-auto" style="text-align: center;">
-            <input type="submit" name="submit" value="Ajouter" class="btn_ok w-50 mb-3"/>
+            <input type="submit" name="submit" value="Modifier" class="btn_ok w-50 mb-3"/>
           </div>
         </div>
       </div>
