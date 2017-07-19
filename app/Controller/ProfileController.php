@@ -126,7 +126,7 @@ class ProfileController extends AppController
     $this->allowTo(['client', 'admin']);
 
     $user = $this->getUser();
-
+   $id = $user['id'];
 
     $user_avatar = $avatarmodel->getUserAvatar($id);
 
@@ -143,8 +143,8 @@ class ProfileController extends AppController
       $city = $post['city'];
       $country = $post['country'];
       $pseudo = $post['pseudo'];
-      $password = $post['password'];
-      $password_confirm = $post['password-confirm'];
+      // $password = $post['password'];
+      // $password_confirm = $post['password-confirm'];
 
 
       $error['firstname'] = $valid->textValid($firstname, 'nom',3,60);
