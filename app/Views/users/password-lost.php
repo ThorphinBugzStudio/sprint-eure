@@ -4,13 +4,6 @@
 
 <form class="" action="<?php $this->url('password_lost_action') ?>" method="POST">
 
-<<<<<<< HEAD
-  <label for="emailconfirm">Pour retrouver votre mot de passe, veuillez renseigner votre email</label>
-  <span style="color:red"><?php if(!empty($error['emailconfirm'])){ echo $error['emailconfirm']; } ?></span>
-  <input type="text" name="emailconfirm" value="<?php if(!$success){if(!empty($_POST['emailconfirm'])){ echo $_POST['emailconfirm'];}} ?>">
-
-  <input class="submit-btn" type="submit" name="submit" value="Envoyer">
-=======
   <label class="mt-4 mb-2" for="emailconfirm">Pour retrouver votre mot de passe, veuillez renseigner votre email.</label> <br>
   <div class="row">
     <input class="input-form mx-auto" style="max-width: 300px;" placeholder="Saisir votre email..." type="text" name="emailconfirm" value="<?php if(!$success){if(!empty($_POST['emailconfirm'])){ echo $_POST['emailconfirm'];}}?>">
@@ -22,7 +15,6 @@
   <div class="row mt-2">
     <input class="btn_ok mx-auto" type="submit" name="submit" value="Envoyer">
   </div>
->>>>>>> 31f94d3ec5a98b33a48fd96f2b59ee872571d352
 
   <?php if($success == true){ ?>
 
