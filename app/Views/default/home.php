@@ -168,16 +168,19 @@ $_ENV = 'Home'; ?>
   		<?php } ?>
   </div>
 
-  <div class="col-sm-12 col-lg-4">
+  <div class="col-sm-12 col-lg-4 my-auto">
     <div class="comments-container">
       <?php if(!empty($user)) { ?>
         <form class="comments-form" action="<?php $this->url('inscription_action'); ?>" method="POST">
           <div>
             <textarea name="comment" rows="8" cols="80" placeholder="Saisir votre commentaire..."><?php if (!empty($actualComment)) { echo $actualComment; } ?></textarea>
-            <span class=error><?php if(!empty($error['comment'])){ echo $error['comment'];} ?></span>
+            <span class="error"><?php if(!empty($error['comment'])){ echo $error['comment'];} ?></span>
             <input class="container-fluid row btn_ok mt-3 mx-auto px-auto w-100" type="submit" name="submit" value="Laisser un commentaire">
           </div>
         </form>
+        <?php } else { ?>
+          <textarea name="comment" rows="8" cols="80" disabled>Vous devez être connecté pour pouvoir commenter.</textarea>
+          <button disabled type="button" name="button"class="container-fluid row btn_ok mt-3 w-100 justify-content-center">Laisser un commentaire</button>
         <?php } ?>
       </div>
   </div>
