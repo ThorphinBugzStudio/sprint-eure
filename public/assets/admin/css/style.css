@@ -170,8 +170,8 @@ td:not(.menu_actions) {
 }
 
 th {
-  color: #333;
-  background-color: #f5f5f5;
+  color: white;
+  background-color: #222d32;
   border-color: #ddd;
   font-family: "Patua One", "Arial";
   font-size: 17px;
@@ -181,6 +181,23 @@ th {
 
 .panel {
   margin-bottom: 0;
+}
+
+/* ----------------- DEVIS --------------------------- */
+
+.rowsOrder {
+	overflow-x: auto;
+}
+
+.pageBasket_total span {
+	font-family: "Patua One", "Arial";
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.pageBasket_total_TTC span {
+	color: #1885c0 !important;
+	font-size: 25px;
 }
 
 /* -------------- LISTE ARTICLES -------------- */
@@ -355,4 +372,8 @@ input[type="number"] {
 
 a, a:hover {
   text-decoration: none;
+}
+
+.bold {
+  font-weight: bold;
 }

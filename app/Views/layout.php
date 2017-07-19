@@ -7,7 +7,7 @@
   <meta name="keywords" content="3dprinter, printer, imprimante 3d, imprimante, composant imprimante, fichier 3d, 3d file, sprint'eure, imprimerie 3d">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="icon" type="image/png" href="">
+	<link rel="icon" type="image/png" href="<?= $this->assetUrl('img/icon-logo5.png') ?>">
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">

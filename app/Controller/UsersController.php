@@ -206,7 +206,7 @@ class UsersController extends AppController
 					if($auth->isValidLoginInfo($userPseudo, $userPassword)== 0 || $auth->isValidLoginInfo($userEmail, $userPassword)== 0)
 					{
 						$auth->logUserIn($user);
-						$this->flash('Bienvenue ' . $userPseudo . ' , heureux de vous revoir. ', 'success');
+						$this->flash('Bienvenue ' . $userPseudo . ', heureux de vous revoir. ', 'success');
 						$this->redirectToRoute('default_home');
 
 					} else {
@@ -291,14 +291,14 @@ class UsersController extends AppController
 					$link = '<a href="'.$url.' ">Modifier votre mot de passe</a>';
 
 
-					$link = '<a href="'.$url.'?email='.$codedemail.'&token='.$codedtoken.'">clickez ici pour modifier votre mot de passe</a>';
+					$link = '<a href="'.$url.'?email='.$codedemail.'&token='.$codedtoken.'">Cliquez ici pour modifier votre mot de passe</a>';
 					echo $link;
 					die();
 
 					$this->show('users/password-lost',['success' => $success, 'link' => $link]);
 
 				} else {
-					$error['emailconfirm'] = 'Email inconnu dans la BDD';
+					$error['emailconfirm'] = 'Cette adresse e-mail n\'existe pas';
 					$this->show('users/password-lost',['error' => $error]);
 				}
 			} else {

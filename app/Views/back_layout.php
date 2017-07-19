@@ -68,17 +68,12 @@
 								<a href="#"><i class="fa fa-file-text-o fa-fw"></i> Catégories<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level">
 									<li><a href="<?= $this->url('admin_items_families') ?>">Toutes les catégories</a></li>
-									<li><a href="<?= $this->url('admin_items_families_add') ?>">Ajouter</a></li>
+									<li><a href="<?= $this->url('admin_items_families_add') ?>">Ajouter une catégorie</a></li>
 								</ul>
 							</li>
 
 							<!-- Section : Commandes -->
-              <li><a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Commandes<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                  <li><a href="<?= $this->url('admin_orders') ?>">Toutes les commandes</a></li>
-                  <li><a href="#">Gérer les devis</a></li>
-                </ul>
-              </li>
+              <li><a href="<?= $this->url('admin_orders') ?>"><i class="fa fa-shopping-cart fa-fw"></i> Commandes</a></li>
 
 							<!-- ===================================== -->
 							<!-- 					Onglet : Utilisateurs 						 -->
