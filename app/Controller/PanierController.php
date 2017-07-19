@@ -30,10 +30,13 @@ class PanierController extends AppController
   {
     // ADMIN OU CLIENT LOGé
     $this->allowTo(['admin','client']);
+   // debug($_SESSION);
 
+   if (!empty($_SESSION['caddie']))
+   {
     // Alimentation view
     $rowsOrder = $this->getRowsCaddy();
-    
+
     $footOrder = ToolHP::CalculFootOrder($rowsOrder, 20.00);
     // debug($rowsOrder);
     // debug($footOrder);
@@ -43,13 +46,18 @@ class PanierController extends AppController
                                                        'Chèque'   =>  'cheque',
                                                        'virement' => 'virement',
                                                        'Paypal'   => 'paypal'
-                                                      ], 'paypal');   
-    // debug($modesPayBox);                                                       
+                                                      ], 'paypal');
+    // debug($modesPayBox);
 
     $this->show('page_panier/panier', ['rowsOrder'   => $rowsOrder,
                                        'footOrder'   => $footOrder,
                                        'modesPayBox' => $modesPayBox->getHtml()
     ]);
+   }
+   else
+   {
+      $this->redirectToRoute('default_home');
+   }
   }
 
   /**
@@ -111,7 +119,7 @@ class PanierController extends AppController
     $user = $this->getUser();
     // debug($rowsOrder);
     // debug($user);
-    
+
     // Si post vide ou valeurs non conforme des radiosbuttons :
     // -> Gros bidouillage ! -> 403 !
     if (!empty($_POST['submit']) && !(
@@ -124,14 +132,14 @@ class PanierController extends AppController
       /**
        * NORMALEMENT INSERER LA COMMANDE AVEC STATUT validated
        * PUIS ENVOYER SUR MODULE DE TRAITEMENT DES PAIEMENTS // ADRESSE DE LIVRAISON ET AUTRES OPTIONS
-       * 
+       *
        * UNE FOIS LE PAIEMENT VALIDé PAR LE MODULE PASSER LA COMMANDE EN STATUT paid
        * PLUS VALIDATION EN BACK PAR ADMIN SUR MODE DE PAIEMENT NON AUTOMATIQUES CHQ / VIRT ETC...
-       * 
+       *
        * CI DESSOUS INSERTION DIRECTE AVEC STATUT paid
        */
 
-      
+
       // Insert Order
       $insertOrder = $orders->insert(['users_id'     => $user['id'],
                                       'vat_rate_id' => 1,
@@ -140,7 +148,7 @@ class PanierController extends AppController
                                      ], true);
       // debug($insertOrder);
       // Insert Order Rows
-      foreach ($rowsOrder as $rowOrder) 
+      foreach ($rowsOrder as $rowOrder)
       {
         $insertRow = $orderRows->insert(['orders_id'  => $insertOrder['id'],
                                          'items_id'  => $rowOrder['items_id'],
@@ -167,7 +175,7 @@ class PanierController extends AppController
       $this->flash('Stop bidouiller !', 'danger');
       $this->showForbidden();
       die();
-    }    
+    }
 
   }
 
@@ -175,7 +183,7 @@ class PanierController extends AppController
    * Retourne article en JSON.
    * Script pour Ajax dans panier.js
    *
-   * @param int $id 
+   * @param int $id
    * @return JSON
    */
   public function addArticleToPanier($id)
