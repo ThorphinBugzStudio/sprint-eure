@@ -246,7 +246,7 @@ class UsersController extends AppController
 	 */
 	public function passwordLost()
 	{
-		$this->show('users/password-lost');
+		$this->show('users/password-lost', ['success' => $success]);
 	}
 
 	/**
@@ -293,7 +293,9 @@ class UsersController extends AppController
 
 
 					$link = '<a href="'.$url.'?email='.$codedemail.'&token='.$codedtoken.'">clickez ici pour modifier votre mot de passe</a>';
-
+					echo $link;
+					die();
+					
 					$this->show('users/password-lost',['success' => $success, 'link' => $link]);
 
 				} else {
