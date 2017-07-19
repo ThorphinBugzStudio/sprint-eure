@@ -51,7 +51,7 @@ public function devisAction()
 
     $error['email'] = $valid->emailValid($email);
     $error['message'] = $valid->textValid($message,'contenu',3,500);
-    $error['stlfile'] = $valid->uploadValidStl($fichier,10000000,['.stl'],['application/octet-stream','application/sla','application/vnd.ms-pki.stl','application/x-navistyle']);
+    $error['stlfile'] = $valid->uploadValidStl($fichier,100000000,['.stl'],['application/octet-stream','application/sla','application/vnd.ms-pki.stl','application/x-navistyle','application/wavefront-stl']);
 
     if(empty($this->getUser()))
     {
