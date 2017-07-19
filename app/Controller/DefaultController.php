@@ -53,6 +53,7 @@ class DefaultController extends AppController
 		$error = [];
 		$model = new CommentsModel();
 		$verifs = new ValidationTool();
+		$items = new ItemsModel();
 
 		$comments = $model->last5Comments();
 
@@ -79,7 +80,8 @@ class DefaultController extends AppController
 												$this->flash('Commentaire en attente de moderation', 'success');
 												$this->redirectToRoute('default_home');
 			} else {
-				$this->show('default/home',['user' => $user , 'error' => $error , 'comments' => $comments, 'actualComment' => $comment]);
+				$results = $items->findAllproductactive('home', '1', $orderBy = 'created_at', $orderDir = 'DESC', $limit = 5);
+				$this->show('default/home',['user' => $user , 'error' => $error , 'comments' => $comments, 'actualComment' => $comment, 'results' => $results]);
 			}
 		}
 	}
