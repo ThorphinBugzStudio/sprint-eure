@@ -72,7 +72,7 @@ class DefaultController extends AppController
 												'created_at' => $created_at ]);
 
 												$this->flash('Commentaire en attente de moderation', 'success');
-												$this->show('default/home',['comments' => $comments]);
+												$this->redirectToRoute('default_home');
 			} else {
 				$this->show('default/home',['user' => $user , 'error' => $error , 'comments' => $comments, 'actualComment' => $comment]);
 			}
