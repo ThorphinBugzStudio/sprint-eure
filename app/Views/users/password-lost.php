@@ -10,7 +10,7 @@
 
   <input class="submit-btn" type="submit" name="submit" value="Envoyer">
 
-  <?php if($success==true){ ?>
+  <?php if($success == true){ ?>
 
   <li><?= $link ?></li>
   <?php } ?>
