@@ -214,10 +214,8 @@ class UsersController extends AppController
 						$this->redirectToRoute('login');
 					}
 				} else {
-					// $error['pseudo-mail'] = 'Vos identifiants sont inconnus';
-					$this->flash('Vos identifiants sont inconnus', 'warning');
-					$this->redirectToRoute('login');
-					//die('empty $user');
+					$error['pseudo-mail'] = 'Vos identifiants sont inconnus';
+					$this->show('users/login', ['error' => $error]);
 				}
 			} else {
 				$this->show('users/login', ['error' => $error]);
@@ -260,6 +258,7 @@ class UsersController extends AppController
 	public function passwordLostAction()
 	{
 		$error = [];
+		$success = false;
 		$valid = new ValidationTool();
 		$clean = new CleanTool();
 		$model = new UsersModel();
@@ -294,8 +293,6 @@ class UsersController extends AppController
 
 
 					$link = '<a href="'.$url.'?email='.$codedemail.'&token='.$codedtoken.'">clickez ici pour modifier votre mot de passe</a>';
-					echo $link;
-					die();
 
 					$this->show('users/password-lost',['success' => $success, 'link' => $link]);
 
