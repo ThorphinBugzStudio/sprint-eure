@@ -99,7 +99,47 @@ $_ENV = 'Home'; ?>
 </div>
 
 <div class="m-3">
-  <p>On posera le contenu ici !</p>
+  <?php foreach ($results as $result )
+       { ?>
+         <div class="top-product text-align-center single-article-container">
+             <div class="single-article m-3" id="img-article-3">
+
+               <!-- Miniature de l'article -->
+               <a href="<?= $this->url('catalog_detail', ['id' =>  $result['id']])?>">
+                 <img src="<?= $this->assetUrl('img/uploaded_articles/'. $result['img_name']) ?>" alt="Miniature" class="thumbnail hvr-glow">
+               </a>
+
+               <!-- Affichage du prix -->
+               <div class="single-article-price">
+                 <?= number_format($result['puht']*1.20,2,',', ' ').' €'; ?>
+               </div>
+
+               <div class="row my-2" style="display: flex;">
+                 <div class="mr-auto my-auto">
+                   <!-- Titre de l'article -->
+                   <div class="single-article-title">
+                     <a href="#"><?= $result['designation']; ?></a>
+                   </div>
+                 </div>
+               </div>
+
+               <hr class="hrSingleArticle m-0 mb-3">
+
+               <div style="height:46px;"></div>
+
+               <!-- BOUTON : Ajouter au panier -->
+               <div class="row btn_basket-bottom">
+                 <div class="row mx-auto p-relative">
+                   <a class="btn_basket" href="<?= $this->url('ajouter_au_panier',array('id'=> $result['id'])); ?>">
+                     <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                     Ajouter au panier
+                   </a>
+                 </div>
+               </div>
+
+             </div>
+         </div>
+<?php  } ?>
 </div>
 
 

@@ -3,6 +3,7 @@
 namespace Controller;
 use Model\CommentsModel;
 use Security\ValidationTool;
+use Model\ItemsModel;
 
 // use \W\Controller\Controller; // Inutile puisque heritage de AppController dans le meme espace de nom
 
@@ -21,11 +22,15 @@ class DefaultController extends AppController
 	{
 		$user = $this->getUser();
 
+		$items = new ItemsModel();
+
 		$model = new CommentsModel();
 
 		$comments = $model->last5Comments();
 
-		$this->show('default/home',['user' => $user,'comments' => $comments]);
+		$results = $items->findAllproductactive('home', '1', $orderBy = 'created_at', $orderDir = 'DESC', $limit = 5);
+
+		$this->show('default/home',['user' => $user,'comments' => $comments, 'results' => $results]);
 	}
 
 	/**
