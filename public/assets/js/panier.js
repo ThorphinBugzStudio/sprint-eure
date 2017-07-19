@@ -87,7 +87,7 @@ $('.btn_basket').on("click",function (event)
 
             // On ajoute visuellement l' article et sa designation au panier
             //$('.dropdown-item').prepend('<p class="item_panier px-0" value="'+linkValue+'">'+response.designation+' '+' <br> <span>'+response.puht+'</span>'+' €'+'  '+'<input id="Qt" style="width:2.3em" class="col-3'+linkValue+'" type="number" min=1 value="'+Article['quantité']+'"><i id="delete_btn" value="'+linkValue+'" class="fa fa-times fa-close-basket" aria-hidden="true"></i></p>');
-            $('.dropdown-item').prepend('<div class="item_panier row px-0 p-2" value="' + linkValue + '"> <i id="delete_btn" value="' + linkValue + '" class="fa fa-times fa-close-basket my-auto ml-auto" aria-hidden="true"></i> <p class="mr-auto">' + response.designation + '</p> <input id="Qt" class="' + linkValue + '" type="number" min=1 value="' + Article['quantité'] + '"> <br>' +  '<p class="col-6 px-0 ml-auto bold" style="text-align: end;">' + response.puht + ' €</p> </div>');
+            $('.dropdown-item').prepend('<div class="item_panier row px-0 p-2" value="' + linkValue + '"> <i id="delete_btn" value="' + linkValue + '" class="fa fa-times fa-close-basket w-100 text-align-right" aria-hidden="true"></i> <p class="mr-auto">' + response.designation + '</p> <input id="Qt" class="' + linkValue + '" type="number" min=1 value="' + Article['quantité'] + '"> <br>' +  '<p class="col-6 px-0 ml-auto bold" style="text-align: end;">' + response.puht + ' €</p> </div>');
           }
 
     // On déclare ht qui calcule le prix ht
@@ -260,7 +260,7 @@ $('#panier_validation').on("click", function (event)
 })
 
 
-// Sauvegarde des articles present dans le panier dans un $_SESSION['caddie'] 
+// Sauvegarde des articles present dans le panier dans un $_SESSION['caddie']
 function savePanier()
 {
    console.log(Panier);
@@ -282,7 +282,7 @@ function savePanier()
 // Transfert du panier dans $_SESSION
 function setSession(cvalue)
 {
-  
+
   console.log('tossession');
   var url = window.location.href;
   var pos = url.indexOf('public');
@@ -308,13 +308,13 @@ function setSession(cvalue)
     }
    });
 
-  
+
 }
 
 // Recuperation du panier dans $_SESSION
 function getSession()
 {
-  
+
   console.log('getsession');
   var url = window.location.href;
   var pos = url.indexOf('public');
@@ -339,11 +339,11 @@ function getSession()
       // console.log(ca);
 
       // création articles dans panier
-      for (var i = 0; i < ca.length; i++) 
+      for (var i = 0; i < ca.length; i++)
       {
         $('#basket_first_line').html('');
         articleObj = JSON.parse(ca[i]);
-        
+
         console.log('articleObj');
         console.log(articleObj);
 
@@ -366,7 +366,7 @@ function getSession()
         // On déclare ht qui calcule le prix ht
         var $ht = panierHt(Panier,'prixTotalht');
         console.log($ht)
-        
+
         // On affiche le prix ht ds le panier
         $('#total_ht').html($ht.toFixed(2)); //element.toFixed(nb)= 2chiffre après la "," ??? WTF ???
 
@@ -432,7 +432,7 @@ function getSession()
           //Calcul du nbre d'article
           var nbreArticles = Panier.length;
           $('#nbr_articles').html('('+nbreArticles+')');
-        
+
           savePanier();
         })
       }
@@ -444,5 +444,5 @@ function getSession()
     }
    });
 
-  
+
 }

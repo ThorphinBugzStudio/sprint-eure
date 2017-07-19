@@ -16,10 +16,10 @@
     <input class="btn_ok mx-auto" type="submit" name="submit" value="Envoyer">
   </div>
 
-  <?php if($success == true){ ?>
-
-  <li><?= $link ?></li>
+  <?php if($success == true) { ?>
+  <?= $link ?>
   <?php } ?>
+
   </form>
 
 </form>

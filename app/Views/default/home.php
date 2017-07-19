@@ -98,10 +98,9 @@ $_ENV = 'Home'; ?>
   <hr class="hrPage">
 </div>
 
-<div class="m-3">
+<div class="top-product text-align-center single-article-container">
   <?php foreach ($results as $result )
        { ?>
-         <div class="top-product text-align-center single-article-container">
              <div class="single-article m-3" id="img-article-3">
 
                <!-- Miniature de l'article -->
@@ -138,8 +137,7 @@ $_ENV = 'Home'; ?>
                </div>
 
              </div>
-         </div>
-<?php  } ?>
+  <?php } ?>
 </div>
 
 
