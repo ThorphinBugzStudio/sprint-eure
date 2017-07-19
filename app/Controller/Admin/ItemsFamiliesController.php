@@ -169,7 +169,7 @@ class ItemsFamiliesController extends AppController
               'created_at' => date('Y_m_d_H_i_s'),
             );
        $model->insert($data, $stripTags = true);
-       $this->show('admin/add_Items_Familly');
+       $this->show('admin/add_Items_Familly',  array(), $_POST="");
     } else
      {
        $this->show('admin/add_Items_Familly', array('error' => $error));

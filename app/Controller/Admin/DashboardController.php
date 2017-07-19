@@ -32,11 +32,12 @@ class DashboardController extends AppController {
 
 
       $countseven = $users->getsevenDayNewUser();
+      $countsevenitems = $articles->getsevenDayNewItems();
 
 
       $nbNewComment = $comments->nbcomment();
       $nbneworders = $order->nbneworders();
 
-      $this->show('admin/dashboard', ['users' => $lastUsers, 'items' => $lastproduct, 'comments' => $lastcomments, 'orders' => $lastcommande, 'newcomments' => $nbNewComment, 'nborders' => $nbneworders, 'allusers' => $countseven]);
+      $this->show('admin/dashboard', ['users' => $lastUsers, 'items' => $lastproduct, 'comments' => $lastcomments, 'orders' => $lastcommande, 'newcomments' => $nbNewComment, 'nborders' => $nbneworders, 'allusers' => $countseven, 'allitems' => $countsevenitems]);
   }
 }
