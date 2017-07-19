@@ -6,7 +6,7 @@
 
   <label for="emailconfirm">Pour retrouver votre mot de passe, veuillez renseigner votre email</label>
   <span style="color:red"><?php if(!empty($error['emailconfirm'])){ echo $error['emailconfirm']; } ?></span>
-  <input type="text" name="emailconfirm" value="<?php if(!$success){if(!empty($_POST['emailconfirm'])){ echo $_POST['emailconfirm'];}}?>">
+  <input type="text" name="emailconfirm" value="<?php if(!$success){if(!empty($_POST['emailconfirm'])){ echo $_POST['emailconfirm'];}} ?>">
 
   <input class="submit-btn" type="submit" name="submit" value="Envoyer">
 

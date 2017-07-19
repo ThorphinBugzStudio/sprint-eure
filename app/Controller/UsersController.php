@@ -298,10 +298,10 @@ class UsersController extends AppController
 
 				} else {
 					$error['emailconfirm'] = 'Email inconnu dans la BDD';
-					$this->show('users/password-lost',['error' => $error]);
+					$this->show('users/password-lost',['error' => $error, 'success' => $success]);
 				}
 			} else {
-				$this->show('users/password-lost',['error' => $error]);
+				$this->show('users/password-lost',['error' => $error, 'success' => $success]);
 			}
 		}
 	}
