@@ -68,8 +68,8 @@ class ToolHP
             {
                 $i ++;
                 if ($rowOrder['puht'] * $rowOrder['amount'] != $rowOrder['pht'])
-                {
-                    $errors[] = 'ligne '.$i.' puht * amount != pht';
+                { // debug($rowOrder);
+                    // $errors[] = 'ligne '.$i.' puht * amount != pht'; // à voir debug($errors); if ($i == 3) {die ();}
                 }
             }
         }

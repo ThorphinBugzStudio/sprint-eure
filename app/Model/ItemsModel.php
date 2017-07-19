@@ -313,6 +313,16 @@ class ItemsModel extends ItemsFamilyModel
         }
    }
 
+   public function getsevenDayNewItems()
+   {
+     $sql = "SELECT count(id) FROM $this->table WHERE created_at >= (CURDATE() + INTERVAL -7 DAY)";
+     $sth = $this->dbh->prepare($sql);
+     $sth->execute();
+     $result = $sth->fetchColumn();
+     //  debug($result);
+     return $result;
+   }
+
 
 
 }
