@@ -246,7 +246,7 @@ class UsersController extends AppController
 	 */
 	public function passwordLost()
 	{
-		$this->show('users/password-lost');
+		$this->show('users/password-lost', ['success' => '']);
 	}
 
 	/**
@@ -291,16 +291,19 @@ class UsersController extends AppController
     			$url = $this->generateUrl('password_modify');
 					$link = '<a href="'.$url.' ">Modifier votre mot de passe</a>';
 
-					$link = '<a href="'.$url.'?email='.$codedemail.'&token='.$codedtoken.'">Cliquez ici pour modifier votre mot de passe</a>';
+
+					$link = '<a href="'.$url.'?email='.$codedemail.'&token='.$codedtoken.'">clickez ici pour modifier votre mot de passe</a>';
+					echo $link;
+					die();
 
 					$this->show('users/password-lost',['success' => $success, 'link' => $link]);
 
 				} else {
-					$error['emailconfirm'] = 'Cette adresse e-mail n\'existe pas';
-					$this->show('users/password-lost',['error' => $error]);
+					$error['emailconfirm'] = 'Email inconnu dans la BDD';
+					$this->show('users/password-lost',['error' => $error, 'success' => $success]);
 				}
 			} else {
-				$this->show('users/password-lost',['error' => $error]);
+				$this->show('users/password-lost',['error' => $error, 'success' => $success]);
 			}
 		}
 	}
