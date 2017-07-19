@@ -7,12 +7,18 @@ body {
 	margin: 0;
 }
 
-/* ----------------- FONTS ----------------- */
+
+/* ======================================================
+*  												FONTS
+====================================================== */
 
 @import url('https://fonts.googleapis.com/css?family=Patua+One');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-/* ----------------- HEADER ----------------- */
+
+/* ======================================================
+*  												HEADER
+====================================================== */
 
 .navbar-users, .navbar-menu  {
 	background-color: #1d1d1d;
@@ -132,7 +138,10 @@ body {
 	z-index: 999;
 }
 
-/* ---------------- PANIER ---------------- */
+
+/* ======================================================
+*  											PANIER
+====================================================== */
 
 .dropdown-menu {
 	right: 0;
@@ -206,7 +215,66 @@ body {
 	color: #0f5ed5;
 }
 
-/* ----------------- SLIDERS ----------------- */
+
+/* ======================================================
+*  								  	 PAGE PANIER
+====================================================== */
+
+.rowsOrder {
+	overflow-x: auto;
+}
+
+.pageBasket_total {
+	font-size: 15px;
+	font-family: "Open Sans",  "Arial";
+	padding: 8px 5px 8px 0;
+}
+
+.pageBasket_total span {
+	font-family: "Patua One", "Arial";
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.pageBasket_total_TTC {
+	background-color: #e7f6ff;
+}
+
+.pageBasket_total_TTC span {
+	color: #008aff !important;
+	font-size: 25px;
+}
+
+#formPay {
+	display: block;
+}
+
+.paiement {
+	display: block;
+}
+
+.paiement fieldset legend {
+	font-family: "Patua One", "Arial";
+	font-size: 2em;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.form-check {
+	margin-bottom: 0;
+}
+
+.form-check label [type="radio"] {
+	margin-right: 5px;
+}
+
+.btn_pageBasket {
+	display: block;
+}
+
+
+/* ======================================================
+*  											SLIDERS
+====================================================== */
 
 #carouselExampleIndicators {
   max-width: 700px;
@@ -287,7 +355,9 @@ body {
 	max-width: 300px;
 }
 
-/* ----------------- CONTENU PRINCIPAL ----------------- */
+/* ======================================================
+*  										CONTENU PRINCIPAL
+====================================================== */
 
 .scrollup {
 	width: 40px;
@@ -330,7 +400,10 @@ body {
 	font-size: 2em;
 }
 
-/* ----------------- FORMULAIRES ----------------- */
+
+/* ======================================================
+*  											FORMULAIRES
+====================================================== */
 
 .form-subscribe label {
 	margin: 0;
@@ -418,7 +491,10 @@ form label {
 	width: 100%;
 }
 
-/* ---------------- COMMENTAIRES ----------------- */
+
+/* ======================================================
+*  										COMMENTAIRES
+====================================================== */
 
 .last-comments {
 	padding: 20px;
@@ -451,8 +527,10 @@ form label {
 	font-size: .9em;
 }
 
-/* --------------- COMMENT ÇA MARCHE ? ---------------- */
 
+/* ======================================================
+*  									COMMENT ÇA MARCHE ?
+====================================================== */
 .howTo img {
 	width: 300px;
 	border: 3px double grey;
@@ -522,7 +600,10 @@ form label {
 	}
 }
 
-/* ----------------- DEVIS ----------------- */
+
+/* ======================================================
+*  												DEVIS
+====================================================== */
 
 .preview-3d canvas {
 	width: 100% !important;
@@ -533,7 +614,10 @@ form label {
 	border-radius: 8px;
 }
 
-/* ----------------- E-COMMERCE ----------------- */
+
+/* ======================================================
+*  											E-COMMERCE
+====================================================== */
 
 .category-bar {
 	justify-content: center;
@@ -715,7 +799,10 @@ form label {
 	text-decoration: none;
 }
 
-/* ----------------- MODIFICATION DU PROFIL ----------------- */
+
+/* ======================================================
+*  									MODIFICATION DU PROFIL
+====================================================== */
 
 .edit-profil-row {
 	border-bottom: 1px solid #1d1d1d;
@@ -749,7 +836,10 @@ form label {
 	border: 4px double grey;
 }
 
-/* ------------------- CATALOGUE : ARTICLE SEULEMENT ------------------- */
+
+/* ======================================================
+*  							CATALOGUE : ARTICLE SEULEMENT
+====================================================== */
 
 .image {
   text-align: center;
@@ -790,7 +880,10 @@ form label {
 	text-align: justify;
 }
 
-/* ----------------- FOOTER ----------------- */
+
+/* ======================================================
+*  												FOOTER
+====================================================== */
 
 footer {
   background-color: #1d1d1d;
@@ -856,7 +949,9 @@ address .fa-phone {
 	margin-right: 3px;
 }
 
-/* ----------------- W ERROR ----------------- */
+/* ======================================================
+*  												W ERROR
+====================================================== */
 
 .errorPage {
 	background-color: rgba(255, 0, 0, 0.1);
@@ -881,7 +976,9 @@ address .fa-phone {
 	background: rgba(255, 196, 196, 0.51);
 }
 
-/* ----------------- AUTRES ----------------- */
+/* ======================================================
+*  												AUTRES
+====================================================== */
 
 .col-6,
 .col-5,
@@ -950,9 +1047,15 @@ button, html [type="button"], [type="reset"], [type="submit"] {
   background-color: rgba(0, 255, 0, 0.1);
   display: flex;
 	margin: 10px 0;
+	animation-name: bounceInRight;
+	animation-duration: 2s;
 }
 
-/* ----------------------- MEDIA QUERY ------------------------ */
+
+/* ======================================================
+*  											MEDIA QUERY
+====================================================== */
+
 @media (max-width: 827px) {
 	.navbar-users ul li, .navbar-menu ul li {
 		width: 100%;
