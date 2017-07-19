@@ -66,7 +66,7 @@
             <i class="fa fa-shopping-basket fa-5x"></i>
           </div>
           <div class="col-xs-9 text-right">
-            <div class="huge">0</div>
+            <div class="huge"><?= $allitems ?></div>
             <div>Nouveau(x) produit(s)</div>
           </div>
         </div>
@@ -141,15 +141,15 @@
       <div class="panel-body">
         <div class="list-group">
         <?php foreach ($orders as $order): ?>
-          <a href="#" class="list-group-item">
+          <div class="list-group-item">
             <?= $order['status'] ?>
             <?php
             $date = new DateTime();
             $date1 = $date->format('Y-m-d H:i:s');
             $date2 = $order['created_at'];
             $nbjours = round((strtotime($date1) - strtotime($date2))/(60*60*24)-1); ?>
-            <span class="pull-right text-muted small"><em><?= $nbjours ?> hours ago</em></span>
-          </a>
+            <span class="pull-right text-muted small"><em> il y a <?= $nbjours ?> jours</em></span>
+          </div>
         <?php endforeach; ?>
         </div>
         <a href="<?= $this->url('admin_orders') ?>" class="btn btn-default btn-block">Voir toutes les commandes en cours</a>
@@ -168,13 +168,13 @@
           <div class="list-group">
             <?php foreach ($items as $item ): ?>
               <div class="list-group-item">
+                <?= $item['designation']; ?>
                 <?php
                 $date = new DateTime();
                 $date1 = $date->format('Y-m-d H:i:s');
                 $date2 = $item['created_at'];
-                $nbjours = round((strtotime($date1) - strtotime($date2))/(60*60*24)-1);
-                echo $item['designation']; ?>
-                <span class="pull-right text-muted small"><em><?= $nbjours ?> day ago</em></span>
+                $nbjours = round((strtotime($date1) - strtotime($date2))/(60*60*24)-1); ?>
+                <span class="pull-right text-muted small"><em>il y a <?= $nbjours ?> jours</em></span>
               </div>
             <?php endforeach; ?>
             </div>
