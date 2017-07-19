@@ -246,7 +246,7 @@ class UsersController extends AppController
 	 */
 	public function passwordLost()
 	{
-		$this->show('users/password-lost');
+		$this->show('users/password-lost', ['success' => '']);
 	}
 
 	/**
