@@ -13,14 +13,14 @@
 
         <!-- Catégorie : Pseudo -->
         <label for="pseudo-mail">Pseudo / E-mail :</label>
-        <input class="input-form" type="text" name="pseudo-mail" value="">
+        <input class="input-form" type="text" name="pseudo-mail" value="<?php if(!empty($_POST['pseudo-mail'])){ echo $_POST['pseudo-mail']; } ?>">
         <?php if(!empty($error['pseudo-mail'])){ echo '<p id="error-firstname" class="error">' . $error['pseudo-mail'] . '</p>'; } ?>
 
         <br>
 
         <!-- Catégorie : Mot de passe -->
         <label for="password" class="mt-2">Mot de passe :</label>
-        <input class="input-form" type="password" name="password" value="">
+        <input class="input-form" type="password" name="password" value="<?php if(!empty($_POST['password'])){ echo $_POST['password']; } ?>">
         <?php if(!empty($error['password'])){ echo '<p id="error-firstname" class="error">' . $error['password'] . '</p>'; } ?>
 
         <!-- Catégorie : Boutons d'action -->

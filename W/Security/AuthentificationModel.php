@@ -20,6 +20,7 @@ class AuthentificationModel
 		$app = getApp();
 
 		$usersModel = new UsersModel();
+		$usersModel->setTable('spe_users');
 		$usernameOrEmail = strip_tags(trim($usernameOrEmail));
 		$foundUser = $usersModel->getUserByUsernameOrEmail($usernameOrEmail);
 		if(!$foundUser){
@@ -64,7 +65,7 @@ class AuthentificationModel
 		return (isset($_SESSION['user'])) ? $_SESSION['user'] : null;
 	}
 
-	
+
 
 	/**
 	 * Utilise les données utilisateurs présentes en base pour mettre à jour les données en session

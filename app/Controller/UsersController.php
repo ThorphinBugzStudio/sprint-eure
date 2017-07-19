@@ -183,6 +183,8 @@ class UsersController extends AppController
 		$valid = new ValidationTool();
 		$auth = new AuthentificationModel();
 
+		$model->setTable('spe_users');
+
 		if(!empty($_POST['submit']))
 		{
 			$post = $clean->cleanPost($_POST);
@@ -197,21 +199,19 @@ class UsersController extends AppController
 			{
 				$user = $model->getUserByUsernameOrEmail($pseudo_mail);
 
-				$userPseudo = $user['username'];
-				$userEmail = $user['email'];
-				$userPassword = $user['password'];
-
 				if(!empty($user))
 				{
-					if($auth->isValidLoginInfo($userPseudo, $userPassword)== 0 || $auth->isValidLoginInfo($userEmail, $userPassword)== 0)
+					if($auth->isValidLoginInfo($pseudo_mail, $password))
 					{
 						$auth->logUserIn($user);
 						$this->flash('Bienvenue ' . $userPseudo . ', heureux de vous revoir. ', 'success');
 						$this->redirectToRoute('default_home');
 
 					} else {
-						$error['pseudo-mail'] = 'Vos identifiants sont inconnus';
-						$this->show('users/login', ['error' => $error]);
+						//die('auth');
+						//$error['pseudo-mail'] = 'Vos identifiants sont inconnus';
+						$this->flash('Vos identifiants sont inconnus', 'warning');
+						$this->redirectToRoute('login');
 					}
 				} else {
 					$error['pseudo-mail'] = 'Vos identifiants sont inconnus';
@@ -258,6 +258,7 @@ class UsersController extends AppController
 	public function passwordLostAction()
 	{
 		$error = [];
+		$success = false;
 		$valid = new ValidationTool();
 		$clean = new CleanTool();
 		$model = new UsersModel();
@@ -290,10 +291,7 @@ class UsersController extends AppController
     			$url = $this->generateUrl('password_modify');
 					$link = '<a href="'.$url.' ">Modifier votre mot de passe</a>';
 
-
 					$link = '<a href="'.$url.'?email='.$codedemail.'&token='.$codedtoken.'">Cliquez ici pour modifier votre mot de passe</a>';
-					echo $link;
-					die();
 
 					$this->show('users/password-lost',['success' => $success, 'link' => $link]);
 
