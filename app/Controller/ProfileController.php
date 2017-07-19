@@ -93,6 +93,7 @@ class ProfileController extends AppController
 
     $user_adress = $adress->getUserAdress($user['id']);
 
+
     if($id == $user['id'])
     {
       $this->show('users/profile-modify', ['user_adress' => $user_adress,
@@ -130,6 +131,7 @@ class ProfileController extends AppController
 
     $user_avatar = $avatarmodel->getUserAvatar($id);
 
+    $user_adress = $adressmodel->getUserAdress($user['id']);
 
     if(!empty($_POST['submit']))
     {
@@ -180,11 +182,11 @@ class ProfileController extends AppController
 
         //update user
         $model->setTable('spe_users');
-        $user_update_sql = $model->update([ 'username' => $pseudo,
-				                              'lastName' => $lastname,
-				                             'firstName' => $firstname,
-				                                'email'  => $email,
-				                           'modified_at' => $date->format('Y-m-d H:i:s')], $userId);
+        $user_update_sql = $model->update([ 'username'    => $pseudo,
+				                                    'lastName'    => $lastname,
+				                                    'firstName'   => $firstname,
+				                                    'email'       => $email,
+				                                    'modified_at' => $date->format('Y-m-d H:i:s')], $userId);
                                   //  debug($user_update_sql);
                                   //  die('here');
         //update adresse
@@ -193,11 +195,11 @@ class ProfileController extends AppController
         $model->setTable('spe_user_adresses');
         // $table= $model->getTable();
         // die($table);
-        $user_adress_update_sql = $model->update([ 'adress1' => $adress,
-				                                             'postal_code' => $postal_code,
-                                                            'town' => $city,
-                                      				           'country' => $country,
-                                                     'modified_at' => $date->format('Y-m-d H:i:s')],$adressId);
+        $user_adress_update_sql = $model->update([ 'adress1'      => $adress,
+				                                           'postal_code'  => $postal_code,
+                                                   'town'         => $city,
+                                      				     'country'      => $country,
+                                                   'modified_at'  => $date->format('Y-m-d H:i:s')], $adressId);
 
 
 
@@ -246,10 +248,10 @@ class ProfileController extends AppController
 
 
       } else {
-        $this->show('users/profile-modify', ['error' => $error ,'user_avatar' => $user_avatar]);
+        $this->show('users/profile-modify', ['error' => $error ,'user_avatar' => $user_avatar, 'user_adress' => $user_adress]);
       }
     } else {
-      $this->show('users/profile-modify', ['error' => $error, 'user_avatar' => $user_avatar]);
+      $this->show('users/profile-modify', ['error' => $error, 'user_avatar' => $user_avatar, 'user_adress' => $user_adress]);
     }
  }
 }
